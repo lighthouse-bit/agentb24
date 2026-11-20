@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   
@@ -64,5 +64,5 @@ function pcm16(data,start,end){const out=new Int16Array(end-start);for(let i=sta
 convert.onclick=async()=>{if(!selectedFile)return suiteStatus('Choose a video first.','error');if(!permission.checked)return suiteStatus('Please confirm that you have permission to convert this video.','error');convert.disabled=true;bar.style.width='2%';try{if(!window.lamejs)throw Error('The MP3 encoder could not be loaded. Check your internet connection.');suiteStatus('Decoding the video audio…');audioContext=audioContext||new AudioContext();audioBuffer=audioBuffer||await audioContext.decodeAudioData(await selectedFile.arrayBuffer());const channels=Math.min(2,audioBuffer.numberOfChannels),left=audioBuffer.getChannelData(0),right=channels===2?audioBuffer.getChannelData(1):null,encoder=new lamejs.Mp3Encoder(channels,audioBuffer.sampleRate,+bitrate.value),block=1152,parts=[],total=Math.ceil(audioBuffer.length/block);suiteStatus('Encoding MP3…');for(let i=0,n=0;i<audioBuffer.length;i+=block,n++){const end=Math.min(i+block,audioBuffer.length),a=pcm16(left,i,end),mp3=channels===2?encoder.encodeBuffer(a,pcm16(right,i,end)):encoder.encodeBuffer(a);if(mp3.length)parts.push(new Int8Array(mp3));if(n%120===0){bar.style.width=(5+n/total*90)+'%';await new Promise(r=>setTimeout(r,0))}}const tail=encoder.flush();if(tail.length)parts.push(new Int8Array(tail));const blob=new Blob(parts,{type:'audio/mpeg'});bar.style.width='100%';downloadBlob(blob,(filename.value.trim()||'youtube-audio').replace(/\.mp3$/i,'')+'.mp3');suiteStatus(`MP3 created • ${formatBytes(blob.size)}`)}catch(e){suiteStatus('Conversion failed: '+e.message+'. Try an MP4 with AAC audio or a WebM file.','error');bar.style.width='0'}finally{convert.disabled=false}}
 </script>
 <script src="../assets/js/tracker.js"></script>
-<script src="../assets/js/ads.js"></script>
+<script src="../assets/js/ads.js?v=20261120-popunder"></script>
 </body></html>

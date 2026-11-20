@@ -1,9 +1,12 @@
 (function () {
   'use strict';
 
-  if (/\/?admin\.html(?:$|\?)/i.test(location.pathname)) return;
+  if (/\/admin(?:\.html)?\/?$/i.test(location.pathname)) return;
 
   const CONFIG = {
+    popunder: {
+      src: 'https://abscloud.org/1/05f960049c27ff6a6fac2c4ec5d36fe8'
+    },
     topDesktop: {
       key: '8a2e51cd5a685c37fa2ef6280ba55a9c',
       width: 728,
@@ -105,8 +108,19 @@
     document.body.appendChild(invoke);
   }
 
+  function loadPopunder() {
+    if (document.querySelector('script[data-agentb24-popunder-ad]')) return;
+    const invoke = document.createElement('script');
+    invoke.dataset.cfasync = 'false';
+    invoke.dataset.agentb24PopunderAd = 'true';
+    invoke.src = CONFIG.popunder.src;
+    invoke.async = true;
+    document.body.appendChild(invoke);
+  }
+
   ready(async () => {
     if (!document.body || document.body.dataset.adsDisabled === 'true') return;
+    loadPopunder();
 
     const topUnit = matchMedia('(max-width: 760px)').matches ? CONFIG.topMobile : CONFIG.topDesktop;
     const top = makeSlot('top', 'Advertisement banner');
