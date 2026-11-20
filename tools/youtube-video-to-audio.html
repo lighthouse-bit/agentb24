@@ -1,0 +1,68 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>YouTube Video to MP3 Audio Converter | AgentB24</title>
+  <meta name="description" content="Convert a YouTube video you own from a local MP4 or WebM file to MP3 audio privately in your browser.">
+  <link rel="canonical" href="https://agentb24.com/tools/youtube-video-to-audio.html">
+  <link rel="icon" href="../assets/img/favicon.png">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/tool-suite.css">
+  <style>
+    #video{width:100%;max-height:420px;background:#0f172a;border-radius:12px;display:none}.convert-progress{height:11px;background:#e2e8f0;border-radius:99px;overflow:hidden;margin-top:16px}.convert-progress span{display:block;width:0;height:100%;background:linear-gradient(90deg,#dc2626,#f97316);transition:width .2s}.permission-box{display:flex;gap:10px;align-items:flex-start;padding:14px;background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;margin-top:15px}.permission-box input{margin-top:4px}.permission-box label{font-weight:500;color:#9a3412;line-height:1.55}.source-help{display:flex;gap:12px;align-items:flex-start;padding:15px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;margin-bottom:18px}.source-help span{font-size:1.35rem}.source-help p{font-size:.85rem;color:#64748b}.source-help a{font-weight:700}
+  </style>
+  <!-- AgentB24 SEO Pack -->
+  <meta name="author" content="AgentB24">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#4F46E5">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AgentB24">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://agentb24.com/tools/youtube-video-to-audio.html">
+  <meta property="og:title" content="YouTube Video to MP3 Audio Converter | AgentB24">
+  <meta property="og:description" content="Convert a YouTube video you own from a local MP4 or WebM file to MP3 audio privately in your browser.">
+  <meta property="og:image" content="https://agentb24.com/assets/img/og-image.png">
+  <meta property="og:image:width" content="1718">
+  <meta property="og:image:height" content="912">
+  <meta property="og:image:alt" content="AgentB24 â€” 80+ Free Online Tools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="YouTube Video to MP3 Audio Converter | AgentB24">
+  <meta name="twitter:description" content="Convert a YouTube video you own from a local MP4 or WebM file to MP3 audio privately in your browser.">
+  <meta name="twitter:image" content="https://agentb24.com/assets/img/og-image.png">
+  <script type="application/ld+json">{"url":"https://agentb24.com/tools/youtube-video-to-audio.html","description":"Convert a YouTube video you own from a local MP4 or WebM file to MP3 audio privately in your browser.","@type":"WebApplication","browserRequirements":"Requires JavaScript and a modern web browser","@context":"https://schema.org","name":"YouTube Video to Audio Converter","publisher":{"url":"https://agentb24.com/","name":"AgentB24","@type":"Organization"},"offers":{"price":"0","priceCurrency":"USD","@type":"Offer"},"applicationCategory":"UtilityApplication","operatingSystem":"Any"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","itemListElement":[{"position":1,"name":"Home","item":"https://agentb24.com/","@type":"ListItem"},{"position":2,"name":"Free YouTube Tools for Creators","item":"https://agentb24.com/tools/youtube-tools.html","@type":"ListItem"},{"position":3,"name":"YouTube Video to Audio Converter","item":"https://agentb24.com/tools/youtube-video-to-audio.html","@type":"ListItem"}],"@type":"BreadcrumbList"}</script>
+  <!-- /AgentB24 SEO Pack -->
+  <link rel="stylesheet" href="../assets/css/ads.css">
+</head>
+<body>
+<header></header>
+<main class="suite-wrap">
+  <div class="suite-head"><div class="breadcrumb"><a href="youtube-tools.html">YouTube Tools</a> › Video to Audio</div><h1>YouTube Video to Audio Converter</h1><p>Convert a video you own or are authorized to use into an MP3 file, entirely in your browser.</p></div>
+  <section class="suite-card">
+    <h2>Convert your video to MP3</h2>
+    <div class="source-help"><span>⬇️</span><p>First download <strong>your own uploaded video</strong> from <a href="https://studio.youtube.com" target="_blank" rel="noopener">YouTube Studio</a> or Google Takeout. This tool intentionally does not scrape or download videos from a YouTube URL.</p></div>
+    <div class="suite-field"><label>Choose your MP4, WebM, MOV, or other browser-supported video</label><input id="file" type="file" accept="video/*"></div>
+    <video id="video" controls></video>
+    <div class="suite-grid" style="margin-top:18px"><div class="suite-field"><label>MP3 quality</label><select id="bitrate"><option value="128">128 kbps — standard</option><option value="192" selected>192 kbps — high quality</option><option value="256">256 kbps — very high</option><option value="320">320 kbps — maximum</option></select></div><div class="suite-field"><label>Output filename</label><input id="filename" value="youtube-audio"></div></div>
+    <div class="permission-box"><input id="permission" type="checkbox"><label for="permission">I confirm that I own this video, have permission from the rights holder, or am otherwise legally allowed to convert it.</label></div>
+    <div class="suite-actions"><button id="convert" class="btn btn-primary" disabled>Convert to MP3</button></div>
+    <div class="convert-progress"><span id="bar"></span></div>
+    <div id="suite-status" class="suite-status"></div>
+  </section>
+</main>
+<footer></footer>
+<script src="../assets/js/main.js"></script>
+<script>window.toolPageConfig={category:'YouTube Tools',hub:'youtube-tools.html',icon:'🎧',steps:['Download your own upload|Use YouTube Studio or Google Takeout to obtain the video file you own.','Choose MP3 quality|Load the local video and select the desired audio bitrate.','Convert and download|The browser extracts and encodes the audio without uploading your file.'],faqs:['Can I paste a YouTube URL?|No. This tool does not scrape YouTube or download another creator’s content. It converts a video file already on your device.','Which video files work?|Support depends on your browser, but MP4 with AAC audio and WebM are commonly supported.','Is my video uploaded?|No. Decoding and MP3 encoding happen locally in your browser.','Why can conversion use a lot of memory?|The browser must decode the video’s full audio track before encoding it as MP3.'],related:[['YouTube Thumbnail Downloader','youtube-thumbnail-downloader.html'],['Audio Trimmer','audio-trimmer.html'],['Audio Metadata Editor','audio-metadata-editor.html']]}</script>
+<script src="../assets/js/tool-suite.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.1/lame.min.js"></script>
+<script>
+let selectedFile,audioBuffer,audioContext;
+file.onchange=()=>{selectedFile=file.files[0];audioBuffer=null;if(!selectedFile)return;video.src=URL.createObjectURL(selectedFile);video.style.display='block';filename.value=selectedFile.name.replace(/\.[^.]+$/,'')+'-audio';video.onloadedmetadata=()=>{if(selectedFile.size>524288000||video.duration>5400){convert.disabled=true;return suiteStatus('For browser stability, videos are limited to 500 MB and 90 minutes.','error')}convert.disabled=false;suiteStatus(`Ready • ${video.duration.toFixed(1)} seconds • ${formatBytes(selectedFile.size)}`)}};
+function pcm16(data,start,end){const out=new Int16Array(end-start);for(let i=start,j=0;i<end;i++,j++){const x=Math.max(-1,Math.min(1,data[i]));out[j]=x<0?x*32768:x*32767}return out}
+convert.onclick=async()=>{if(!selectedFile)return suiteStatus('Choose a video first.','error');if(!permission.checked)return suiteStatus('Please confirm that you have permission to convert this video.','error');convert.disabled=true;bar.style.width='2%';try{if(!window.lamejs)throw Error('The MP3 encoder could not be loaded. Check your internet connection.');suiteStatus('Decoding the video audio…');audioContext=audioContext||new AudioContext();audioBuffer=audioBuffer||await audioContext.decodeAudioData(await selectedFile.arrayBuffer());const channels=Math.min(2,audioBuffer.numberOfChannels),left=audioBuffer.getChannelData(0),right=channels===2?audioBuffer.getChannelData(1):null,encoder=new lamejs.Mp3Encoder(channels,audioBuffer.sampleRate,+bitrate.value),block=1152,parts=[],total=Math.ceil(audioBuffer.length/block);suiteStatus('Encoding MP3…');for(let i=0,n=0;i<audioBuffer.length;i+=block,n++){const end=Math.min(i+block,audioBuffer.length),a=pcm16(left,i,end),mp3=channels===2?encoder.encodeBuffer(a,pcm16(right,i,end)):encoder.encodeBuffer(a);if(mp3.length)parts.push(new Int8Array(mp3));if(n%120===0){bar.style.width=(5+n/total*90)+'%';await new Promise(r=>setTimeout(r,0))}}const tail=encoder.flush();if(tail.length)parts.push(new Int8Array(tail));const blob=new Blob(parts,{type:'audio/mpeg'});bar.style.width='100%';downloadBlob(blob,(filename.value.trim()||'youtube-audio').replace(/\.mp3$/i,'')+'.mp3');suiteStatus(`MP3 created • ${formatBytes(blob.size)}`)}catch(e){suiteStatus('Conversion failed: '+e.message+'. Try an MP4 with AAC audio or a WebM file.','error');bar.style.width='0'}finally{convert.disabled=false}}
+</script>
+<script src="../assets/js/tracker.js"></script>
+<script src="../assets/js/ads.js"></script>
+</body></html>

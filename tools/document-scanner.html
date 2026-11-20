@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Free Document Scanner Online - Scan to PDF, JPG, PNG, TXT | AgentB24</title>
+  <meta name="description" content="Scan paper documents with your camera or upload a photo, enhance the scan, crop it, and export as PDF, JPG, PNG, WebP, TXT, DOC, or HTML.">
+  <meta name="keywords" content="document scanner, scan to pdf, online scanner, photo to pdf, scan document online, OCR scanner, image to text">
+  <meta name="author" content="AgentB24">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#4f46e5">
+  <link rel="canonical" href="https://agentb24.com/tools/document-scanner.html">
+  <link rel="icon" href="../assets/img/favicon.png">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/document-scanner.css">
+  <link rel="stylesheet" href="../assets/css/ads.css">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AgentB24">
+  <meta property="og:url" content="https://agentb24.com/tools/document-scanner.html">
+  <meta property="og:title" content="Free Document Scanner Online | AgentB24">
+  <meta property="og:description" content="Use your camera or upload a document photo, enhance it, and export PDF, image, TXT, DOC, or HTML files.">
+  <meta property="og:image" content="https://agentb24.com/assets/img/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Document Scanner Online | AgentB24">
+  <meta name="twitter:description" content="Scan and export documents privately in your browser.">
+  <meta name="twitter:image" content="https://agentb24.com/assets/img/og-image.png">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"AgentB24 Document Scanner","url":"https://agentb24.com/tools/document-scanner.html","description":"Scan paper documents from a camera or image file, enhance the scan, and export as PDF, image, TXT, DOC, or HTML.","applicationCategory":"ProductivityApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript and a modern web browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is my scanned document uploaded?","acceptedAnswer":{"@type":"Answer","text":"No. Camera capture, enhancement, cropping, PDF creation, and image export happen locally in your browser. OCR may load a recognition library from a CDN."}},{"@type":"Question","name":"Can I scan multiple pages?","acceptedAnswer":{"@type":"Answer","text":"Yes. Add each processed scan as a page, then export all pages as one PDF."}},{"@type":"Question","name":"Which formats can I export?","acceptedAnswer":{"@type":"Answer","text":"You can export the scan as PDF, JPG, PNG, WebP, TXT, Word-compatible DOC, or HTML depending on whether OCR text is available."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://agentb24.com/"},{"@type":"ListItem","position":2,"name":"Text and Document Tools","item":"https://agentb24.com/tools/text-tools.html"},{"@type":"ListItem","position":3,"name":"Document Scanner","item":"https://agentb24.com/tools/document-scanner.html"}]}</script>
+</head>
+<body class="scan-page">
+<header>
+  <div class="nav-container"><a href="../index.html" class="logo"><div class="logo-icon">AB</div>AgentB24</a><nav class="nav-links"><a href="../index.html">Home</a><a href="text-tools.html" class="active">Text Tools</a><a href="image-tools.html">Image Tools</a><a href="pdf-tools.html">PDF Tools</a><a href="developer-tools.html">Dev Tools</a><a href="../about.html">About</a></nav><button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button></div>
+  <nav class="mobile-menu" id="mobile-menu"><a href="../index.html">Home</a><a href="text-tools.html">Text Tools</a><a href="image-tools.html">Image Tools</a><a href="pdf-tools.html">PDF Tools</a><a href="../about.html">About</a></nav>
+</header>
+
+<section class="scan-hero">
+  <div class="scan-container">
+    <nav class="scan-breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="text-tools.html">Text & Document Tools</a><span>/</span><span>Document Scanner</span></nav>
+    <div class="scan-hero-grid">
+      <div>
+        <span class="scan-kicker">Camera to soft copy</span>
+        <h1>Scan paper documents into clean digital files.</h1>
+        <p>Use your phone or webcam, upload an existing photo, enhance the page, and export as PDF, JPG, PNG, WebP, TXT, DOC, or HTML.</p>
+        <div class="scan-trust"><span>Camera capture</span><span>Multi-page PDF</span><span>OCR text export</span><span>No account</span></div>
+      </div>
+      <div class="scan-hero-card" aria-hidden="true"><i></i><b>PDF</b><span>SCAN</span></div>
+    </div>
+  </div>
+</section>
+
+<main class="scan-container scan-main">
+  <section class="scan-panel scan-source">
+    <div class="scan-panel-head"><div><span class="scan-kicker">Step 1</span><h2>Capture or upload</h2></div><span id="camera-status">Camera off</span></div>
+    <div class="scan-source-grid">
+      <div class="scan-camera">
+        <video id="camera-feed" playsinline muted></video>
+        <div id="camera-empty"><span>📷</span><b>Camera preview</b><small>Start the camera or upload a document photo.</small></div>
+      </div>
+      <div class="scan-controls">
+        <button id="start-camera" class="scan-btn primary">Start camera</button>
+        <button id="capture-photo" class="scan-btn" disabled>Capture page</button>
+        <button id="stop-camera" class="scan-btn ghost" disabled>Stop camera</button>
+        <label class="scan-upload"><input id="file-input" type="file" accept="image/*" multiple><span>Upload image(s)</span><small>JPG, PNG, WebP, HEIC if supported</small></label>
+      </div>
+    </div>
+  </section>
+
+  <div class="scan-workspace">
+    <section class="scan-panel scan-editor">
+      <div class="scan-panel-head"><div><span class="scan-kicker">Step 2</span><h2>Enhance the scan</h2></div><button id="auto-crop" class="scan-mini">Auto crop</button></div>
+      <div class="scan-preview-wrap">
+        <canvas id="scan-canvas"></canvas>
+        <div id="scan-placeholder"><span>📄</span><b>No scan yet</b><small>Capture or upload a document to begin.</small></div>
+      </div>
+
+      <div class="scan-settings">
+        <label>Preset<select id="scan-mode"><option value="document">Clean document</option><option value="bw">Black & white</option><option value="gray">Grayscale</option><option value="photo">Photo / color</option></select></label>
+        <label>Brightness<input id="brightness" type="range" min="-60" max="80" value="10"><span id="brightness-value">10</span></label>
+        <label>Contrast<input id="contrast" type="range" min="-50" max="90" value="28"><span id="contrast-value">28</span></label>
+        <label>Clean background<input id="threshold" type="range" min="0" max="90" value="28"><span id="threshold-value">28</span></label>
+        <label>Crop left<input id="crop-left" type="range" min="0" max="40" value="0"><span id="crop-left-value">0%</span></label>
+        <label>Crop right<input id="crop-right" type="range" min="0" max="40" value="0"><span id="crop-right-value">0%</span></label>
+        <label>Crop top<input id="crop-top" type="range" min="0" max="40" value="0"><span id="crop-top-value">0%</span></label>
+        <label>Crop bottom<input id="crop-bottom" type="range" min="0" max="40" value="0"><span id="crop-bottom-value">0%</span></label>
+      </div>
+
+      <div class="scan-actions">
+        <button id="rotate-left" class="scan-btn ghost" disabled>Rotate left</button>
+        <button id="rotate-right" class="scan-btn ghost" disabled>Rotate right</button>
+        <button id="add-page" class="scan-btn primary" disabled>Add page to document</button>
+      </div>
+      <div id="scan-status" class="scan-status" role="status"></div>
+    </section>
+
+    <aside class="scan-panel scan-export">
+      <div class="scan-panel-head"><div><span class="scan-kicker">Step 3</span><h2>Export soft copy</h2></div><span><b id="page-count">0</b> pages</span></div>
+      <div id="page-list" class="scan-page-list"><p>No pages added yet.</p></div>
+
+      <div class="scan-export-grid">
+        <label>PDF paper size<select id="paper-size"><option value="a4">A4</option><option value="letter">Letter</option><option value="fit">Fit to scan</option></select></label>
+        <label>Image format<select id="image-format"><option value="image/jpeg">JPG</option><option value="image/png">PNG</option><option value="image/webp">WebP</option></select></label>
+        <label>Image quality<input id="image-quality" type="range" min="60" max="100" value="92"><span id="quality-value">92%</span></label>
+      </div>
+
+      <div class="scan-export-actions">
+        <button id="download-image" class="scan-btn" disabled>Download current image</button>
+        <button id="download-pdf" class="scan-btn primary" disabled>Download PDF</button>
+        <button id="run-ocr" class="scan-btn" disabled>Recognize text (OCR)</button>
+        <button id="download-txt" class="scan-btn ghost" disabled>TXT</button>
+        <button id="download-doc" class="scan-btn ghost" disabled>DOC</button>
+        <button id="download-html" class="scan-btn ghost" disabled>HTML</button>
+      </div>
+
+      <textarea id="ocr-output" placeholder="Recognized text will appear here..." rows="10"></textarea>
+      <p class="scan-note">Tip: OCR works best with a flat, well-lit document and clear printed text. Handwriting may be less accurate.</p>
+    </aside>
+  </div>
+
+  <section class="scan-content">
+    <span class="scan-kicker">Everyday use cases</span>
+    <h2>Turn paperwork into files you can share.</h2>
+    <div class="scan-use-grid"><article><span>01</span><h3>Receipts and invoices</h3><p>Scan expenses and export clean PDFs for records.</p></article><article><span>02</span><h3>Forms and school notes</h3><p>Capture paper pages and combine them into one document.</p></article><article><span>03</span><h3>Text extraction</h3><p>Use OCR to copy printed text into TXT, DOC, or HTML.</p></article></div>
+  </section>
+
+  <section class="scan-related">
+    <div><span class="scan-kicker">Keep working</span><h2>Related tools</h2></div>
+    <div><a href="image-to-pdf.html"><b>Image to PDF</b><small>Convert images to PDF</small></a><a href="pdf-editor.html"><b>PDF Editor</b><small>Edit or sign a PDF</small></a><a href="pdf-to-text.html"><b>PDF to Text</b><small>Extract PDF text</small></a></div>
+  </section>
+</main>
+
+<footer><div class="footer-grid"><div class="footer-brand"><a href="../index.html" class="logo"><div class="logo-icon">AB</div>AgentB24</a><p>Free, practical browser tools for everyday work.</p></div><div class="footer-col"><h4>Document Tools</h4><ul><li><a href="document-scanner.html">Document Scanner</a></li><li><a href="resume-builder.html">Resume Builder</a></li><li><a href="signature-generator.html">Signature Generator</a></li></ul></div><div class="footer-col"><h4>PDF Tools</h4><ul><li><a href="image-to-pdf.html">Image to PDF</a></li><li><a href="pdf-editor.html">PDF Editor</a></li></ul></div><div class="footer-col"><h4>Company</h4><ul><li><a href="../about.html">About</a></li><li><a href="../privacy-policy.html">Privacy</a></li></ul></div></div><div class="footer-bottom"><span>&copy; 2026 AgentB24.</span><span>Made with care for productivity</span></div></footer>
+<div id="scan-toast" class="scan-toast" role="status" aria-live="polite"></div>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/document-scanner.js"></script>
+<script src="../assets/js/tracker.js"></script>
+<script src="../assets/js/ads.js"></script>
+</body>
+</html>

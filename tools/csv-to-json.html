@@ -1,0 +1,412 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Free CSV to JSON Converter Online — Convert CSV ↔ JSON Instantly | AgentB24</title>
+  <meta name="description" content="Free online CSV to JSON converter. Convert CSV data to JSON and JSON back to CSV instantly. Upload a file or paste data. No sign-up, no uploads to server." />
+  <meta name="keywords" content="csv to json, json to csv, csv converter, json converter, csv json tool, convert csv online, data format converter, csv parser, json formatter" />
+  <link rel="canonical" href="https://agentb24.com/tools/csv-to-json.html" />
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1T57RWSY42"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1T57RWSY42');</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CSV to JSON Converter","url":"https://agentb24.com/tools/csv-to-json.html","description":"Convert CSV to JSON and JSON back to CSV instantly in your browser. Upload or paste data.","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"AgentB24","url":"https://agentb24.com"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://agentb24.com/"},{"@type":"ListItem","position":2,"name":"Converters","item":"https://agentb24.com/tools/converters.html"},{"@type":"ListItem","position":3,"name":"CSV to JSON","item":"https://agentb24.com/tools/csv-to-json.html"}]}</script>
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <style>
+    .mode-toggle { display:flex; border:1.5px solid var(--border); border-radius:var(--radius-sm); overflow:hidden; margin-bottom:1.25rem; }
+    .mode-btn { flex:1; padding:.75rem; border:none; background:var(--bg); font-family:'Inter',sans-serif; font-size:.88rem; font-weight:700; color:var(--text-mid); cursor:pointer; transition:all .15s; text-align:center; }
+    .mode-btn.active { background:var(--primary); color:#fff; }
+    .mode-btn:not(:last-child) { border-right:1.5px solid var(--border); }
+    .editor-area { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    .editor-col { display:flex; flex-direction:column; gap:.5rem; }
+    .editor-col label { font-size:.8rem; font-weight:700; color:var(--text-mid); text-transform:uppercase; letter-spacing:.04em; display:flex; align-items:center; justify-content:space-between; }
+    .editor-col label .lbl-badge { background:var(--primary-light); color:var(--primary); font-size:.68rem; font-weight:700; padding:1px 7px; border-radius:50px; }
+    .code-area { width:100%; min-height:280px; padding:.85rem; border:1.5px solid var(--border); border-radius:var(--radius-sm); font-family:'Courier New',Courier,monospace; font-size:.82rem; line-height:1.7; resize:vertical; background:var(--white); box-sizing:border-box; transition:border-color .15s; }
+    .code-area:focus { outline:none; border-color:var(--primary); }
+    .code-area.output { background:var(--bg); color:var(--text-dark); }
+    .action-bar { display:flex; gap:.5rem; flex-wrap:wrap; margin-bottom:1rem; }
+    .action-btn { padding:.55rem 1rem; border:1.5px solid var(--border); border-radius:var(--radius-sm); font-size:.83rem; font-weight:700; cursor:pointer; background:var(--bg); color:var(--text-mid); transition:all .13s; font-family:'Inter',sans-serif; display:flex; align-items:center; gap:.35rem; }
+    .action-btn:hover { border-color:var(--primary); color:var(--primary); background:var(--primary-light); }
+    .action-btn.primary { background:var(--primary); color:#fff; border-color:var(--primary); }
+    .action-btn.primary:hover { background:#4f46e5; }
+    .status-bar { padding:.55rem .85rem; border-radius:8px; font-size:.82rem; margin-bottom:.75rem; display:none; }
+    .status-bar.success { background:#dcfce7; color:#166534; display:block; border:1px solid #86efac; }
+    .status-bar.error   { background:#fee2e2; color:#991b1b; display:block; border:1px solid #fca5a5; }
+    .options-row { display:flex; gap:.75rem; align-items:center; margin-bottom:1rem; flex-wrap:wrap; }
+    .options-row label { font-size:.83rem; font-weight:600; color:var(--text-mid); display:flex; align-items:center; gap:.4rem; cursor:pointer; }
+    .options-row select { padding:.35rem .6rem; border:1.5px solid var(--border); border-radius:8px; font-size:.83rem; }
+    .upload-zone { border:2px dashed var(--primary); border-radius:var(--radius-sm); padding:1.25rem; text-align:center; cursor:pointer; background:var(--primary-light); margin-bottom:1rem; font-size:.85rem; color:var(--primary); font-weight:600; }
+    .upload-zone input { display:none; }
+    .stats-row { display:flex; gap:.75rem; flex-wrap:wrap; margin-top:.5rem; }
+    .stat-chip { background:var(--bg); border:1px solid var(--border); border-radius:50px; padding:3px 10px; font-size:.72rem; font-weight:700; color:var(--text-mid); }
+    @media(max-width:600px) { .editor-area { grid-template-columns:1fr; } }
+  </style>
+  <!-- AgentB24 SEO Pack -->
+  <meta name="author" content="AgentB24">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#4F46E5">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AgentB24">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://agentb24.com/tools/csv-to-json.html">
+  <meta property="og:title" content="Free CSV to JSON Converter Online — Convert CSV ↔ JSON Instantly | AgentB24">
+  <meta property="og:description" content="Free online CSV to JSON converter. Convert CSV data to JSON and JSON back to CSV instantly. Upload a file or paste data. No sign-up, no uploads to server.">
+  <meta property="og:image" content="https://agentb24.com/assets/img/og-image.png">
+  <meta property="og:image:width" content="1718">
+  <meta property="og:image:height" content="912">
+  <meta property="og:image:alt" content="AgentB24 â€” 80+ Free Online Tools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free CSV to JSON Converter Online — Convert CSV ↔ JSON Instantly | AgentB24">
+  <meta name="twitter:description" content="Free online CSV to JSON converter. Convert CSV data to JSON and JSON back to CSV instantly. Upload a file or paste data. No sign-up, no uploads to server.">
+  <meta name="twitter:image" content="https://agentb24.com/assets/img/og-image.png">
+  <!-- /AgentB24 SEO Pack -->
+  <link rel="stylesheet" href="../assets/css/ads.css">
+</head>
+<body>
+<header>
+  <div class="nav-container">
+    <a href="../index.html" class="logo"><div class="logo-icon">🛠</div>AgentB24</a>
+    <nav class="nav-links">
+      <a href="../index.html">Home</a><a href="text-tools.html">Text Tools</a>
+      <a href="developer-tools.html">Dev Tools</a><a href="calculators.html">Calculators</a>
+      <a href="pdf-tools.html">PDF Tools</a><a href="converters.html" class="active">Converters</a>
+      <a href="../about.html">About</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+  <nav class="mobile-menu" id="mobile-menu">
+    <a href="../index.html">Home</a><a href="converters.html">Converters</a><a href="../about.html">About</a>
+  </nav>
+</header>
+
+<div class="tool-page-header">
+  <div class="container">
+    <nav class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="converters.html">Converters</a> &rsaquo; <span>CSV ↔ JSON</span></nav>
+    <h1>Free CSV ↔ JSON Converter Online</h1>
+    <p>Convert CSV data to JSON and JSON back to CSV instantly. Upload a file or paste data directly. No sign-up, nothing uploaded to any server.</p>
+  </div>
+</div>
+<main>
+  <div class="tool-body">
+    <div class="tool-main">
+      <div class="tool-box">
+
+        <!-- Mode Toggle -->
+        <div class="mode-toggle">
+          <button class="mode-btn active" id="btn-csv-json" onclick="setMode('csv-to-json')">📄 CSV → JSON</button>
+          <button class="mode-btn"        id="btn-json-csv" onclick="setMode('json-to-csv')">🔄 JSON → CSV</button>
+        </div>
+
+        <!-- Upload Zone -->
+        <div class="upload-zone" id="upload-zone" onclick="document.getElementById('file-input').click()">
+          <input type="file" id="file-input" accept=".csv,.json,.txt"/>
+          📂 Click to upload a file or drag & drop — <strong id="accepted-formats">CSV or TXT</strong>
+        </div>
+
+        <!-- Options Row -->
+        <div class="options-row">
+          <label><span>Delimiter:</span>
+            <select id="delimiter">
+              <option value=",">Comma (,)</option>
+              <option value=";">Semicolon (;)</option>
+              <option value="&#9;">Tab (\t)</option>
+              <option value="|">Pipe (|)</option>
+            </select>
+          </label>
+          <label>
+            <input type="checkbox" id="pretty-json" checked style="accent-color:var(--primary);"/>
+            Pretty Print JSON
+          </label>
+          <label>
+            <input type="checkbox" id="skip-empty" style="accent-color:var(--primary);"/>
+            Skip empty rows
+          </label>
+        </div>
+
+        <!-- Status -->
+        <div class="status-bar" id="status-bar"></div>
+
+        <!-- Action Bar -->
+        <div class="action-bar">
+          <button class="action-btn primary" onclick="convert()">⚡ Convert</button>
+          <button class="action-btn" onclick="copyOutput()">📋 Copy Output</button>
+          <button class="action-btn" onclick="downloadOutput()">⬇️ Download</button>
+          <button class="action-btn" onclick="swapInputOutput()">⇄ Swap</button>
+          <button class="action-btn" onclick="clearAll()">🗑 Clear</button>
+        </div>
+
+        <!-- Editor Area -->
+        <div class="editor-area">
+          <div class="editor-col">
+            <label>Input <span class="lbl-badge" id="input-badge">CSV</span></label>
+            <textarea class="code-area" id="input-area" placeholder="Paste your CSV here…&#10;&#10;name,age,city&#10;John,30,New York&#10;Jane,25,London" oninput="liveConvert()"></textarea>
+            <div class="stats-row" id="input-stats"></div>
+          </div>
+          <div class="editor-col">
+            <label>Output <span class="lbl-badge" id="output-badge">JSON</span></label>
+            <textarea class="code-area output" id="output-area" placeholder="Converted output will appear here…" readonly></textarea>
+            <div class="stats-row" id="output-stats"></div>
+          </div>
+        </div>
+
+        <!-- Sample Data -->
+        <div style="margin-top:1rem;">
+          <p style="font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--text-light);margin-bottom:.6rem;">⚡ Load Sample Data</p>
+          <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+            <button class="action-btn" onclick="loadSample('basic')">👤 Basic (People)</button>
+            <button class="action-btn" onclick="loadSample('products')">📦 Products</button>
+            <button class="action-btn" onclick="loadSample('scores')">🏆 Scores</button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="how-to-section">
+        <h2>📖 How to Use the CSV ↔ JSON Converter</h2>
+        <div class="steps">
+          <div class="step"><div class="step-number">1</div><div class="step-content"><h4>Choose Direction</h4><p>Select <strong>CSV → JSON</strong> or <strong>JSON → CSV</strong> using the toggle buttons at the top.</p></div></div>
+          <div class="step"><div class="step-number">2</div><div class="step-content"><h4>Input Your Data</h4><p>Upload a file by clicking the upload zone, paste your data directly into the input area, or load one of the sample datasets.</p></div></div>
+          <div class="step"><div class="step-number">3</div><div class="step-content"><h4>Convert & Download</h4><p>Click <strong>Convert</strong> or type to get instant results. Copy the output or download it as a file.</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="tool-sidebar">
+      <div class="related-tools">
+        <h3>🔗 Other Converters</h3>
+        <ul>
+          <li><a href="unit-converter.html">📏 Unit Converter</a></li>
+          <li><a href="binary-hex-converter.html">🔢 Binary / Hex</a></li>
+          <li><a href="number-to-words.html">🔤 Number to Words</a></li>
+          <li><a href="roman-numeral-converter.html">🏛️ Roman Numerals</a></li>
+          <li><a href="currency-converter.html">💱 Currency Converter</a></li>
+        </ul>
+      </div>
+      <div class="related-tools">
+        <h3>🔗 Related Dev Tools</h3>
+        <ul>
+          <li><a href="json-formatter.html">📋 JSON Formatter</a></li>
+          <li><a href="base64-encoder.html">🔐 Base64 Encoder</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</main>
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand"><a href="../index.html" class="logo"><div class="logo-icon">🛠</div>AgentB24</a><p>Free online tools for everyone.</p></div>
+    <div class="footer-col"><h4>Converters</h4><ul><li><a href="csv-to-json.html">CSV ↔ JSON</a></li><li><a href="unit-converter.html">Unit Converter</a></li></ul></div>
+    <div class="footer-col"><h4>Company</h4><ul><li><a href="../about.html">About Us</a></li><li><a href="../privacy-policy.html">Privacy Policy</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 AgentB24. All rights reserved.</span><span>Made with ❤️ for productivity</span></div>
+</footer>
+<div class="toast" id="toast"></div>
+<script src="../assets/js/main.js"></script>
+<script>
+'use strict';
+
+let currentMode = 'csv-to-json';
+let liveTimer   = null;
+
+const SAMPLES = {
+  basic:    `name,age,city,email\nJohn Doe,30,New York,john@example.com\nJane Smith,25,London,jane@example.com\nBob Johnson,35,Sydney,bob@example.com`,
+  products: `id,name,price,stock,category\n1,Laptop,999.99,50,Electronics\n2,Desk Chair,249.99,120,Furniture\n3,Coffee Mug,12.99,500,Kitchen\n4,Notebook,4.99,1000,Stationery`,
+  scores:   `player,score,level,completed\nAlice,9850,12,true\nBob,7420,9,true\nCharlie,12300,15,false\nDiana,5600,7,true`,
+};
+
+function setMode(mode) {
+  currentMode = mode;
+  document.getElementById('btn-csv-json').classList.toggle('active', mode==='csv-to-json');
+  document.getElementById('btn-json-csv').classList.toggle('active', mode==='json-to-csv');
+  document.getElementById('input-badge').textContent   = mode==='csv-to-json' ? 'CSV' : 'JSON';
+  document.getElementById('output-badge').textContent  = mode==='csv-to-json' ? 'JSON' : 'CSV';
+  document.getElementById('accepted-formats').textContent = mode==='csv-to-json' ? 'CSV or TXT' : 'JSON';
+  document.getElementById('input-area').placeholder    = mode==='csv-to-json'
+    ? 'Paste your CSV here…\n\nname,age,city\nJohn,30,New York'
+    : 'Paste your JSON here…\n\n[{"name":"John","age":30}]';
+  document.getElementById('output-area').value = '';
+  clearStatus();
+}
+
+function getDelimiter() {
+  const d = document.getElementById('delimiter').value;
+  return d === '\t' ? '\t' : d;
+}
+
+function csvToJson(csv) {
+  const delim  = getDelimiter();
+  const skipEmpty = document.getElementById('skip-empty').checked;
+  const lines  = csv.split(/\r?\n/);
+  if (lines.length < 2) throw new Error('CSV must have at least a header row and one data row.');
+  const headers = parseCSVLine(lines[0], delim);
+  const result  = [];
+  for (let i = 1; i < lines.length; i++) {
+    const line = lines[i].trim();
+    if (!line) { if(skipEmpty) continue; else continue; }
+    const vals  = parseCSVLine(line, delim);
+    const obj   = {};
+    headers.forEach((h,idx) => {
+      let val = vals[idx] !== undefined ? vals[idx] : '';
+      // Type coercion
+      if (val === 'true')  val = true;
+      else if (val === 'false') val = false;
+      else if (val !== '' && !isNaN(val)) val = Number(val);
+      obj[h.trim()] = val;
+    });
+    result.push(obj);
+  }
+  return result;
+}
+
+function parseCSVLine(line, delim) {
+  const result = [];
+  let current = '';
+  let inQuotes = false;
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+    if (ch === '"') {
+      if (inQuotes && line[i+1] === '"') { current += '"'; i++; }
+      else inQuotes = !inQuotes;
+    } else if (ch === delim && !inQuotes) {
+      result.push(current); current = '';
+    } else {
+      current += ch;
+    }
+  }
+  result.push(current);
+  return result;
+}
+
+function jsonToCsv(jsonStr) {
+  const data  = JSON.parse(jsonStr);
+  if (!Array.isArray(data)) throw new Error('JSON must be an array of objects.');
+  if (data.length === 0)    throw new Error('JSON array is empty.');
+  const delim   = getDelimiter();
+  const headers = [...new Set(data.flatMap(obj => Object.keys(obj)))];
+  const escapeCell = val => {
+    const str = String(val === null || val === undefined ? '' : val);
+    if (str.includes(delim) || str.includes('"') || str.includes('\n')) return '"' + str.replace(/"/g,'""') + '"';
+    return str;
+  };
+  const rows = data.map(obj => headers.map(h => escapeCell(obj[h] !== undefined ? obj[h] : '')).join(delim));
+  return [headers.map(escapeCell).join(delim), ...rows].join('\n');
+}
+
+function convert() {
+  const input = document.getElementById('input-area').value.trim();
+  if (!input) { showStatus('error','⚠️ Please enter or paste some data first.'); return; }
+  try {
+    let output;
+    if (currentMode === 'csv-to-json') {
+      const data   = csvToJson(input);
+      const pretty = document.getElementById('pretty-json').checked;
+      output = pretty ? JSON.stringify(data, null, 2) : JSON.stringify(data);
+      showStatus('success', `✅ Converted ${data.length} row(s) to JSON successfully.`);
+      updateStats('output', `${data.length} objects`, `${output.length} chars`);
+    } else {
+      output = jsonToCsv(input);
+      const rows = output.split('\n').length - 1;
+      showStatus('success', `✅ Converted ${rows} row(s) to CSV successfully.`);
+      updateStats('output', `${rows} rows`, `${output.length} chars`);
+    }
+    document.getElementById('output-area').value = output;
+  } catch(err) {
+    showStatus('error', '❌ ' + err.message);
+  }
+}
+
+function liveConvert() {
+  clearTimeout(liveTimer);
+  liveTimer = setTimeout(() => {
+    const input = document.getElementById('input-area').value.trim();
+    if (input.length > 5) convert();
+    const lines = input.split('\n').length;
+    updateStats('input', `${lines} lines`, `${input.length} chars`);
+  }, 500);
+}
+
+function updateStats(area, s1, s2) {
+  document.getElementById(area+'-stats').innerHTML = `<span class="stat-chip">${s1}</span><span class="stat-chip">${s2}</span>`;
+}
+
+function loadSample(key) {
+  if (currentMode !== 'csv-to-json') setMode('csv-to-json');
+  document.getElementById('input-area').value = SAMPLES[key];
+  liveConvert();
+}
+
+function copyOutput() {
+  const v = document.getElementById('output-area').value;
+  if (!v) { showStatus('error','⚠️ Nothing to copy. Convert first.'); return; }
+  navigator.clipboard.writeText(v);
+  showToast('📋 Copied!');
+}
+
+function downloadOutput() {
+  const v    = document.getElementById('output-area').value;
+  if (!v) { showStatus('error','⚠️ Nothing to download. Convert first.'); return; }
+  const ext  = currentMode === 'csv-to-json' ? 'json' : 'csv';
+  const type = currentMode === 'csv-to-json' ? 'application/json' : 'text/csv';
+  const blob = new Blob([v], {type});
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a'); a.href=url; a.download=`converted.${ext}`; a.click();
+  URL.revokeObjectURL(url);
+}
+
+function swapInputOutput() {
+  const inp = document.getElementById('input-area').value;
+  const out = document.getElementById('output-area').value;
+  document.getElementById('input-area').value  = out;
+  document.getElementById('output-area').value = inp;
+  setMode(currentMode === 'csv-to-json' ? 'json-to-csv' : 'csv-to-json');
+}
+
+function clearAll() {
+  document.getElementById('input-area').value  = '';
+  document.getElementById('output-area').value = '';
+  document.getElementById('input-stats').innerHTML  = '';
+  document.getElementById('output-stats').innerHTML = '';
+  clearStatus();
+}
+
+function showStatus(type, msg) {
+  const el = document.getElementById('status-bar');
+  el.className = 'status-bar ' + type;
+  el.textContent = msg;
+}
+function clearStatus() {
+  const el = document.getElementById('status-bar');
+  el.className = 'status-bar';
+  el.textContent = '';
+}
+function showToast(m) {
+  const t=document.getElementById('toast');
+  if(t){t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000);}
+}
+
+// File Upload
+const fileInput = document.getElementById('file-input');
+const uploadZone = document.getElementById('upload-zone');
+uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.style.background='#ededff'; });
+uploadZone.addEventListener('dragleave', () => uploadZone.style.background='');
+uploadZone.addEventListener('drop', e => { e.preventDefault(); uploadZone.style.background=''; const f=e.dataTransfer.files[0]; if(f) handleFile(f); });
+fileInput.addEventListener('change', () => { if(fileInput.files[0]) handleFile(fileInput.files[0]); });
+
+function handleFile(file) {
+  const reader = new FileReader();
+  reader.onload = e => {
+    document.getElementById('input-area').value = e.target.result;
+    if (file.name.endsWith('.json')) setMode('json-to-csv');
+    else setMode('csv-to-json');
+    liveConvert();
+  };
+  reader.readAsText(file);
+}
+</script>
+<script src="../assets/js/tracker.js"></script>
+<script src="../assets/js/ads.js"></script>
+</body>
+</html>

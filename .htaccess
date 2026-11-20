@@ -1,0 +1,8 @@
+# Protect repository metadata and local helper files on Apache/LiteSpeed.
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule (^|/)\.git(?:/|$) - [F,L]
+</IfModule>
+<FilesMatch "(?i)^(?:admin-config(?:\.example)?\.php|\.gitignore|.*\.ps1)$">
+    Require all denied
+</FilesMatch>

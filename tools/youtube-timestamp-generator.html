@@ -1,0 +1,483 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Free YouTube Timestamp Generator — Create Video Chapters Instantly | AgentB24</title>
+  <meta name="description" content="Free YouTube timestamp and chapter generator. Add chapters with timestamps to your YouTube video descriptions. Format and copy chapter list instantly. No sign-up needed." />
+  <meta name="keywords" content="youtube timestamp generator, youtube chapters generator, youtube chapter links, youtube timestamp creator, youtube video chapters, how to add chapters youtube, youtube timestamp format" />
+  <link rel="canonical" href="https://agentb24.com/tools/youtube-timestamp-generator.html" />
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1T57RWSY42"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1T57RWSY42');</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"YouTube Timestamp Generator","url":"https://agentb24.com/tools/youtube-timestamp-generator.html","description":"Create YouTube chapter timestamps. Add chapters with titles and timestamps, reorder them, and copy the formatted list for your video description.","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"AgentB24","url":"https://agentb24.com"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I add chapters to a YouTube video?","acceptedAnswer":{"@type":"Answer","text":"To add chapters to a YouTube video, add timestamps to your video description in the format 0:00 Title. The first timestamp must be 0:00 and you need at least 3 chapters. YouTube will automatically detect them and create chapter markers on the progress bar."}},{"@type":"Question","name":"What format does YouTube use for timestamps?","acceptedAnswer":{"@type":"Answer","text":"YouTube accepts timestamps in MM:SS format for videos under an hour (e.g. 0:00, 1:30, 12:45) and HH:MM:SS format for videos over an hour (e.g. 0:00:00, 1:05:30). The first timestamp must always be 0:00."}},{"@type":"Question","name":"How many chapters can a YouTube video have?","acceptedAnswer":{"@type":"Answer","text":"YouTube supports up to 100 chapters per video. You need a minimum of 3 chapters for YouTube to recognize and display them on the progress bar. Each chapter must be at least 10 seconds long."}},{"@type":"Question","name":"Do chapters improve YouTube SEO?","acceptedAnswer":{"@type":"Answer","text":"Yes. YouTube chapters improve viewer experience by allowing them to jump to specific sections. They also appear in Google search results as video key moments, which can increase click-through rates and organic search visibility."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://agentb24.com/"},{"@type":"ListItem","position":2,"name":"YouTube Tools","item":"https://agentb24.com/tools/youtube-tools.html"},{"@type":"ListItem","position":3,"name":"Timestamp Generator","item":"https://agentb24.com/tools/youtube-timestamp-generator.html"}]}</script>
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <style>
+    /* ── Chapter List ── */
+    .chapter-list { display: flex; flex-direction: column; gap: .6rem; margin-bottom: 1rem; }
+
+    .chapter-item {
+      display: flex; align-items: center; gap: .65rem;
+      background: var(--white, #fff); border: 1.5px solid var(--border, #e2e8f0);
+      border-radius: var(--radius-sm, 10px); padding: .7rem .85rem;
+      transition: border-color .13s; cursor: grab;
+      animation: slideIn .2s ease;
+    }
+    @keyframes slideIn { from{opacity:0;transform:translateY(-6px);} to{opacity:1;transform:translateY(0);} }
+    .chapter-item:hover { border-color: #ff0000; }
+    .chapter-item.dragging { opacity: .5; border-color: var(--primary, #6366f1); background: var(--primary-light, #eef2ff); }
+    .chapter-item.drag-over { border-color: #ff0000; border-style: dashed; }
+
+    .ch-num { font-size: .72rem; font-weight: 800; color: var(--text-light, #94a3b8); min-width: 20px; text-align: center; flex-shrink: 0; }
+    .ch-drag { color: var(--text-light, #94a3b8); cursor: grab; font-size: 1rem; flex-shrink: 0; user-select: none; }
+
+    /* Time inputs */
+    .ch-time-wrap { display: flex; align-items: center; gap: .25rem; flex-shrink: 0; }
+    .ch-time { width: 38px; padding: .38rem .4rem; border: 1px solid var(--border, #e2e8f0); border-radius: 6px; font-size: .88rem; font-weight: 700; font-family: monospace; text-align: center; color: #ff0000; background: #fff5f5; }
+    .ch-time:focus { outline: none; border-color: #ff0000; }
+    .ch-colon { font-weight: 800; color: var(--text-light, #94a3b8); font-size: .85rem; }
+
+    .ch-title { flex: 1; padding: .38rem .6rem; border: 1px solid var(--border, #e2e8f0); border-radius: 6px; font-size: .9rem; font-family: 'Inter', sans-serif; min-width: 0; }
+    .ch-title:focus { outline: none; border-color: #ff0000; }
+
+    .ch-del { background: none; border: none; color: #ef4444; cursor: pointer; font-size: 1rem; padding: 2px 5px; border-radius: 5px; flex-shrink: 0; }
+    .ch-del:hover { background: #fee2e2; }
+
+    /* ── Add Chapter Button ── */
+    .add-chapter-btn {
+      width: 100%; padding: .72rem; border: 2px dashed var(--border, #e2e8f0);
+      border-radius: var(--radius-sm, 10px); background: var(--bg, #f8fafc);
+      font-size: .88rem; font-weight: 700; color: var(--text-mid, #64748b);
+      cursor: pointer; transition: all .15s; font-family: 'Inter', sans-serif;
+      display: flex; align-items: center; justify-content: center; gap: .5rem;
+    }
+    .add-chapter-btn:hover { border-color: #ff0000; color: #ff0000; background: #fff5f5; }
+
+    /* ── Output ── */
+    .output-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: .5rem; flex-wrap: wrap; gap: .5rem; }
+    .output-title  { font-size: .8rem; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; color: var(--text-light, #94a3b8); }
+    .output-btns   { display: flex; gap: .45rem; }
+    .out-btn { padding: .4rem .85rem; border: 1.5px solid var(--border, #e2e8f0); border-radius: 8px; font-size: .8rem; font-weight: 700; cursor: pointer; background: var(--bg, #f8fafc); color: var(--text-mid, #374151); transition: all .13s; font-family: 'Inter', sans-serif; }
+    .out-btn:hover { border-color: #ff0000; color: #ff0000; background: #fff5f5; }
+    .out-btn.primary { background: #ff0000; color: #fff; border-color: #ff0000; }
+    .out-btn.primary:hover { background: #cc0000; }
+
+    .output-textarea {
+      width: 100%; min-height: 160px; padding: 1rem;
+      border: 1.5px solid var(--border, #e2e8f0); border-radius: var(--radius-sm, 10px);
+      font-family: monospace; font-size: .88rem; line-height: 1.8;
+      background: var(--bg, #f8fafc); resize: vertical; box-sizing: border-box;
+      color: var(--text-dark, #0f172a);
+    }
+    .output-textarea:focus { outline: none; border-color: #ff0000; }
+
+    /* ── Validation Notice ── */
+    .validation-bar {
+      padding: .6rem .85rem; border-radius: 8px; font-size: .82rem;
+      margin-bottom: .85rem; display: none; line-height: 1.5;
+    }
+    .validation-bar.ok    { background: #dcfce7; color: #166534; display: block; border: 1px solid #86efac; }
+    .validation-bar.warn  { background: #fef9c3; color: #854d0e; display: block; border: 1px solid #fde047; }
+    .validation-bar.error { background: #fee2e2; color: #991b1b; display: block; border: 1px solid #fca5a5; }
+
+    /* ── Toolbar ── */
+    .chapter-toolbar { display: flex; gap: .5rem; margin-bottom: .75rem; flex-wrap: wrap; }
+    .tool-chip { padding: .38rem .85rem; border: 1.5px solid var(--border, #e2e8f0); border-radius: 8px; font-size: .78rem; font-weight: 700; cursor: pointer; background: var(--white, #fff); color: var(--text-mid, #374151); transition: all .13s; font-family: 'Inter', sans-serif; }
+    .tool-chip:hover { border-color: #ff0000; color: #ff0000; background: #fff5f5; }
+
+    /* ── How To & FAQ ── */
+    .how-to-section, .faq-section { background: var(--white,#fff); border: 1px solid var(--border,#e2e8f0); border-radius: var(--radius,16px); padding: 1.75rem; box-shadow: var(--shadow,0 4px 24px rgba(0,0,0,.06)); margin-top: 1.5rem; }
+    .how-to-section h2, .faq-section h2 { font-size: 1.2rem; margin-bottom: 1.25rem; color: var(--text-dark,#0f172a); }
+    .steps { display: flex; flex-direction: column; gap: 1rem; }
+    .step  { display: flex; gap: 1rem; align-items: flex-start; }
+    .step-number { width: 32px; height: 32px; background: #ff0000; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: .85rem; flex-shrink: 0; }
+    .step-content h4 { font-size: .92rem; margin-bottom: .2rem; color: var(--text-dark,#0f172a); }
+    .step-content p  { font-size: .82rem; color: var(--text-mid,#64748b); line-height: 1.6; margin: 0; }
+    .faq-item { border-bottom: 1px solid var(--border,#e2e8f0); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question { display: flex; justify-content: space-between; align-items: center; padding: .9rem 0; cursor: pointer; font-size: .9rem; font-weight: 600; color: var(--text-dark,#0f172a); gap: .75rem; transition: color .15s; }
+    .faq-question:hover { color: #ff0000; }
+    .faq-icon { font-size: 1.1rem; flex-shrink: 0; color: #ff0000; }
+    .faq-answer { display: none; padding: 0 0 .9rem; font-size: .85rem; color: var(--text-mid,#64748b); line-height: 1.7; }
+    .faq-answer.open { display: block; }
+
+    @media(max-width:480px) {
+      .chapter-item { flex-wrap: wrap; }
+      .ch-time-wrap { order: -1; }
+    }
+  </style>
+  <!-- AgentB24 SEO Pack -->
+  <meta name="author" content="AgentB24">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#4F46E5">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AgentB24">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://agentb24.com/tools/youtube-timestamp-generator.html">
+  <meta property="og:title" content="Free YouTube Timestamp Generator — Create Video Chapters Instantly | AgentB24">
+  <meta property="og:description" content="Free YouTube timestamp and chapter generator. Add chapters with timestamps to your YouTube video descriptions. Format and copy chapter list instantly. No sign-up needed.">
+  <meta property="og:image" content="https://agentb24.com/assets/img/og-image.png">
+  <meta property="og:image:width" content="1718">
+  <meta property="og:image:height" content="912">
+  <meta property="og:image:alt" content="AgentB24 â€” 80+ Free Online Tools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free YouTube Timestamp Generator — Create Video Chapters Instantly | AgentB24">
+  <meta name="twitter:description" content="Free YouTube timestamp and chapter generator. Add chapters with timestamps to your YouTube video descriptions. Format and copy chapter list instantly. No sign-up needed.">
+  <meta name="twitter:image" content="https://agentb24.com/assets/img/og-image.png">
+  <!-- /AgentB24 SEO Pack -->
+  <link rel="stylesheet" href="../assets/css/ads.css">
+</head>
+<body>
+
+<header>
+  <div class="nav-container">
+    <a href="../index.html" class="logo"><div class="logo-icon">🛠</div>AgentB24</a>
+    <nav class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="text-tools.html">Text Tools</a>
+      <a href="developer-tools.html">Dev Tools</a>
+      <a href="calculators.html">Calculators</a>
+      <a href="pdf-tools.html">PDF Tools</a>
+      <a href="converters.html">Converters</a>
+      <a href="youtube-tools.html" class="active">YouTube Tools</a>
+      <a href="../about.html">About</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+  <nav class="mobile-menu" id="mobile-menu">
+    <a href="../index.html">Home</a><a href="youtube-tools.html">YouTube Tools</a><a href="../about.html">About</a>
+  </nav>
+</header>
+
+<div class="tool-page-header">
+  <div class="container">
+    <nav class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="youtube-tools.html">YouTube Tools</a> &rsaquo; <span>Timestamp Generator</span></nav>
+    <h1>Free YouTube Timestamp Generator</h1>
+    <p>Create YouTube video chapter timestamps with titles. Add, reorder and delete chapters, then copy the formatted list ready to paste into your YouTube video description.</p>
+  </div>
+</div>
+
+<main>
+<div class="tool-body">
+  <div class="tool-main">
+    <div class="tool-box">
+
+      <!-- Toolbar -->
+      <div class="chapter-toolbar">
+        <button class="tool-chip" onclick="loadTemplate('tutorial')">📚 Tutorial Template</button>
+        <button class="tool-chip" onclick="loadTemplate('podcast')">🎙️ Podcast Template</button>
+        <button class="tool-chip" onclick="loadTemplate('review')">⭐ Review Template</button>
+        <button class="tool-chip" onclick="clearAll()">🗑 Clear All</button>
+      </div>
+
+      <!-- Validation Bar -->
+      <div class="validation-bar" id="validation-bar"></div>
+
+      <!-- Chapter List -->
+      <div class="chapter-list" id="chapter-list"></div>
+
+      <!-- Add Chapter Button -->
+      <button class="add-chapter-btn" onclick="addChapter()">
+        ➕ Add Chapter
+      </button>
+
+      <!-- Output -->
+      <div style="margin-top:1.25rem;">
+        <div class="output-header">
+          <span class="output-title">📋 Chapter List — Paste into YouTube Description</span>
+          <div class="output-btns">
+            <button class="out-btn" onclick="generateOutput()">🔄 Refresh</button>
+            <button class="out-btn primary" onclick="copyOutput()">📋 Copy All</button>
+          </div>
+        </div>
+        <textarea class="output-textarea" id="output-area" readonly placeholder="Your formatted chapter list will appear here…"></textarea>
+      </div>
+
+    </div>
+
+    <!-- How To -->
+    <div class="how-to-section">
+      <h2>📖 How to Add Chapters to a YouTube Video</h2>
+      <div class="steps">
+        <div class="step"><div class="step-number">1</div><div class="step-content"><h4>Create Your Chapters</h4><p>Add chapters using the tool above. The first chapter <strong>must start at 0:00</strong>. You need at least 3 chapters. Enter the timestamp and a short descriptive title for each section.</p></div></div>
+        <div class="step"><div class="step-number">2</div><div class="step-content"><h4>Copy the Chapter List</h4><p>Click <strong>Copy All</strong> to copy the formatted chapter list. The format is automatically correct for YouTube.</p></div></div>
+        <div class="step"><div class="step-number">3</div><div class="step-content"><h4>Paste into YouTube Description</h4><p>Go to your YouTube video → Edit → Description. Paste the chapter list anywhere in the description. Click Save and YouTube will automatically detect and display the chapters.</p></div></div>
+        <div class="step"><div class="step-number">4</div><div class="step-content"><h4>Wait for Processing</h4><p>YouTube may take a few minutes to process the chapters after saving. Refresh the video page and the chapter markers should appear on the progress bar.</p></div></div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <h2>❓ Frequently Asked Questions</h2>
+      <div class="faq-item"><div class="faq-question">How do I add chapters to a YouTube video?<span class="faq-icon">+</span></div><div class="faq-answer">Add timestamps to your video description in the format <code>0:00 Chapter Title</code>. The first timestamp must be 0:00 and you need at least 3 chapters. YouTube automatically detects them and adds chapter markers to the progress bar within a few minutes of saving.</div></div>
+      <div class="faq-item"><div class="faq-question">What format does YouTube use for timestamps?<span class="faq-icon">+</span></div><div class="faq-answer">Use <code>M:SS</code> or <code>MM:SS</code> for videos under an hour (e.g. <strong>0:00</strong>, <strong>1:30</strong>, <strong>12:45</strong>) and <code>H:MM:SS</code> for longer videos (e.g. <strong>1:05:30</strong>). The first timestamp must always start at <strong>0:00</strong>.</div></div>
+      <div class="faq-item"><div class="faq-question">How many chapters can a YouTube video have?<span class="faq-icon">+</span></div><div class="faq-answer">YouTube supports up to <strong>100 chapters</strong> per video. A minimum of <strong>3 chapters</strong> is required for YouTube to recognize them. Each chapter must be at least 10 seconds long.</div></div>
+      <div class="faq-item"><div class="faq-question">Do YouTube chapters help with SEO?<span class="faq-icon">+</span></div><div class="faq-answer">Yes. Chapters appear as <strong>Key Moments</strong> in Google Search results, giving your video more visible links in search results. This can significantly increase click-through rates and discoverability. They also improve viewer experience and retention.</div></div>
+      <div class="faq-item"><div class="faq-question">Why aren't my chapters showing up?<span class="faq-icon">+</span></div><div class="faq-answer">The most common reasons chapters don't appear are: the first timestamp is not exactly 0:00, you have fewer than 3 chapters, a chapter is shorter than 10 seconds, or the timestamps are not in the correct format. Use this tool to generate a correctly formatted chapter list to avoid these issues.</div></div>
+    </div>
+
+  </div>
+
+  <!-- Sidebar -->
+  <aside class="tool-sidebar">
+    <div class="related-tools">
+      <h3>▶️ YouTube Tools</h3>
+      <ul>
+        <li><a href="youtube-thumbnail-downloader.html">🖼️ Thumbnail Downloader</a></li>
+        <li><a href="youtube-money-calculator.html">💰 Money Calculator</a></li>
+        <li><a href="youtube-watch-time-calculator.html">⏱️ Watch Time Calculator</a></li>
+        <li><a href="youtube-embed-generator.html">🔗 Embed Code Generator</a></li>
+      </ul>
+    </div>
+    <div class="related-tools">
+      <h3>💡 Chapter Best Practices</h3>
+      <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;">
+        <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">🕐 First chapter must be <strong>0:00</strong></li>
+        <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">📝 Minimum <strong>3 chapters</strong> required</li>
+        <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">⏱️ Each chapter min <strong>10 seconds</strong> long</li>
+        <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">🔍 Chapters boost <strong>SEO & Key Moments</strong></li>
+        <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">✏️ Keep titles <strong>short & descriptive</strong></li>
+      </ul>
+    </div>
+  </aside>
+</div>
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand"><a href="../index.html" class="logo"><div class="logo-icon">🛠</div>AgentB24</a><p>Free online tools for everyone.</p></div>
+    <div class="footer-col"><h4>YouTube Tools</h4><ul><li><a href="youtube-thumbnail-downloader.html">Thumbnail Downloader</a></li><li><a href="youtube-money-calculator.html">Money Calculator</a></li><li><a href="youtube-timestamp-generator.html">Timestamp Generator</a></li></ul></div>
+    <div class="footer-col"><h4>Company</h4><ul><li><a href="../about.html">About Us</a></li><li><a href="../privacy-policy.html">Privacy Policy</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 AgentB24. All rights reserved.</span><span>Made with ❤️ for productivity</span></div>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="../assets/js/main.js"></script>
+<script>
+'use strict';
+
+// ── State ─────────────────────────────────────────────────────────────────────
+let chapters = [];
+let dragSrc  = null;
+
+// ── Chapter Object ────────────────────────────────────────────────────────────
+function makeChapter(h=0, m=0, s=0, title='') {
+  return { id: Date.now() + Math.random(), h, m, s, title };
+}
+
+// ── Default Chapters ──────────────────────────────────────────────────────────
+function init() {
+  chapters = [
+    makeChapter(0,0,0,  'Introduction'),
+    makeChapter(0,1,30, 'Getting Started'),
+    makeChapter(0,5,0,  'Main Content'),
+    makeChapter(0,15,0, 'Conclusion'),
+  ];
+  render();
+}
+
+// ── Templates ─────────────────────────────────────────────────────────────────
+const TEMPLATES = {
+  tutorial: [
+    {h:0,m:0, s:0,  title:'Introduction'},
+    {h:0,m:1, s:0,  title:'What You Will Learn'},
+    {h:0,m:3, s:30, title:'Requirements & Setup'},
+    {h:0,m:7, s:0,  title:'Step 1 — Getting Started'},
+    {h:0,m:12,s:0,  title:'Step 2 — Building It'},
+    {h:0,m:20,s:0,  title:'Step 3 — Testing'},
+    {h:0,m:26,s:0,  title:'Common Mistakes to Avoid'},
+    {h:0,m:30,s:0,  title:'Final Result & Demo'},
+    {h:0,m:34,s:0,  title:'Summary & Next Steps'},
+  ],
+  podcast: [
+    {h:0,m:0, s:0,  title:'Welcome & Intro'},
+    {h:0,m:2, s:0,  title:'Guest Introduction'},
+    {h:0,m:5, s:0,  title:'Topic Overview'},
+    {h:0,m:15,s:0,  title:'Deep Dive Discussion'},
+    {h:0,m:35,s:0,  title:'Key Takeaways'},
+    {h:0,m:45,s:0,  title:'Audience Q&A'},
+    {h:0,m:55,s:0,  title:'Where to Find Our Guest'},
+    {h:1,m:0, s:0,  title:'Outro & Subscribe'},
+  ],
+  review: [
+    {h:0,m:0, s:0,  title:'Introduction'},
+    {h:0,m:1, s:0,  title:'What\'s in the Box'},
+    {h:0,m:4, s:0,  title:'Design & Build Quality'},
+    {h:0,m:8, s:0,  title:'Features & Specs'},
+    {h:0,m:14,s:0,  title:'Real-World Testing'},
+    {h:0,m:22,s:0,  title:'Pros & Cons'},
+    {h:0,m:26,s:0,  title:'Price & Value'},
+    {h:0,m:28,s:0,  title:'Final Verdict'},
+  ],
+};
+
+function loadTemplate(key) {
+  chapters = TEMPLATES[key].map(t => makeChapter(t.h, t.m, t.s, t.title));
+  render();
+}
+
+function clearAll() {
+  chapters = [makeChapter(0,0,0,'Introduction')];
+  render();
+}
+
+// ── Render ────────────────────────────────────────────────────────────────────
+function render() {
+  const list = document.getElementById('chapter-list');
+  list.innerHTML = '';
+
+  chapters.forEach((ch, idx) => {
+    const item = document.createElement('div');
+    item.className = 'chapter-item';
+    item.draggable = true;
+    item.dataset.idx = idx;
+
+    const isFirst = idx === 0;
+    item.innerHTML = `
+      <span class="ch-drag" title="Drag to reorder">⠿</span>
+      <span class="ch-num">${idx + 1}</span>
+      <div class="ch-time-wrap">
+        <input class="ch-time" type="number" min="0" max="23" value="${pad(ch.h)}" ${isFirst?'disabled':''} oninput="updateChapter(${idx},'h',this.value)" title="Hours" style="${isFirst?'opacity:.5;':''}" />
+        <span class="ch-colon">:</span>
+        <input class="ch-time" type="number" min="0" max="59" value="${pad(ch.m)}" ${isFirst?'disabled':''} oninput="updateChapter(${idx},'m',this.value)" title="Minutes" style="${isFirst?'opacity:.5;':''}" />
+        <span class="ch-colon">:</span>
+        <input class="ch-time" type="number" min="0" max="59" value="${pad(ch.s)}" ${isFirst?'disabled':''} oninput="updateChapter(${idx},'s',this.value)" title="Seconds" style="${isFirst?'opacity:.5;':''}" />
+      </div>
+      <input class="ch-title" type="text" value="${escHtml(ch.title)}" placeholder="Chapter title…" oninput="updateChapter(${idx},'title',this.value)" maxlength="100"/>
+      <button class="ch-del" onclick="deleteChapter(${idx})" title="Delete chapter" ${chapters.length<=1?'disabled':''}>✕</button>
+    `;
+
+    // Drag events
+    item.addEventListener('dragstart', e => { dragSrc = idx; item.classList.add('dragging'); e.dataTransfer.effectAllowed='move'; });
+    item.addEventListener('dragend',   () => { item.classList.remove('dragging'); document.querySelectorAll('.chapter-item').forEach(i=>i.classList.remove('drag-over')); });
+    item.addEventListener('dragover',  e => { e.preventDefault(); item.classList.add('drag-over'); });
+    item.addEventListener('dragleave', () => item.classList.remove('drag-over'));
+    item.addEventListener('drop', e => {
+      e.preventDefault();
+      item.classList.remove('drag-over');
+      if (dragSrc === null || dragSrc === idx) return;
+      const moved = chapters.splice(dragSrc, 1)[0];
+      chapters.splice(idx, 0, moved);
+      dragSrc = null;
+      render();
+    });
+
+    list.appendChild(item);
+  });
+
+  generateOutput();
+  validate();
+}
+
+function pad(n) { return String(Math.max(0, parseInt(n)||0)).padStart(2,'0'); }
+function escHtml(s) { const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+
+// ── Chapter Actions ───────────────────────────────────────────────────────────
+function addChapter() {
+  // Default to last chapter time + 5 minutes
+  const last = chapters[chapters.length - 1];
+  const totalS = (last.h*3600 + last.m*60 + last.s) + 300;
+  const h = Math.floor(totalS / 3600);
+  const m = Math.floor((totalS % 3600) / 60);
+  const s = totalS % 60;
+  chapters.push(makeChapter(h, m, s, ''));
+  render();
+  // Focus new title input
+  setTimeout(() => {
+    const inputs = document.querySelectorAll('.ch-title');
+    inputs[inputs.length - 1]?.focus();
+  }, 50);
+}
+
+function deleteChapter(idx) {
+  if (chapters.length <= 1) return;
+  chapters.splice(idx, 1);
+  render();
+}
+
+function updateChapter(idx, field, val) {
+  if (field === 'title') { chapters[idx].title = val; }
+  else { chapters[idx][field] = Math.max(0, parseInt(val) || 0); }
+  generateOutput();
+  validate();
+}
+
+// ── Format Timestamp ──────────────────────────────────────────────────────────
+function fmtTime(ch) {
+  const hasHours = chapters.some(c => c.h > 0);
+  if (hasHours) {
+    return `${ch.h}:${pad(ch.m)}:${pad(ch.s)}`;
+  }
+  return `${ch.m}:${pad(ch.s)}`;
+}
+
+// ── Generate Output ───────────────────────────────────────────────────────────
+function generateOutput() {
+  const lines = chapters.map(ch => `${fmtTime(ch)} ${ch.title || 'Chapter'}`).join('\n');
+  document.getElementById('output-area').value = lines;
+}
+
+// ── Validate ──────────────────────────────────────────────────────────────────
+function validate() {
+  const bar = document.getElementById('validation-bar');
+  const issues = [];
+
+  // First must be 0:00
+  const first = chapters[0];
+  if (first.h !== 0 || first.m !== 0 || first.s !== 0) {
+    issues.push('First chapter must start at 0:00.');
+  }
+
+  // Need at least 3
+  if (chapters.length < 3) {
+    issues.push(`You need at least 3 chapters. Currently have ${chapters.length}.`);
+  }
+
+  // Check for duplicates or non-ascending order
+  let prevSecs = -1;
+  chapters.forEach((ch, i) => {
+    const secs = ch.h*3600 + ch.m*60 + ch.s;
+    if (secs <= prevSecs && i > 0) issues.push(`Chapter ${i+1} timestamp must be after chapter ${i}.`);
+    prevSecs = secs;
+  });
+
+  if (issues.length === 0) {
+    bar.className = 'validation-bar ok';
+    bar.textContent = `✅ ${chapters.length} chapters — ready to paste into YouTube description!`;
+  } else if (chapters.length >= 1) {
+    bar.className = 'validation-bar warn';
+    bar.innerHTML = '⚠️ ' + issues.join(' ');
+  }
+}
+
+// ── Copy Output ───────────────────────────────────────────────────────────────
+function copyOutput() {
+  const text = document.getElementById('output-area').value;
+  navigator.clipboard.writeText(text);
+  const t = document.getElementById('toast');
+  if (t) { t.textContent='📋 Chapter list copied! Paste into YouTube description.'; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2800); }
+}
+
+// ── FAQ Accordion ─────────────────────────────────────────────────────────────
+document.querySelectorAll('.faq-question').forEach(q => {
+  q.addEventListener('click', () => {
+    const a = q.nextElementSibling, i = q.querySelector('.faq-icon');
+    const open = a.classList.contains('open');
+    document.querySelectorAll('.faq-answer').forEach(x => x.classList.remove('open'));
+    document.querySelectorAll('.faq-icon').forEach(x => x.textContent = '+');
+    if (!open) { a.classList.add('open'); i.textContent = '−'; }
+  });
+});
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+init();
+</script>
+<script src="../assets/js/tracker.js"></script>
+<script src="../assets/js/ads.js"></script>
+</body>
+</html>

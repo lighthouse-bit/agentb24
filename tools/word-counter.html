@@ -1,0 +1,979 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <!-- =============================================
+       BASIC META TAGS
+  ============================================== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- =============================================
+       SEO META TAGS
+       🎯 These tell Google what this page is about
+  ============================================== -->
+  <title>Free Word Counter Online — Count Words, Characters & More | AgentB24</title>
+  <meta name="description"
+        content="Free online word counter. Instantly count words, characters, sentences, paragraphs, and reading time. No sign-up needed. Paste your text and get results instantly." />
+  <meta name="keywords"
+        content="word counter, character counter, word count tool, count words online, words and characters counter, reading time calculator, sentence counter" />
+  <!-- Canonical URL — tells Google the "official" URL of this page -->
+  <link rel="canonical" href="https://agentb24.com/tools/word-counter.html" />
+
+  <!-- =============================================
+       OPEN GRAPH (Facebook / LinkedIn)
+  ============================================== -->
+  <!-- =============================================
+       TWITTER CARD
+  ============================================== -->
+  
+     <!-- Google Analytics 4 -->
+  <script async
+    src="https://www.googletagmanager.com/gtag/js?id=G-1T57RWSY42">
+  </script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1T57RWSY42');
+  </script>
+  
+
+  <!-- =============================================
+       STRUCTURED DATA — JSON-LD Schema
+       🎯 This helps Google show rich results
+          and understand your tool better
+  ============================================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Word Counter",
+    "url": "https://agentb24.com/tools/word-counter.html",
+    "description": "Free online word counter that counts words, characters, sentences, paragraphs, and estimates reading time.",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "AgentB24",
+      "url": "https://agentb24.com"
+    }
+  }
+  </script>
+
+  <!-- FAQ Schema — helps appear in "People Also Ask" on Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I count words online?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Simply paste or type your text into the box above. The word counter will automatically count your words, characters, sentences, and paragraphs in real time."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the word counter include spaces in the character count?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The character count includes spaces by default. We also show a separate count for characters without spaces."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is reading time calculated?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Reading time is estimated based on an average reading speed of 200 words per minute, which is typical for most adults."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a word limit?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. There is no word or character limit. You can paste an entire essay, article, or book into the tool."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my text saved or stored?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. All processing happens in your browser. Your text is never sent to any server and is never stored."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- =============================================
+       BREADCRUMB SCHEMA
+       🎯 Makes Google show breadcrumbs in results
+  ============================================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://agentb24.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Text Tools",
+        "item": "https://agentb24.com/#text-tools"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Word Counter",
+        "item": "https://agentb24.com/tools/word-counter.html"
+      }
+    ]
+  }
+  </script>
+
+  <!-- =============================================
+       Adsterra
+       Uncomment & replace ID once approved
+  ============================================== -->
+  <!--  -->
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png" />
+
+  <!-- Shared Stylesheet -->
+  <link rel="stylesheet" href="/assets/css/style.css" />
+
+  <!-- =============================================
+       PAGE-SPECIFIC STYLES
+       Only for this tool page
+  ============================================== -->
+  <style>
+    /* ---- Text Input Area ---- */
+    .word-counter-input {
+      width: 100%;
+      min-height: 220px;
+      padding: 16px;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      background: var(--bg);
+      resize: vertical;
+      outline: none;
+      transition: var(--transition);
+      line-height: 1.7;
+    }
+
+    .word-counter-input:focus {
+      border-color: var(--primary);
+      background: var(--white);
+      box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.08);
+    }
+
+    .word-counter-input::placeholder {
+      color: var(--text-light);
+    }
+
+    /* ---- Stats Grid ---- */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .stat-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 14px;
+      text-align: center;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+    }
+
+    .stat-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .stat-card .stat-icon {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .stat-card .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-card .stat-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-mid);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Highlight the "Words" stat as the main one */
+    .stat-card.main-stat {
+      background: var(--primary-light);
+      border-color: var(--primary);
+    }
+
+    .stat-card.main-stat .stat-value {
+      font-size: 2.5rem;
+    }
+
+    /* ---- Keyword Density Table ---- */
+    .keyword-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    .keyword-table thead tr {
+      background: var(--primary-light);
+    }
+
+    .keyword-table th {
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 600;
+      color: var(--primary);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .keyword-table td {
+      padding: 9px 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-dark);
+    }
+
+    .keyword-table tbody tr:hover {
+      background: var(--bg);
+    }
+
+    .keyword-table .density-bar-wrap {
+      width: 120px;
+      background: var(--border);
+      border-radius: 50px;
+      height: 7px;
+      overflow: hidden;
+    }
+
+    .keyword-table .density-bar {
+      height: 100%;
+      background: var(--primary);
+      border-radius: 50px;
+      transition: width 0.4s ease;
+    }
+
+    /* ---- Toolbar (Clear / Copy buttons) ---- */
+    .tool-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tool-toolbar-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-mid);
+    }
+
+    .tool-toolbar-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    /* ---- Character Limit Warning ---- */
+    .char-warning {
+      font-size: 0.8rem;
+      color: #EF4444;
+      margin-top: 6px;
+      display: none;
+    }
+
+    /* ---- Reading time details ---- */
+    .reading-details {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+      padding: 14px;
+      background: var(--primary-light);
+      border-radius: var(--radius-sm);
+      border: 1px solid #C7D2FE;
+    }
+
+    .reading-details span {
+      font-size: 0.85rem;
+      color: var(--primary-dark);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* ---- Empty State ---- */
+    .empty-state {
+      text-align: center;
+      padding: 30px 20px;
+      color: var(--text-light);
+    }
+
+    .empty-state p {
+      font-size: 0.88rem;
+    }
+
+    /* ---- Responsive Stats ---- */
+    @media (max-width: 600px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .stat-card.main-stat {
+        grid-column: span 2;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+      .stat-card.main-stat {
+        grid-column: span 1;
+      }
+    }
+  </style>
+  <!-- AgentB24 SEO Pack -->
+  <meta name="author" content="AgentB24">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#4F46E5">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AgentB24">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://agentb24.com/tools/word-counter.html">
+  <meta property="og:title" content="Free Word Counter Online — Count Words, Characters &amp; More | AgentB24">
+  <meta property="og:description" content="Free online word counter. Instantly count words, characters, sentences, paragraphs, and reading time. No sign-up needed. Paste your text and get results instantly.">
+  <meta property="og:image" content="https://agentb24.com/assets/img/og-image.png">
+  <meta property="og:image:width" content="1718">
+  <meta property="og:image:height" content="912">
+  <meta property="og:image:alt" content="AgentB24 â€” 80+ Free Online Tools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Word Counter Online — Count Words, Characters &amp; More | AgentB24">
+  <meta name="twitter:description" content="Free online word counter. Instantly count words, characters, sentences, paragraphs, and reading time. No sign-up needed. Paste your text and get results instantly.">
+  <meta name="twitter:image" content="https://agentb24.com/assets/img/og-image.png">
+  <!-- /AgentB24 SEO Pack -->
+  <link rel="stylesheet" href="../assets/css/ads.css">
+</head>
+
+<body>
+
+  <!-- =============================================
+       HEADER (Same on every page)
+  ============================================== -->
+  <header>
+    <div class="nav-container">
+      <a href="/" class="logo">
+        <div class="logo-icon">🛠</div>
+        AgentB24
+      </a>
+
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/tools/word-counter.html" class="active">Text Tools</a>
+        <a href="/tools/image-to-base64.html">Image Tools</a>
+        <a href="/tools/json-formatter.html">Dev Tools</a>
+        <a href="/tools/percentage-calculator.html">Calculators</a>
+        <a href="/about.html">About</a>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <nav class="mobile-menu" id="mobile-menu">
+      <a href="/">Home</a>
+      <a href="/tools/word-counter.html">Text Tools</a>
+      <a href="/tools/image-to-base64.html">Image Tools</a>
+      <a href="/tools/json-formatter.html">Dev Tools</a>
+      <a href="/tools/percentage-calculator.html">Calculators</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </header>
+
+  <!-- =============================================
+       TOP AD BANNER — Ad Slot #1
+  ============================================== -->
+  <!-- <div class="ad-banner">
+    <div class="ad-banner-inner">
+      
+        Adsterra AD — Leaderboard 728x90
+        Replace the div below with your Adsterra code:
+
+        <!-- Adsterra ads are loaded globally by assets/js/ads.js -->
+     
+      <div class="ad-placeholder">📢 Advertisement — Leaderboard (728×90)</div>
+    </div>
+  </div> -->
+
+  <!-- =============================================
+       TOOL PAGE HEADER — Title & Breadcrumb
+  ============================================== -->
+  <div class="tool-page-header">
+    <div class="container">
+      <!-- Breadcrumb Navigation -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> &rsaquo;
+        <a href="/#text-tools">Text Tools</a> &rsaquo;
+        <span>Word Counter</span>
+      </nav>
+
+      <h1>Free Word Counter Online</h1>
+      <p>
+        Instantly count words, characters, sentences, paragraphs, and
+        estimate reading time. Paste or type your text — results update
+        in real time. Free, no sign-up, no limits.
+      </p>
+    </div>
+  </div>
+
+  <!-- =============================================
+       MAIN CONTENT AREA
+  ============================================== -->
+  <main>
+    <div class="tool-body">
+
+      <!-- ==========================================
+           LEFT COLUMN — Tool + Content
+      =========================================== -->
+      <div class="tool-main">
+
+        <!-- ---- THE TOOL BOX ---- -->
+        <div class="tool-box">
+
+          <!-- Toolbar above textarea -->
+          <div class="tool-toolbar">
+            <span class="tool-toolbar-label">📝 Paste or type your text below</span>
+            <div class="tool-toolbar-actions">
+              <button class="btn btn-secondary" onclick="clearText()" title="Clear all text">
+                🗑️ Clear
+              </button>
+              <button class="btn btn-secondary" onclick="copyText()" title="Copy text">
+                📋 Copy Text
+              </button>
+              <button class="btn btn-primary" onclick="pasteText()" title="Paste from clipboard">
+                📌 Paste
+              </button>
+            </div>
+          </div>
+
+          <!-- Main Text Input -->
+          <textarea
+            id="text-input"
+            class="word-counter-input"
+            placeholder="Start typing or paste your text here...&#10;&#10;Example: 'The quick brown fox jumps over the lazy dog.'&#10;&#10;All results update instantly as you type!"
+            aria-label="Text input for word counter"
+            spellcheck="true"
+            oninput="analyzeText()"
+          ></textarea>
+
+          <!-- Character warning (shown if text is very long) -->
+          <p class="char-warning" id="char-warning">
+            ⚠️ Large text detected. Some browsers may slow down with very large inputs.
+          </p>
+
+        </div>
+
+        <!-- ---- STATS CARDS ---- -->
+        <div class="tool-box">
+          <h2>📊 Text Statistics</h2>
+
+          <div class="stats-grid">
+
+            <!-- Main stat (Words) -->
+            <div class="stat-card main-stat">
+              <span class="stat-icon">📝</span>
+              <div class="stat-value" id="word-count">0</div>
+              <div class="stat-label">Words</div>
+            </div>
+
+            <div class="stat-card">
+              <span class="stat-icon">🔤</span>
+              <div class="stat-value" id="char-count">0</div>
+              <div class="stat-label">Characters</div>
+            </div>
+
+            <div class="stat-card">
+              <span class="stat-icon">🚫</span>
+              <div class="stat-value" id="char-no-space">0</div>
+              <div class="stat-label">Chars (no spaces)</div>
+            </div>
+
+            <div class="stat-card">
+              <span class="stat-icon">💬</span>
+              <div class="stat-value" id="sentence-count">0</div>
+              <div class="stat-label">Sentences</div>
+            </div>
+
+            <div class="stat-card">
+              <span class="stat-icon">📄</span>
+              <div class="stat-value" id="paragraph-count">0</div>
+              <div class="stat-label">Paragraphs</div>
+            </div>
+
+            <div class="stat-card">
+              <span class="stat-icon">⏱️</span>
+              <div class="stat-value" id="read-time">0</div>
+              <div class="stat-label">Min Read</div>
+            </div>
+
+          </div>
+
+          <!-- Reading Time Details Bar -->
+          <div class="reading-details" id="reading-details" style="display:none;">
+            <span>📖 Reading time: <strong id="read-time-detail">—</strong></span>
+            <span>🗣️ Speaking time: <strong id="speak-time-detail">—</strong></span>
+            <span>📝 Unique words: <strong id="unique-words">—</strong></span>
+            <span>📏 Avg word length: <strong id="avg-word-len">—</strong></span>
+          </div>
+
+        </div>
+
+        <!-- ---- AD — In-Content (Below Stats) ---- -->
+        <!-- <div style="text-align:center;">
+          
+            Adsterra AD — Rectangle 336x280
+            <!-- Adsterra ads are loaded globally by assets/js/ads.js -->
+         
+          <div class="ad-placeholder" style="min-height:250px; border-radius: 12px;">
+            📢 Advertisement — Rectangle (336×280)
+          </div>
+        </div> -->
+
+        <!-- ---- KEYWORD DENSITY ---- -->
+        <div class="tool-box">
+          <h2>🔑 Top Keywords & Density</h2>
+          <div id="keyword-section">
+            <div class="empty-state">
+              <p>Start typing to see keyword density analysis...</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ---- HOW TO USE ---- -->
+        <div class="how-to-section">
+          <h2>📖 How to Use the Word Counter</h2>
+          <div class="steps">
+
+            <div class="step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h4>Paste or Type Your Text</h4>
+                <p>Click inside the text box above and either start typing or paste your content using <strong>Ctrl+V</strong> (Windows) or <strong>Cmd+V</strong> (Mac).</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h4>View Results Instantly</h4>
+                <p>As soon as you type or paste, all statistics update automatically — words, characters, sentences, paragraphs, and reading time.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h4>Check Keyword Density</h4>
+                <p>Scroll down to the Keyword Density section to see the most frequently used words in your text — useful for SEO writing.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <h4>Copy or Clear</h4>
+                <p>Use the <strong>Copy Text</strong> button to copy your text back to clipboard, or <strong>Clear</strong> to start fresh.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ---- AD — Before FAQ ---- -->
+        <!-- <div style="text-align:center;">
+          
+            Adsterra AD — Leaderboard 728x90 or Responsive
+            <!-- Adsterra ads are loaded globally by assets/js/ads.js -->
+         
+          <div class="ad-placeholder" style="min-height:250px;">
+            📢 Advertisement<br/>(300×250)
+          </div>
+        </div> -->
+
+        <!-- Related Tools -->
+        <div class="related-tools">
+          <h3>🔗 Related Tools</h3>
+          <ul>
+            <li>
+              <a href="/tools/case-converter.html">
+                🔡 Case Converter
+              </a>
+            </li>
+            <li>
+              <a href="/tools/lorem-ipsum-generator.html">
+                🔤 Lorem Ipsum Generator
+              </a>
+            </li>
+            <li>
+              <a href="/tools/base64-encoder.html">
+                🔐 Base64 Encoder
+              </a>
+            </li>
+            <li>
+              <a href="/tools/json-formatter.html">
+                📋 JSON Formatter
+              </a>
+            </li>
+            <li>
+              <a href="/tools/password-generator.html">
+                🔑 Password Generator
+              </a>
+            </li>
+            <li>
+              <a href="/tools/percentage-calculator.html">
+                📊 Percentage Calculator
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Sidebar Ad #2 -->
+        <!-- <div class="sidebar-ad">
+          <div class="ad-placeholder" style="min-height:250px;">
+            📢 Advertisement<br/>(300×250)
+          </div>
+        </div> -->
+
+        <!-- Quick Tips Box -->
+        <div class="related-tools">
+          <h3>💡 Quick Tips</h3>
+          <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:10px;">
+            <li style="font-size:0.83rem; color:var(--text-mid); padding:8px; background:var(--bg); border-radius:8px; border:1px solid var(--border);">
+              📌 Most blog posts should be <strong>1,500–2,500 words</strong> for best SEO performance.
+            </li>
+            <li style="font-size:0.83rem; color:var(--text-mid); padding:8px; background:var(--bg); border-radius:8px; border:1px solid var(--border);">
+              📌 Twitter/X posts are limited to <strong>280 characters</strong>.
+            </li>
+            <li style="font-size:0.83rem; color:var(--text-mid); padding:8px; background:var(--bg); border-radius:8px; border:1px solid var(--border);">
+              📌 A typical novel is <strong>70,000–100,000 words</strong>.
+            </li>
+            <li style="font-size:0.83rem; color:var(--text-mid); padding:8px; background:var(--bg); border-radius:8px; border:1px solid var(--border);">
+              📌 Meta descriptions should be under <strong>160 characters</strong> for Google.
+            </li>
+          </ul>
+        </div>
+
+      </aside>
+      <!-- END SIDEBAR -->
+
+    </div>
+    <!-- END .tool-body -->
+  </main>
+
+  <!-- =============================================
+       FOOTER
+  ============================================== -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="logo">
+          <div class="logo-icon">🛠</div>
+          AgentB24
+        </a>
+        <p>Free online tools for everyone. No sign-up required, no software to install. Just open your browser and get things done.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Text Tools</h4>
+        <ul>
+          <li><a href="/tools/word-counter.html">Word Counter</a></li>
+          <li><a href="/tools/case-converter.html">Case Converter</a></li>
+          <li><a href="/tools/lorem-ipsum-generator.html">Lorem Ipsum</a></li>
+          <li><a href="/tools/base64-encoder.html">Base64 Encoder</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Dev Tools</h4>
+        <ul>
+          <li><a href="/tools/json-formatter.html">JSON Formatter</a></li>
+          <li><a href="/tools/password-generator.html">Password Generator</a></li>
+          <li><a href="/tools/color-picker.html">Color Picker</a></li>
+          <li><a href="/tools/qr-code-generator.html">QR Code Generator</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about.html">About Us</a></li>
+          <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="/about.html#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2025 AgentB24. All rights reserved.</span>
+      <span>Made with ❤️ for productivity</span>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Shared JS -->
+  <script src="/assets/js/main.js"></script>
+
+  <!-- =============================================
+       WORD COUNTER — Tool Logic (JavaScript)
+  ============================================== -->
+  <script>
+    // ============================================================
+    //  analyzeText()
+    //  Called every time the user types — updates ALL stats
+    // ============================================================
+    function analyzeText() {
+      const input       = document.getElementById('text-input');
+      const text        = input.value;
+      const trimmed     = text.trim();
+
+      // ---- 1. WORD COUNT ----
+      // Split by whitespace, filter out empty strings
+      const words       = trimmed === '' ? [] : trimmed.split(/\s+/).filter(w => w.length > 0);
+      const wordCount   = words.length;
+
+      // ---- 2. CHARACTER COUNTS ----
+      const charCount        = text.length;
+      const charNoSpace      = text.replace(/\s/g, '').length;
+
+      // ---- 3. SENTENCE COUNT ----
+      // Split on . ! ? — filter empty
+      const sentences        = trimmed === '' ? [] : trimmed.split(/[.!?]+/).filter(s => s.trim().length > 0);
+      const sentenceCount    = sentences.length;
+
+      // ---- 4. PARAGRAPH COUNT ----
+      // Split on double newline (blank line between paragraphs)
+      const paragraphs       = trimmed === '' ? [] : trimmed.split(/\n\s*\n/).filter(p => p.trim().length > 0);
+      const paragraphCount   = paragraphs.length;
+
+      // ---- 5. READING / SPEAKING TIME ----
+      const READ_WPM         = 200;   // Average adult reading speed
+      const SPEAK_WPM        = 130;   // Average speaking speed
+      const readMinutes      = Math.ceil(wordCount / READ_WPM);
+      const speakMinutes     = Math.ceil(wordCount / SPEAK_WPM);
+
+      // Format into "X min Y sec" if under 1 minute
+      function formatTime(totalWords, wpm) {
+        const totalSecs = Math.round((totalWords / wpm) * 60);
+        if (totalSecs < 60) return `${totalSecs} sec`;
+        const mins = Math.floor(totalSecs / 60);
+        const secs = totalSecs % 60;
+        return secs > 0 ? `${mins} min ${secs} sec` : `${mins} min`;
+      }
+
+      // ---- 6. UNIQUE WORDS ----
+      const lowerWords      = words.map(w => w.toLowerCase().replace(/[^a-z0-9]/g, ''));
+      const uniqueWords     = new Set(lowerWords.filter(w => w.length > 0)).size;
+
+      // ---- 7. AVERAGE WORD LENGTH ----
+      const avgWordLen = wordCount > 0
+        ? (words.reduce((sum, w) => sum + w.replace(/[^a-z0-9]/gi, '').length, 0) / wordCount).toFixed(1)
+        : 0;
+
+      // ---- UPDATE THE STAT CARDS ----
+      document.getElementById('word-count').textContent      = wordCount.toLocaleString();
+      document.getElementById('char-count').textContent      = charCount.toLocaleString();
+      document.getElementById('char-no-space').textContent   = charNoSpace.toLocaleString();
+      document.getElementById('sentence-count').textContent  = sentenceCount.toLocaleString();
+      document.getElementById('paragraph-count').textContent = paragraphCount.toLocaleString();
+      document.getElementById('read-time').textContent       = readMinutes;
+
+      // ---- UPDATE READING DETAILS BAR ----
+      const detailsBar = document.getElementById('reading-details');
+      if (wordCount > 0) {
+        detailsBar.style.display = 'flex';
+        document.getElementById('read-time-detail').textContent   = formatTime(wordCount, READ_WPM);
+        document.getElementById('speak-time-detail').textContent  = formatTime(wordCount, SPEAK_WPM);
+        document.getElementById('unique-words').textContent       = uniqueWords.toLocaleString();
+        document.getElementById('avg-word-len').textContent       = avgWordLen + ' chars';
+      } else {
+        detailsBar.style.display = 'none';
+      }
+
+      // ---- CHARACTER COUNT WARNING ----
+      const warning = document.getElementById('char-warning');
+      warning.style.display = charCount > 50000 ? 'block' : 'none';
+
+      // ---- UPDATE KEYWORD DENSITY ----
+      updateKeywords(words);
+    }
+
+    // ============================================================
+    //  updateKeywords()
+    //  Builds a keyword frequency table from the word list
+    // ============================================================
+
+    // Common words to ignore (stop words)
+    const STOP_WORDS = new Set([
+      'the','a','an','and','or','but','in','on','at','to','for',
+      'of','with','by','from','is','it','its','be','was','are',
+      'were','been','has','have','had','do','does','did','will',
+      'would','can','could','should','may','might','shall','this',
+      'that','these','those','i','you','he','she','we','they',
+      'me','him','her','us','them','my','your','his','our','their',
+      'as','if','so','not','no','up','out','all','more','also',
+      'than','then','when','which','who','what','there','their',
+      'they\'re','it\'s','don\'t','i\'m','i\'ve','i\'ll','we\'re'
+    ]);
+
+    function updateKeywords(words) {
+      const container = document.getElementById('keyword-section');
+
+      if (words.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <p>Start typing to see keyword density analysis...</p>
+          </div>`;
+        return;
+      }
+
+      // Build frequency map (ignore stop words & short words)
+      const freq = {};
+      words.forEach(word => {
+        const clean = word.toLowerCase().replace(/[^a-z0-9]/g, '');
+        if (clean.length > 2 && !STOP_WORDS.has(clean)) {
+          freq[clean] = (freq[clean] || 0) + 1;
+        }
+      });
+
+      // Sort by frequency and take top 10
+      const sorted = Object.entries(freq)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 10);
+
+      if (sorted.length === 0) {
+        container.innerHTML = `<div class="empty-state"><p>No significant keywords found yet.</p></div>`;
+        return;
+      }
+
+      const maxFreq    = sorted[0][1];
+      const totalWords = words.length;
+
+      // Build the table HTML
+      let tableHTML = `
+        <table class="keyword-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Keyword</th>
+              <th>Count</th>
+              <th>Density</th>
+              <th>Frequency</th>
+            </tr>
+          </thead>
+          <tbody>`;
+
+      sorted.forEach(([word, count], index) => {
+        const density    = ((count / totalWords) * 100).toFixed(2);
+        const barWidth   = Math.round((count / maxFreq) * 100);
+
+        tableHTML += `
+          <tr>
+            <td style="color:var(--text-light); font-weight:600;">${index + 1}</td>
+            <td style="font-weight:600;">${word}</td>
+            <td>${count}</td>
+            <td>${density}%</td>
+            <td>
+              <div class="density-bar-wrap">
+                <div class="density-bar" style="width:${barWidth}%"></div>
+              </div>
+            </td>
+          </tr>`;
+      });
+
+      tableHTML += `</tbody></table>`;
+      container.innerHTML = tableHTML;
+    }
+
+    // ============================================================
+    //  BUTTON ACTIONS
+    // ============================================================
+
+    // Clear the textarea and reset all stats
+    function clearText() {
+      document.getElementById('text-input').value = '';
+      analyzeText();
+      showToast('🗑️ Text cleared!', 'success');
+    }
+
+    // Copy text from the textarea to clipboard
+    function copyText() {
+      const text = document.getElementById('text-input').value;
+      if (!text.trim()) {
+        showToast('⚠️ Nothing to copy!', 'error');
+        return;
+      }
+      copyToClipboard(text);
+    }
+
+    // Paste from clipboard into the textarea
+    async function pasteText() {
+      try {
+        const text = await navigator.clipboard.readText();
+        document.getElementById('text-input').value = text;
+        analyzeText();
+        showToast('📌 Text pasted!', 'success');
+      } catch (err) {
+        showToast('⚠️ Could not paste — please use Ctrl+V', 'error');
+      }
+    }
+
+    // Run once on page load to set initial state
+    analyzeText();
+  </script>
+  <script src="../assets/js/tracker.js"></script>
+<script src="../assets/js/ads.js"></script>
+</body>
+</html>

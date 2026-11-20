@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Free QR Code Generator for WiFi, URLs and More | AgentB24</title>
+  <meta name="description" content="Create reliable QR codes for WiFi, URLs, text, email, phone, SMS, contacts and locations. Customize and download PNG or SVG privately in your browser.">
+  <meta name="keywords" content="QR code generator, WiFi QR code, free QR maker, URL QR code, vCard QR code, QR PNG, QR SVG">
+  <meta name="author" content="AgentB24">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#4f46e5">
+  <link rel="canonical" href="https://agentb24.com/tools/qr-code-generator.html">
+  <link rel="icon" href="../assets/img/favicon.png">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/qr-generator-premium.css">
+  <style>.qr-preview-content{display:grid;place-items:center;max-width:100%;padding:12px;border-radius:10px;background:#fff;box-shadow:0 8px 28px rgba(25,32,50,.13)}.qr-preview-content .qr-caption{max-width:250px;padding:10px 8px 2px;color:#172033;font-size:.72rem;font-weight:800;line-height:1.35;text-align:center;overflow-wrap:anywhere}.qr-preview-content #qr-output canvas{display:block!important;padding:0;box-shadow:none}.qr-preview-content #qr-output img{display:none!important}.qr-preview-card label>small{color:#8791a3;font-size:.58rem;font-weight:500;line-height:1.45}</style>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AgentB24">
+  <meta property="og:url" content="https://agentb24.com/tools/qr-code-generator.html">
+  <meta property="og:title" content="Free QR Code Generator | AgentB24">
+  <meta property="og:description" content="Build dependable WiFi, URL, contact and custom QR codes. Download PNG or SVG.">
+  <meta property="og:image" content="https://agentb24.com/assets/img/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free QR Code Generator | AgentB24">
+  <meta name="twitter:description" content="Create customized QR codes directly in your browser.">
+  <meta name="twitter:image" content="https://agentb24.com/assets/img/og-image.png">
+  
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"AgentB24 QR Code Generator","url":"https://agentb24.com/tools/qr-code-generator.html","description":"Create QR codes for WiFi, URLs, messages, contacts and locations in a browser.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why does a WiFi QR code sometimes fail?","acceptedAnswer":{"@type":"Answer","text":"The SSID, password and encryption type must match exactly, and reserved characters must be escaped correctly."}},{"@type":"Question","name":"Do generated QR codes expire?","acceptedAnswer":{"@type":"Answer","text":"No. These are static QR codes and do not depend on an AgentB24 redirect."}},{"@type":"Question","name":"Are my WiFi credentials uploaded?","acceptedAnswer":{"@type":"Answer","text":"No. QR generation happens locally in your browser."}},{"@type":"Question","name":"Which download format should I choose?","acceptedAnswer":{"@type":"Answer","text":"PNG is convenient for screens and documents. SVG stays sharp at any print size."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://agentb24.com/"},{"@type":"ListItem","position":2,"name":"Developer Tools","item":"https://agentb24.com/tools/developer-tools.html"},{"@type":"ListItem","position":3,"name":"QR Code Generator","item":"https://agentb24.com/tools/qr-code-generator.html"}]}</script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js" defer></script>
+  <link rel="stylesheet" href="../assets/css/ads.css">
+</head>
+<body class="qr-premium-page">
+<header><div class="nav-container"><a href="../index.html" class="logo"><div class="logo-icon">AB</div>AgentB24</a><nav class="nav-links"><a href="../index.html">Home</a><a href="word-counter.html">Text Tools</a><a href="image-tools.html">Image Tools</a><a href="developer-tools.html" class="active">Dev Tools</a><a href="media-tools.html">Audio &amp; Video</a><a href="pdf-tools.html">PDF Tools</a><a href="../about.html">About</a></nav><button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button></div><nav class="mobile-menu" id="mobile-menu"><a href="../index.html">Home</a><a href="developer-tools.html">Developer Tools</a><a href="pdf-tools.html">PDF Tools</a><a href="../about.html">About</a></nav></header>
+
+<section class="qr-hero"><div class="qr-orb one"></div><div class="qr-orb two"></div><div class="qr-container"><nav class="qr-breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="developer-tools.html">Developer Tools</a><span>/</span><span>QR Generator</span></nav><div class="qr-hero-grid"><div><span class="qr-kicker">Reliable static QR codes</span><h1>Make a QR code that works the first time.</h1><p>Create polished codes for links, WiFi, contacts and messages. Everything is generated locally and never expires.</p><div class="qr-trust"><span>Private in-browser creation</span><span>PNG and true vector SVG</span><span>No redirects or watermarks</span></div></div><div class="hero-code" aria-hidden="true"><i></i><i></i><i></i><b></b></div></div></div></section>
+
+<main class="qr-container qr-main">
+  <div class="qr-layout">
+    <section class="qr-builder">
+      <div class="qr-section-head"><div><span class="qr-step">Step 1</span><h2>Choose what the code should do</h2><p>Select a format and enter the exact information to encode.</p></div><button id="reset-btn" class="qr-quiet">Reset</button></div>
+      <div class="qr-tabs" role="tablist" aria-label="QR content type">
+        <button class="active" data-type="url">Link</button><button data-type="wifi">WiFi</button><button data-type="text">Text</button><button data-type="email">Email</button><button data-type="phone">Phone</button><button data-type="sms">SMS</button><button data-type="vcard">Contact</button><button data-type="location">Location</button>
+      </div>
+
+      <div class="qr-form active" data-form="url"><label>Website address<input id="url-input" type="url" value="https://agentb24.com" placeholder="https://example.com" autocomplete="url"></label><small>HTTPS is added automatically when the protocol is missing.</small></div>
+      <div class="qr-form" data-form="wifi">
+        <div class="wifi-banner"><span>WiFi</span><div><b>Exact credentials matter</b><small>Network names and passwords are case-sensitive.</small></div></div>
+        <label>Network name (SSID)<input id="wifi-ssid" type="text" placeholder="My Home WiFi" autocomplete="off" spellcheck="false"></label>
+        <label>WiFi password<div class="password-field"><input id="wifi-password" type="password" placeholder="Enter the exact password" autocomplete="new-password" spellcheck="false"><button id="toggle-password" type="button" aria-label="Show password">Show</button></div></label>
+        <fieldset><legend>Security</legend><div class="security-options"><label><input type="radio" name="wifi-security" value="WPA" checked><span><b>WPA/WPA2/WPA3</b><small>Most secured networks</small></span></label><label><input type="radio" name="wifi-security" value="WEP"><span><b>WEP</b><small>Older routers only</small></span></label><label><input type="radio" name="wifi-security" value="nopass"><span><b>Open</b><small>No password</small></span></label></div></fieldset>
+        <label class="qr-check"><input id="wifi-hidden" type="checkbox"><span><b>Hidden network</b><small>The SSID is not broadcast publicly.</small></span></label>
+        <div id="wifi-payload-wrap" class="payload-box" hidden><div><span>Encoded WiFi payload</span><button id="copy-payload" type="button">Copy</button></div><code id="wifi-payload"></code></div>
+      </div>
+      <div class="qr-form" data-form="text"><label>Plain text<textarea id="text-input" rows="6" maxlength="2000" placeholder="Write or paste text here"></textarea></label><small><span id="text-count">0</span> / 2000 characters</small></div>
+      <div class="qr-form" data-form="email"><label>Email address<input id="email-address" type="email" placeholder="hello@example.com"></label><label>Subject<input id="email-subject" type="text" placeholder="Optional subject"></label><label>Message<textarea id="email-body" rows="4" placeholder="Optional message"></textarea></label></div>
+      <div class="qr-form" data-form="phone"><label>Phone number<input id="phone-input" type="tel" placeholder="+234 800 000 0000"></label></div>
+      <div class="qr-form" data-form="sms"><label>Phone number<input id="sms-phone" type="tel" placeholder="+234 800 000 0000"></label><label>Pre-filled message<textarea id="sms-message" rows="4" placeholder="Optional message"></textarea></label></div>
+      <div class="qr-form" data-form="vcard"><div class="qr-two"><label>First name<input id="vc-first" type="text"></label><label>Last name<input id="vc-last" type="text"></label></div><div class="qr-two"><label>Phone<input id="vc-phone" type="tel"></label><label>Email<input id="vc-email" type="email"></label></div><label>Company<input id="vc-company" type="text"></label><label>Website<input id="vc-website" type="url" placeholder="https://example.com"></label></div>
+      <div class="qr-form" data-form="location"><div class="qr-two"><label>Latitude<input id="location-lat" type="number" step="any" placeholder="6.5244"></label><label>Longitude<input id="location-lng" type="number" step="any" placeholder="3.3792"></label></div><small>Use decimal coordinates between -90/90 latitude and -180/180 longitude.</small></div>
+      <div id="form-status" class="qr-status" aria-live="polite"></div>
+    </section>
+
+    <aside class="qr-preview-card">
+      <div class="qr-section-head compact"><div><span class="qr-step">Live preview</span><h2>Your QR code</h2></div><span id="type-badge" class="type-badge">LINK</span></div>
+      <div id="qr-stage" class="qr-stage"><div id="qr-preview-content" class="qr-preview-content" hidden><div id="qr-output"></div><div id="qr-caption" class="qr-caption" hidden></div></div><div id="qr-placeholder" class="qr-placeholder"><div class="mini-code"></div><b>Enter valid details</b><span>Your preview will appear here</span></div></div>
+      <div class="scan-advice"><span></span><p><b>Scan test recommended</b>Test the final code with a phone before printing or sharing it.</p></div>
+      <div class="qr-divider"></div>
+      <div class="qr-section-head compact"><div><span class="qr-step">Step 2</span><h2>Style and export</h2></div></div>
+      <label class="control-row"><span><b>Output size</b><small id="size-value">1024 x 1024 px</small></span><input id="qr-size" type="range" min="256" max="2048" step="256" value="1024"></label>
+      <div class="qr-two"><label>Foreground<div class="color-control"><input id="fg-color" type="color" value="#111827"><input id="fg-hex" value="111827" maxlength="6"></div></label><label>Background<div class="color-control"><input id="bg-color" type="color" value="#ffffff"><input id="bg-hex" value="FFFFFF" maxlength="6"></div></label></div>
+      <label>Error correction<select id="qr-ecc"><option value="L">Low - smaller code</option><option value="M" selected>Medium - recommended</option><option value="Q">Quartile - more durable</option><option value="H">High - maximum recovery</option></select></label>
+      <label>QR title or purpose<input id="qr-title" type="text" maxlength="80" placeholder="e.g. Guest WiFi or Restaurant Menu"><small>This optional label appears below the code in the preview and downloaded files.</small></label>
+      <label>File name<div class="file-name"><input id="file-name" value="agentb24-qr-code"><span>.png / .svg</span></div></label>
+      <div class="qr-actions"><button id="download-png" disabled>Download PNG</button><button id="download-svg" disabled>Download SVG</button></div>
+      <button id="copy-image" class="copy-image" disabled>Copy QR image</button>
+    </aside>
+  </div>
+
+  <section class="qr-content"><span class="qr-kicker">Simple and dependable</span><h2>Create the right QR code in three steps</h2><div class="qr-cards"><article><span>01</span><h3>Choose a purpose</h3><p>Select WiFi, link, contact, message or another supported format.</p></article><article><span>02</span><h3>Check every detail</h3><p>Passwords, addresses and phone numbers are encoded exactly as entered.</p></article><article><span>03</span><h3>Test and export</h3><p>Scan the preview, then download a crisp PNG or scalable SVG.</p></article></div></section>
+  <section class="qr-content qr-faq"><span class="qr-kicker">Questions, answered</span><h2>QR generator FAQ</h2><details><summary>Why did my old WiFi QR code fail?<span>+</span></summary><p>WiFi payloads use reserved separators. If a password contains a semicolon, colon, comma, quote or backslash, it must be escaped. The previous generator also wrapped credentials in a way some scanners interpreted literally. This version uses compatible WiFi escaping and preserves the password exactly.</p></details><details><summary>Which security option should I use?<span>+</span></summary><p>Choose WPA/WPA2/WPA3 for nearly every password-protected modern network. Choose WEP only for an old router configured for WEP, and Open only when no password is required.</p></details><details><summary>Are passwords sent to AgentB24?<span>+</span></summary><p>No. Your QR code and downloadable files are created locally in this browser.</p></details><details><summary>Do these QR codes expire?<span>+</span></summary><p>No. They contain the destination data directly and do not use a redirect service.</p></details></section>
+  <section class="qr-related"><div><span class="qr-kicker">Keep working</span><h2>Related developer tools</h2></div><div><a href="barcode-generator-scanner.html"><b>Barcode Tool</b><small>Generate and scan barcodes</small></a><a href="password-generator.html"><b>Password Generator</b><small>Create strong passwords</small></a><a href="base64-encoder.html"><b>Base64 Encoder</b><small>Encode text and data</small></a></div></section>
+</main>
+
+<footer><div class="footer-grid"><div class="footer-brand"><a href="../index.html" class="logo"><div class="logo-icon">AB</div>AgentB24</a><p>Free, practical browser tools for everyday work.</p></div><div class="footer-col"><h4>Developer Tools</h4><ul><li><a href="developer-tools.html">All Developer Tools</a></li><li><a href="json-formatter.html">JSON Formatter</a></li><li><a href="password-generator.html">Password Generator</a></li></ul></div><div class="footer-col"><h4>Company</h4><ul><li><a href="../about.html">About</a></li><li><a href="../privacy-policy.html">Privacy</a></li></ul></div></div><div class="footer-bottom"><span>&copy; 2026 AgentB24.</span><span>Made with care for productivity</span></div></footer>
+<script src="../assets/js/main.js"></script><script src="../assets/js/qr-generator-premium.js"></script><script src="../assets/js/tracker.js"></script>
+<script src="../assets/js/ads.js"></script>
+</body></html>

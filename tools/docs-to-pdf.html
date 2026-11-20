@@ -1,0 +1,1709 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <!-- =============================================
+       BASIC META TAGS
+  ============================================== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- =============================================
+       SEO META TAGS
+  ============================================== -->
+  <title>Free Docs to PDF Converter Online — Convert DOCX, TXT, Markdown & HTML to PDF | AgentB24</title>
+  <meta name="description"
+        content="Free online document to PDF converter. Convert DOCX, TXT, Markdown, and HTML files to PDF instantly in your browser. No sign-up, no uploads to any server. 100% private and free." />
+  <meta name="keywords"
+        content="docs to pdf, docx to pdf, word to pdf, txt to pdf, markdown to pdf, html to pdf, convert document to pdf, free pdf converter, online pdf converter, no upload pdf converter" />
+  <link rel="canonical" href="https://agentb24.com/tools/docs-to-pdf.html" />
+
+  <!-- =============================================
+       OPEN GRAPH
+  ============================================== -->
+  <!-- =============================================
+       TWITTER CARD
+  ============================================== -->
+  
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1T57RWSY42"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1T57RWSY42');
+  </script>
+
+  <!-- =============================================
+       STRUCTURED DATA — WebApplication Schema
+  ============================================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Docs to PDF Converter",
+    "url": "https://agentb24.com/tools/docs-to-pdf.html",
+    "description": "Free online document to PDF converter. Convert DOCX, TXT, Markdown and HTML files to PDF entirely in your browser.",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "AgentB24",
+      "url": "https://agentb24.com"
+    }
+  }
+  </script>
+
+  <!-- =============================================
+       FAQ SCHEMA
+  ============================================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What file types can I convert to PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This tool supports DOCX (Microsoft Word), TXT (plain text), Markdown (.md), and HTML files. All conversions happen entirely in your browser with no file uploads."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my document uploaded to a server?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. This tool is 100% browser-based. Your files never leave your device and are never uploaded to any server. All processing happens locally in your browser using JavaScript."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will my DOCX formatting be preserved?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Basic formatting such as headings, bold, italic, underline, lists, and tables are preserved. Complex layouts, embedded images, and advanced Word formatting may not render perfectly as this is a browser-based conversion without Microsoft Word."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What page sizes are supported?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can choose between A4, Letter (US), and A3 page sizes. Both portrait and landscape orientations are supported."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I convert multiple files at once?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Currently the tool converts one file at a time. Each file is converted to a single PDF document that you can download immediately."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the maximum file size supported?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Since processing happens in your browser, very large files may be slow or cause memory issues depending on your device. For best results, keep files under 10MB. Most standard documents are well within this limit."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- =============================================
+       BREADCRUMB SCHEMA
+  ============================================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://agentb24.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "PDF Tools",
+        "item": "https://agentb24.com/#pdf-tools"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Docs to PDF Converter",
+        "item": "https://agentb24.com/tools/docs-to-pdf.html"
+      }
+    ]
+  }
+  </script>
+  
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+
+  <!-- Shared Stylesheet -->
+  <link rel="stylesheet" href="../assets/css/style.css" />
+
+  <!-- =============================================
+       PAGE-SPECIFIC STYLES
+  ============================================== -->
+  <style>
+
+    /* ---- Format Type Tabs ---- */
+    .type-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+
+    .type-tab {
+      padding: 8px 18px;
+      border: 1.5px solid var(--border);
+      border-radius: 50px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-mid);
+      background: var(--white);
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .type-tab:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    .type-tab.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    /* ---- Drop Zone ---- */
+    .drop-zone {
+      border: 2px dashed var(--primary);
+      border-radius: var(--radius);
+      padding: 2.5rem 1rem;
+      text-align: center;
+      cursor: pointer;
+      background: var(--primary-light, #f8f9ff);
+      transition: background 0.2s;
+      position: relative;
+    }
+
+    .drop-zone:hover,
+    .drop-zone.dragging {
+      background: #ededff;
+    }
+
+    .drop-zone input[type="file"] {
+      display: none;
+    }
+
+    .drop-zone-icon {
+      font-size: 2.8rem;
+      display: block;
+      margin-bottom: 0.6rem;
+    }
+
+    .drop-zone-label {
+      font-size: 1rem;
+      color: var(--primary);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .drop-zone-sub {
+      color: var(--text-light);
+      font-size: 0.82rem;
+    }
+
+    /* ---- File Info Bar ---- */
+    .file-info-bar {
+      display: none;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: #f0fdf4;
+      border: 1px solid #86efac;
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      color: #166534;
+      margin-top: 10px;
+    }
+
+    .file-info-bar.visible {
+      display: flex;
+    }
+
+    .file-info-bar .file-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .file-info-bar .file-details {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .file-info-bar .file-name {
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .file-info-bar .file-meta {
+      font-size: 0.78rem;
+      color: #15803d;
+      margin-top: 2px;
+    }
+
+    .file-info-bar .btn-clear-file {
+      background: none;
+      border: none;
+      color: #ef4444;
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 4px;
+      flex-shrink: 0;
+      border-radius: 4px;
+    }
+
+    .file-info-bar .btn-clear-file:hover {
+      background: #fee2e2;
+    }
+
+    /* ---- Settings Panel ---- */
+    .settings-panel {
+      padding: 18px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 6px;
+    }
+
+    .settings-panel-title {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--text-mid);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .settings-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .setting-group label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-mid);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .setting-group select,
+    .setting-group input[type="number"],
+    .setting-group input[type="text"] {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      background: var(--white);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .setting-group select:focus,
+    .setting-group input:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    /* ---- Margin Controls ---- */
+    .margin-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 8px;
+    }
+
+    .margin-item label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-light);
+      display: block;
+      margin-bottom: 4px;
+      text-align: center;
+    }
+
+    .margin-item input {
+      width: 100%;
+      padding: 6px 8px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      text-align: center;
+      background: var(--white);
+    }
+
+    /* ---- Font Controls ---- */
+    .font-controls {
+      display: grid;
+      grid-template-columns: 1fr 80px;
+      gap: 10px;
+    }
+
+    /* ---- Preview Area ---- */
+    .preview-area {
+      display: none;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .preview-area.visible {
+      display: block;
+    }
+
+    .preview-header {
+      background: var(--bg);
+      padding: 10px 16px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-mid);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .preview-content {
+      padding: 24px 28px;
+      background: #fff;
+      max-height: 420px;
+      overflow-y: auto;
+      font-family: 'Georgia', serif;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: #1e293b;
+    }
+
+    .preview-content h1 { font-size: 1.6rem; margin-bottom: 0.6rem; color: #0f172a; }
+    .preview-content h2 { font-size: 1.3rem; margin-bottom: 0.5rem; color: #1e293b; }
+    .preview-content h3 { font-size: 1.1rem; margin-bottom: 0.4rem; color: #334155; }
+    .preview-content p  { margin-bottom: 0.8rem; }
+    .preview-content ul,
+    .preview-content ol { margin-bottom: 0.8rem; padding-left: 1.5rem; }
+    .preview-content li { margin-bottom: 0.3rem; }
+    .preview-content table { border-collapse: collapse; width: 100%; margin-bottom: 1rem; }
+    .preview-content th,
+    .preview-content td { border: 1px solid #e2e8f0; padding: 8px 12px; text-align: left; }
+    .preview-content th { background: #f8fafc; font-weight: 700; }
+    .preview-content code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 0.85em; }
+    .preview-content pre { background: #f1f5f9; padding: 1rem; border-radius: 8px; overflow-x: auto; margin-bottom: 1rem; }
+    .preview-content blockquote { border-left: 4px solid var(--primary); padding-left: 1rem; color: #64748b; margin: 1rem 0; }
+    .preview-content strong { font-weight: 700; }
+    .preview-content em     { font-style: italic; }
+
+    /* ---- Convert Button ---- */
+    .convert-btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      border-radius: var(--radius);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .convert-btn:hover:not(:disabled) {
+      opacity: 0.92;
+      transform: translateY(-2px);
+      box-shadow: 0 15px 30px -5px rgba(79,70,229,0.35);
+    }
+
+    .convert-btn:disabled {
+      background: #94a3b8;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    /* ---- Progress Bar ---- */
+    .progress-wrap {
+      display: none;
+      margin-top: 10px;
+    }
+
+    .progress-wrap.visible {
+      display: block;
+    }
+
+    .progress-bar-bg {
+      height: 8px;
+      background: var(--border);
+      border-radius: 50px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 50px;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .progress-label {
+      font-size: 0.78rem;
+      color: var(--text-mid);
+      margin-top: 5px;
+      text-align: center;
+    }
+
+    /* ---- Status Messages ---- */
+    .status-msg {
+      display: none;
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+
+    .status-msg.success {
+      display: block;
+      background: #dcfce7;
+      color: #166534;
+      border: 1px solid #86efac;
+    }
+
+    .status-msg.error {
+      display: block;
+      background: #fee2e2;
+      color: #991b1b;
+      border: 1px solid #fca5a5;
+    }
+
+    .status-msg.loading {
+      display: block;
+      background: #eff6ff;
+      color: #1e40af;
+      border: 1px solid #93c5fd;
+    }
+
+    /* ---- Supported Formats Grid ---- */
+    .formats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 14px;
+    }
+
+    .format-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .format-card:hover {
+      border-color: var(--primary);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    .format-card .fmt-icon {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .format-card .fmt-ext {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    .format-card h4 {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 5px;
+    }
+
+    .format-card p {
+      font-size: 0.78rem;
+      color: var(--text-mid);
+      line-height: 1.5;
+    }
+
+    .format-badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 50px;
+      margin-top: 6px;
+    }
+
+    .badge-full    { background: #dcfce7; color: #166534; }
+    .badge-partial { background: #fef9c3; color: #854d0e; }
+
+    /* ---- Textarea for plain text input ---- */
+    .text-input-area {
+      width: 100%;
+      min-height: 200px;
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 0.9rem;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+      resize: vertical;
+      background: var(--white);
+    }
+
+    .text-input-area:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .text-input-area.mono {
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+    }
+
+    /* ---- Input Mode Toggle ---- */
+    .input-mode-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .input-mode-btn {
+      padding: 6px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-mid);
+      background: var(--white);
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .input-mode-btn:hover  { border-color: var(--primary); color: var(--primary); }
+    .input-mode-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+    /* ---- Char Counter ---- */
+    .char-count-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--text-light);
+      margin-top: 5px;
+    }
+
+    /* ---- Hidden file content processing ---- */
+    #hidden-render-area {
+      position: fixed;
+      left: -9999px;
+      top: 0;
+      width: 794px; /* A4 width in px at 96dpi */
+      background: white;
+      padding: 40px;
+      font-family: 'Georgia', serif;
+      font-size: 13px;
+      line-height: 1.7;
+      color: #000;
+      z-index: -1;
+    }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 600px) {
+      .settings-grid  { grid-template-columns: 1fr; }
+      .margin-grid    { grid-template-columns: 1fr 1fr; }
+      .font-controls  { grid-template-columns: 1fr; }
+      .formats-grid   { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 420px) {
+      .type-tabs  { gap: 5px; }
+      .type-tab   { padding: 6px 12px; font-size: 0.78rem; }
+    }
+
+  </style>
+  <!-- AgentB24 SEO Pack -->
+  <meta name="author" content="AgentB24">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#4F46E5">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AgentB24">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://agentb24.com/tools/docs-to-pdf.html">
+  <meta property="og:title" content="Free Docs to PDF Converter Online — Convert DOCX, TXT, Markdown &amp; HTML to PDF | AgentB24">
+  <meta property="og:description" content="Free online document to PDF converter. Convert DOCX, TXT, Markdown, and HTML files to PDF instantly in your browser. No sign-up, no uploads to any server. 100% private and free.">
+  <meta property="og:image" content="https://agentb24.com/assets/img/og-image.png">
+  <meta property="og:image:width" content="1718">
+  <meta property="og:image:height" content="912">
+  <meta property="og:image:alt" content="AgentB24 â€” 80+ Free Online Tools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Docs to PDF Converter Online — Convert DOCX, TXT, Markdown &amp; HTML to PDF | AgentB24">
+  <meta name="twitter:description" content="Free online document to PDF converter. Convert DOCX, TXT, Markdown, and HTML files to PDF instantly in your browser. No sign-up, no uploads to any server. 100% private and free.">
+  <meta name="twitter:image" content="https://agentb24.com/assets/img/og-image.png">
+  <!-- /AgentB24 SEO Pack -->
+  <link rel="stylesheet" href="../assets/css/ads.css">
+</head>
+
+<body>
+
+  <!-- =============================================
+       HEADER
+  ============================================== -->
+  <header>
+    <div class="nav-container">
+      <a href="../index.html" class="logo">
+        <div class="logo-icon">🛠</div>
+        AgentB24
+      </a>
+
+      <nav class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="word-counter.html">Text Tools</a>
+        <a href="image-to-base64.html">Image Tools</a>
+        <a href="json-formatter.html">Dev Tools</a>
+        <a href="percentage-calculator.html">Calculators</a>
+        <a href="pdf-merger.html" class="active">PDF Tools</a>
+        <a href="../about.html">About</a>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <nav class="mobile-menu" id="mobile-menu">
+      <a href="../index.html">Home</a>
+      <a href="word-counter.html">Text Tools</a>
+      <a href="image-to-base64.html">Image Tools</a>
+      <a href="json-formatter.html">Dev Tools</a>
+      <a href="percentage-calculator.html">Calculators</a>
+      <a href="pdf-merger.html">PDF Tools</a>
+      <a href="../about.html">About</a>
+    </nav>
+  </header>
+
+  <!-- =============================================
+       TOP AD BANNER
+  ============================================== -->
+  <!-- <div class="ad-banner">
+    <div class="ad-banner-inner">
+      <div class="ad-placeholder">📢 Advertisement — Leaderboard (728×90)</div>
+    </div>
+  </div> -->
+
+  <!-- =============================================
+       TOOL PAGE HEADER
+  ============================================== -->
+  <div class="tool-page-header">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html">Home</a> &rsaquo;
+        <a href="../index.html#pdf-tools">PDF Tools</a> &rsaquo;
+        <span>Docs to PDF Converter</span>
+      </nav>
+
+      <h1>Free Docs to PDF Converter Online</h1>
+      <p>
+        Convert DOCX (Word), TXT, Markdown, and HTML files to PDF instantly —
+        right in your browser. No uploads, no sign-up, no watermarks.
+        Your files never leave your device.
+      </p>
+    </div>
+  </div>
+
+  <!-- =============================================
+       MAIN CONTENT
+  ============================================== -->
+  <main>
+    <div class="tool-body">
+
+      <!-- ==========================================
+           LEFT COLUMN
+      =========================================== -->
+      <div class="tool-main">
+
+        <!-- ---- THE TOOL BOX ---- -->
+        <div class="tool-box">
+
+          <!-- FORMAT TYPE TABS -->
+          <div class="type-tabs" role="tablist" aria-label="Document format">
+            <button class="type-tab active" onclick="setFormat('docx')" id="tab-docx">📄 DOCX</button>
+            <button class="type-tab"        onclick="setFormat('txt')"  id="tab-txt">📝 TXT</button>
+            <button class="type-tab"        onclick="setFormat('md')"   id="tab-md">⬇️ Markdown</button>
+            <button class="type-tab"        onclick="setFormat('html')" id="tab-html">🌐 HTML</button>
+          </div>
+
+          <!-- ---- FORMAT DESCRIPTIONS ---- -->
+          <div id="fmt-desc-docx" class="fmt-desc" style="margin-bottom:14px;">
+            <p style="font-size:0.85rem; color:var(--text-mid); background:var(--bg); padding:10px 14px; border-radius:var(--radius-sm); border:1px solid var(--border); line-height:1.6;">
+              📄 <strong>DOCX Support:</strong> Upload a <code>.docx</code> file. Basic formatting (headings, bold, italic, underline, lists, tables) is preserved. Complex layouts may vary.
+            </p>
+          </div>
+          <div id="fmt-desc-txt" class="fmt-desc" style="display:none; margin-bottom:14px;">
+            <p style="font-size:0.85rem; color:var(--text-mid); background:var(--bg); padding:10px 14px; border-radius:var(--radius-sm); border:1px solid var(--border); line-height:1.6;">
+              📝 <strong>TXT Support:</strong> Upload a <code>.txt</code> file or paste text directly. Converted to a clean, readable PDF with your chosen font and margins.
+            </p>
+          </div>
+          <div id="fmt-desc-md" class="fmt-desc" style="display:none; margin-bottom:14px;">
+            <p style="font-size:0.85rem; color:var(--text-mid); background:var(--bg); padding:10px 14px; border-radius:var(--radius-sm); border:1px solid var(--border); line-height:1.6;">
+              ⬇️ <strong>Markdown Support:</strong> Upload a <code>.md</code> file or paste Markdown. Headings, lists, code blocks, bold, italic, tables and blockquotes are all supported.
+            </p>
+          </div>
+          <div id="fmt-desc-html" class="fmt-desc" style="display:none; margin-bottom:14px;">
+            <p style="font-size:0.85rem; color:var(--text-mid); background:var(--bg); padding:10px 14px; border-radius:var(--radius-sm); border:1px solid var(--border); line-height:1.6;">
+              🌐 <strong>HTML Support:</strong> Upload an <code>.html</code> file or paste HTML markup. The HTML is rendered and converted to PDF. External images and CSS may not load.
+            </p>
+          </div>
+
+          <!-- ---- INPUT MODE TOGGLE (for text-based formats) ---- -->
+          <div class="input-mode-row" id="input-mode-row" style="display:none;">
+            <button class="input-mode-btn active" onclick="setInputMode('file')" id="mode-file">📁 Upload File</button>
+            <button class="input-mode-btn"        onclick="setInputMode('paste')" id="mode-paste">📋 Paste Content</button>
+          </div>
+
+          <!-- ---- FILE UPLOAD AREA ---- -->
+          <div id="file-upload-area">
+            <div class="drop-zone" id="drop-zone">
+              <input type="file" id="file-input" />
+              <span class="drop-zone-icon">📂</span>
+              <span class="drop-zone-label" id="drop-zone-label">Click to select a file or drag & drop here</span>
+              <span class="drop-zone-sub"   id="drop-zone-sub">Supports .docx files</span>
+            </div>
+
+            <!-- File loaded info -->
+            <div class="file-info-bar" id="file-info-bar">
+              <span class="file-icon" id="file-icon">📄</span>
+              <div class="file-details">
+                <div class="file-name" id="file-name">—</div>
+                <div class="file-meta" id="file-meta">—</div>
+              </div>
+              <button class="btn-clear-file" onclick="clearFile()" title="Remove file">✕</button>
+            </div>
+          </div>
+
+          <!-- ---- PASTE AREA (TXT / MD / HTML) ---- -->
+          <div id="paste-area" style="display:none;">
+            <div class="form-group" style="margin:0;">
+              <label id="paste-label" style="font-size:0.85rem; font-weight:600; color:var(--text-mid); margin-bottom:8px; display:block;">
+                📋 Paste your content below
+              </label>
+              <textarea class="text-input-area" id="paste-textarea"
+                        placeholder="Paste your content here..."
+                        oninput="onPasteInput()"></textarea>
+              <div class="char-count-row">
+                <span id="char-count-label">0 characters</span>
+                <span id="char-count-words">0 words</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ---- DOCUMENT PREVIEW ---- -->
+          <div class="preview-area" id="preview-area" style="margin-top:14px;">
+            <div class="preview-header">
+              <span>📄 Document Preview</span>
+              <span id="preview-page-count" style="font-size:0.75rem; color:var(--text-light);"></span>
+            </div>
+            <div class="preview-content" id="preview-content"></div>
+          </div>
+
+          <!-- ---- SETTINGS PANEL ---- -->
+          <div class="settings-panel" style="margin-top:14px;">
+            <p class="settings-panel-title">⚙️ PDF Settings</p>
+
+            <div class="settings-grid">
+              <div class="setting-group">
+                <label for="page-size">📐 Page Size</label>
+                <select id="page-size">
+                  <option value="a4" selected>A4 (210 × 297mm)</option>
+                  <option value="letter">Letter (216 × 279mm)</option>
+                  <option value="a3">A3 (297 × 420mm)</option>
+                  <option value="a5">A5 (148 × 210mm)</option>
+                  <option value="legal">Legal (216 × 356mm)</option>
+                </select>
+              </div>
+
+              <div class="setting-group">
+                <label for="orientation">🔄 Orientation</label>
+                <select id="orientation">
+                  <option value="portrait"  selected>Portrait</option>
+                  <option value="landscape">Landscape</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label style="font-size:0.82rem; font-weight:600; color:var(--text-mid); margin-bottom:8px; display:block;">
+                📏 Margins (mm)
+              </label>
+              <div class="margin-grid">
+                <div class="margin-item">
+                  <label>Top</label>
+                  <input type="number" id="margin-top"    value="20" min="0" max="80" />
+                </div>
+                <div class="margin-item">
+                  <label>Right</label>
+                  <input type="number" id="margin-right"  value="20" min="0" max="80" />
+                </div>
+                <div class="margin-item">
+                  <label>Bottom</label>
+                  <input type="number" id="margin-bottom" value="20" min="0" max="80" />
+                </div>
+                <div class="margin-item">
+                  <label>Left</label>
+                  <input type="number" id="margin-left"   value="20" min="0" max="80" />
+                </div>
+              </div>
+            </div>
+
+            <div class="settings-grid">
+              <div class="setting-group">
+                <label for="font-family">🔤 Font (TXT / MD / HTML)</label>
+                <select id="font-family">
+                  <option value="georgia"   selected>Georgia (Serif)</option>
+                  <option value="helvetica">Helvetica (Sans)</option>
+                  <option value="times">Times New Roman</option>
+                  <option value="courier">Courier (Mono)</option>
+                </select>
+              </div>
+
+              <div class="setting-group">
+                <label for="font-size-sel">📏 Font Size (pt)</label>
+                <select id="font-size-sel">
+                  <option value="10">10pt — Compact</option>
+                  <option value="11">11pt — Small</option>
+                  <option value="12" selected>12pt — Normal</option>
+                  <option value="13">13pt — Readable</option>
+                  <option value="14">14pt — Large</option>
+                  <option value="16">16pt — Extra Large</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="settings-grid">
+              <div class="setting-group">
+                <label for="line-height-sel">↕️ Line Spacing</label>
+                <select id="line-height-sel">
+                  <option value="1.2">Single (1.2)</option>
+                  <option value="1.5" selected>1.5 Lines</option>
+                  <option value="2.0">Double (2.0)</option>
+                </select>
+              </div>
+
+              <div class="setting-group">
+                <label for="filename-input">💾 Output Filename</label>
+                <input type="text" id="filename-input" placeholder="document" value="document" />
+              </div>
+            </div>
+
+            <!-- Extra Options -->
+            <div style="display:flex; flex-wrap:wrap; gap:12px;">
+              <label style="display:flex; align-items:center; gap:7px; font-size:0.84rem; font-weight:600; color:var(--text-mid); cursor:pointer;">
+                <input type="checkbox" id="opt-page-numbers" checked
+                       style="width:15px; height:15px; accent-color:var(--primary);" />
+                Add page numbers
+              </label>
+              <label style="display:flex; align-items:center; gap:7px; font-size:0.84rem; font-weight:600; color:var(--text-mid); cursor:pointer;">
+                <input type="checkbox" id="opt-header" checked
+                       style="width:15px; height:15px; accent-color:var(--primary);" />
+                Show filename in header
+              </label>
+            </div>
+          </div>
+
+          <!-- STATUS -->
+          <div class="status-msg" id="status-msg"></div>
+
+          <!-- PROGRESS -->
+          <div class="progress-wrap" id="progress-wrap">
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" id="progress-fill"></div>
+            </div>
+            <p class="progress-label" id="progress-label">Processing…</p>
+          </div>
+
+          <!-- CONVERT BUTTON -->
+          <button class="convert-btn" id="convert-btn" onclick="convertToPDF()" disabled>
+            📄 Convert to PDF & Download
+          </button>
+
+        </div>
+        <!-- END TOOL BOX -->
+
+
+        <!-- ---- SUPPORTED FORMATS ---- -->
+        <div class="tool-box">
+          <h2>📋 Supported Formats</h2>
+          <p style="font-size:0.88rem; color:var(--text-mid); margin-bottom:18px; line-height:1.7;">
+            Choose the tab above for your document type. Here's what each format supports:
+          </p>
+
+          <div class="formats-grid">
+
+            <div class="format-card">
+              <span class="fmt-icon">📄</span>
+              <div class="fmt-ext">.DOCX</div>
+              <h4>Microsoft Word</h4>
+              <p>Headings, paragraphs, bold, italic, underline, bullet lists, numbered lists, and basic tables.</p>
+              <span class="format-badge badge-partial">⚡ Basic Formatting</span>
+            </div>
+
+            <div class="format-card">
+              <span class="fmt-icon">📝</span>
+              <div class="fmt-ext">.TXT</div>
+              <h4>Plain Text</h4>
+              <p>Plain text files converted to a clean, well-formatted PDF with your chosen font, size, and line spacing.</p>
+              <span class="format-badge badge-full">✅ Full Support</span>
+            </div>
+
+            <div class="format-card">
+              <span class="fmt-icon">⬇️</span>
+              <div class="fmt-ext">.MD</div>
+              <h4>Markdown</h4>
+              <p>Headings, bold, italic, code blocks, blockquotes, ordered & unordered lists, and tables.</p>
+              <span class="format-badge badge-full">✅ Full Support</span>
+            </div>
+
+            <div class="format-card">
+              <span class="fmt-icon">🌐</span>
+              <div class="fmt-ext">.HTML</div>
+              <h4>HTML Document</h4>
+              <p>Full HTML markup rendered to PDF. Inline styles supported. External resources may not load.</p>
+              <span class="format-badge badge-partial">⚡ Inline Styles</span>
+            </div>
+
+          </div>
+        </div>
+
+
+        <!-- ---- AD — In-Content ---- -->
+        <!-- <div style="text-align:center;">
+          <div class="ad-placeholder" style="min-height:250px; border-radius:12px;">
+            📢 Advertisement — Rectangle (336×280)
+          </div>
+        </div> -->
+
+
+        <!-- ---- HOW TO USE ---- -->
+        <div class="how-to-section">
+          <h2>📖 How to Convert Docs to PDF</h2>
+          <div class="steps">
+
+            <div class="step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h4>Select Your Document Format</h4>
+                <p>Click the tab for your file type — DOCX for Word documents, TXT for plain text, MD for Markdown files, or HTML for web pages.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h4>Upload a File or Paste Content</h4>
+                <p>Drag and drop your file onto the upload area, click to browse, or (for TXT, Markdown, and HTML) paste your content directly into the text box.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h4>Configure PDF Settings</h4>
+                <p>Choose your page size (A4, Letter, etc.), orientation, margins, font, and font size. Optionally add page numbers and a filename header.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <h4>Convert & Download</h4>
+                <p>Click <strong>Convert to PDF & Download</strong>. Your PDF is generated instantly in the browser and downloaded automatically. No data is sent to any server.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+        <!-- ---- AD — Before FAQ ---- -->
+        <!-- <div style="text-align:center;">
+          <div class="ad-placeholder" style="min-height:90px; border-radius:12px;">
+            📢 Advertisement — Leaderboard (728×90)
+          </div>
+        </div> -->
+
+
+        <!-- ---- FAQ SECTION ---- -->
+        <div class="faq-section">
+          <h2>❓ Frequently Asked Questions</h2>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              What file types can I convert to PDF?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              This tool supports four document formats: <strong>DOCX</strong> (Microsoft Word), <strong>TXT</strong> (plain text), <strong>Markdown</strong> (.md), and <strong>HTML</strong>. All conversions happen entirely in your browser with no file uploads.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              Is my document uploaded to a server?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              <strong>No — your files never leave your device.</strong> This tool is 100% browser-based. All processing happens locally using JavaScript libraries running in your browser. Nothing is uploaded to any server at any point.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              Will my DOCX formatting be preserved?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              Basic formatting is preserved including headings, bold, italic, underline, bullet and numbered lists, and simple tables. Complex layouts, custom fonts embedded in Word, text boxes, and advanced Word features may not render perfectly — this is a limitation of browser-based conversion without Microsoft Word installed.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              What page sizes and orientations are supported?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              You can choose from <strong>A4, Letter (US), A3, A5, and Legal</strong> page sizes. Both <strong>Portrait</strong> and <strong>Landscape</strong> orientations are supported. You can also set custom top, right, bottom, and left margins.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              Can I convert multiple documents at once?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              Currently the tool converts one document at a time. Each document is converted to a single downloadable PDF. You can convert as many documents as you want — just repeat the process for each one.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              Does it work on mobile devices?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              Yes! The tool is fully responsive and works on smartphones and tablets. You can upload files from your device storage, cloud drive (Google Drive, iCloud, Dropbox), or paste content directly. The PDF is downloaded to your device immediately after conversion.
+            </div>
+          </div>
+
+        </div>
+        <!-- END FAQ -->
+
+      </div>
+      <!-- END LEFT COLUMN -->
+
+
+      <!-- ==========================================
+           RIGHT COLUMN — Sidebar
+      =========================================== -->
+      <aside class="tool-sidebar">
+
+        <!-- Sidebar Ad #1 -->
+        <!-- <div class="sidebar-ad">
+          <div class="ad-placeholder" style="min-height:250px;">
+            📢 Advertisement<br/>(300×250)
+          </div>
+        </div> -->
+
+        <!-- Related Tools -->
+        <div class="related-tools">
+          <h3>🔗 Related PDF Tools</h3>
+          <ul>
+            <li><a href="pdf-merger.html">📎 PDF Merger</a></li>
+            <li><a href="pdf-splitter.html">✂️ PDF Splitter</a></li>
+            <li><a href="pdf-to-text.html">📑 PDF to Text</a></li>
+            <li><a href="image-to-pdf.html">🖼️ Image to PDF</a></li>
+            <li><a href="pdf-editor.html">✏️ PDF Editor</a></li>
+            <li><a href="pdf-compressor.html">🗜️ PDF Compressor</a></li>
+            <li><a href="pdf-watermark.html">💧 PDF Watermark</a></li>
+            <li><a href="pdf-rotate.html">🔄 PDF Rotate</a></li>
+          </ul>
+        </div>
+
+        <!-- Sidebar Ad #2 -->
+        <!-- <div class="sidebar-ad">
+          <div class="ad-placeholder" style="min-height:250px;">
+            📢 Advertisement<br/>(300×250)
+          </div>
+        </div> -->
+
+        <!-- Conversion Tips -->
+        <div class="related-tools">
+          <h3>💡 Conversion Tips</h3>
+          <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:8px;">
+            <li style="font-size:0.82rem; color:var(--text-mid); padding:8px; background:var(--bg); border-radius:8px; border:1px solid var(--border);">
+              📄 Use <strong>A4</strong> for international documents
+            </li>
+            <li style="font-size:0.82rem; color:var(--text-mid); padding:8px; background:var(--bg); border-radius:8px; border:1px solid var(--border);">
+              🇺🇸 Use <strong>Letter</strong> for US documents
+            </li>
+            <li style="font-size:0.82rem; color:var(--text-mid); padding:8px; background:var(--bg); border-radius:8px; border:1px solid var(--border);">
+              🔤 <strong>12pt</strong> is the standard font size
+            </li>
+            <li style="font-size:0.82rem; color:var(--text-mid); padding:8px; background:var(--bg); border-radius:8px; border:1px solid var(--border);">
+              📏 Use <strong>20mm margins</strong> for clean output
+            </li>
+            <li style="font-size:0.82rem; color:var(--text-mid); padding:8px; background:var(--bg); border-radius:8px; border:1px solid var(--border);">
+              ⬇️ <strong>Markdown</strong> gives cleanest results
+            </li>
+            <li style="font-size:0.82rem; color:var(--text-mid); padding:8px; background:var(--bg); border-radius:8px; border:1px solid var(--border);">
+              🔒 Files are <strong>never uploaded</strong> anywhere
+            </li>
+          </ul>
+        </div>
+
+      </aside>
+
+    </div>
+  </main>
+
+
+  <!-- =============================================
+       FOOTER
+  ============================================== -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="../index.html" class="logo">
+          <div class="logo-icon">🛠</div>
+          AgentB24
+        </a>
+        <p>Free online tools for everyone. No sign-up required, no software to install.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>PDF Tools</h4>
+        <ul>
+          <li><a href="pdf-merger.html">PDF Merger</a></li>
+          <li><a href="pdf-splitter.html">PDF Splitter</a></li>
+          <li><a href="pdf-to-text.html">PDF to Text</a></li>
+          <li><a href="image-to-pdf.html">Image to PDF</a></li>
+          <li><a href="pdf-editor.html">PDF Editor</a></li>
+          <li><a href="docs-to-pdf.html">Docs to PDF</a></li>
+          <li><a href="pdf-compressor.html">PDF Compressor</a></li>
+          <li><a href="pdf-watermark.html">PDF Watermark</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Other Tools</h4>
+        <ul>
+          <li><a href="word-counter.html">Word Counter</a></li>
+          <li><a href="json-formatter.html">JSON Formatter</a></li>
+          <li><a href="password-generator.html">Password Generator</a></li>
+          <li><a href="qr-code-generator.html">QR Code Generator</a></li>
+          <li><a href="color-picker.html">Color Picker</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="../about.html">About Us</a></li>
+          <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="../about.html#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2025 AgentB24. All rights reserved.</span>
+      <span>Made with ❤️ for productivity</span>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <!-- Hidden render area for html2canvas -->
+  <div id="hidden-render-area"></div>
+
+  <!-- =============================================
+       LIBRARIES
+  ============================================== -->
+  <!-- Mammoth.js — DOCX → HTML -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+  <!-- Marked.js — Markdown → HTML -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@9.1.6/marked.min.js"></script>
+  <!-- jsPDF — HTML/Text → PDF -->
+  <script src="https://unpkg.com/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <!-- html2canvas — Render HTML to canvas for PDF embedding -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <script src="../assets/js/main.js"></script>
+
+  <!-- =============================================
+       DOCS TO PDF — TOOL LOGIC
+  ============================================== -->
+  <script>
+  'use strict';
+
+  // ── State ────────────────────────────────────────────────────────────────────
+  let currentFormat  = 'docx';
+  let currentInputMode = 'file';  // 'file' | 'paste'
+  let loadedFile     = null;
+  let loadedContent  = '';        // raw text / HTML string
+  let previewHTML    = '';        // HTML string shown in preview
+
+  // ── DOM helpers ──────────────────────────────────────────────────────────────
+  const $ = id => document.getElementById(id);
+
+  // ── Page size dimensions in mm [width, height] ───────────────────────────────
+  const PAGE_SIZES = {
+    a4:     [210, 297],
+    letter: [215.9, 279.4],
+    a3:     [297, 420],
+    a5:     [148, 210],
+    legal:  [215.9, 355.6]
+  };
+
+  // ── Format type icons & accept strings ───────────────────────────────────────
+  const FORMAT_META = {
+    docx: { icon: '📄', accept: '.docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document', sub: 'Supports .docx files (Microsoft Word)', label: 'Click to select a .docx file or drag & drop' },
+    txt:  { icon: '📝', accept: '.txt,text/plain',     sub: 'Supports .txt plain text files', label: 'Click to select a .txt file or drag & drop' },
+    md:   { icon: '⬇️', accept: '.md,.markdown,text/markdown', sub: 'Supports .md Markdown files', label: 'Click to select a .md file or drag & drop' },
+    html: { icon: '🌐', accept: '.html,.htm,text/html', sub: 'Supports .html files', label: 'Click to select a .html file or drag & drop' },
+  };
+
+  // ── setFormat ────────────────────────────────────────────────────────────────
+  function setFormat(fmt) {
+    currentFormat = fmt;
+
+    // Update tabs
+    document.querySelectorAll('.type-tab').forEach(t => t.classList.remove('active'));
+    $('tab-' + fmt).classList.add('active');
+
+    // Update format descriptions
+    document.querySelectorAll('.fmt-desc').forEach(d => d.style.display = 'none');
+    $('fmt-desc-' + fmt).style.display = 'block';
+
+    // Update drop zone
+    const meta = FORMAT_META[fmt];
+    $('file-input').accept = meta.accept;
+    $('drop-zone-label').textContent = meta.label;
+    $('drop-zone-sub').textContent   = meta.sub;
+
+    // Show/hide input mode toggle (not for DOCX — file only)
+    $('input-mode-row').style.display = fmt === 'docx' ? 'none' : 'flex';
+    if (fmt === 'docx') setInputMode('file');
+
+    // Update paste placeholder & monospace for HTML/MD
+    const ta = $('paste-textarea');
+    if (fmt === 'html') {
+      ta.placeholder = '<h1>Hello World</h1>\n<p>Your HTML content here...</p>';
+      ta.classList.add('mono');
+      $('paste-label').textContent = '🌐 Paste your HTML content';
+    } else if (fmt === 'md') {
+      ta.placeholder = '# Heading 1\n\n**Bold text** and *italic*.\n\n- Item 1\n- Item 2';
+      ta.classList.add('mono');
+      $('paste-label').textContent = '⬇️ Paste your Markdown content';
+    } else {
+      ta.placeholder = 'Paste your plain text here...';
+      ta.classList.remove('mono');
+      $('paste-label').textContent = '📋 Paste your text content';
+    }
+
+    clearAll();
+  }
+
+  // ── setInputMode ─────────────────────────────────────────────────────────────
+  function setInputMode(mode) {
+    currentInputMode = mode;
+    $('mode-file').classList.toggle('active', mode === 'file');
+    $('mode-paste').classList.toggle('active', mode === 'paste');
+    $('file-upload-area').style.display = mode === 'file'  ? 'block' : 'none';
+    $('paste-area').style.display       = mode === 'paste' ? 'block' : 'none';
+    clearAll();
+  }
+
+  // ── Drop Zone Events ─────────────────────────────────────────────────────────
+  const dropZone  = $('drop-zone');
+  const fileInput = $('file-input');
+
+  dropZone.addEventListener('click', () => fileInput.click());
+  dropZone.addEventListener('dragover',  e => { e.preventDefault(); dropZone.classList.add('dragging'); });
+  dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragging'));
+  dropZone.addEventListener('drop', e => {
+    e.preventDefault();
+    dropZone.classList.remove('dragging');
+    const f = e.dataTransfer.files[0];
+    if (f) handleFile(f);
+  });
+  fileInput.addEventListener('change', () => { if (fileInput.files[0]) handleFile(fileInput.files[0]); });
+
+  // ── Handle File ──────────────────────────────────────────────────────────────
+  async function handleFile(file) {
+    loadedFile = file;
+    loadedContent = '';
+    previewHTML   = '';
+    hideStatus();
+
+    const sizeMB  = (file.size / 1024 / 1024).toFixed(2);
+    const sizeKB  = (file.size / 1024).toFixed(1);
+    const sizeStr = file.size > 1024*1024 ? sizeMB + ' MB' : sizeKB + ' KB';
+
+    $('file-icon').textContent = FORMAT_META[currentFormat].icon;
+    $('file-name').textContent = file.name;
+    $('file-meta').textContent = `${sizeStr} · ${currentFormat.toUpperCase()} document`;
+    $('file-info-bar').classList.add('visible');
+
+    showStatus('loading', '⏳ Reading file…');
+
+    try {
+      if (currentFormat === 'docx') {
+        const ab = await file.arrayBuffer();
+        const result = await mammoth.convertToHtml({ arrayBuffer: ab });
+        previewHTML   = result.value;
+        loadedContent = result.value;
+        if (result.messages.length) {
+          console.warn('Mammoth warnings:', result.messages);
+        }
+      } else {
+        loadedContent = await file.text();
+        if (currentFormat === 'md') {
+          previewHTML = marked.parse(loadedContent);
+        } else if (currentFormat === 'html') {
+          // Extract body content only
+          const parser = new DOMParser();
+          const doc    = parser.parseFromString(loadedContent, 'text/html');
+          previewHTML  = doc.body ? doc.body.innerHTML : loadedContent;
+        } else {
+          // TXT — wrap in paragraphs
+          previewHTML = loadedContent
+            .split(/\n\n+/)
+            .map(p => `<p>${p.replace(/\n/g, '<br/>')}</p>`)
+            .join('');
+        }
+      }
+
+      showPreview(previewHTML);
+      $('convert-btn').disabled = false;
+      hideStatus();
+
+    } catch(err) {
+      showStatus('error', '❌ Failed to read file: ' + err.message);
+      $('convert-btn').disabled = true;
+    }
+  }
+
+  // ── Paste Input ──────────────────────────────────────────────────────────────
+  function onPasteInput() {
+    const val = $('paste-textarea').value;
+    const words = val.trim() ? val.trim().split(/\s+/).length : 0;
+    $('char-count-label').textContent = val.length + ' characters';
+    $('char-count-words').textContent = words + ' words';
+
+    loadedContent = val;
+
+    if (!val.trim()) {
+      $('preview-area').classList.remove('visible');
+      $('convert-btn').disabled = true;
+      return;
+    }
+
+    if (currentFormat === 'md') {
+      previewHTML = marked.parse(val);
+    } else if (currentFormat === 'html') {
+      const parser = new DOMParser();
+      const doc    = parser.parseFromString(val, 'text/html');
+      previewHTML  = doc.body ? doc.body.innerHTML : val;
+    } else {
+      previewHTML = val
+        .split(/\n\n+/)
+        .map(p => `<p>${p.replace(/\n/g,'<br/>')}</p>`)
+        .join('');
+    }
+
+    showPreview(previewHTML);
+    $('convert-btn').disabled = false;
+  }
+
+  // ── Show Preview ─────────────────────────────────────────────────────────────
+  function showPreview(html) {
+    $('preview-content').innerHTML = html;
+    $('preview-area').classList.add('visible');
+
+    // Rough page count estimate
+    const wordCount = ($('preview-content').textContent || '').trim().split(/\s+/).length;
+    const estPages  = Math.max(1, Math.ceil(wordCount / 300));
+    $('preview-page-count').textContent = `~${estPages} page${estPages > 1 ? 's' : ''} estimated`;
+  }
+
+  // ── Clear File ───────────────────────────────────────────────────────────────
+  function clearFile() {
+    loadedFile    = null;
+    loadedContent = '';
+    previewHTML   = '';
+    fileInput.value = '';
+    $('file-info-bar').classList.remove('visible');
+    $('preview-area').classList.remove('visible');
+    $('convert-btn').disabled = true;
+    hideStatus();
+  }
+
+  function clearAll() {
+    clearFile();
+    $('paste-textarea').value = '';
+    $('char-count-label').textContent = '0 characters';
+    $('char-count-words').textContent = '0 words';
+  }
+
+  // ── Convert to PDF ───────────────────────────────────────────────────────────
+  async function convertToPDF() {
+    if (!loadedContent && !previewHTML) {
+      showStatus('error', '❌ Please load a document or paste content first.');
+      return;
+    }
+
+    const content = previewHTML || loadedContent;
+    if (!content.trim()) {
+      showStatus('error', '❌ Document appears to be empty.');
+      return;
+    }
+
+    // Read settings
+    const pageSizeKey   = $('page-size').value;
+    const orientation   = $('orientation').value;
+    const marginTop     = parseInt($('margin-top').value)    || 20;
+    const marginRight   = parseInt($('margin-right').value)  || 20;
+    const marginBottom  = parseInt($('margin-bottom').value) || 20;
+    const marginLeft    = parseInt($('margin-left').value)   || 20;
+    const fontFamily    = $('font-family').value;
+    const fontSize      = parseInt($('font-size-sel').value) || 12;
+    const lineHeight    = parseFloat($('line-height-sel').value) || 1.5;
+    const pageNumbers   = $('opt-page-numbers').checked;
+    const showHeader    = $('opt-header').checked;
+    const filename      = ($('filename-input').value.trim() || 'document').replace(/[^a-zA-Z0-9_\-]/g, '_');
+
+    let [pgW, pgH] = PAGE_SIZES[pageSizeKey] || PAGE_SIZES.a4;
+    if (orientation === 'landscape') [pgW, pgH] = [pgH, pgW];
+
+    $('convert-btn').disabled = true;
+    showProgress(0, 'Preparing document…');
+
+    try {
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF({
+        orientation: orientation === 'landscape' ? 'landscape' : 'portrait',
+        unit: 'mm',
+        format: pageSizeKey === 'letter' ? [pgW, pgH] : pageSizeKey === 'legal' ? [pgW, pgH] : pageSizeKey
+      });
+
+      showProgress(20, 'Rendering content…');
+
+      // Build styled HTML for rendering
+      const fontCSSMap = {
+        georgia:   '"Georgia", "Times New Roman", serif',
+        helvetica: '"Helvetica Neue", "Helvetica", "Arial", sans-serif',
+        times:     '"Times New Roman", "Times", serif',
+        courier:   '"Courier New", "Courier", monospace',
+      };
+      const fontCSS = fontCSSMap[fontFamily] || fontCSSMap.georgia;
+
+      // Convert mm to px (96dpi: 1mm = 3.7795px)
+      const mmToPx   = 3.7795275591;
+      const pxW      = Math.round(pgW * mmToPx);
+      const pxMarL   = Math.round(marginLeft   * mmToPx);
+      const pxMarR   = Math.round(marginRight  * mmToPx);
+      const pxMarT   = Math.round(marginTop    * mmToPx);
+      const pxMarB   = Math.round(marginBottom * mmToPx);
+      const contentW = pxW - pxMarL - pxMarR;
+      const fontPx   = Math.round(fontSize * 1.33); // pt → px
+
+      const headerHTML = showHeader
+        ? `<div style="font-size:10px; color:#94a3b8; margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid #e2e8f0; font-family:${fontCSS};">
+             ${filename}.pdf
+           </div>`
+        : '';
+
+      const styledHTML = `
+        <div style="
+          width:${contentW}px;
+          font-family:${fontCSS};
+          font-size:${fontPx}px;
+          line-height:${lineHeight};
+          color:#000;
+          padding:${pxMarT}px ${pxMarR}px ${pxMarB}px ${pxMarL}px;
+          background:#fff;
+          box-sizing:border-box;
+        ">
+          ${headerHTML}
+          ${content}
+        </div>`;
+
+      // Inject into hidden render area
+      const renderArea = $('hidden-render-area');
+      renderArea.style.width = pxW + 'px';
+      renderArea.innerHTML   = styledHTML;
+
+      showProgress(40, 'Rendering to canvas…');
+
+      // Give browser time to render fonts & layout
+      await new Promise(r => setTimeout(r, 120));
+
+      const canvas = await html2canvas(renderArea, {
+        scale:           2,
+        useCORS:         true,
+        allowTaint:      true,
+        backgroundColor: '#ffffff',
+        logging:         false,
+        width:           pxW,
+        windowWidth:     pxW + 40
+      });
+
+      showProgress(70, 'Building PDF pages…');
+
+      // Slice canvas into pages
+      const imgData      = canvas.toDataURL('image/jpeg', 0.95);
+      const canvasWidthPx  = canvas.width;
+      const canvasHeightPx = canvas.height;
+
+      // PDF page height in canvas pixels
+      const pgHpx      = Math.round(pgH * mmToPx * 2); // *2 for scale:2
+      const totalPages = Math.ceil(canvasHeightPx / pgHpx);
+
+      for (let i = 0; i < totalPages; i++) {
+        if (i > 0) pdf.addPage(
+          pageSizeKey === 'letter' || pageSizeKey === 'legal' ? [pgW, pgH] : pageSizeKey,
+          orientation === 'landscape' ? 'landscape' : 'portrait'
+        );
+
+        // Slice this page from canvas
+        const sliceCanvas  = document.createElement('canvas');
+        sliceCanvas.width  = canvasWidthPx;
+        sliceCanvas.height = Math.min(pgHpx, canvasHeightPx - i * pgHpx);
+
+        const sliceCtx = sliceCanvas.getContext('2d');
+        sliceCtx.fillStyle = '#ffffff';
+        sliceCtx.fillRect(0, 0, sliceCanvas.width, sliceCanvas.height);
+        sliceCtx.drawImage(canvas, 0, -(i * pgHpx));
+
+        const sliceDataUrl = sliceCanvas.toDataURL('image/jpeg', 0.95);
+        pdf.addImage(sliceDataUrl, 'JPEG', 0, 0, pgW, pgH);
+
+        // Page number
+        if (pageNumbers) {
+          pdf.setFontSize(9);
+          pdf.setTextColor(150, 150, 150);
+          pdf.text(
+            `${i + 1} / ${totalPages}`,
+            pgW / 2, pgH - 6,
+            { align: 'center' }
+          );
+        }
+      }
+
+      showProgress(95, 'Saving PDF…');
+
+      // Clean up render area
+      renderArea.innerHTML = '';
+
+      pdf.save(filename + '.pdf');
+
+      showProgress(100, 'Done!');
+      setTimeout(() => hideProgress(), 800);
+      showStatus('success', `✅ PDF created successfully! ${totalPages} page${totalPages > 1 ? 's' : ''}. Download started.`);
+
+    } catch(err) {
+      console.error(err);
+      hideProgress();
+      showStatus('error', '❌ Conversion failed: ' + err.message + '. Try a simpler document or paste the content manually.');
+    } finally {
+      $('convert-btn').disabled = false;
+    }
+  }
+
+  // ── Progress helpers ─────────────────────────────────────────────────────────
+  function showProgress(pct, label) {
+    $('progress-wrap').classList.add('visible');
+    $('progress-fill').style.width = pct + '%';
+    $('progress-label').textContent = label;
+  }
+
+  function hideProgress() {
+    $('progress-wrap').classList.remove('visible');
+    $('progress-fill').style.width = '0%';
+  }
+
+  // ── Status helpers ───────────────────────────────────────────────────────────
+  function showStatus(type, msg) {
+    const el = $('status-msg');
+    el.className = 'status-msg ' + type;
+    el.textContent = msg;
+  }
+
+  function hideStatus() {
+    const el = $('status-msg');
+    el.className = 'status-msg';
+    el.textContent = '';
+  }
+
+  // ── Init ─────────────────────────────────────────────────────────────────────
+  setFormat('docx');
+  </script>
+
+  <script src="../assets/js/tracker.js"></script>
+<script src="../assets/js/ads.js"></script>
+</body>
+</html>

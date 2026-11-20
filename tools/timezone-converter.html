@@ -1,0 +1,341 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Free Time Zone Converter Online — Convert Time Between Cities | AgentB24</title>
+  <meta name="description" content="Free online time zone converter. Convert time between any two time zones worldwide. See current time in 100+ cities. Essential for remote work and international meetings." />
+  <meta name="keywords" content="time zone converter, world time, convert time zones, EST to GMT, UTC converter, international time converter, world clock, meeting time converter" />
+  <link rel="canonical" href="https://agentb24.com/tools/timezone-converter.html" />
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1T57RWSY42"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1T57RWSY42');</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Time Zone Converter","url":"https://agentb24.com/tools/timezone-converter.html","description":"Convert time between any two time zones worldwide. Supports 100+ cities and all standard IANA time zones.","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"AgentB24","url":"https://agentb24.com"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://agentb24.com/"},{"@type":"ListItem","position":2,"name":"Converters","item":"https://agentb24.com/tools/converters.html"},{"@type":"ListItem","position":3,"name":"Time Zone Converter","item":"https://agentb24.com/tools/timezone-converter.html"}]}</script>
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <style>
+    .tz-result-card { background:linear-gradient(135deg,#0ea5e9,#6366f1); border-radius:var(--radius); padding:1.75rem; color:#fff; margin-bottom:1.25rem; text-align:center; }
+    .tz-result-time { font-size:2.5rem; font-weight:900; letter-spacing:.02em; }
+    .tz-result-date { font-size:.95rem; opacity:.85; margin-top:.2rem; }
+    .tz-result-zone { font-size:.78rem; opacity:.72; margin-top:.25rem; text-transform:uppercase; letter-spacing:.06em; }
+    .tz-grid { display:grid; grid-template-columns:1fr auto 1fr; gap:1rem; align-items:start; margin-bottom:1rem; }
+    .tz-col label { font-size:.8rem; font-weight:700; color:var(--text-mid); text-transform:uppercase; letter-spacing:.04em; display:block; margin-bottom:.4rem; }
+    .tz-col select { width:100%; padding:.65rem; border:1.5px solid var(--border); border-radius:var(--radius-sm); font-size:.88rem; background:var(--white); }
+    .tz-col input[type="datetime-local"] { width:100%; padding:.65rem; border:1.5px solid var(--border); border-radius:var(--radius-sm); font-size:.88rem; background:var(--white); box-sizing:border-box; }
+    .tz-col input:focus, .tz-col select:focus { outline:none; border-color:var(--primary); }
+    .tz-swap { background:var(--primary); color:#fff; border:none; width:40px; height:40px; border-radius:50%; font-size:1.1rem; cursor:pointer; margin-top:1.6rem; }
+    .tz-swap:hover { background:#4f46e5; }
+    .world-clock { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:.65rem; margin-top:1rem; }
+    .wc-card { background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-sm); padding:.75rem; }
+    .wc-card .wc-city  { font-size:.78rem; font-weight:700; color:var(--text-mid); text-transform:uppercase; letter-spacing:.04em; }
+    .wc-card .wc-time  { font-size:1.15rem; font-weight:800; color:var(--text-dark); margin:.2rem 0 .1rem; }
+    .wc-card .wc-date  { font-size:.7rem; color:var(--text-light); }
+    .diff-badge { display:inline-block; background:#f0f0ff; color:var(--primary); border-radius:50px; padding:2px 10px; font-size:.75rem; font-weight:700; margin-top:.5rem; }
+    @media(max-width:500px){ .tz-grid{grid-template-columns:1fr;} .tz-swap{margin:0 auto;} }
+  </style>
+  <!-- AgentB24 SEO Pack -->
+  <meta name="author" content="AgentB24">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#4F46E5">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AgentB24">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://agentb24.com/tools/timezone-converter.html">
+  <meta property="og:title" content="Free Time Zone Converter Online — Convert Time Between Cities | AgentB24">
+  <meta property="og:description" content="Free online time zone converter. Convert time between any two time zones worldwide. See current time in 100+ cities. Essential for remote work and international meetings.">
+  <meta property="og:image" content="https://agentb24.com/assets/img/og-image.png">
+  <meta property="og:image:width" content="1718">
+  <meta property="og:image:height" content="912">
+  <meta property="og:image:alt" content="AgentB24 â€” 80+ Free Online Tools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Time Zone Converter Online — Convert Time Between Cities | AgentB24">
+  <meta name="twitter:description" content="Free online time zone converter. Convert time between any two time zones worldwide. See current time in 100+ cities. Essential for remote work and international meetings.">
+  <meta name="twitter:image" content="https://agentb24.com/assets/img/og-image.png">
+  <!-- /AgentB24 SEO Pack -->
+  <link rel="stylesheet" href="../assets/css/ads.css">
+</head>
+<body>
+<header>
+  <div class="nav-container">
+    <a href="../index.html" class="logo"><div class="logo-icon">🛠</div>AgentB24</a>
+    <nav class="nav-links">
+      <a href="../index.html">Home</a><a href="text-tools.html">Text Tools</a>
+      <a href="developer-tools.html">Dev Tools</a><a href="calculators.html">Calculators</a>
+      <a href="pdf-tools.html">PDF Tools</a><a href="converters.html" class="active">Converters</a>
+      <a href="../about.html">About</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+  <nav class="mobile-menu" id="mobile-menu">
+    <a href="../index.html">Home</a><a href="converters.html">Converters</a><a href="../about.html">About</a>
+  </nav>
+</header>
+
+<div class="tool-page-header">
+  <div class="container">
+    <nav class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="converters.html">Converters</a> &rsaquo; <span>Time Zone Converter</span></nav>
+    <h1>Free Time Zone Converter Online</h1>
+    <p>Convert time between any two time zones worldwide. See current time in major cities. Essential for remote teams and international meetings.</p>
+  </div>
+</div>
+<main>
+  <div class="tool-body">
+    <div class="tool-main">
+      <div class="tool-box">
+
+        <!-- Result Card -->
+        <div class="tz-result-card">
+          <div class="tz-result-time" id="tz-result-time">—</div>
+          <div class="tz-result-date" id="tz-result-date">Select a time and time zone</div>
+          <div class="tz-result-zone" id="tz-result-zone"></div>
+          <div class="diff-badge" id="diff-badge" style="display:none;"></div>
+        </div>
+
+        <!-- Conversion Inputs -->
+        <div class="tz-grid">
+          <div class="tz-col">
+            <label>From Time Zone</label>
+            <select id="from-tz" onchange="convertTZ()"></select>
+            <input type="datetime-local" id="from-dt" oninput="convertTZ()" style="margin-top:.5rem;"/>
+          </div>
+          <button class="tz-swap" onclick="swapTZ()">⇄</button>
+          <div class="tz-col">
+            <label>To Time Zone</label>
+            <select id="to-tz" onchange="convertTZ()"></select>
+            <div style="margin-top:.5rem;padding:.65rem;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:.88rem;color:var(--text-dark);font-weight:600;min-height:40px;" id="to-dt-display">—</div>
+          </div>
+        </div>
+
+        <!-- World Clock -->
+        <p style="font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--text-light);margin-bottom:.6rem;">🌍 World Clock — Current Time</p>
+        <div class="world-clock" id="world-clock"></div>
+
+      </div>
+
+      <div class="how-to-section">
+        <h2>📖 How to Convert Time Zones</h2>
+        <div class="steps">
+          <div class="step"><div class="step-number">1</div><div class="step-content"><h4>Select Time Zones</h4><p>Choose your source and target time zones from the dropdowns. Your local time zone is pre-selected automatically.</p></div></div>
+          <div class="step"><div class="step-number">2</div><div class="step-content"><h4>Pick a Date & Time</h4><p>Use the date/time picker to select the time you want to convert. The result updates instantly.</p></div></div>
+          <div class="step"><div class="step-number">3</div><div class="step-content"><h4>See the Converted Time</h4><p>The converted time and date appear at the top along with the hour difference between the two zones.</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="tool-sidebar">
+      <div class="related-tools">
+        <h3>🔗 Other Converters</h3>
+        <ul>
+          <li><a href="unit-converter.html">📏 Unit Converter</a></li>
+          <li><a href="currency-converter.html">💱 Currency Converter</a></li>
+          <li><a href="number-to-words.html">🔤 Number to Words</a></li>
+          <li><a href="roman-numeral-converter.html">🏛️ Roman Numerals</a></li>
+          <li><a href="binary-hex-converter.html">🔢 Binary / Hex</a></li>
+          <li><a href="csv-to-json.html">🔄 CSV ↔ JSON</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</main>
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand"><a href="../index.html" class="logo"><div class="logo-icon">🛠</div>AgentB24</a><p>Free online tools for everyone.</p></div>
+    <div class="footer-col"><h4>Converters</h4><ul><li><a href="unit-converter.html">Unit Converter</a></li><li><a href="currency-converter.html">Currency Converter</a></li><li><a href="timezone-converter.html">Time Zone Converter</a></li></ul></div>
+    <div class="footer-col"><h4>Company</h4><ul><li><a href="../about.html">About Us</a></li><li><a href="../privacy-policy.html">Privacy Policy</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 AgentB24. All rights reserved.</span><span>Made with ❤️ for productivity</span></div>
+</footer>
+<div class="toast" id="toast"></div>
+<script src="../assets/js/main.js"></script>
+<script>
+'use strict';
+
+const TIMEZONES = [
+  {tz:'UTC',              label:'UTC — Coordinated Universal Time'},
+  {tz:'America/New_York', label:'New York — Eastern Time (ET)'},
+  {tz:'America/Chicago',  label:'Chicago — Central Time (CT)'},
+  {tz:'America/Denver',   label:'Denver — Mountain Time (MT)'},
+  {tz:'America/Los_Angeles',label:'Los Angeles — Pacific Time (PT)'},
+  {tz:'America/Anchorage',label:'Anchorage — Alaska Time'},
+  {tz:'America/Halifax',  label:'Halifax — Atlantic Time (AT)'},
+  {tz:'America/Toronto',  label:'Toronto — Eastern Time (ET)'},
+  {tz:'America/Vancouver',label:'Vancouver — Pacific Time (PT)'},
+  {tz:'America/Sao_Paulo',label:'São Paulo — Brasilia Time (BRT)'},
+  {tz:'America/Buenos_Aires',label:'Buenos Aires — ART'},
+  {tz:'America/Mexico_City',label:'Mexico City — CST'},
+  {tz:'America/Bogota',   label:'Bogotá — COT'},
+  {tz:'America/Lima',     label:'Lima — PET'},
+  {tz:'America/Santiago', label:'Santiago — CLT'},
+  {tz:'Europe/London',    label:'London — GMT/BST'},
+  {tz:'Europe/Paris',     label:'Paris — Central European Time (CET)'},
+  {tz:'Europe/Berlin',    label:'Berlin — Central European Time (CET)'},
+  {tz:'Europe/Madrid',    label:'Madrid — CET'},
+  {tz:'Europe/Rome',      label:'Rome — CET'},
+  {tz:'Europe/Amsterdam', label:'Amsterdam — CET'},
+  {tz:'Europe/Moscow',    label:'Moscow — Moscow Time (MSK)'},
+  {tz:'Europe/Istanbul',  label:'Istanbul — TRT'},
+  {tz:'Europe/Stockholm', label:'Stockholm — CET'},
+  {tz:'Europe/Warsaw',    label:'Warsaw — CET'},
+  {tz:'Europe/Kyiv',      label:'Kyiv — EET'},
+  {tz:'Africa/Lagos',     label:'Lagos — West Africa Time (WAT)'},
+  {tz:'Africa/Nairobi',   label:'Nairobi — East Africa Time (EAT)'},
+  {tz:'Africa/Johannesburg',label:'Johannesburg — SAST'},
+  {tz:'Africa/Cairo',     label:'Cairo — Egypt Standard Time (EET)'},
+  {tz:'Africa/Accra',     label:'Accra — GMT'},
+  {tz:'Africa/Casablanca',label:'Casablanca — WET'},
+  {tz:'Asia/Dubai',       label:'Dubai — Gulf Standard Time (GST)'},
+  {tz:'Asia/Riyadh',      label:'Riyadh — Arabia Standard Time (AST)'},
+  {tz:'Asia/Kolkata',     label:'Mumbai / New Delhi — IST (UTC+5:30)'},
+  {tz:'Asia/Dhaka',       label:'Dhaka — Bangladesh Time (BST)'},
+  {tz:'Asia/Karachi',     label:'Karachi — Pakistan Time (PKT)'},
+  {tz:'Asia/Colombo',     label:'Colombo — Sri Lanka Time'},
+  {tz:'Asia/Kathmandu',   label:'Kathmandu — Nepal Time (NPT)'},
+  {tz:'Asia/Bangkok',     label:'Bangkok — Indochina Time (ICT)'},
+  {tz:'Asia/Singapore',   label:'Singapore — SGT'},
+  {tz:'Asia/Kuala_Lumpur',label:'Kuala Lumpur — MYT'},
+  {tz:'Asia/Jakarta',     label:'Jakarta — WIB'},
+  {tz:'Asia/Manila',      label:'Manila — Philippine Time (PHT)'},
+  {tz:'Asia/Hong_Kong',   label:'Hong Kong — HKT'},
+  {tz:'Asia/Shanghai',    label:'Shanghai / Beijing — CST (UTC+8)'},
+  {tz:'Asia/Tokyo',       label:'Tokyo — Japan Standard Time (JST)'},
+  {tz:'Asia/Seoul',       label:'Seoul — Korea Standard Time (KST)'},
+  {tz:'Asia/Taipei',      label:'Taipei — CST'},
+  {tz:'Asia/Tehran',      label:'Tehran — IRST (UTC+3:30)'},
+  {tz:'Asia/Tashkent',    label:'Tashkent — UZT'},
+  {tz:'Australia/Sydney', label:'Sydney — AEDT'},
+  {tz:'Australia/Melbourne',label:'Melbourne — AEDT'},
+  {tz:'Australia/Brisbane',label:'Brisbane — AEST'},
+  {tz:'Australia/Perth',  label:'Perth — AWST'},
+  {tz:'Pacific/Auckland', label:'Auckland — NZST'},
+  {tz:'Pacific/Honolulu', label:'Honolulu — Hawaii Time (HST)'},
+  {tz:'Pacific/Fiji',     label:'Fiji — FJT'},
+];
+
+const WORLD_CLOCK_CITIES = [
+  {tz:'America/New_York', city:'New York'},
+  {tz:'America/Los_Angeles',city:'Los Angeles'},
+  {tz:'America/Sao_Paulo',city:'São Paulo'},
+  {tz:'Europe/London',    city:'London'},
+  {tz:'Europe/Paris',     city:'Paris'},
+  {tz:'Europe/Moscow',    city:'Moscow'},
+  {tz:'Africa/Lagos',     city:'Lagos'},
+  {tz:'Africa/Nairobi',   city:'Nairobi'},
+  {tz:'Africa/Cairo',     city:'Cairo'},
+  {tz:'Asia/Dubai',       city:'Dubai'},
+  {tz:'Asia/Kolkata',     city:'Mumbai'},
+  {tz:'Asia/Singapore',   city:'Singapore'},
+  {tz:'Asia/Tokyo',       city:'Tokyo'},
+  {tz:'Asia/Shanghai',    city:'Shanghai'},
+  {tz:'Australia/Sydney', city:'Sydney'},
+];
+
+function populateSelects() {
+  const local = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  ['from-tz','to-tz'].forEach((id,i) => {
+    const sel = document.getElementById(id);
+    sel.innerHTML = TIMEZONES.map(t =>
+      `<option value="${t.tz}" ${t.tz === (i===0 ? (local||'UTC') : 'UTC') ? 'selected':''}>${t.label}</option>`
+    ).join('');
+  });
+  // Set default to-tz to New York if from is UTC
+  if (!local || local === 'UTC') document.getElementById('to-tz').value = 'America/New_York';
+}
+
+function setDefaultDateTime() {
+  const now = new Date();
+  const pad = n => String(n).padStart(2,'0');
+  const local = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}T${pad(now.getHours())}:${pad(now.getMinutes())}`;
+  document.getElementById('from-dt').value = local;
+}
+
+function convertTZ() {
+  const fromTZ  = document.getElementById('from-tz').value;
+  const toTZ    = document.getElementById('to-tz').value;
+  const dtInput = document.getElementById('from-dt').value;
+  if (!dtInput) { document.getElementById('tz-result-time').textContent = '—'; return; }
+
+  // Parse as local in fromTZ — we use Intl
+  try {
+    // Create a Date from the input treating it as local
+    const [datePart, timePart] = dtInput.split('T');
+    const [y,mo,d] = datePart.split('-').map(Number);
+    const [h,m]    = timePart.split(':').map(Number);
+
+    // Get the UTC offset of fromTZ at this moment
+    const fromDate = new Date(Date.UTC(y, mo-1, d, h, m));
+    const fromOffset = getTZOffset(fromDate, fromTZ);
+    const utcMs = fromDate.getTime() - fromOffset * 60000;
+    const utcDate = new Date(utcMs);
+
+    // Now format in toTZ
+    const toOffset = getTZOffset(utcDate, toTZ);
+    const toDate   = new Date(utcMs + toOffset * 60000);
+
+    const timeStr = toDate.toLocaleTimeString('en-US', { hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:true, timeZone:'UTC' });
+    const dateStr = toDate.toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric', timeZone:'UTC' });
+
+    document.getElementById('tz-result-time').textContent = timeStr;
+    document.getElementById('tz-result-date').textContent = dateStr;
+    document.getElementById('tz-result-zone').textContent = toTZ.replace('_',' ');
+    document.getElementById('to-dt-display').textContent  = `${timeStr} — ${dateStr}`;
+
+    // Hour diff
+    const diffH = ((toOffset - fromOffset) / 60).toFixed(1);
+    const diffBadge = document.getElementById('diff-badge');
+    diffBadge.style.display = 'inline-block';
+    diffBadge.textContent   = diffH >= 0 ? `+${diffH} hours from source` : `${diffH} hours from source`;
+
+  } catch(err) {
+    document.getElementById('tz-result-time').textContent = 'Error';
+    document.getElementById('tz-result-date').textContent = err.message;
+  }
+}
+
+function getTZOffset(date, tz) {
+  // Returns offset in minutes using Intl
+  try {
+    const utcStr = date.toLocaleString('en-CA', { timeZone: 'UTC', hour12:false, year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit' });
+    const tzStr  = date.toLocaleString('en-CA', { timeZone: tz,    hour12:false, year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit' });
+    const utcD = new Date(utcStr.replace(',',''));
+    const tzD  = new Date(tzStr.replace(',',''));
+    return (tzD - utcD) / 60000;
+  } catch(_) { return 0; }
+}
+
+function swapTZ() {
+  const f = document.getElementById('from-tz').value;
+  const t = document.getElementById('to-tz').value;
+  document.getElementById('from-tz').value = t;
+  document.getElementById('to-tz').value   = f;
+  convertTZ();
+}
+
+function renderWorldClock() {
+  const grid = document.getElementById('world-clock');
+  function update() {
+    const now = new Date();
+    grid.innerHTML = WORLD_CLOCK_CITIES.map(c => {
+      const timeStr = now.toLocaleTimeString('en-US', { hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:true, timeZone:c.tz });
+      const dateStr = now.toLocaleDateString('en-US', { month:'short', day:'numeric', timeZone:c.tz });
+      return `<div class="wc-card">
+        <div class="wc-city">${c.city}</div>
+        <div class="wc-time">${timeStr}</div>
+        <div class="wc-date">${dateStr}</div>
+      </div>`;
+    }).join('');
+  }
+  update();
+  setInterval(update, 1000);
+}
+
+populateSelects();
+setDefaultDateTime();
+convertTZ();
+renderWorldClock();
+</script>
+<script src="../assets/js/tracker.js"></script>
+<script src="../assets/js/ads.js"></script>
+</body>
+</html>

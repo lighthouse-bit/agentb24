@@ -1,0 +1,2341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard | AgentB24</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0F172A;
+      color: #E2E8F0;
+    }
+
+    /* ---- LOGIN ---- */
+    .login-screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+    }
+
+    .login-card {
+      background: #1E293B;
+      border: 1px solid #334155;
+      border-radius: 16px;
+      padding: 40px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    }
+
+    .login-logo    { font-size: 2.5rem; display: block; margin-bottom: 8px; }
+    .login-title   { font-size: 1.3rem; font-weight: 800; color: white; margin-bottom: 4px; }
+    .login-sub     { font-size: 0.85rem; color: #64748B; margin-bottom: 28px; }
+
+    .login-input {
+      width: 100%;
+      padding: 13px 16px;
+      background: #0F172A;
+      border: 1.5px solid #334155;
+      border-radius: 10px;
+      color: white;
+      font-size: 1rem;
+      font-family: 'Inter', sans-serif;
+      text-align: center;
+      letter-spacing: 3px;
+      font-weight: 700;
+      outline: none;
+      margin-bottom: 14px;
+      transition: all 0.2s;
+    }
+
+    .login-input:focus { border-color: #4F46E5; box-shadow: 0 0 0 3px rgba(79,70,229,0.2); }
+
+    .login-input.error {
+      border-color: #EF4444;
+      animation: shake 0.3s ease;
+    }
+
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      25%      { transform: translateX(-8px); }
+      75%      { transform: translateX(8px); }
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 13px;
+      background: linear-gradient(135deg, #4F46E5, #06B6D4);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.2s;
+    }
+
+    .login-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    .login-error {
+      color: #F87171;
+      font-size: 0.82rem;
+      margin-top: 12px;
+      display: none;
+    }
+
+    /* ---- DASHBOARD ---- */
+    .dashboard { display: none; min-height: 100vh; }
+
+    /* Top Bar */
+    .dash-topbar {
+      background: #1E293B;
+      border-bottom: 1px solid #334155;
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .dash-logo {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dash-logo-badge {
+      font-size: 0.72rem;
+      font-weight: 600;
+      background: #4F46E5;
+      color: white;
+      padding: 2px 8px;
+      border-radius: 50px;
+    }
+
+    .dash-topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .live-badge {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #34D399;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      background: #10B981;
+      border-radius: 50%;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    .top-btn {
+      padding: 6px 14px;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      background: none;
+      color: #94A3B8;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.15s;
+    }
+
+    .top-btn:hover        { border-color: #4F46E5; color: #818CF8; }
+    .top-btn.red          { color: #F87171; }
+    .top-btn.red:hover    { border-color: #EF4444; }
+
+    /* Layout */
+    .dash-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      min-height: calc(100vh - 60px);
+    }
+
+    /* Sidebar */
+    .dash-sidebar {
+      background: #1E293B;
+      border-right: 1px solid #334155;
+      padding: 16px 0;
+    }
+
+    .sidebar-label {
+      font-size: 0.65rem;
+      font-weight: 800;
+      color: #475569;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 10px 16px 4px;
+      display: block;
+    }
+
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 12px;
+      margin: 1px 8px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #64748B;
+      cursor: pointer;
+      border: none;
+      background: none;
+      width: calc(100% - 16px);
+      text-align: left;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.15s;
+    }
+
+    .sidebar-link:hover  { background: #0F172A; color: #94A3B8; }
+    .sidebar-link.active { background: rgba(79,70,229,0.2); color: #818CF8; }
+    .sidebar-link .si    { font-size: 1rem; width: 20px; text-align: center; }
+
+    .sidebar-storage {
+      margin: 16px 12px 0;
+      background: #0F172A;
+      border: 1px solid #334155;
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 0.75rem;
+      color: #475569;
+      line-height: 1.8;
+    }
+
+    .sidebar-storage strong { color: #818CF8; display: block; margin-bottom: 4px; }
+
+    /* Main Content */
+    .dash-content { padding: 24px; overflow-y: auto; background: #0F172A; }
+
+    /* Views */
+    .dash-view         { display: none; }
+    .dash-view.active  { display: block; }
+
+    /* View Header */
+    .view-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .view-title    { font-size: 1.3rem; font-weight: 800; color: white; }
+    .view-subtitle { font-size: 0.82rem; color: #64748B; margin-top: 3px; }
+
+    /* Date buttons */
+    .date-filter { display: flex; gap: 6px; flex-wrap: wrap; }
+
+    .date-btn {
+      padding: 6px 12px;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      background: none;
+      color: #64748B;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.15s;
+    }
+
+    .date-btn.active       { background: #4F46E5; border-color: #4F46E5; color: white; }
+    .date-btn:hover:not(.active) { border-color: #4F46E5; color: #818CF8; }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .stat-card {
+      background: #1E293B;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 18px;
+      transition: all 0.2s;
+    }
+
+    .stat-card:hover { border-color: #4F46E5; transform: translateY(-2px); }
+
+    .sc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+
+    .sc-label { font-size: 0.72rem; font-weight: 700; color: #64748B;
+                text-transform: uppercase; letter-spacing: 0.5px; }
+    .sc-icon  { font-size: 1.1rem; opacity: 0.6; }
+    .sc-value { font-size: 2rem; font-weight: 800; color: white; line-height: 1; }
+    .sc-sub   { font-size: 0.72rem; color: #475569; margin-top: 5px; }
+
+    /* Charts */
+    .charts-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .chart-card {
+      background: #1E293B;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 18px;
+    }
+
+    .chart-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .chart-title small { color: #64748B; font-weight: 400; font-size: 0.75rem; }
+
+    /* Data Grid */
+    .data-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .data-card {
+      background: #1E293B;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 18px;
+    }
+
+    .data-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 14px;
+    }
+
+    /* Data Row */
+    .data-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 7px 0;
+      border-bottom: 1px solid #1a2744;
+      gap: 8px;
+    }
+
+    .data-row:last-child { border-bottom: none; }
+
+    .dr-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .dr-rank  { font-size: 0.7rem; font-weight: 800; color: #475569; width: 18px; flex-shrink: 0; }
+    .dr-name  { font-size: 0.82rem; font-weight: 600; color: #CBD5E1;
+                white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    .dr-bar-wrap {
+      flex: 1;
+      height: 5px;
+      background: #334155;
+      border-radius: 50px;
+      overflow: hidden;
+      min-width: 50px;
+      max-width: 100px;
+    }
+
+    .dr-bar   { height: 100%; background: linear-gradient(90deg,#4F46E5,#06B6D4);
+                border-radius: 50px; }
+    .dr-val   { font-size: 0.8rem; font-weight: 800; color: #94A3B8;
+                flex-shrink: 0; min-width: 28px; text-align: right; }
+
+    /* Log Table */
+    .log-wrap { background: #1E293B; border: 1px solid #334155; border-radius: 12px; overflow: hidden; }
+
+    .log-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 18px;
+      border-bottom: 1px solid #334155;
+    }
+
+    .log-title  { font-size: 0.88rem; font-weight: 700; color: white; }
+
+    .log-search {
+      padding: 7px 12px;
+      background: #0F172A;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      color: #94A3B8;
+      font-size: 0.8rem;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      width: 200px;
+    }
+
+    .log-search:focus { border-color: #4F46E5; }
+
+    .log-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+
+    .log-table th {
+      background: #0F172A;
+      padding: 9px 13px;
+      text-align: left;
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: #475569;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+
+    .log-table td {
+      padding: 9px 13px;
+      border-bottom: 1px solid #1a2744;
+      color: #94A3B8;
+      white-space: nowrap;
+    }
+
+    .log-table tbody tr:hover { background: #0F172A; }
+    .log-table tbody tr:last-child td { border-bottom: none; }
+
+    /* Badges */
+    .dev-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 8px;
+      border-radius: 50px;
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+
+    .badge-desktop { background: #1E3A5F; color: #60A5FA; }
+    .badge-mobile  { background: #1A3327; color: #34D399; }
+    .badge-tablet  { background: #2D1B4E; color: #C084FC; }
+
+    .new-badge {
+      background: #1A3327;
+      color: #34D399;
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 1px 7px;
+      border-radius: 50px;
+    }
+
+    /* Country bubbles */
+    .country-map {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+      gap: 10px;
+    }
+
+    .country-bubble {
+      background: #0F172A;
+      border: 1px solid #334155;
+      border-radius: 10px;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.15s;
+    }
+
+    .country-bubble:hover { border-color: #4F46E5; }
+
+    .cb-flag          { font-size: 1.5rem; flex-shrink: 0; }
+    .cb-name          { font-size: 0.8rem; font-weight: 700; color: #CBD5E1; }
+    .cb-count         { font-size: 0.7rem; color: #64748B; margin-top: 1px; }
+
+    /* Realtime bar */
+    .rt-bar {
+      background: rgba(16,185,129,0.08);
+      border: 1px solid rgba(16,185,129,0.2);
+      border-radius: 8px;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      font-size: 0.82rem;
+      color: #34D399;
+      font-weight: 600;
+    }
+
+    /* Settings */
+    .settings-box {
+      background: #1E293B;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 22px;
+      margin-bottom: 16px;
+    }
+
+    .settings-box h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #334155;
+    }
+
+    .set-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #1a2744;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .set-row:last-child { border-bottom: none; }
+
+    .set-label h4 { font-size: 0.85rem; font-weight: 600; color: #CBD5E1; margin-bottom: 2px; }
+    .set-label p  { font-size: 0.75rem; color: #64748B; }
+
+    .set-input {
+      padding: 8px 12px;
+      background: #0F172A;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      color: #94A3B8;
+      font-size: 0.85rem;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      min-width: 190px;
+    }
+
+    .set-input:focus { border-color: #4F46E5; }
+
+    .set-btn {
+      padding: 8px 16px;
+      background: #4F46E5;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.15s;
+    }
+
+    .set-btn:hover       { background: #3730A3; }
+    .set-btn.danger      { background: #7F1D1D; color: #FCA5A1; }
+    .set-btn.danger:hover{ background: #991B1B; }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .empty-state .ei  { font-size: 2.5rem; opacity: 0.3; display: block; margin-bottom: 10px; }
+    .empty-state p    { font-size: 0.85rem; color: #475569; line-height: 1.6; }
+
+    /* GA info box */
+    .ga-info {
+      background: #0F172A;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 14px;
+      margin-top: 12px;
+      font-size: 0.78rem;
+      color: #64748B;
+      line-height: 1.8;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .stats-grid  { grid-template-columns: repeat(2, 1fr); }
+      .charts-grid { grid-template-columns: 1fr; }
+      .data-grid   { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .dash-layout { grid-template-columns: 1fr; }
+      .dash-sidebar { display: none; }
+      .stats-grid  { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 480px) {
+      .stats-grid  { grid-template-columns: 1fr; }
+      .dash-content{ padding: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- =============================================
+     LOGIN SCREEN
+============================================== -->
+<div class="login-screen" id="login-screen">
+  <div class="login-card">
+    <span class="login-logo">🛠️</span>
+    <div class="login-title">AgentB24 Admin</div>
+    <div class="login-sub">Enter your password to continue</div>
+
+    <input type="password"
+           id="login-input"
+           class="login-input"
+           placeholder="••••••••"
+           autocomplete="current-password"
+           aria-label="Admin password" />
+
+    <button class="login-btn" onclick="attemptLogin()">
+      🔐 Sign In
+    </button>
+
+    <div class="login-error" id="login-error">
+      ❌ Incorrect password. Please try again.
+    </div>
+  </div>
+</div>
+
+
+<!-- =============================================
+     DASHBOARD
+============================================== -->
+<div class="dashboard" id="dashboard">
+
+  <!-- TOP BAR -->
+  <div class="dash-topbar">
+    <div class="dash-logo">
+      🛠️ Pixlit
+      <span class="dash-logo-badge">Admin</span>
+    </div>
+    <div class="dash-topbar-right">
+      <div class="live-badge">
+        <div class="live-dot"></div> Live
+      </div>
+      <button class="top-btn" onclick="refreshDashboard()">🔄 Refresh</button>
+      <button class="top-btn" onclick="exportData()">📥 Export CSV</button>
+      <button class="top-btn red" onclick="logout()">🚪 Logout</button>
+    </div>
+  </div>
+
+  <!-- LAYOUT -->
+  <div class="dash-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="dash-sidebar">
+      <span class="sidebar-label">Analytics</span>
+      <button class="sidebar-link active" id="nav-overview" onclick="showView('overview')">
+        <span class="si">📊</span> Overview
+      </button>
+      <button class="sidebar-link" id="nav-visitors" onclick="showView('visitors')">
+        <span class="si">👥</span> Visitors
+      </button>
+      <button class="sidebar-link" id="nav-countries" onclick="showView('countries')">
+        <span class="si">🌍</span> Countries
+      </button>
+      <button class="sidebar-link" id="nav-pages" onclick="showView('pages')">
+        <span class="si">📄</span> Pages
+      </button>
+      <button class="sidebar-link" id="nav-traffic" onclick="showView('traffic')">
+        <span class="si">🔗</span> Traffic Sources
+      </button>
+      <button class="sidebar-link" id="nav-devices" onclick="showView('devices')">
+        <span class="si">📱</span> Devices
+      </button>
+
+      <span class="sidebar-label" style="margin-top:8px;">Data</span>
+      <button class="sidebar-link" id="nav-log" onclick="showView('log')">
+        <span class="si">📋</span> Visitor Log
+      </button>
+      <button class="sidebar-link" id="nav-realtime" onclick="showView('realtime')">
+        <span class="si">⚡</span> Real-time
+      </button>
+
+      <span class="sidebar-label" style="margin-top:8px;">Admin</span>
+      <button class="sidebar-link" id="nav-settings" onclick="showView('settings')">
+        <span class="si">⚙️</span> Settings
+      </button>
+
+      <div class="sidebar-storage">
+        <strong>📦 Storage</strong>
+        <span id="storage-used">Loading...</span>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="dash-content">
+
+      <!-- ======== OVERVIEW ======== -->
+      <div class="dash-view active" id="view-overview">
+        <div class="view-header">
+          <div>
+            <div class="view-title">📊 Overview</div>
+            <div class="view-subtitle" id="overview-subtitle">Loading...</div>
+          </div>
+          <div class="date-filter">
+            <button class="date-btn" onclick="setDateRange(1,this)">Today</button>
+            <button class="date-btn active" onclick="setDateRange(7,this)">7 Days</button>
+            <button class="date-btn" onclick="setDateRange(30,this)">30 Days</button>
+            <button class="date-btn" onclick="setDateRange(90,this)">90 Days</button>
+            <button class="date-btn" onclick="setDateRange(0,this)">All Time</button>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="sc-header">
+              <span class="sc-label">Pageviews</span>
+              <span class="sc-icon">👁️</span>
+            </div>
+            <div class="sc-value" id="stat-pageviews">0</div>
+            <div class="sc-sub">Total page loads</div>
+          </div>
+          <div class="stat-card">
+            <div class="sc-header">
+              <span class="sc-label">Unique Visitors</span>
+              <span class="sc-icon">👤</span>
+            </div>
+            <div class="sc-value" id="stat-visitors">0</div>
+            <div class="sc-sub">Distinct visitor IDs</div>
+          </div>
+          <div class="stat-card">
+            <div class="sc-header">
+              <span class="sc-label">Sessions</span>
+              <span class="sc-icon">🔄</span>
+            </div>
+            <div class="sc-value" id="stat-sessions">0</div>
+            <div class="sc-sub">30-min windows</div>
+          </div>
+          <div class="stat-card">
+            <div class="sc-header">
+              <span class="sc-label">Countries</span>
+              <span class="sc-icon">🌍</span>
+            </div>
+            <div class="sc-value" id="stat-countries">0</div>
+            <div class="sc-sub">Unique countries</div>
+          </div>
+        </div>
+
+        <div class="charts-grid">
+          <div class="chart-card">
+            <div class="chart-title">📈 Traffic Over Time <small>pageviews/day</small></div>
+            <canvas id="chart-traffic" height="110"></canvas>
+          </div>
+          <div class="chart-card">
+            <div class="chart-title">📱 Devices</div>
+            <canvas id="chart-devices" height="170"></canvas>
+          </div>
+        </div>
+
+        <div class="data-grid">
+          <div class="data-card">
+            <div class="data-title">🌍 Top Countries</div>
+            <div id="top-countries-list"></div>
+          </div>
+          <div class="data-card">
+            <div class="data-title">📄 Top Pages</div>
+            <div id="top-pages-list"></div>
+          </div>
+          <div class="data-card">
+            <div class="data-title">🌐 Browsers</div>
+            <div id="top-browsers-list"></div>
+          </div>
+          <div class="data-card">
+            <div class="data-title">🔗 Traffic Sources</div>
+            <div id="top-sources-list"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======== VISITORS ======== -->
+      <div class="dash-view" id="view-visitors">
+        <div class="view-header">
+          <div>
+            <div class="view-title">👥 Visitors</div>
+            <div class="view-subtitle">New vs returning visitor analysis</div>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="sc-header"><span class="sc-label">Total Visitors</span><span class="sc-icon">👤</span></div>
+            <div class="sc-value" id="v-total">0</div>
+            <div class="sc-sub">Unique IDs</div>
+          </div>
+          <div class="stat-card">
+            <div class="sc-header"><span class="sc-label">New Visitors</span><span class="sc-icon">🆕</span></div>
+            <div class="sc-value" id="v-new">0</div>
+            <div class="sc-sub" id="v-new-pct">—</div>
+          </div>
+          <div class="stat-card">
+            <div class="sc-header"><span class="sc-label">Returning</span><span class="sc-icon">🔄</span></div>
+            <div class="sc-value" id="v-returning">0</div>
+            <div class="sc-sub" id="v-ret-pct">—</div>
+          </div>
+          <div class="stat-card">
+            <div class="sc-header"><span class="sc-label">Avg Pages/Session</span><span class="sc-icon">📊</span></div>
+            <div class="sc-value" id="v-avg-pages">0</div>
+            <div class="sc-sub">Per session</div>
+          </div>
+        </div>
+
+        <div class="charts-grid">
+          <div class="chart-card">
+            <div class="chart-title">📊 New vs Returning</div>
+            <canvas id="chart-new-returning" height="140"></canvas>
+          </div>
+          <div class="chart-card">
+            <div class="chart-title">🕐 Visits by Hour</div>
+            <canvas id="chart-hours" height="170"></canvas>
+          </div>
+        </div>
+
+        <div class="data-grid">
+          <div class="data-card">
+            <div class="data-title">💻 Operating Systems</div>
+            <div id="os-list"></div>
+          </div>
+          <div class="data-card">
+            <div class="data-title">📐 Screen Resolutions</div>
+            <div id="screen-list"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======== COUNTRIES ======== -->
+      <div class="dash-view" id="view-countries">
+        <div class="view-header">
+          <div>
+            <div class="view-title">🌍 Countries &amp; Regions</div>
+            <div class="view-subtitle">Where your visitors are coming from</div>
+          </div>
+        </div>
+
+        <div class="data-card" style="margin-bottom:18px;">
+          <div class="data-title">🗺️ Visitor Map</div>
+          <div class="country-map" id="country-map"></div>
+        </div>
+
+        <div class="data-grid">
+          <div class="data-card">
+            <div class="data-title">🌍 Top Countries</div>
+            <div id="countries-full-list"></div>
+          </div>
+          <div class="data-card">
+            <div class="data-title">🏙️ Top Cities</div>
+            <div id="cities-list"></div>
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <div class="chart-title">🌍 Top 10 Countries</div>
+          <canvas id="chart-countries" height="100"></canvas>
+        </div>
+      </div>
+
+      <!-- ======== PAGES ======== -->
+      <div class="dash-view" id="view-pages">
+        <div class="view-header">
+          <div>
+            <div class="view-title">📄 Pages</div>
+            <div class="view-subtitle">Most visited pages on your site</div>
+          </div>
+        </div>
+
+        <div class="chart-card" style="margin-bottom:18px;">
+          <div class="chart-title">📄 Top Pages by Views</div>
+          <canvas id="chart-pages" height="110"></canvas>
+        </div>
+
+        <div class="log-wrap">
+          <div class="log-head">
+            <span class="log-title">All Pages</span>
+          </div>
+          <div style="overflow-x:auto;">
+            <table class="log-table">
+              <thead>
+                <tr>
+                  <th>#</th><th>Page</th><th>Views</th>
+                  <th>% of Total</th><th>Avg Time</th>
+                </tr>
+              </thead>
+              <tbody id="pages-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======== TRAFFIC ======== -->
+      <div class="dash-view" id="view-traffic">
+        <div class="view-header">
+          <div>
+            <div class="view-title">🔗 Traffic Sources</div>
+            <div class="view-subtitle">Where visitors are coming from</div>
+          </div>
+        </div>
+
+        <div class="charts-grid">
+          <div class="chart-card">
+            <div class="chart-title">🔗 Sources Breakdown</div>
+            <canvas id="chart-sources" height="140"></canvas>
+          </div>
+          <div class="chart-card">
+            <div class="chart-title">📊 Distribution</div>
+            <canvas id="chart-sources-pie" height="170"></canvas>
+          </div>
+        </div>
+
+        <div class="data-card" style="margin-top:16px;">
+          <div class="data-title">🔗 All Traffic Sources</div>
+          <div id="sources-full-list"></div>
+        </div>
+      </div>
+
+      <!-- ======== DEVICES ======== -->
+      <div class="dash-view" id="view-devices">
+        <div class="view-header">
+          <div>
+            <div class="view-title">📱 Devices</div>
+            <div class="view-subtitle">Devices, browsers and operating systems</div>
+          </div>
+        </div>
+
+        <div class="charts-grid">
+          <div class="chart-card">
+            <div class="chart-title">💻 Device Types</div>
+            <canvas id="chart-device-types" height="140"></canvas>
+          </div>
+          <div class="chart-card">
+            <div class="chart-title">🌐 Browsers</div>
+            <canvas id="chart-browsers" height="170"></canvas>
+          </div>
+        </div>
+
+        <div class="data-grid" style="margin-top:16px;">
+          <div class="data-card">
+            <div class="data-title">📱 Device Types</div>
+            <div id="devices-full-list"></div>
+          </div>
+          <div class="data-card">
+            <div class="data-title">🌐 Browsers</div>
+            <div id="browsers-full-list"></div>
+          </div>
+          <div class="data-card">
+            <div class="data-title">💻 Operating Systems</div>
+            <div id="os-full-list"></div>
+          </div>
+          <div class="data-card">
+            <div class="data-title">🌐 Languages</div>
+            <div id="lang-list"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======== LOG ======== -->
+      <div class="dash-view" id="view-log">
+        <div class="view-header">
+          <div>
+            <div class="view-title">📋 Visitor Log</div>
+            <div class="view-subtitle">Detailed record of every visit</div>
+          </div>
+        </div>
+
+        <div class="log-wrap">
+          <div class="log-head">
+            <span class="log-title" id="log-count">All Visits</span>
+            <input type="text"
+                   class="log-search"
+                   placeholder="🔍 Search..."
+                   oninput="filterLog(this.value)" />
+          </div>
+          <div style="overflow-x:auto; max-height:560px; overflow-y:auto;">
+            <table class="log-table">
+              <thead>
+                <tr>
+                  <th>Time</th><th>Country</th><th>City</th>
+                  <th>Page</th><th>Referrer</th><th>Device</th>
+                  <th>Browser</th><th>OS</th><th>Type</th>
+                </tr>
+              </thead>
+              <tbody id="log-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======== REALTIME ======== -->
+      <div class="dash-view" id="view-realtime">
+        <div class="view-header">
+          <div>
+            <div class="view-title">⚡ Real-time</div>
+            <div class="view-subtitle">Live activity on your site</div>
+          </div>
+        </div>
+
+        <div class="rt-bar">
+          <div class="live-dot"></div>
+          <span id="rt-active">Calculating...</span>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="sc-header"><span class="sc-label">Last 30 Mins</span><span class="sc-icon">⏱️</span></div>
+            <div class="sc-value" id="rt-30min">0</div>
+            <div class="sc-sub">pageviews</div>
+          </div>
+          <div class="stat-card">
+            <div class="sc-header"><span class="sc-label">Last Hour</span><span class="sc-icon">🕐</span></div>
+            <div class="sc-value" id="rt-1hr">0</div>
+            <div class="sc-sub">pageviews</div>
+          </div>
+          <div class="stat-card">
+            <div class="sc-header"><span class="sc-label">Today</span><span class="sc-icon">📅</span></div>
+            <div class="sc-value" id="rt-today">0</div>
+            <div class="sc-sub">pageviews</div>
+          </div>
+          <div class="stat-card">
+            <div class="sc-header"><span class="sc-label">Yesterday</span><span class="sc-icon">📆</span></div>
+            <div class="sc-value" id="rt-yesterday">0</div>
+            <div class="sc-sub">pageviews</div>
+          </div>
+        </div>
+
+        <div class="chart-card" style="margin-bottom:16px;">
+          <div class="chart-title">⚡ Last 30 Minutes <small>per minute</small></div>
+          <canvas id="chart-realtime" height="90"></canvas>
+        </div>
+
+        <div class="data-card">
+          <div class="data-title">🕐 Most Recent Visits</div>
+          <div id="recent-visits-list"></div>
+        </div>
+      </div>
+
+      <!-- ======== SETTINGS ======== -->
+      <div class="dash-view" id="view-settings">
+        <div class="view-header">
+          <div>
+            <div class="view-title">⚙️ Settings</div>
+            <div class="view-subtitle">Manage your admin dashboard</div>
+          </div>
+        </div>
+
+        <!-- Change Password -->
+        <div class="settings-box">
+          <h3>🔐 Change Admin Password</h3>
+
+          <div class="set-row">
+            <div class="set-label">
+              <h4>Current Password</h4>
+            </div>
+            <input type="password" class="set-input"
+                   id="set-current-pwd" placeholder="Current password" />
+          </div>
+          <div class="set-row">
+            <div class="set-label">
+              <h4>New Password</h4>
+              <p>Minimum 8 characters</p>
+            </div>
+            <input type="password" class="set-input"
+                   id="set-new-pwd" placeholder="New password" />
+          </div>
+          <div class="set-row">
+            <div class="set-label">
+              <h4>Confirm Password</h4>
+            </div>
+            <input type="password" class="set-input"
+                   id="set-confirm-pwd" placeholder="Confirm password" />
+          </div>
+
+          <div style="margin-top:14px; display:flex; align-items:center; gap:12px;">
+            <button class="set-btn" onclick="changePassword()">💾 Update Password</button>
+            <span id="pwd-msg" style="font-size:0.8rem;"></span>
+          </div>
+        </div>
+
+        <!-- Data Management -->
+        <div class="settings-box">
+          <h3>🗄️ Data Management</h3>
+
+          <div class="set-row">
+            <div class="set-label">
+              <h4>Total Records</h4>
+              <p>Visits stored in localStorage</p>
+            </div>
+            <span id="set-total-records"
+                  style="font-size:0.9rem;font-weight:700;color:#818CF8;">—</span>
+          </div>
+          <div class="set-row">
+            <div class="set-label">
+              <h4>Storage Used</h4>
+              <p>Approximate localStorage size</p>
+            </div>
+            <span id="set-storage-size"
+                  style="font-size:0.9rem;font-weight:700;color:#818CF8;">—</span>
+          </div>
+          <div class="set-row">
+            <div class="set-label">
+              <h4>Export as CSV</h4>
+              <p>Download all data as spreadsheet</p>
+            </div>
+            <button class="set-btn" onclick="exportData()">📥 Export CSV</button>
+          </div>
+          <div class="set-row">
+            <div class="set-label">
+              <h4>Export as JSON</h4>
+              <p>Download raw JSON data</p>
+            </div>
+            <button class="set-btn" onclick="exportJSON()">📥 Export JSON</button>
+          </div>
+          <div class="set-row">
+            <div class="set-label">
+              <h4>Clear All Data</h4>
+              <p style="color:#F87171;">⚠️ Permanently deletes everything</p>
+            </div>
+            <button class="set-btn danger" onclick="clearAllData()">🗑️ Clear All</button>
+          </div>
+        </div>
+
+        <!-- Google Analytics -->
+        <div class="settings-box">
+          <h3>📊 Google Analytics 4 Integration</h3>
+          <p style="font-size:0.82rem;color:#64748B;line-height:1.7;margin-bottom:14px;">
+            For professional analytics with richer data, connect Google Analytics 4.
+          </p>
+
+          <div class="set-row">
+            <div class="set-label">
+              <h4>GA4 Measurement ID</h4>
+              <p>Format: G-XXXXXXXXXX</p>
+            </div>
+            <div style="display:flex;gap:8px;">
+              <input type="text" class="set-input"
+                     id="ga-id" placeholder="G-XXXXXXXXXX"
+                     style="min-width:150px;" />
+              <button class="set-btn" onclick="saveGAId()">Save</button>
+            </div>
+          </div>
+
+          <div class="ga-info">
+            <strong style="color:#818CF8;display:block;margin-bottom:6px;">
+              How to set up GA4:
+            </strong>
+            1. Go to analytics.google.com<br/>
+            2. Create a new property for pixlit.com<br/>
+            3. Copy your Measurement ID (G-XXXXXXXXXX)<br/>
+            4. Enter it above and click Save<br/>
+            5. Add the GA4 script tag to all your HTML pages
+          </div>
+        </div>
+
+        <!-- About -->
+        <div class="settings-box">
+          <h3>ℹ️ About This Dashboard</h3>
+          <p style="font-size:0.82rem;color:#64748B;line-height:1.8;">
+            This dashboard uses <strong style="color:#94A3B8;">browser localStorage</strong>
+            to track visitor analytics locally. All data stays in the visitor's browser —
+            no server required.<br/><br/>
+            Geo data is powered by <strong style="color:#818CF8;">ipapi.co</strong>
+            (free: 1,000 requests/day).<br/>
+            For cross-device analytics, use Google Analytics 4.
+          </p>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+
+<!-- =============================================
+     JAVASCRIPT
+============================================== -->
+<script>
+
+  /* ============================================
+     CONSTANTS & STATE
+  ============================================ */
+  var STORAGE_KEY      = 'pixlit_analytics';
+  var ADMIN_PWD_KEY    = 'pixlit_admin_pwd';
+  var currentDateRange = 7;
+  var allVisits        = [];
+  var chartRegistry    = {};
+
+  var COLORS = [
+    '#4F46E5','#06B6D4','#10B981','#F59E0B',
+    '#EF4444','#8B5CF6','#EC4899','#F97316',
+    '#14B8A6','#6366F1'
+  ];
+
+  /* ============================================
+     PASSWORD
+  ============================================ */
+  function getAdminPassword() {
+    return sessionStorage.getItem('agentb24_admin_token') || '';
+  }
+
+  /* ============================================
+     LOGIN / LOGOUT
+  ============================================ */
+  function attemptLogin() {
+    var inputEl = document.getElementById('login-input');
+    var errorEl = document.getElementById('login-error');
+    function showLoginError(message) {
+      inputEl.classList.add('error');
+      errorEl.textContent = message;
+      errorEl.style.display = 'block';
+      setTimeout(function() { inputEl.classList.remove('error'); }, 600);
+    }
+    if (location.protocol === 'file:') {
+      showLoginError('Open the admin through your HTTPS website or a local PHP server. Opening the HTML file directly cannot run the login.');
+      return;
+    }
+    if (!inputEl.value) {
+      showLoginError('Enter your admin password to continue.');
+      return;
+    }
+    var submittedPassword = inputEl.value;
+    errorEl.style.display = 'none';
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'get-visits.php', true);
+    xhr.timeout = 20000;
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState !== 4) return;
+      if (xhr.status === 200) {
+        var response;
+        try { response = JSON.parse(xhr.responseText); } catch(e) {
+          showLoginError('The server returned an invalid response. Check that PHP is running and get-visits.php is working.');
+          return;
+        }
+        if (!response || !Array.isArray(response.visits)) {
+          showLoginError('The visitor data could not be read. Check data/visits.json on the server.');
+          return;
+        }
+        sessionStorage.setItem('agentb24_admin_token', submittedPassword);
+        sessionStorage.setItem('pixlit_admin_auth', 'true');
+        serverData = response;
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('dashboard').style.display = 'block';
+        initDashboard();
+      } else {
+        var body = {};
+        try { body = JSON.parse(xhr.responseText); } catch(e) {}
+        if (xhr.status === 403 && body.error === 'Forbidden') {
+          showLoginError('Incorrect password. The password configured in admin-config.php takes priority over the environment password.');
+        } else if (xhr.status === 403 || xhr.status === 401) {
+          showLoginError('The hosting server denied access to get-visits.php. Check hosting access rules and .htaccess.');
+        } else if (xhr.status === 503 && body.error === 'Admin password is not configured') {
+          showLoginError('The admin password is not configured on the server. Check admin-config.php beside get-visits.php.');
+        } else if (xhr.status === 404) {
+          showLoginError('get-visits.php is missing. Upload it beside admin.html.');
+        } else if (xhr.status === 0) {
+          showLoginError('Unable to reach the login server. Check your connection and open the admin through a PHP-enabled website.');
+        } else {
+          showLoginError('Login failed (HTTP ' + xhr.status + '). Check the hosting PHP error log.');
+        }
+      }
+    };
+    xhr.onerror = function() { showLoginError('Unable to reach the login server. Check your connection and try again.'); };
+    xhr.ontimeout = function() { showLoginError('The login server took too long to respond. Please try again.'); };
+    xhr.send(JSON.stringify({ password: submittedPassword }));
+  }
+
+  function logout() {
+    sessionStorage.removeItem('pixlit_admin_auth');
+    sessionStorage.removeItem('agentb24_admin_token');
+    location.reload();
+  }
+
+  /* ============================================
+     DATA HELPERS
+  ============================================ */
+  /* ============================================
+   DATA — Read from SERVER
+============================================ */
+var serverData = null;
+
+function getData() {
+  return serverData ||
+    { visits: [], pageviews: 0, sessions: 0 };
+}
+
+function loadDataFromServer(callback) {
+  /* Get the admin password to use as token */
+  var token = getAdminPassword();
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', 'get-visits.php', true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        try {
+          serverData = JSON.parse(xhr.responseText);
+        } catch(e) {
+          serverData = {
+            visits    : [],
+            pageviews : 0,
+            sessions  : 0
+          };
+        }
+      } else {
+        serverData = {
+          visits    : [],
+          pageviews : 0,
+          sessions  : 0
+        };
+      }
+      if (callback) callback(serverData);
+    }
+  };
+
+  xhr.onerror = function() {
+    serverData = { visits: [], pageviews: 0, sessions: 0 };
+    if (callback) callback(serverData);
+  };
+
+  xhr.send(JSON.stringify({ password: token }));
+}
+  function filterByDate(visits, days) {
+    if (!days) return visits;
+    var cutoff = new Date();
+    cutoff.setDate(cutoff.getDate() - days);
+    return visits.filter(function(v) {
+      return new Date(v.timestamp) >= cutoff;
+    });
+  }
+
+  function countBy(arr, key) {
+    var map = {};
+    arr.forEach(function(item) {
+      var val = item[key] || 'Unknown';
+      map[val] = (map[val] || 0) + 1;
+    });
+    return Object.entries(map).sort(function(a, b) { return b[1] - a[1]; });
+  }
+
+  function getUniqueVisitors(visits) {
+    var ids = {};
+    visits.forEach(function(v) { if (v.visitorId) ids[v.visitorId] = 1; });
+    return Object.keys(ids).length;
+  }
+
+  function formatTime(iso) {
+    if (!iso) return '—';
+    var d = new Date(iso);
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) +
+           ' ' + d.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+  }
+
+  function countryFlag(code) {
+    if (!code || code === 'XX' || code.length !== 2) {
+      return String.fromCodePoint(0x1F310);
+    }
+    try {
+      var c = code.toUpperCase();
+      return String.fromCodePoint(0x1F1E6 + c.charCodeAt(0) - 65) +
+             String.fromCodePoint(0x1F1E6 + c.charCodeAt(1) - 65);
+    } catch (e) {
+      return String.fromCodePoint(0x1F310);
+    }
+  }
+
+  function setText(id, val) {
+    var el = document.getElementById(id);
+    if (el) el.textContent = String(val);
+  }
+
+  function hasData(visits) {
+    return visits && visits.length > 0;
+  }
+
+  function showEmpty(id, msg) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.innerHTML =
+      '<div class="empty-state">' +
+        '<span class="ei">📭</span>' +
+        '<p>' + (msg || 'No data yet. Visit your website to start tracking!') + '</p>' +
+      '</div>';
+  }
+
+  /* ============================================
+     CHART HELPERS
+  ============================================ */
+  function destroyChart(id) {
+    if (chartRegistry[id]) {
+      chartRegistry[id].destroy();
+      delete chartRegistry[id];
+    }
+  }
+
+  function makeChart(id, config) {
+    destroyChart(id);
+    var el = document.getElementById(id);
+    if (!el) return null;
+    try {
+      chartRegistry[id] = new Chart(el.getContext('2d'), config);
+    } catch(e) {
+      console.warn('Chart error on', id, e);
+    }
+    return chartRegistry[id];
+  }
+
+  var DARK_GRID  = { color: '#1E293B' };
+  var DARK_XTICK = { color: '#475569', font: { size: 10 } };
+  var DARK_YTICK = { color: '#475569', font: { size: 10 } };
+
+  function mkLineChart(labels, values) {
+    return {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Pageviews',
+          data: values,
+          borderColor: '#4F46E5',
+          backgroundColor: 'rgba(79,70,229,0.12)',
+          borderWidth: 2,
+          fill: true,
+          tension: 0.4,
+          pointBackgroundColor: '#4F46E5',
+          pointRadius: 3
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { ticks: DARK_XTICK, grid: DARK_GRID },
+          y: { ticks: DARK_YTICK, grid: DARK_GRID, beginAtZero: true }
+        }
+      }
+    };
+  }
+
+  function mkBarChart(labels, values, colors, horizontal) {
+    var cfg = {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{ data: values, backgroundColor: colors || '#4F46E5', borderRadius: 5 }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { ticks: DARK_XTICK, grid: DARK_GRID, beginAtZero: true },
+          y: { ticks: DARK_YTICK, grid: DARK_GRID, beginAtZero: true }
+        }
+      }
+    };
+    if (horizontal) cfg.options.indexAxis = 'y';
+    return cfg;
+  }
+
+  function mkDonutChart(labels, values, colors) {
+    return {
+      type: 'doughnut',
+      data: {
+        labels: labels,
+        datasets: [{
+          data: values,
+          backgroundColor: colors || COLORS,
+          borderWidth: 2,
+          borderColor: '#1E293B'
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: { color: '#94A3B8', font: { size: 11 }, padding: 12 }
+          }
+        }
+      }
+    };
+  }
+
+  /* ============================================
+     DATA LIST RENDERER
+  ============================================ */
+  function renderList(id, data, labelFn, maxItems) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    var items  = data.slice(0, maxItems || 8);
+    var maxVal = items[0] ? items[0][1] : 1;
+
+    if (items.length === 0) {
+      showEmpty(id);
+      return;
+    }
+
+    var html = '';
+    items.forEach(function(item, i) {
+      var pct = Math.round((item[1] / maxVal) * 100);
+      html +=
+        '<div class="data-row">' +
+          '<div class="dr-left">' +
+            '<span class="dr-rank">' + (i + 1) + '</span>' +
+            '<span class="dr-name">' + labelFn(item) + '</span>' +
+          '</div>' +
+          '<div class="dr-bar-wrap">' +
+            '<div class="dr-bar" style="width:' + pct + '%"></div>' +
+          '</div>' +
+          '<span class="dr-val">' + item[1] + '</span>' +
+        '</div>';
+    });
+    el.innerHTML = html;
+  }
+
+  /* ============================================
+     VIEW SWITCHING
+  ============================================ */
+  function showView(name) {
+  document.querySelectorAll('.dash-view').forEach(function(v) {
+    v.classList.remove('active');
+  });
+  document.querySelectorAll('.sidebar-link').forEach(function(l) {
+    l.classList.remove('active');
+  });
+
+  var viewEl = document.getElementById('view-' + name);
+  var navEl  = document.getElementById('nav-'  + name);
+  if (viewEl) viewEl.classList.add('active');
+  if (navEl)  navEl.classList.add('active');
+
+  /* Load fresh data from server then render */
+  loadDataFromServer(function(data) {
+    var visits = filterByDate(data.visits || [], currentDateRange);
+
+    setTimeout(function() {
+      if (name === 'overview')  renderOverview(visits, data);
+      if (name === 'visitors')  renderVisitors(visits);
+      if (name === 'countries') renderCountries(visits);
+      if (name === 'pages')     renderPages(visits);
+      if (name === 'traffic')   renderTraffic(visits);
+      if (name === 'devices')   renderDevices(visits);
+      if (name === 'log')       renderLog(data.visits || []);
+      if (name === 'realtime')  renderRealtime(data.visits || []);
+      if (name === 'settings')  renderSettings(data);
+    }, 30);
+  });
+}
+
+  /* ============================================
+     DATE RANGE
+  ============================================ */
+  function setDateRange(days, el) {
+  currentDateRange = days;
+  document.querySelectorAll('.date-btn').forEach(function(b) {
+    b.classList.remove('active');
+  });
+  if (el) el.classList.add('active');
+
+  loadDataFromServer(function(data) {
+    var visits = filterByDate(data.visits || [], days);
+    renderOverview(visits, data);
+  });
+}
+
+  /* ============================================
+     OVERVIEW
+  ============================================ */
+  function renderOverview(visits, data) {
+    var label = currentDateRange === 0
+      ? 'All time'
+      : 'Last ' + currentDateRange + (currentDateRange === 1 ? ' day' : ' days');
+
+    setText('overview-subtitle', label + ' — ' + visits.length + ' pageviews');
+    setText('stat-pageviews', visits.length.toLocaleString());
+    setText('stat-visitors',  getUniqueVisitors(visits).toLocaleString());
+
+    var sess = visits.filter(function(v) { return v.isSession; }).length;
+    setText('stat-sessions', sess.toLocaleString());
+
+    var cMap = {};
+    visits.forEach(function(v) { if (v.country) cMap[v.country] = 1; });
+    setText('stat-countries', Object.keys(cMap).length);
+
+    updateStorageLabel(data);
+
+    if (!hasData(visits)) {
+      showEmpty('top-countries-list');
+      showEmpty('top-pages-list');
+      showEmpty('top-browsers-list');
+      showEmpty('top-sources-list');
+      return;
+    }
+
+    renderTrafficLineChart(visits);
+
+    var devData = countBy(visits, 'device');
+    makeChart('chart-devices', mkDonutChart(
+      devData.map(function(d) { return d[0]; }),
+      devData.map(function(d) { return d[1]; })
+    ));
+
+    renderList('top-countries-list', countBy(visits, 'country'), function(item) {
+      var f = findVisit(visits, 'country', item[0]);
+      return countryFlag(f ? f.countryCode : 'XX') + ' ' + item[0];
+    });
+    renderList('top-pages-list', countBy(visits, 'page'), function(item) {
+      return '📄 ' + item[0];
+    });
+    renderList('top-browsers-list', countBy(visits, 'browser'), function(item) {
+      return '🌐 ' + item[0];
+    });
+    renderList('top-sources-list', countBy(visits, 'referrer'), function(item) {
+      return '🔗 ' + item[0];
+    });
+  }
+
+  function findVisit(visits, key, val) {
+    for (var i = 0; i < visits.length; i++) {
+      if (visits[i][key] === val) return visits[i];
+    }
+    return null;
+  }
+
+  function renderTrafficLineChart(visits) {
+    var days   = Math.max(currentDateRange || 30, 7);
+    var labels = [];
+    var values = [];
+    for (var i = days - 1; i >= 0; i--) {
+      var d   = new Date();
+      d.setDate(d.getDate() - i);
+      var key = d.toISOString().split('T')[0];
+      labels.push(d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+      var cnt = 0;
+      visits.forEach(function(v) {
+        if (v.timestamp && v.timestamp.indexOf(key) === 0) cnt++;
+      });
+      values.push(cnt);
+    }
+    makeChart('chart-traffic', mkLineChart(labels, values));
+  }
+
+  function updateStorageLabel(data) {
+    var raw    = localStorage.getItem(STORAGE_KEY) || '';
+    var sizeKB = (raw.length * 2 / 1024).toFixed(1);
+    var cnt    = data.visits ? data.visits.length : 0;
+    setText('storage-used', cnt + ' records | ' + sizeKB + ' KB');
+  }
+
+  /* ============================================
+     VISITORS
+  ============================================ */
+  function renderVisitors(visits) {
+    var total    = getUniqueVisitors(visits);
+    var newV     = visits.filter(function(v) { return v.isNew; }).length;
+    var retV     = visits.filter(function(v) { return !v.isNew; }).length;
+    var sessions = visits.filter(function(v) { return v.isSession; }).length;
+    var newPct   = visits.length > 0
+      ? ((newV / visits.length) * 100).toFixed(1) : 0;
+
+    setText('v-total',     total.toLocaleString());
+    setText('v-new',       newV.toLocaleString());
+    setText('v-returning', retV.toLocaleString());
+    setText('v-avg-pages', sessions > 0 ? (visits.length / sessions).toFixed(1) : '0');
+    setText('v-new-pct',   newPct + '% of total');
+    setText('v-ret-pct',   (100 - parseFloat(newPct)).toFixed(1) + '% of total');
+
+    if (!hasData(visits)) {
+      showEmpty('os-list');
+      showEmpty('screen-list');
+      return;
+    }
+
+    makeChart('chart-new-returning', {
+      type: 'bar',
+      data: {
+        labels: ['New Visitors', 'Returning'],
+        datasets: [{
+          data: [newV, retV],
+          backgroundColor: ['#4F46E5', '#06B6D4'],
+          borderRadius: 8
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { ticks: DARK_XTICK, grid: DARK_GRID },
+          y: { ticks: DARK_YTICK, grid: DARK_GRID, beginAtZero: true }
+        }
+      }
+    });
+
+    var hrs = [];
+    var hLabels = [];
+    for (var h = 0; h < 24; h++) { hrs.push(0); hLabels.push(h + ':00'); }
+    visits.forEach(function(v) { hrs[new Date(v.timestamp).getHours()]++; });
+
+    makeChart('chart-hours', {
+      type: 'bar',
+      data: {
+        labels: hLabels,
+        datasets: [{
+          label: 'Visits',
+          data: hrs,
+          backgroundColor: 'rgba(79,70,229,0.7)',
+          borderRadius: 3
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { ticks: { color: '#475569', font: { size: 9 }, maxTicksLimit: 12 },
+               grid: DARK_GRID },
+          y: { ticks: DARK_YTICK, grid: DARK_GRID, beginAtZero: true }
+        }
+      }
+    });
+
+    renderList('os-list', countBy(visits, 'os'), function(item) {
+      return '💻 ' + item[0];
+    });
+
+    var screenMap = {};
+    visits.forEach(function(v) {
+      if (v.screenW && v.screenH) {
+        var k = v.screenW + 'x' + v.screenH;
+        screenMap[k] = (screenMap[k] || 0) + 1;
+      }
+    });
+    renderList('screen-list',
+      Object.entries(screenMap).sort(function(a,b) { return b[1]-a[1]; }),
+      function(item) { return '📐 ' + item[0]; }
+    );
+  }
+
+  /* ============================================
+     COUNTRIES
+  ============================================ */
+  function renderCountries(visits) {
+    var data  = countBy(visits, 'country');
+    var mapEl = document.getElementById('country-map');
+
+    if (!hasData(visits)) {
+      if (mapEl) showEmpty('country-map', 'No country data yet.');
+      showEmpty('countries-full-list');
+      showEmpty('cities-list');
+      return;
+    }
+
+    if (mapEl) {
+      var mHtml = '';
+      data.slice(0, 24).forEach(function(entry) {
+        var f    = findVisit(visits, 'country', entry[0]);
+        var flag = countryFlag(f ? f.countryCode : 'XX');
+        mHtml +=
+          '<div class="country-bubble">' +
+            '<span class="cb-flag">' + flag + '</span>' +
+            '<div>' +
+              '<div class="cb-name">' + entry[0] + '</div>' +
+              '<div class="cb-count">' + entry[1] +
+                (entry[1] === 1 ? ' visit' : ' visits') + '</div>' +
+            '</div>' +
+          '</div>';
+      });
+      mapEl.innerHTML = mHtml;
+    }
+
+    renderList('countries-full-list', data, function(item) {
+      var f = findVisit(visits, 'country', item[0]);
+      return countryFlag(f ? f.countryCode : 'XX') + ' ' + item[0];
+    }, 20);
+
+    renderList('cities-list', countBy(visits, 'city'), function(item) {
+      return '🏙️ ' + item[0];
+    }, 15);
+
+    var top10 = data.slice(0, 10);
+    makeChart('chart-countries', {
+      type: 'bar',
+      data: {
+        labels: top10.map(function(c) { return c[0]; }),
+        datasets: [{
+          label: 'Visits',
+          data: top10.map(function(c) { return c[1]; }),
+          backgroundColor: COLORS,
+          borderRadius: 5
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { ticks: { color: '#475569', font: { size: 10 } }, grid: DARK_GRID },
+          y: { ticks: DARK_YTICK, grid: DARK_GRID, beginAtZero: true }
+        }
+      }
+    });
+  }
+
+  /* ============================================
+     PAGES
+  ============================================ */
+  function renderPages(visits) {
+    var pagesData  = countBy(visits, 'page');
+    var totalViews = visits.length;
+
+    if (!hasData(visits)) {
+      showEmpty('pages-table-body', 'No page data yet.');
+      return;
+    }
+
+    var top8 = pagesData.slice(0, 8);
+    makeChart('chart-pages', {
+      type: 'bar',
+      data: {
+        labels: top8.map(function(p) { return p[0]; }),
+        datasets: [{
+          label: 'Views',
+          data: top8.map(function(p) { return p[1]; }),
+          backgroundColor: 'rgba(79,70,229,0.8)',
+          borderRadius: 5
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { ticks: DARK_XTICK, grid: DARK_GRID, beginAtZero: true },
+          y: { ticks: { color: '#94A3B8', font: { size: 11 } }, grid: DARK_GRID }
+        }
+      }
+    });
+
+    var tbody = document.getElementById('pages-table-body');
+    if (!tbody) return;
+    var html = '';
+    pagesData.forEach(function(page, i) {
+      var pts = visits.filter(function(v) {
+        return v.page === page[0] && v.timeOnPage;
+      });
+      var avg = pts.length > 0
+        ? pts.reduce(function(s,v) { return s + v.timeOnPage; }, 0) / pts.length
+        : 0;
+      var pct = totalViews > 0
+        ? ((page[1] / totalViews) * 100).toFixed(1) : 0;
+
+      html +=
+        '<tr>' +
+          '<td style="color:#475569">' + (i + 1) + '</td>' +
+          '<td style="color:#CBD5E1;font-weight:600">📄 ' + page[0] + '</td>' +
+          '<td style="color:#818CF8;font-weight:700">' + page[1] + '</td>' +
+          '<td style="color:#64748B">' + pct + '%</td>' +
+          '<td style="color:#64748B">' + (avg > 0 ? Math.round(avg) + 's' : '—') + '</td>' +
+        '</tr>';
+    });
+    tbody.innerHTML = html;
+  }
+
+  /* ============================================
+     TRAFFIC SOURCES
+  ============================================ */
+  function renderTraffic(visits) {
+    if (!hasData(visits)) {
+      showEmpty('sources-full-list');
+      return;
+    }
+
+    var src = countBy(visits, 'referrer');
+    var s8  = src.slice(0, 8);
+    var s6  = src.slice(0, 6);
+
+    makeChart('chart-sources', {
+      type: 'bar',
+      data: {
+        labels: s8.map(function(s) { return s[0]; }),
+        datasets: [{
+          data: s8.map(function(s) { return s[1]; }),
+          backgroundColor: COLORS,
+          borderRadius: 5
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { ticks: DARK_XTICK, grid: DARK_GRID, beginAtZero: true },
+          y: { ticks: { color: '#94A3B8', font: { size: 11 } }, grid: DARK_GRID }
+        }
+      }
+    });
+
+    makeChart('chart-sources-pie', mkDonutChart(
+      s6.map(function(s) { return s[0]; }),
+      s6.map(function(s) { return s[1]; }),
+      COLORS
+    ));
+
+    renderList('sources-full-list', src, function(item) {
+      return '🔗 ' + item[0];
+    }, 20);
+  }
+
+  /* ============================================
+     DEVICES
+  ============================================ */
+  function renderDevices(visits) {
+    if (!hasData(visits)) {
+      showEmpty('devices-full-list');
+      showEmpty('browsers-full-list');
+      showEmpty('os-full-list');
+      showEmpty('lang-list');
+      return;
+    }
+
+    var devData  = countBy(visits, 'device');
+    var bData    = countBy(visits, 'browser');
+
+    makeChart('chart-device-types', {
+      type: 'bar',
+      data: {
+        labels: devData.map(function(d) { return d[0]; }),
+        datasets: [{
+          data: devData.map(function(d) { return d[1]; }),
+          backgroundColor: COLORS,
+          borderRadius: 8,
+          barThickness: 60
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { ticks: { color: '#94A3B8' }, grid: DARK_GRID },
+          y: { ticks: DARK_YTICK, grid: DARK_GRID, beginAtZero: true }
+        }
+      }
+    });
+
+    makeChart('chart-browsers', mkDonutChart(
+      bData.slice(0,5).map(function(b) { return b[0]; }),
+      bData.slice(0,5).map(function(b) { return b[1]; }),
+      COLORS
+    ));
+
+    var icons = { Desktop: '💻', Mobile: '📱', Tablet: '📟' };
+    renderList('devices-full-list', devData, function(item) {
+      return (icons[item[0]] || '🖥️') + ' ' + item[0];
+    });
+    renderList('browsers-full-list', bData, function(item) {
+      return '🌐 ' + item[0];
+    });
+    renderList('os-full-list', countBy(visits, 'os'), function(item) {
+      return '💻 ' + item[0];
+    });
+
+    var langMap = {};
+    visits.forEach(function(v) {
+      var lang = ((v.language || 'unknown').split('-')[0]).toUpperCase();
+      langMap[lang] = (langMap[lang] || 0) + 1;
+    });
+    renderList('lang-list',
+      Object.entries(langMap).sort(function(a,b) { return b[1]-a[1]; }),
+      function(item) { return '🌐 ' + item[0]; }
+    );
+  }
+
+  /* ============================================
+     VISITOR LOG
+  ============================================ */
+  function renderLog(visits) {
+    allVisits = visits.slice().reverse();
+    setText('log-count', 'All Visits (' + allVisits.length.toLocaleString() + ')');
+    renderLogTable(allVisits);
+  }
+
+  function renderLogTable(visits) {
+    var tbody = document.getElementById('log-table-body');
+    if (!tbody) return;
+
+    if (!visits || visits.length === 0) {
+      tbody.innerHTML =
+        '<tr><td colspan="9" style="text-align:center;padding:40px;color:#475569">' +
+        '📭 No visits recorded yet.<br>' +
+        '<span style="font-size:0.78rem;color:#334155;">' +
+        'Make sure tracker.js is added to all your pages.</span>' +
+        '</td></tr>';
+      return;
+    }
+
+    var html = '';
+    visits.slice(0, 200).forEach(function(v) {
+      var dc = 'badge-desktop', di = '💻';
+      if (v.device === 'Mobile') { dc = 'badge-mobile'; di = '📱'; }
+      if (v.device === 'Tablet') { dc = 'badge-tablet'; di = '📟'; }
+
+      var badge = v.isNew
+        ? '<span class="new-badge">New</span>'
+        : '<span style="color:#475569;font-size:0.72rem">Returning</span>';
+
+      html +=
+        '<tr>' +
+          '<td style="color:#64748B;font-size:0.75rem">' + formatTime(v.timestamp) + '</td>' +
+          '<td>' +
+            '<span style="display:flex;align-items:center;gap:5px">' +
+              '<span>' + countryFlag(v.countryCode) + '</span>' +
+              '<span style="color:#CBD5E1">' + (v.country || '—') + '</span>' +
+            '</span>' +
+          '</td>' +
+          '<td style="color:#64748B">' + (v.city     || '—') + '</td>' +
+          '<td style="color:#94A3B8;font-weight:600">' + (v.page  || '—') + '</td>' +
+          '<td style="color:#64748B">' + (v.referrer || 'Direct') + '</td>' +
+          '<td><span class="dev-badge ' + dc + '">' + di + ' ' + (v.device || '—') + '</span></td>' +
+          '<td style="color:#64748B">' + (v.browser || '—') + '</td>' +
+          '<td style="color:#64748B">' + (v.os      || '—') + '</td>' +
+          '<td>' + badge + '</td>' +
+        '</tr>';
+    });
+    tbody.innerHTML = html;
+  }
+
+  function filterLog(query) {
+    var q = (query || '').toLowerCase();
+    var filtered = allVisits.filter(function(v) {
+      return (v.country  || '').toLowerCase().indexOf(q) > -1 ||
+             (v.city     || '').toLowerCase().indexOf(q) > -1 ||
+             (v.page     || '').toLowerCase().indexOf(q) > -1 ||
+             (v.browser  || '').toLowerCase().indexOf(q) > -1 ||
+             (v.referrer || '').toLowerCase().indexOf(q) > -1 ||
+             (v.device   || '').toLowerCase().indexOf(q) > -1;
+    });
+    setText('log-count', 'Results: ' + filtered.length);
+    renderLogTable(filtered);
+  }
+
+  /* ============================================
+     REAL-TIME
+  ============================================ */
+  function renderRealtime(visits) {
+    var now = Date.now();
+
+    function inMs(v, ms) {
+      return (now - new Date(v.timestamp).getTime()) < ms;
+    }
+
+    var m30       = visits.filter(function(v) { return inMs(v, 1800000); });
+    var hr1       = visits.filter(function(v) { return inMs(v, 3600000); });
+    var todayStr  = new Date().toDateString();
+    var yest      = new Date();
+    yest.setDate(yest.getDate() - 1);
+
+    var today = visits.filter(function(v) {
+      return new Date(v.timestamp).toDateString() === todayStr;
+    });
+    var yesterday = visits.filter(function(v) {
+      return new Date(v.timestamp).toDateString() === yest.toDateString();
+    });
+
+    setText('rt-30min',     m30.length);
+    setText('rt-1hr',       hr1.length);
+    setText('rt-today',     today.length);
+    setText('rt-yesterday', yesterday.length);
+
+    var activeMap = {};
+    visits.forEach(function(v) {
+      if (inMs(v, 300000)) activeMap[v.visitorId || 'x'] = 1;
+    });
+    var active = Object.keys(activeMap).length;
+    setText('rt-active', active + ' active visitor' +
+      (active !== 1 ? 's' : '') + ' in the last 5 minutes');
+
+    var minC = [];
+    var minL = [];
+    for (var i = 0; i < 30; i++) minC.push(0);
+    for (var j = 29; j >= 0; j--) {
+      minL.push(new Date(now - j * 60000).getMinutes() + 'm');
+    }
+    visits.forEach(function(v) {
+      var diff = Math.floor((now - new Date(v.timestamp).getTime()) / 60000);
+      if (diff >= 0 && diff < 30) minC[29 - diff]++;
+    });
+
+    makeChart('chart-realtime', {
+      type: 'bar',
+      data: {
+        labels: minL,
+        datasets: [{
+          label: 'Pageviews',
+          data: minC,
+          backgroundColor: 'rgba(79,70,229,0.7)',
+          borderRadius: 3
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { ticks: { color: '#475569', font: { size: 9 }, maxTicksLimit: 10 },
+               grid: DARK_GRID },
+          y: { ticks: { color: '#475569', stepSize: 1 },
+               grid: DARK_GRID, beginAtZero: true }
+        }
+      }
+    });
+
+    var recEl  = document.getElementById('recent-visits-list');
+    var recent = visits.slice().reverse().slice(0, 10);
+
+    if (!recEl) return;
+
+    if (recent.length === 0) {
+      recEl.innerHTML =
+        '<div style="text-align:center;padding:30px;color:#475569;font-size:0.85rem">' +
+        'No visits recorded yet.</div>';
+      return;
+    }
+
+    var rHtml = '';
+    recent.forEach(function(v) {
+      rHtml +=
+        '<div class="data-row">' +
+          '<div class="dr-left" style="gap:12px">' +
+            '<span style="font-size:1.1rem">' + countryFlag(v.countryCode) + '</span>' +
+            '<div>' +
+              '<div style="font-size:0.82rem;font-weight:600;color:#CBD5E1">' +
+                (v.country || 'Unknown') + ' — ' + (v.page || '—') +
+              '</div>' +
+              '<div style="font-size:0.72rem;color:#475569">' +
+                (v.browser || '') + ' · ' +
+                (v.device  || '') + ' · ' +
+                (v.referrer || 'Direct') +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+          '<span style="font-size:0.72rem;color:#475569;flex-shrink:0">' +
+            formatTime(v.timestamp) +
+          '</span>' +
+        '</div>';
+    });
+    recEl.innerHTML = rHtml;
+  }
+
+  /* ============================================
+     SETTINGS
+  ============================================ */
+  function renderSettings(data) {
+    var cnt    = data.visits ? data.visits.length : 0;
+    var raw    = localStorage.getItem(STORAGE_KEY) || '';
+    var sizeKB = (raw.length * 2 / 1024).toFixed(1);
+    setText('set-total-records', cnt.toLocaleString() + ' records');
+    setText('set-storage-size',  sizeKB + ' KB');
+  }
+
+  function changePassword() {
+    var cur  = document.getElementById('set-current-pwd').value;
+    var nw   = document.getElementById('set-new-pwd').value;
+    var conf = document.getElementById('set-confirm-pwd').value;
+    var msg  = document.getElementById('pwd-msg');
+
+    if (cur !== getAdminPassword()) {
+      msg.textContent = '❌ Current password incorrect';
+      msg.style.color = '#F87171';
+      return;
+    }
+    if (nw.length < 8) {
+      msg.textContent = '❌ Minimum 8 characters';
+      msg.style.color = '#F87171';
+      return;
+    }
+    if (nw !== conf) {
+      msg.textContent = '❌ Passwords do not match';
+      msg.style.color = '#F87171';
+      return;
+    }
+
+    // Authentication is server-controlled; do not store admin passwords in the browser.
+    msg.textContent = 'Password changes must be made through admin-config.php on the server.';
+    msg.style.color = '#FBBF24';
+    return;
+    msg.textContent = '✅ Password updated!';
+    msg.style.color = '#34D399';
+    document.getElementById('set-current-pwd').value = '';
+    document.getElementById('set-new-pwd').value     = '';
+    document.getElementById('set-confirm-pwd').value = '';
+  }
+
+  function clearAllData() {
+    if (confirm('Delete ALL visitor data? This cannot be undone.')) {
+      localStorage.removeItem(STORAGE_KEY);
+      alert('All data cleared.');
+      showView('overview');
+    }
+  }
+
+  function saveGAId() {
+    var id = document.getElementById('ga-id').value.trim();
+    if (id.indexOf('G-') !== 0) {
+      alert('Please enter a valid GA4 ID starting with G-');
+      return;
+    }
+    localStorage.setItem('pixlit_ga_id', id);
+    alert('Saved! GA4 ID: ' + id +
+      '\n\nGet the script tag from:\n' +
+      'Google Analytics > Admin > Data Streams > Web > Tagging Instructions');
+  }
+
+  /* ============================================
+     EXPORT CSV
+  ============================================ */
+  function exportData() {
+    var data   = getData();
+    var visits = data.visits;
+    if (!visits || visits.length === 0) { alert('No data to export yet!'); return; }
+
+    var headers = [
+      'Timestamp','Page','Country','Country Code','Region','City',
+      'Timezone','Referrer','Device','Browser','OS',
+      'Screen W','Screen H','Language','Is New','Is Session','Time On Page'
+    ].join(',');
+
+    var rows = visits.map(function(v) {
+      return [
+        v.timestamp||'', v.page||'', v.country||'', v.countryCode||'',
+        v.region||'', v.city||'', v.timezone||'', v.referrer||'',
+        v.device||'', v.browser||'', v.os||'', v.screenW||'',
+        v.screenH||'', v.language||'',
+        v.isNew ? 'Yes' : 'No',
+        v.isSession ? 'Yes' : 'No',
+        v.timeOnPage||''
+      ].map(function(val) {
+        return '"' + String(val).replace(/"/g, '""') + '"';
+      }).join(',');
+    });
+
+    var blob = new Blob([[headers].concat(rows).join('\n')], { type: 'text/csv' });
+    var link = document.createElement('a');
+    link.href     = URL.createObjectURL(blob);
+    link.download = 'pixlit-analytics-' + new Date().toISOString().split('T')[0] + '.csv';
+    link.click();
+  }
+
+  /* ============================================
+     EXPORT JSON
+  ============================================ */
+  function exportJSON() {
+    var data = getData();
+    var blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    var link = document.createElement('a');
+    link.href     = URL.createObjectURL(blob);
+    link.download = 'pixlit-analytics-' + new Date().toISOString().split('T')[0] + '.json';
+    link.click();
+  }
+
+  /* ============================================
+     REFRESH
+  ============================================ */
+  function refreshDashboard() {
+  loadDataFromServer(function(data) {
+    serverData = data;
+    showView('overview');
+    showToastMsg('Data refreshed!');
+  });
+}
+
+function showToastMsg(msg) {
+  var t = document.createElement('div');
+  t.style.cssText =
+    'position:fixed;bottom:20px;right:20px;background:#1E293B;' +
+    'color:#34D399;padding:10px 20px;border-radius:8px;' +
+    'font-size:0.85rem;font-weight:700;z-index:9999;' +
+    'border:1px solid #334155;';
+  t.textContent = '✅ ' + msg;
+  document.body.appendChild(t);
+  setTimeout(function() { t.remove(); }, 3000);
+}
+
+  /* ============================================
+     INIT
+  ============================================ */
+  function initDashboard() {
+  /* Show loading state */
+  setText('overview-subtitle', 'Loading data from server...');
+
+  /* Load from server then render */
+  loadDataFromServer(function(data) {
+    var visits = filterByDate(data.visits || [], currentDateRange);
+    renderOverview(visits, data);
+  });
+}
+
+  /* ============================================
+     BOOT
+  ============================================ */
+  document.addEventListener('DOMContentLoaded', function() {
+
+    /* Enter key on login */
+    var inp = document.getElementById('login-input');
+    if (inp) {
+      inp.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') attemptLogin();
+      });
+    }
+
+    /* Auto-login if session active */
+    if (sessionStorage.getItem('pixlit_admin_auth') === 'true') {
+      document.getElementById('login-screen').style.display = 'none';
+      document.getElementById('dashboard').style.display    = 'block';
+      initDashboard();
+    }
+
+  });
+
+</script>
+
+</body>
+</html>

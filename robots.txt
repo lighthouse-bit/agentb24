@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /data/
+
+Sitemap: https://agentb24.com/sitemap.xml

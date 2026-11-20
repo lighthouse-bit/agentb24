@@ -1,0 +1,352 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Free YouTube Watch Time Calculator — 4000 Hours Monetization Tracker | AgentB24</title>
+  <meta name="description" content="Free YouTube watch time calculator. Calculate how many views and days you need to reach 4,000 watch hours for YouTube monetization. Track your progress to YouTube Partner Program." />
+  <meta name="keywords" content="youtube watch time calculator, 4000 watch hours calculator, youtube monetization calculator, youtube partner program hours, youtube hours tracker, watch time to monetize youtube" />
+  <link rel="canonical" href="https://agentb24.com/tools/youtube-watch-time-calculator.html" />
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1T57RWSY42"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1T57RWSY42');</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"YouTube Watch Time Calculator","url":"https://agentb24.com/tools/youtube-watch-time-calculator.html","description":"Calculate how many views and days needed to reach YouTube's 4000 watch hour monetization requirement.","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"AgentB24","url":"https://agentb24.com"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://agentb24.com/"},{"@type":"ListItem","position":2,"name":"YouTube Tools","item":"https://agentb24.com/tools/youtube-tools.html"},{"@type":"ListItem","position":3,"name":"Watch Time Calculator","item":"https://agentb24.com/tools/youtube-watch-time-calculator.html"}]}</script>
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <style>
+    /* ── Progress Card ── */
+    .progress-hero {
+      background: linear-gradient(135deg, #ff0000, #6366f1);
+      border-radius: var(--radius, 16px); padding: 1.75rem;
+      color: #fff; text-align: center; margin-bottom: 1.25rem;
+    }
+    .ph-label  { font-size: .78rem; opacity: .82; text-transform: uppercase; letter-spacing: .06em; margin-bottom: .4rem; }
+    .ph-value  { font-size: 2.4rem; font-weight: 900; line-height: 1.1; }
+    .ph-sub    { font-size: .85rem; opacity: .82; margin-top: .35rem; }
+
+    /* ── Progress Bar ── */
+    .watch-progress-wrap { margin: 1.1rem 0; }
+    .watch-progress-label { display: flex; justify-content: space-between; font-size: .8rem; font-weight: 700; color: var(--text-mid); margin-bottom: .45rem; }
+    .watch-progress-bg { height: 18px; background: var(--border,#e2e8f0); border-radius: 50px; overflow: hidden; }
+    .watch-progress-fill { height: 100%; background: linear-gradient(90deg, #ff0000, #ff6b6b); border-radius: 50px; transition: width .4s ease; }
+    .watch-progress-pct { text-align: center; font-size: .78rem; font-weight: 700; color: var(--text-mid); margin-top: .35rem; }
+
+    /* ── Stats Grid ── */
+    .stats-grid4 { display: grid; grid-template-columns: repeat(2,1fr); gap: .85rem; margin-bottom: 1.25rem; }
+    .stat-box { background: var(--white,#fff); border: 1px solid var(--border,#e2e8f0); border-radius: var(--radius-sm,10px); padding: 1rem; text-align: center; }
+    .stat-box .sb-val   { font-size: 1.35rem; font-weight: 900; color: var(--primary,#6366f1); display: block; }
+    .stat-box .sb-label { font-size: .72rem; color: var(--text-light,#94a3b8); margin-top: .25rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
+
+    /* ── Sliders ── */
+    .input-section { margin-bottom: 1.1rem; }
+    .input-section label { font-size: .85rem; font-weight: 700; color: var(--text-mid,#374151); display: flex; justify-content: space-between; margin-bottom: .4rem; }
+    .input-section label span { background: var(--primary-light,#eef2ff); color: var(--primary,#6366f1); font-size: .8rem; font-weight: 800; padding: 2px 10px; border-radius: 50px; }
+    input[type="range"] { width: 100%; accent-color: var(--primary,#6366f1); cursor: pointer; }
+    .range-hints { display: flex; justify-content: space-between; font-size: .68rem; color: var(--text-light,#94a3b8); margin-top: .3rem; }
+
+    /* ── Current Hours Input ── */
+    .current-hours-row { display: grid; grid-template-columns: 1fr 1fr; gap: .85rem; margin-bottom: 1.1rem; }
+    .ch-group label { font-size: .82rem; font-weight: 700; color: var(--text-mid); display: block; margin-bottom: .35rem; }
+    .ch-group input { width: 100%; padding: .65rem .85rem; border: 2px solid var(--border,#e2e8f0); border-radius: var(--radius-sm,8px); font-size: 1rem; font-weight: 700; color: var(--primary,#6366f1); background: var(--white,#fff); box-sizing: border-box; }
+    .ch-group input:focus { outline: none; border-color: var(--primary,#6366f1); }
+
+    /* ── Deadline Scenario ── */
+    .scenario-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: .75rem; margin-top: 1rem; }
+    .scenario-card { background: var(--bg,#f8fafc); border: 1px solid var(--border,#e2e8f0); border-radius: var(--radius-sm,8px); padding: .85rem; text-align: center; }
+    .sc-views  { font-size: 1rem; font-weight: 900; color: var(--text-dark,#0f172a); }
+    .sc-label  { font-size: .7rem; font-weight: 700; color: var(--text-light,#94a3b8); text-transform: uppercase; letter-spacing: .04em; margin-top: .2rem; }
+    .sc-days   { font-size: .8rem; color: var(--primary,#6366f1); font-weight: 700; margin-top: .15rem; }
+
+    /* ── How To & FAQ ── */
+    .how-to-section, .faq-section { background: var(--white,#fff); border: 1px solid var(--border,#e2e8f0); border-radius: var(--radius,16px); padding: 1.75rem; box-shadow: var(--shadow,0 4px 24px rgba(0,0,0,.06)); margin-top: 1.5rem; }
+    .how-to-section h2, .faq-section h2 { font-size: 1.2rem; margin-bottom: 1.25rem; color: var(--text-dark,#0f172a); }
+    .steps { display: flex; flex-direction: column; gap: 1rem; }
+    .step  { display: flex; gap: 1rem; align-items: flex-start; }
+    .step-number { width: 32px; height: 32px; background: #ff0000; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: .85rem; flex-shrink: 0; }
+    .step-content h4 { font-size: .92rem; margin-bottom: .2rem; color: var(--text-dark,#0f172a); }
+    .step-content p  { font-size: .82rem; color: var(--text-mid,#64748b); line-height: 1.6; margin: 0; }
+    .faq-item { border-bottom: 1px solid var(--border,#e2e8f0); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question { display: flex; justify-content: space-between; align-items: center; padding: .9rem 0; cursor: pointer; font-size: .9rem; font-weight: 600; color: var(--text-dark,#0f172a); gap: .75rem; transition: color .15s; }
+    .faq-question:hover { color: #ff0000; }
+    .faq-icon { font-size: 1.1rem; flex-shrink: 0; color: #ff0000; }
+    .faq-answer { display: none; padding: 0 0 .9rem; font-size: .85rem; color: var(--text-mid,#64748b); line-height: 1.7; }
+    .faq-answer.open { display: block; }
+
+    @media(max-width:480px) {
+      .stats-grid4 { grid-template-columns: 1fr 1fr; }
+      .scenario-cards { grid-template-columns: 1fr; }
+      .current-hours-row { grid-template-columns: 1fr; }
+    }
+  </style>
+  <!-- AgentB24 SEO Pack -->
+  <meta name="author" content="AgentB24">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#4F46E5">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AgentB24">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://agentb24.com/tools/youtube-watch-time-calculator.html">
+  <meta property="og:title" content="Free YouTube Watch Time Calculator — 4000 Hours Monetization Tracker | AgentB24">
+  <meta property="og:description" content="Free YouTube watch time calculator. Calculate how many views and days you need to reach 4,000 watch hours for YouTube monetization. Track your progress to YouTube Partner Program.">
+  <meta property="og:image" content="https://agentb24.com/assets/img/og-image.png">
+  <meta property="og:image:width" content="1718">
+  <meta property="og:image:height" content="912">
+  <meta property="og:image:alt" content="AgentB24 â€” 80+ Free Online Tools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free YouTube Watch Time Calculator — 4000 Hours Monetization Tracker | AgentB24">
+  <meta name="twitter:description" content="Free YouTube watch time calculator. Calculate how many views and days you need to reach 4,000 watch hours for YouTube monetization. Track your progress to YouTube Partner Program.">
+  <meta name="twitter:image" content="https://agentb24.com/assets/img/og-image.png">
+  <!-- /AgentB24 SEO Pack -->
+  <link rel="stylesheet" href="../assets/css/ads.css">
+</head>
+<body>
+
+<header>
+  <div class="nav-container">
+    <a href="../index.html" class="logo"><div class="logo-icon">🛠</div>AgentB24</a>
+    <nav class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="text-tools.html">Text Tools</a>
+      <a href="developer-tools.html">Dev Tools</a>
+      <a href="calculators.html">Calculators</a>
+      <a href="pdf-tools.html">PDF Tools</a>
+      <a href="converters.html">Converters</a>
+      <a href="youtube-tools.html" class="active">YouTube Tools</a>
+      <a href="../about.html">About</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+  <nav class="mobile-menu" id="mobile-menu">
+    <a href="../index.html">Home</a><a href="youtube-tools.html">YouTube Tools</a><a href="../about.html">About</a>
+  </nav>
+</header>
+
+<div class="tool-page-header">
+  <div class="container">
+    <nav class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="youtube-tools.html">YouTube Tools</a> &rsaquo; <span>Watch Time Calculator</span></nav>
+    <h1>Free YouTube Watch Time Calculator</h1>
+    <p>Calculate exactly how many views you need to reach YouTube's 4,000 watch hour requirement for monetization. Track your progress and see how long it will take at your current pace.</p>
+  </div>
+</div>
+
+<main>
+<div class="tool-body">
+  <div class="tool-main">
+    <div class="tool-box">
+
+      <!-- Progress Hero -->
+      <div class="progress-hero" id="progress-hero">
+        <div class="ph-label">⏱️ Hours Still Needed</div>
+        <div class="ph-value" id="ph-value">3,800 hrs</div>
+        <div class="ph-sub"   id="ph-sub">to reach YouTube monetization</div>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="watch-progress-wrap">
+        <div class="watch-progress-label">
+          <span>Progress to 4,000 Hours</span>
+          <span id="progress-pct-label">0%</span>
+        </div>
+        <div class="watch-progress-bg">
+          <div class="watch-progress-fill" id="progress-fill" style="width:0%"></div>
+        </div>
+        <div class="watch-progress-pct" id="progress-pct-text">0 of 4,000 hours complete</div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="stats-grid4" id="stats-grid">
+        <div class="stat-box"><span class="sb-val" id="s-views-needed">—</span><span class="sb-label">Views Needed</span></div>
+        <div class="stat-box"><span class="sb-val" id="s-days-needed">—</span><span class="sb-label">Days to Goal</span></div>
+        <div class="stat-box"><span class="sb-val" id="s-daily-views">—</span><span class="sb-label">Daily Views Needed</span></div>
+        <div class="stat-box"><span class="sb-val" id="s-eta">—</span><span class="sb-label">Estimated Date</span></div>
+      </div>
+
+      <!-- Inputs -->
+      <p style="font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--text-light);margin-bottom:.85rem;">⚙️ Your Channel Details</p>
+
+      <!-- Current Progress -->
+      <div class="current-hours-row">
+        <div class="ch-group">
+          <label for="current-hours">Current Watch Hours</label>
+          <input type="number" id="current-hours" value="200" min="0" max="4000" oninput="calc()"/>
+        </div>
+        <div class="ch-group">
+          <label for="daily-view-count">Current Daily Views</label>
+          <input type="number" id="daily-view-count" value="500" min="1" oninput="calc()"/>
+        </div>
+      </div>
+
+      <!-- Video Length -->
+      <div class="input-section">
+        <label>
+          📹 Average Video Length (minutes)
+          <span id="vid-len-val">10 min</span>
+        </label>
+        <input type="range" id="vid-length" min="1" max="60" value="10" step="1" oninput="calc()"/>
+        <div class="range-hints"><span>1 min</span><span>10 min</span><span>30 min</span><span>60 min</span></div>
+      </div>
+
+      <!-- Avg View Percentage -->
+      <div class="input-section">
+        <label>
+          👁️ Average View Duration (%)
+          <span id="view-pct-val">40%</span>
+        </label>
+        <input type="range" id="view-pct" min="5" max="100" value="40" step="5" oninput="calc()"/>
+        <div class="range-hints"><span>5%</span><span>40% (avg)</span><span>70%</span><span>100%</span></div>
+      </div>
+
+      <!-- Scenario Cards -->
+      <p style="font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--text-light);margin-bottom:.6rem;">📅 How Many Views at Different Paces?</p>
+      <div class="scenario-cards" id="scenario-cards">
+        <div class="scenario-card"><div class="sc-views" id="sc-100">—</div><div class="sc-label">at 100/day</div><div class="sc-days" id="sc-100-days">—</div></div>
+        <div class="scenario-card"><div class="sc-views" id="sc-500">—</div><div class="sc-label">at 500/day</div><div class="sc-days" id="sc-500-days">—</div></div>
+        <div class="scenario-card"><div class="sc-views" id="sc-1000">—</div><div class="sc-label">at 1,000/day</div><div class="sc-days" id="sc-1000-days">—</div></div>
+      </div>
+
+    </div>
+
+    <!-- How To -->
+    <div class="how-to-section">
+      <h2>📖 How to Use the Watch Time Calculator</h2>
+      <div class="steps">
+        <div class="step"><div class="step-number">1</div><div class="step-content"><h4>Enter Your Current Watch Hours</h4><p>Check your YouTube Studio Analytics for your current watch hours in the last 365 days. Enter that number in the Current Watch Hours field.</p></div></div>
+        <div class="step"><div class="step-number">2</div><div class="step-content"><h4>Set Your Video Details</h4><p>Enter your average video length and typical average view duration percentage. YouTube Studio shows your average view percentage in the Analytics tab.</p></div></div>
+        <div class="step"><div class="step-number">3</div><div class="step-content"><h4>Enter Daily Views</h4><p>Enter your current average daily views. The calculator shows how many more views you need and how many days until you hit 4,000 hours at your current growth rate.</p></div></div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <h2>❓ Frequently Asked Questions</h2>
+      <div class="faq-item"><div class="faq-question">How many views do I need to get 4,000 watch hours?<span class="faq-icon">+</span></div><div class="faq-answer">It depends on your video length and average view duration. For a 10-minute video with 40% average view duration (4 minutes watched), you need approximately 60,000 views. Use the calculator above to get an exact number based on your specific video length and retention rate.</div></div>
+      <div class="faq-item"><div class="faq-question">What are the YouTube monetization requirements?<span class="faq-icon">+</span></div><div class="faq-answer">To join the YouTube Partner Program (YPP) and enable monetization, you need: <strong>1,000 subscribers</strong> AND <strong>4,000 watch hours in the past 12 months</strong>. YouTube Shorts creators can alternatively qualify with 1,000 subscribers and 10 million Shorts views in 90 days.</div></div>
+      <div class="faq-item"><div class="faq-question">Do watch hours reset after 12 months?<span class="faq-icon">+</span></div><div class="faq-answer">YouTube counts watch hours from the past rolling 365 days. Old watch hours naturally drop off as they go past the 12-month window. Once you are approved for monetization, your channel stays monetized as long as it stays in good standing — you do not need to maintain 4,000 hours continuously after approval.</div></div>
+      <div class="faq-item"><div class="faq-question">Do YouTube Shorts count toward watch hours?<span class="faq-icon">+</span></div><div class="faq-answer">No. YouTube Shorts views do not count toward the 4,000 watch hour requirement for the standard YouTube Partner Program. Shorts have a separate qualification path based on views rather than watch time.</div></div>
+      <div class="faq-item"><div class="faq-question">How can I increase my watch hours faster?<span class="faq-icon">+</span></div><div class="faq-answer">To accumulate watch hours faster: create longer videos (15–30 min), improve your retention rate with strong intros, upload consistently, use playlists to chain videos together, and promote your videos on social media. Even a small improvement in average view duration significantly reduces the views needed.</div></div>
+    </div>
+
+  </div>
+
+  <!-- Sidebar -->
+  <aside class="tool-sidebar">
+    <div class="related-tools">
+      <h3>▶️ YouTube Tools</h3>
+      <ul>
+        <li><a href="youtube-thumbnail-downloader.html">🖼️ Thumbnail Downloader</a></li>
+        <li><a href="youtube-money-calculator.html">💰 Money Calculator</a></li>
+        <li><a href="youtube-embed-generator.html">🔗 Embed Code Generator</a></li>
+        <li><a href="youtube-timestamp-generator.html">🕐 Timestamp Generator</a></li>
+      </ul>
+    </div>
+    <div class="related-tools">
+      <h3>📊 YPP Requirements</h3>
+      <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;">
+        <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">👥 <strong>1,000 subscribers</strong> required</li>
+        <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">⏱️ <strong>4,000 watch hours</strong> in 12 months</li>
+        <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">✅ Channel in <strong>good standing</strong></li>
+        <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">🔗 Linked <strong>Adsterra account</strong></li>
+        <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">🎬 Shorts alt: <strong>10M views / 90 days</strong></li>
+      </ul>
+    </div>
+  </aside>
+</div>
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand"><a href="../index.html" class="logo"><div class="logo-icon">🛠</div>AgentB24</a><p>Free online tools for everyone.</p></div>
+    <div class="footer-col"><h4>YouTube Tools</h4><ul><li><a href="youtube-thumbnail-downloader.html">Thumbnail Downloader</a></li><li><a href="youtube-money-calculator.html">Money Calculator</a></li><li><a href="youtube-watch-time-calculator.html">Watch Time Calculator</a></li></ul></div>
+    <div class="footer-col"><h4>Company</h4><ul><li><a href="../about.html">About Us</a></li><li><a href="../privacy-policy.html">Privacy Policy</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 AgentB24. All rights reserved.</span><span>Made with ❤️ for productivity</span></div>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="../assets/js/main.js"></script>
+<script>
+'use strict';
+
+function fmt(n) {
+  if (n >= 1000000) return (n/1000000).toFixed(1) + 'M';
+  if (n >= 1000)    return (n/1000).toFixed(1) + 'K';
+  return Math.round(n).toLocaleString();
+}
+
+function calc() {
+  const currentHrs  = parseFloat(document.getElementById('current-hours').value) || 0;
+  const dailyViews  = parseInt(document.getElementById('daily-view-count').value) || 1;
+  const vidLenMin   = parseFloat(document.getElementById('vid-length').value) || 10;
+  const viewPct     = parseFloat(document.getElementById('view-pct').value) / 100 || 0.4;
+
+  // Update labels
+  document.getElementById('vid-len-val').textContent  = vidLenMin + ' min';
+  document.getElementById('view-pct-val').textContent = Math.round(viewPct * 100) + '%';
+
+  const TARGET_HRS   = 4000;
+  const remaining    = Math.max(0, TARGET_HRS - currentHrs);
+  const pct          = Math.min(100, (currentHrs / TARGET_HRS) * 100);
+
+  // Minutes watched per view
+  const minPerView   = vidLenMin * viewPct;
+  const hrsPerView   = minPerView / 60;
+
+  // Views needed
+  const viewsNeeded  = hrsPerView > 0 ? Math.ceil(remaining / hrsPerView) : 0;
+  // Hours per day from daily views
+  const hrsDailyViews = dailyViews * hrsPerView;
+  const daysNeeded    = hrsDailyViews > 0 ? Math.ceil(remaining / hrsDailyViews) : 99999;
+  const dailyViewsNeeded = hrsPerView > 0 ? Math.ceil(remaining / (hrsPerView * 30)) : 0;
+
+  // ETA date
+  const eta = new Date();
+  eta.setDate(eta.getDate() + daysNeeded);
+  const etaStr = daysNeeded > 9999 ? '∞' : eta.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+
+  // Update hero
+  document.getElementById('ph-value').textContent = remaining === 0 ? '🎉 Done!' : remaining.toLocaleString() + ' hrs';
+  document.getElementById('ph-sub').textContent   = remaining === 0 ? 'You\'ve reached the watch hour goal!' : 'to reach YouTube monetization';
+
+  // Progress bar
+  document.getElementById('progress-fill').style.width    = pct + '%';
+  document.getElementById('progress-pct-label').textContent = pct.toFixed(1) + '%';
+  document.getElementById('progress-pct-text').textContent  = `${currentHrs.toLocaleString()} of 4,000 hours complete`;
+
+  // Stats
+  document.getElementById('s-views-needed').textContent = remaining === 0 ? '✅ Done' : fmt(viewsNeeded);
+  document.getElementById('s-days-needed').textContent  = remaining === 0 ? '✅ Done' : (daysNeeded > 9999 ? '∞' : fmt(daysNeeded));
+  document.getElementById('s-daily-views').textContent  = remaining === 0 ? '✅ Done' : fmt(dailyViewsNeeded) + '/day';
+  document.getElementById('s-eta').textContent          = remaining === 0 ? '✅ Done' : etaStr;
+
+  // Scenario cards
+  [100, 500, 1000].forEach(d => {
+    const dH     = d * hrsPerView;
+    const days   = dH > 0 ? Math.ceil(remaining / dH) : 99999;
+    const views  = Math.ceil(d * days);
+    const key    = d === 100 ? 'sc-100' : d === 500 ? 'sc-500' : 'sc-1000';
+    document.getElementById(key).textContent         = remaining === 0 ? '✅' : fmt(views) + ' views';
+    document.getElementById(key + '-days').textContent = remaining === 0 ? 'Done!' : (days > 9999 ? '∞ days' : days + ' days');
+  });
+}
+
+// Init
+calc();
+
+// FAQ
+document.querySelectorAll('.faq-question').forEach(q => {
+  q.addEventListener('click', () => {
+    const a = q.nextElementSibling, i = q.querySelector('.faq-icon');
+    const open = a.classList.contains('open');
+    document.querySelectorAll('.faq-answer').forEach(x => x.classList.remove('open'));
+    document.querySelectorAll('.faq-icon').forEach(x => x.textContent = '+');
+    if (!open) { a.classList.add('open'); i.textContent = '−'; }
+  });
+});
+</script>
+<script src="../assets/js/tracker.js"></script>
+<script src="../assets/js/ads.js"></script>
+</body>
+</html>

@@ -1,0 +1,310 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Free Number to Words Converter — Convert Numbers to English Words | AgentB24</title>
+  <meta name="description" content="Free online number to words converter. Convert any number into written English words instantly. Perfect for cheques, legal documents and financial writing." />
+  <meta name="keywords" content="number to words, numbers in words, convert number to words, number spelling, 1000 in words, cheque amount in words, number words converter" />
+  <link rel="canonical" href="https://agentb24.com/tools/number-to-words.html" />
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1T57RWSY42"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1T57RWSY42');</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Number to Words Converter","url":"https://agentb24.com/tools/number-to-words.html","description":"Convert numbers to written English words instantly.","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"AgentB24","url":"https://agentb24.com"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://agentb24.com/"},{"@type":"ListItem","position":2,"name":"Converters","item":"https://agentb24.com/tools/converters.html"},{"@type":"ListItem","position":3,"name":"Number to Words","item":"https://agentb24.com/tools/number-to-words.html"}]}</script>
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <style>
+    .ntw-input-wrap { position:relative; margin-bottom:1rem; }
+    .ntw-input { width:100%; padding:1rem 1.25rem; font-size:1.6rem; font-weight:800; color:var(--primary); border:2px solid var(--border); border-radius:var(--radius); background:var(--white); box-sizing:border-box; text-align:center; transition:border-color .15s; }
+    .ntw-input:focus { outline:none; border-color:var(--primary); }
+    .ntw-result { background:linear-gradient(135deg,var(--primary),var(--secondary)); color:#fff; border-radius:var(--radius); padding:1.5rem 1.75rem; margin-bottom:1rem; animation:fadeIn .2s ease; }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(4px);} to{opacity:1;transform:translateY(0);} }
+    .ntw-result .ntw-words { font-size:1.15rem; font-weight:700; line-height:1.6; }
+    .ntw-result .ntw-label { font-size:.72rem; opacity:.75; text-transform:uppercase; letter-spacing:.06em; margin-bottom:.5rem; }
+    .ntw-options { display:flex; gap:.6rem; flex-wrap:wrap; margin-bottom:1rem; }
+    .ntw-opt { padding:.38rem .85rem; border:1.5px solid var(--border); border-radius:50px; font-size:.8rem; font-weight:600; cursor:pointer; background:var(--white); color:var(--text-mid); transition:all .13s; font-family:'Inter',sans-serif; }
+    .ntw-opt.active { background:var(--primary); color:#fff; border-color:var(--primary); }
+    .ntw-opt:hover:not(.active) { border-color:var(--primary); color:var(--primary); }
+    .ntw-copy-row { display:flex; gap:.6rem; }
+    .ntw-copy-btn { flex:1; padding:.65rem; border:1.5px solid var(--border); border-radius:var(--radius-sm); font-size:.85rem; font-weight:700; cursor:pointer; background:var(--bg); color:var(--text-mid); transition:all .13s; font-family:'Inter',sans-serif; }
+    .ntw-copy-btn:hover { border-color:var(--primary); color:var(--primary); background:var(--primary-light); }
+    .ntw-examples { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:.6rem; margin-top:1rem; }
+    .ntw-example { background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-sm); padding:.6rem .8rem; cursor:pointer; transition:all .13s; }
+    .ntw-example:hover { border-color:var(--primary); background:var(--primary-light); }
+    .ntw-example .ex-num { font-size:1rem; font-weight:800; color:var(--primary); }
+    .ntw-example .ex-word { font-size:.72rem; color:var(--text-mid); margin-top:.15rem; }
+    .currency-mode-row { display:flex; gap:.5rem; align-items:center; margin-bottom:.75rem; flex-wrap:wrap; }
+    .currency-mode-row label { font-size:.85rem; font-weight:600; color:var(--text-mid); }
+    .currency-mode-row select { padding:.4rem .65rem; border:1.5px solid var(--border); border-radius:8px; font-size:.85rem; }
+  </style>
+  <!-- AgentB24 SEO Pack -->
+  <meta name="author" content="AgentB24">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#4F46E5">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AgentB24">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://agentb24.com/tools/number-to-words.html">
+  <meta property="og:title" content="Free Number to Words Converter — Convert Numbers to English Words | AgentB24">
+  <meta property="og:description" content="Free online number to words converter. Convert any number into written English words instantly. Perfect for cheques, legal documents and financial writing.">
+  <meta property="og:image" content="https://agentb24.com/assets/img/og-image.png">
+  <meta property="og:image:width" content="1718">
+  <meta property="og:image:height" content="912">
+  <meta property="og:image:alt" content="AgentB24 â€” 80+ Free Online Tools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Number to Words Converter — Convert Numbers to English Words | AgentB24">
+  <meta name="twitter:description" content="Free online number to words converter. Convert any number into written English words instantly. Perfect for cheques, legal documents and financial writing.">
+  <meta name="twitter:image" content="https://agentb24.com/assets/img/og-image.png">
+  <!-- /AgentB24 SEO Pack -->
+  <link rel="stylesheet" href="../assets/css/ads.css">
+</head>
+<body>
+<header>
+  <div class="nav-container">
+    <a href="../index.html" class="logo"><div class="logo-icon">🛠</div>AgentB24</a>
+    <nav class="nav-links">
+      <a href="../index.html">Home</a><a href="text-tools.html">Text Tools</a>
+      <a href="developer-tools.html">Dev Tools</a><a href="calculators.html">Calculators</a>
+      <a href="pdf-tools.html">PDF Tools</a><a href="converters.html" class="active">Converters</a>
+      <a href="../about.html">About</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+  <nav class="mobile-menu" id="mobile-menu">
+    <a href="../index.html">Home</a><a href="converters.html">Converters</a><a href="../about.html">About</a>
+  </nav>
+</header>
+
+<div class="tool-page-header">
+  <div class="container">
+    <nav class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="converters.html">Converters</a> &rsaquo; <span>Number to Words</span></nav>
+    <h1>Free Number to Words Converter</h1>
+    <p>Convert any number into written English words instantly. Perfect for cheques, legal documents, financial writing and education.</p>
+  </div>
+</div>
+<main>
+  <div class="tool-body">
+    <div class="tool-main">
+      <div class="tool-box">
+
+        <!-- Mode Options -->
+        <div class="ntw-options">
+          <button class="ntw-opt active" data-mode="plain">123 → Words</button>
+          <button class="ntw-opt" data-mode="currency">💰 Currency Mode</button>
+          <button class="ntw-opt" data-mode="ordinal">1st, 2nd, 3rd…</button>
+          <button class="ntw-opt" data-mode="year">📅 Year Mode</button>
+        </div>
+
+        <!-- Currency Row (hidden by default) -->
+        <div class="currency-mode-row" id="currency-row" style="display:none;">
+          <label>Currency:</label>
+          <select id="currency-sel">
+            <option value="Dollar,Cent">US Dollar / Cent</option>
+            <option value="Pound,Pence">British Pound / Pence</option>
+            <option value="Euro,Cent">Euro / Cent</option>
+            <option value="Naira,Kobo">Nigerian Naira / Kobo</option>
+            <option value="Rupee,Paisa">Indian Rupee / Paisa</option>
+            <option value="Franc,Centime">Swiss Franc / Centime</option>
+          </select>
+        </div>
+
+        <!-- Input -->
+        <input type="number" class="ntw-input" id="ntw-input"
+               placeholder="Enter a number…"
+               oninput="convert()"
+               step="any"
+               aria-label="Number to convert to words"/>
+
+        <!-- Result -->
+        <div class="ntw-result" id="ntw-result" style="display:none;">
+          <div class="ntw-label" id="ntw-result-label">In Words:</div>
+          <div class="ntw-words" id="ntw-words">—</div>
+        </div>
+
+        <!-- Copy Buttons -->
+        <div class="ntw-copy-row" id="copy-row" style="display:none;">
+          <button class="ntw-copy-btn" onclick="copyWords()">📋 Copy Words</button>
+          <button class="ntw-copy-btn" onclick="copyTitleCase()">📋 Copy Title Case</button>
+          <button class="ntw-copy-btn" onclick="copyUpperCase()">📋 COPY UPPERCASE</button>
+        </div>
+
+        <!-- Examples -->
+        <p style="font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--text-light);margin:1rem 0 .6rem;">⚡ Quick Examples</p>
+        <div class="ntw-examples" id="ntw-examples">
+          <div class="ntw-example" onclick="setNum(100)"><div class="ex-num">100</div><div class="ex-word">One Hundred</div></div>
+          <div class="ntw-example" onclick="setNum(1000)"><div class="ex-num">1,000</div><div class="ex-word">One Thousand</div></div>
+          <div class="ntw-example" onclick="setNum(1500)"><div class="ex-num">1,500</div><div class="ex-word">One Thousand Five Hundred</div></div>
+          <div class="ntw-example" onclick="setNum(1000000)"><div class="ex-num">1,000,000</div><div class="ex-word">One Million</div></div>
+          <div class="ntw-example" onclick="setNum(42)"><div class="ex-num">42</div><div class="ex-word">Forty-Two</div></div>
+          <div class="ntw-example" onclick="setNum(999)"><div class="ex-num">999</div><div class="ex-word">Nine Hundred Ninety-Nine</div></div>
+          <div class="ntw-example" onclick="setNum(1234567)"><div class="ex-num">1,234,567</div><div class="ex-word">One Million…</div></div>
+          <div class="ntw-example" onclick="setNum(2025)"><div class="ex-num">2025</div><div class="ex-word">Two Thousand Twenty-Five</div></div>
+        </div>
+
+      </div>
+
+      <div class="how-to-section">
+        <h2>📖 How to Convert Numbers to Words</h2>
+        <div class="steps">
+          <div class="step"><div class="step-number">1</div><div class="step-content"><h4>Choose a Mode</h4><p>Select Plain (123 → words), Currency Mode (for cheques and invoices), Ordinal (1st, 2nd, 3rd) or Year Mode.</p></div></div>
+          <div class="step"><div class="step-number">2</div><div class="step-content"><h4>Enter a Number</h4><p>Type any number in the input field. The conversion happens instantly as you type.</p></div></div>
+          <div class="step"><div class="step-number">3</div><div class="step-content"><h4>Copy the Result</h4><p>Use the copy buttons to copy the result in lowercase, Title Case, or UPPERCASE — ready to paste into any document.</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="tool-sidebar">
+      <div class="related-tools">
+        <h3>🔗 Other Converters</h3>
+        <ul>
+          <li><a href="unit-converter.html">📏 Unit Converter</a></li>
+          <li><a href="currency-converter.html">💱 Currency Converter</a></li>
+          <li><a href="roman-numeral-converter.html">🏛️ Roman Numerals</a></li>
+          <li><a href="binary-hex-converter.html">🔢 Binary / Hex</a></li>
+          <li><a href="csv-to-json.html">🔄 CSV ↔ JSON</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</main>
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand"><a href="../index.html" class="logo"><div class="logo-icon">🛠</div>AgentB24</a><p>Free online tools for everyone.</p></div>
+    <div class="footer-col"><h4>Converters</h4><ul><li><a href="unit-converter.html">Unit Converter</a></li><li><a href="currency-converter.html">Currency Converter</a></li><li><a href="number-to-words.html">Number to Words</a></li></ul></div>
+    <div class="footer-col"><h4>Company</h4><ul><li><a href="../about.html">About Us</a></li><li><a href="../privacy-policy.html">Privacy Policy</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 AgentB24. All rights reserved.</span><span>Made with ❤️ for productivity</span></div>
+</footer>
+<div class="toast" id="toast"></div>
+<script src="../assets/js/main.js"></script>
+<script>
+'use strict';
+let currentMode = 'plain';
+let lastWords   = '';
+
+const ones  = ['','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
+const tens  = ['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
+const scales= ['','thousand','million','billion','trillion','quadrillion'];
+const ordSuffix = {1:'st',2:'nd',3:'rd'};
+
+function numToWords(n) {
+  if (n === 0) return 'zero';
+  if (n < 0)  return 'negative ' + numToWords(-n);
+  let result = '';
+  let scaleIdx = 0;
+  while (n > 0) {
+    const chunk = n % 1000;
+    if (chunk !== 0) {
+      const chunkWords = chunkToWords(chunk);
+      result = chunkWords + (scales[scaleIdx] ? ' ' + scales[scaleIdx] : '') + (result ? ' ' + result : '');
+    }
+    n = Math.floor(n / 1000);
+    scaleIdx++;
+  }
+  return result.trim();
+}
+
+function chunkToWords(n) {
+  let result = '';
+  if (n >= 100) {
+    result += ones[Math.floor(n/100)] + ' hundred';
+    n %= 100;
+    if (n > 0) result += ' ';
+  }
+  if (n >= 20) {
+    result += tens[Math.floor(n/10)];
+    if (n % 10 > 0) result += '-' + ones[n % 10];
+  } else if (n > 0) {
+    result += ones[n];
+  }
+  return result;
+}
+
+function toOrdinal(n) {
+  const w = numToWords(n);
+  const lastWord = w.split(/[\s-]/).pop();
+  const ordMap = {one:'first',two:'second',three:'third',four:'fourth',five:'fifth',six:'sixth',seven:'seventh',eight:'eighth',nine:'ninth',ten:'tenth',eleven:'eleventh',twelve:'twelfth',thirteen:'thirteenth',fourteen:'fourteenth',fifteen:'fifteenth',sixteen:'sixteenth',seventeen:'seventeenth',eighteen:'eighteenth',nineteen:'nineteenth',twenty:'twentieth',thirty:'thirtieth',forty:'fortieth',fifty:'fiftieth',sixty:'sixtieth',seventy:'seventieth',eighty:'eightieth',ninety:'ninetieth',hundred:'hundredth',thousand:'thousandth',million:'millionth',billion:'billionth'};
+  if (ordMap[lastWord]) {
+    const parts = w.split(lastWord);
+    return parts[0] + ordMap[lastWord];
+  }
+  return w + 'th';
+}
+
+function toYear(n) {
+  if (n < 1 || n > 9999) return numToWords(n);
+  if (n >= 2000 && n <= 2099) return numToWords(n);
+  const high = Math.floor(n / 100);
+  const low  = n % 100;
+  if (low === 0) return numToWords(high) + ' hundred';
+  return numToWords(high) + ' ' + (low < 10 ? 'oh-' + ones[low] : numToWords(low));
+}
+
+function toCurrency(numStr) {
+  const [major, minor] = numStr.split('.');
+  const [curr, cent]   = document.getElementById('currency-sel').value.split(',');
+  const majorInt = parseInt(major) || 0;
+  const minorInt = minor ? parseInt(minor.slice(0,2).padEnd(2,'0')) : 0;
+  let result = numToWords(majorInt) + ' ' + curr + (majorInt !== 1 ? 's' : '');
+  if (minorInt > 0) result += ' and ' + numToWords(minorInt) + ' ' + cent + (minorInt !== 1 ? 's' : '');
+  return result + ' only';
+}
+
+function convert() {
+  const raw = document.getElementById('ntw-input').value.trim();
+  if (raw === '' || isNaN(raw)) {
+    document.getElementById('ntw-result').style.display = 'none';
+    document.getElementById('copy-row').style.display   = 'none';
+    return;
+  }
+  const n = parseFloat(raw);
+  let words = '';
+  let label = 'In Words:';
+
+  if (currentMode === 'plain') {
+    words = numToWords(Math.abs(Math.floor(n)));
+    if (n < 0) words = 'negative ' + words;
+  } else if (currentMode === 'currency') {
+    words = toCurrency(raw);
+    label = 'In Currency Words:';
+  } else if (currentMode === 'ordinal') {
+    words = toOrdinal(Math.abs(Math.floor(n)));
+    label = 'Ordinal:';
+  } else if (currentMode === 'year') {
+    words = toYear(Math.abs(Math.floor(n)));
+    label = 'Year in Words:';
+  }
+
+  // Title case
+  words = words.charAt(0).toUpperCase() + words.slice(1);
+  lastWords = words;
+
+  document.getElementById('ntw-words').textContent        = words;
+  document.getElementById('ntw-result-label').textContent = label;
+  document.getElementById('ntw-result').style.display     = 'block';
+  document.getElementById('copy-row').style.display       = 'flex';
+}
+
+function setNum(n) { document.getElementById('ntw-input').value = n; convert(); }
+function copyWords()     { navigator.clipboard.writeText(lastWords.toLowerCase()); showToast('📋 Copied!'); }
+function copyTitleCase() { navigator.clipboard.writeText(lastWords.replace(/\b\w/g,c=>c.toUpperCase())); showToast('📋 Copied!'); }
+function copyUpperCase() { navigator.clipboard.writeText(lastWords.toUpperCase()); showToast('📋 Copied!'); }
+function showToast(m)    { const t=document.getElementById('toast'); if(t){t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000);} }
+
+document.querySelectorAll('.ntw-opt').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.ntw-opt').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    currentMode = btn.dataset.mode;
+    document.getElementById('currency-row').style.display = currentMode==='currency'?'flex':'none';
+    convert();
+  });
+});
+document.getElementById('currency-sel').addEventListener('change', convert);
+</script>
+<script src="../assets/js/tracker.js"></script>
+<script src="../assets/js/ads.js"></script>
+</body>
+</html>

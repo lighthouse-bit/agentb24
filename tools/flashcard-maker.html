@@ -1,0 +1,109 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Premium Flashcard Maker & Study Tool | AgentB24</title>
+<meta name="description" content="Create beautiful flashcard decks, study with mastery tracking, import or export cards, and print them as a polished PDF.">
+<link rel="canonical" href="https://agentb24.com/tools/flashcard-maker.html">
+<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="../assets/css/tool-suite.css">
+<link rel="stylesheet" href="../assets/css/flashcard-maker.css">
+  <!-- AgentB24 SEO Pack -->
+  <meta name="author" content="AgentB24">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#4F46E5">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AgentB24">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://agentb24.com/tools/flashcard-maker.html">
+  <meta property="og:title" content="Premium Flashcard Maker &amp; Study Tool | AgentB24">
+  <meta property="og:description" content="Create beautiful flashcard decks, study with mastery tracking, import or export cards, and print them as a polished PDF.">
+  <meta property="og:image" content="https://agentb24.com/assets/img/og-image.png">
+  <meta property="og:image:width" content="1718">
+  <meta property="og:image:height" content="912">
+  <meta property="og:image:alt" content="AgentB24 â€” 80+ Free Online Tools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Premium Flashcard Maker &amp; Study Tool | AgentB24">
+  <meta name="twitter:description" content="Create beautiful flashcard decks, study with mastery tracking, import or export cards, and print them as a polished PDF.">
+  <meta name="twitter:image" content="https://agentb24.com/assets/img/og-image.png">
+  <script type="application/ld+json">{"url":"https://agentb24.com/tools/flashcard-maker.html","description":"Create beautiful flashcard decks, study with mastery tracking, import or export cards, and print them as a polished PDF.","@type":"WebApplication","browserRequirements":"Requires JavaScript and a modern web browser","@context":"https://schema.org","name":"Premium Flashcard Studio","publisher":{"url":"https://agentb24.com/","name":"AgentB24","@type":"Organization"},"offers":{"price":"0","priceCurrency":"USD","@type":"Offer"},"applicationCategory":"UtilityApplication","operatingSystem":"Any"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","itemListElement":[{"position":1,"name":"Home","item":"https://agentb24.com/","@type":"ListItem"},{"position":2,"name":"Education Tools","item":"https://agentb24.com/tools/education-tools.html","@type":"ListItem"},{"position":3,"name":"Premium Flashcard Studio","item":"https://agentb24.com/tools/flashcard-maker.html","@type":"ListItem"}],"@type":"BreadcrumbList"}</script>
+  <!-- /AgentB24 SEO Pack -->
+  <link rel="stylesheet" href="../assets/css/ads.css">
+</head>
+<body class="flashcard-page">
+<header></header>
+<main class="suite-wrap flash-wrap">
+  <div class="suite-head flash-hero">
+    <div class="breadcrumb"><a href="education-tools.html">Education Tools</a> &rsaquo; Flashcard Maker</div>
+    <div class="flash-hero-copy"><span class="flash-hero-icon">FC</span><div><h1>Premium Flashcard Studio</h1><p>Create focused study decks, practise actively and see what you have mastered.</p></div></div>
+  </div>
+
+  <section class="deck-toolbar">
+    <div class="deck-identity"><span class="deck-mini-icon">◆</span><div><b id="toolbarDeckTitle">Biology Essentials</b><small><span id="toolbarCount">6</span> cards · saved privately</small></div></div>
+    <div class="toolbar-stat"><span>Mastery</span><strong id="masteryValue">0%</strong><i><em id="masteryBar"></em></i></div>
+    <label class="toolbar-select">Study order<select id="studyOrder"><option value="sequential">In order</option><option value="shuffle">Shuffle</option><option value="learning">Learning first</option></select></label>
+    <label class="accent-select">Accent<input id="accentColor" type="color" value="#6757e8"></label>
+    <div class="deck-actions"><button id="importBtn" class="fc-btn quiet">Import</button><button id="exportBtn" class="fc-btn quiet">Export</button><button id="printBtn" class="fc-btn primary">Print cards</button><input id="importFile" type="file" accept=".json,.csv,text/csv,application/json" hidden></div>
+  </section>
+
+  <div class="flash-studio">
+    <section class="deck-builder">
+      <div class="builder-heading"><div><span>DECK BUILDER</span><h2>Build your knowledge set</h2><p>Add cards individually or paste a complete list.</p></div><em id="saveState">Saved locally</em></div>
+      <div class="deck-settings">
+        <label>Deck title<input id="deckTitle" value="Biology Essentials" placeholder="Name this deck"></label>
+        <label>Subject<input id="deckSubject" value="Biology" placeholder="Subject or course"></label>
+        <label class="wide">Description<input id="deckDescription" value="Core cell biology concepts for exam review" placeholder="A short description of this deck"></label>
+      </div>
+
+      <div class="builder-tabs" role="tablist"><button class="active" id="cardsTab" type="button">Cards <span id="cardCountBadge">6</span></button><button id="bulkTab" type="button">Bulk add</button></div>
+      <div id="cardsPanel">
+        <div class="card-list-tools"><label class="card-search"><span>⌕</span><input id="cardSearch" placeholder="Search cards"></label><button id="addCard" class="add-card" type="button">+ Add card</button></div>
+        <div id="editorCardList" class="editor-card-list"></div>
+      </div>
+      <div id="bulkPanel" class="bulk-panel" hidden>
+        <div class="bulk-note"><b>Quick deck creation</b><span>Enter one card per line. Separate the front and back with a vertical bar.</span></div>
+        <textarea id="bulkInput" rows="11" placeholder="Mitochondria | Produces ATP through cellular respiration&#10;Ribosome | Builds proteins from amino acids"></textarea>
+        <div class="bulk-actions"><span id="bulkPreview">0 valid cards detected</span><button id="addBulk" class="fc-btn primary" type="button">Add to deck</button></div>
+      </div>
+      <button id="resetDeck" class="reset-deck" type="button">Reset deck and progress</button>
+      <div id="suite-status" class="suite-status" role="status"></div>
+    </section>
+
+    <aside class="study-panel" id="studyPanel">
+      <div class="study-topbar"><div><i></i><b>Study mode</b><span id="studyCounter">1 / 6</span></div><div><button id="resetProgress" title="Reset study progress">↻</button><button id="fullscreenStudy" title="Focus mode">⛶</button></div></div>
+      <div class="study-area" id="studyArea">
+        <div class="study-meta"><span id="studySubject">BIOLOGY</span><span id="cardState">NOT STUDIED</span></div>
+        <button class="study-card" id="studyCard" type="button" aria-label="Flip flashcard">
+          <div class="study-card-inner" id="studyCardInner">
+            <div class="card-face card-front"><small>QUESTION</small><strong id="studyFront"></strong><span id="studyHint"></span><em>Click or press Space to reveal</em></div>
+            <div class="card-face card-back"><small>ANSWER</small><strong id="studyBack"></strong><em>How well did you know this?</em></div>
+          </div>
+        </button>
+        <div class="confidence-actions" id="confidenceActions">
+          <button id="againBtn" class="again" type="button"><span>1</span><b>Learning</b><small>Review again</small></button>
+          <button id="knowBtn" class="know" type="button"><span>2</span><b>Know it</b><small>Mark mastered</small></button>
+        </div>
+        <div class="study-navigation"><button id="prevCard" type="button">← Previous</button><div class="progress-dots" id="progressDots"></div><button id="nextCard" type="button">Next →</button></div>
+        <div class="study-summary">
+          <div><span class="summary-icon new">○</span><p><b id="newCount">6</b><small>New</small></p></div>
+          <div><span class="summary-icon learning">↻</span><p><b id="learningCount">0</b><small>Learning</small></p></div>
+          <div><span class="summary-icon known">✓</span><p><b id="knownCount">0</b><small>Known</small></p></div>
+        </div>
+        <p class="keyboard-tip"><kbd>Space</kbd> flip · <kbd>←</kbd><kbd>→</kbd> navigate · <kbd>1</kbd><kbd>2</kbd> rate</p>
+      </div>
+    </aside>
+  </div>
+
+  <section class="print-deck" id="printDeck" aria-hidden="true"></section>
+</main>
+<footer></footer>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/flashcard-maker.js"></script>
+<script src="../assets/js/tool-suite.js"></script>
+<script src="../assets/js/tracker.js"></script>
+<script src="../assets/js/ads.js"></script>
+</body>
+</html>

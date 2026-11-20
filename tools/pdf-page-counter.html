@@ -1,0 +1,895 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <!-- =============================================
+       BASIC META TAGS
+  ============================================== -->
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- =============================================
+       SEO META TAGS
+  ============================================== -->
+  <title>Free PDF Page Counter Online — Count PDF Pages Instantly | AgentB24</title>
+  <meta name="description"
+        content="Free online PDF page counter. Instantly count the number of pages in any PDF file. Also shows file size, title and author metadata. No sign-up, no uploads — 100% browser-based." />
+  <meta name="keywords"
+        content="pdf page counter, count pdf pages, how many pages in pdf, pdf page count online, pdf page number checker, pdf metadata viewer, pdf info tool, check pdf pages free, online pdf page counter" />
+  <link rel="canonical" href="https://agentb24.com/tools/pdf-page-counter.html" />
+
+  <!-- =============================================
+       OPEN GRAPH
+  ============================================== -->
+  <!-- =============================================
+       TWITTER CARD
+  ============================================== -->
+  
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1T57RWSY42"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1T57RWSY42');
+  </script>
+
+  <!-- =============================================
+       STRUCTURED DATA — WebApplication Schema
+  ============================================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "PDF Page Counter",
+    "url": "https://agentb24.com/tools/pdf-page-counter.html",
+    "description": "Free online PDF page counter. Instantly count the number of pages in any PDF and view file metadata including size, title and author.",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "AgentB24",
+      "url": "https://agentb24.com"
+    }
+  }
+  </script>
+
+  <!-- =============================================
+       FAQ SCHEMA
+  ============================================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I count the pages in a PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Simply drag and drop your PDF onto the upload area or click to select it. The tool reads the file entirely in your browser and instantly shows the total page count along with the file name, file size, title and author metadata."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my PDF uploaded to a server to count the pages?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. This tool is 100% browser-based. Your PDF never leaves your device and is never sent to any server. All processing is done locally in your browser using JavaScript. Your documents remain completely private."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What metadata does the PDF page counter show?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In addition to the total page count, the tool displays the file name, file size (in KB or MB), the document title as stored in the PDF metadata, and the author name as stored in the PDF metadata. If these fields were not set when the PDF was created they will show as N/A."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it work with password-protected PDFs?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The tool attempts to read password-protected PDFs with encryption ignored. In most cases the page count can still be retrieved. However some heavily encrypted PDFs may not be readable without the correct password."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a file size limit for the PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "There is no enforced file size limit. Since all processing happens in your browser, very large PDFs may take a moment to read depending on your device. For most standard documents the result appears almost instantly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I check multiple PDFs?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. After viewing the results for one PDF, click the Check Another PDF button to reset the tool and upload a new file. You can check as many PDFs as you need."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- =============================================
+       BREADCRUMB SCHEMA
+  ============================================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://agentb24.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "PDF Tools",
+        "item": "https://agentb24.com/tools/pdf-tools.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "PDF Page Counter",
+        "item": "https://agentb24.com/tools/pdf-page-counter.html"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+
+  <!-- Shared Stylesheet -->
+  <link rel="stylesheet" href="../assets/css/style.css" />
+
+  <!-- =============================================
+       PAGE-SPECIFIC STYLES
+  ============================================== -->
+  <style>
+
+    /* ── Drop Zone ── */
+    .drop-zone {
+      border: 3px dashed var(--border, #e2e8f0);
+      border-radius: var(--radius, 16px);
+      padding: 50px 30px;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+      background: var(--bg, #f8fafc);
+      position: relative;
+    }
+    .drop-zone:hover,
+    .drop-zone.dragover {
+      border-color: var(--primary, #6366f1);
+      background: var(--primary-light, #eef2ff);
+      transform: scale(1.01);
+    }
+    .drop-zone input[type="file"] { display: none; }
+    .drop-icon {
+      font-size: 3.2rem;
+      display: block;
+      margin-bottom: 12px;
+      transition: transform .2s;
+    }
+    .drop-zone:hover .drop-icon { transform: scale(1.1) translateY(-4px); }
+    .drop-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-dark, #0f172a);
+      margin-bottom: 6px;
+    }
+    .drop-subtitle {
+      font-size: .82rem;
+      color: var(--text-mid, #64748b);
+      margin-bottom: 14px;
+    }
+    .drop-formats {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .format-pill {
+      background: var(--white, #fff);
+      border: 1px solid var(--border, #e2e8f0);
+      border-radius: 50px;
+      padding: 3px 12px;
+      font-size: .72rem;
+      font-weight: 700;
+      color: var(--text-mid, #64748b);
+    }
+
+    /* ── Status Messages ── */
+    .status-msg {
+      margin-top: .85rem;
+      padding: .75rem 1rem;
+      border-radius: var(--radius-sm, 8px);
+      font-size: .88rem;
+      display: none;
+      line-height: 1.5;
+    }
+    .status-msg.error   { background: #fee2e2; color: #991b1b; display: block; border: 1px solid #fca5a5; }
+    .status-msg.loading { background: #eff6ff; color: #1e40af; display: block; border: 1px solid #93c5fd; }
+
+    /* ── Result Box ── */
+    .result-box {
+      display: none;
+      margin-top: 1.25rem;
+      background: #f0fdf4;
+      border: 1px solid #86efac;
+      border-radius: var(--radius, 16px);
+      padding: 1.75rem;
+      text-align: center;
+      animation: fadeSlideIn .3s ease;
+    }
+    .result-box.visible { display: block; }
+
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Big Page Count ── */
+    .big-count-wrap {
+      margin-bottom: 1.25rem;
+    }
+    .big-number {
+      font-size: 5rem;
+      font-weight: 900;
+      color: #16a34a;
+      line-height: 1;
+      display: block;
+    }
+    .big-label {
+      font-size: 1rem;
+      color: #15803d;
+      font-weight: 700;
+      margin-top: .35rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      display: block;
+    }
+
+    /* ── Meta Grid ── */
+    .meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem;
+      margin-top: 1.1rem;
+      text-align: left;
+    }
+    .meta-item {
+      background: var(--white, #fff);
+      border: 1px solid #bbf7d0;
+      border-radius: var(--radius-sm, 8px);
+      padding: .85rem;
+    }
+    .meta-label {
+      font-size: .7rem;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      font-weight: 700;
+      display: block;
+    }
+    .meta-value {
+      font-size: .95rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-top: .25rem;
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    /* ── Extra Stats ── */
+    .extra-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .75rem;
+      margin-top: .75rem;
+    }
+    .stat-chip {
+      background: var(--white, #fff);
+      border: 1px solid #bbf7d0;
+      border-radius: var(--radius-sm, 8px);
+      padding: .7rem;
+      text-align: center;
+    }
+    .stat-chip .sc-val { font-size: 1.1rem; font-weight: 800; color: #15803d; display: block; }
+    .stat-chip .sc-lbl { font-size: .68rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: .04em; margin-top: 2px; display: block; }
+
+    /* ── Reset Button ── */
+    .btn-reset {
+      width: 100%;
+      background: var(--white, #fff);
+      color: var(--text-mid, #374151);
+      border: 1.5px solid #bbf7d0;
+      padding: .72rem 1.5rem;
+      border-radius: var(--radius, 12px);
+      font-size: .92rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 1.1rem;
+      transition: all .18s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-reset:hover { background: #f0fdf4; border-color: #16a34a; color: #15803d; }
+
+    /* ── How To Section ── */
+    .how-to-section {
+      background: var(--white, #fff);
+      border: 1px solid var(--border, #e2e8f0);
+      border-radius: var(--radius, 16px);
+      padding: 1.75rem;
+      box-shadow: var(--shadow, 0 4px 24px rgba(0,0,0,.06));
+      margin-top: 1.5rem;
+    }
+    .how-to-section h2 { font-size: 1.2rem; margin-bottom: 1.25rem; color: var(--text-dark, #0f172a); }
+    .steps { display: flex; flex-direction: column; gap: 1rem; }
+    .step  { display: flex; gap: 1rem; align-items: flex-start; }
+    .step-number {
+      width: 32px; height: 32px;
+      background: var(--primary, #6366f1);
+      color: #fff; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: .85rem; flex-shrink: 0;
+    }
+    .step-content h4 { font-size: .92rem; margin-bottom: .2rem; color: var(--text-dark, #0f172a); }
+    .step-content p  { font-size: .82rem; color: var(--text-mid, #64748b); line-height: 1.6; margin: 0; }
+
+    /* ── FAQ Section ── */
+    .faq-section {
+      background: var(--white, #fff);
+      border: 1px solid var(--border, #e2e8f0);
+      border-radius: var(--radius, 16px);
+      padding: 1.75rem;
+      box-shadow: var(--shadow, 0 4px 24px rgba(0,0,0,.06));
+      margin-top: 1.5rem;
+    }
+    .faq-section h2 { font-size: 1.2rem; margin-bottom: 1rem; color: var(--text-dark, #0f172a); }
+    .faq-item { border-bottom: 1px solid var(--border, #e2e8f0); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: .9rem 0; cursor: pointer; font-size: .9rem; font-weight: 600;
+      color: var(--text-dark, #0f172a); gap: .75rem; transition: color .15s;
+    }
+    .faq-question:hover { color: var(--primary, #6366f1); }
+    .faq-icon { font-size: 1.1rem; flex-shrink: 0; color: var(--primary, #6366f1); }
+    .faq-answer {
+      display: none; padding: 0 0 .9rem;
+      font-size: .85rem; color: var(--text-mid, #64748b); line-height: 1.7;
+    }
+    .faq-answer.open { display: block; }
+
+    /* ── Responsive ── */
+    @media (max-width: 480px) {
+      .meta-grid   { grid-template-columns: 1fr; }
+      .extra-stats { grid-template-columns: repeat(3, 1fr); }
+      .big-number  { font-size: 4rem; }
+    }
+
+  </style>
+  <!-- AgentB24 SEO Pack -->
+  <meta name="author" content="AgentB24">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#4F46E5">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AgentB24">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://agentb24.com/tools/pdf-page-counter.html">
+  <meta property="og:title" content="Free PDF Page Counter Online — Count PDF Pages Instantly | AgentB24">
+  <meta property="og:description" content="Free online PDF page counter. Instantly count the number of pages in any PDF file. Also shows file size, title and author metadata. No sign-up, no uploads — 100% browser-based.">
+  <meta property="og:image" content="https://agentb24.com/assets/img/og-image.png">
+  <meta property="og:image:width" content="1718">
+  <meta property="og:image:height" content="912">
+  <meta property="og:image:alt" content="AgentB24 â€” 80+ Free Online Tools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free PDF Page Counter Online — Count PDF Pages Instantly | AgentB24">
+  <meta name="twitter:description" content="Free online PDF page counter. Instantly count the number of pages in any PDF file. Also shows file size, title and author metadata. No sign-up, no uploads — 100% browser-based.">
+  <meta name="twitter:image" content="https://agentb24.com/assets/img/og-image.png">
+  <!-- /AgentB24 SEO Pack -->
+  <link rel="stylesheet" href="../assets/css/ads.css">
+</head>
+
+<body>
+
+  <!-- =============================================
+       HEADER
+  ============================================== -->
+  <header>
+    <div class="nav-container">
+      <a href="../index.html" class="logo">
+        <div class="logo-icon">🛠</div>
+        AgentB24
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="text-tools.html">Text Tools</a>
+        <a href="image-tools.html">Image Tools</a>
+        <a href="developer-tools.html">Dev Tools</a>
+        <a href="calculators.html">Calculators</a>
+        <a href="pdf-tools.html" class="active">PDF Tools</a>
+        <a href="../about.html">About</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="mobile-menu" id="mobile-menu">
+      <a href="../index.html">Home</a>
+      <a href="text-tools.html">Text Tools</a>
+      <a href="image-tools.html">Image Tools</a>
+      <a href="developer-tools.html">Dev Tools</a>
+      <a href="calculators.html">Calculators</a>
+      <a href="pdf-tools.html">PDF Tools</a>
+      <a href="../about.html">About</a>
+    </nav>
+  </header>
+
+ 
+  <!-- =============================================
+       TOOL PAGE HEADER
+  ============================================== -->
+  <div class="tool-page-header">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html">Home</a> &rsaquo;
+        <a href="pdf-tools.html">PDF Tools</a> &rsaquo;
+        <span>PDF Page Counter</span>
+      </nav>
+      <h1>Free PDF Page Counter Online</h1>
+      <p>
+        Instantly count the number of pages in any PDF file. Also shows file size,
+        document title and author metadata. No sign-up, no uploads —
+        runs 100% in your browser. Your files stay completely private.
+      </p>
+    </div>
+  </div>
+
+  <!-- =============================================
+       MAIN CONTENT
+  ============================================== -->
+  <main>
+    <div class="tool-body">
+
+      <!-- ==========================================
+           LEFT COLUMN
+      =========================================== -->
+      <div class="tool-main">
+
+        <!-- ── TOOL BOX ── -->
+        <div class="tool-box">
+
+          <!-- Drop Zone -->
+          <div class="drop-zone" id="drop-zone">
+            <input type="file" id="pdf-input" accept="application/pdf"/>
+            <span class="drop-icon">🔢</span>
+            <div class="drop-title">Click to select a PDF or drag & drop here</div>
+            <div class="drop-subtitle">Instantly shows page count and document metadata</div>
+            <div class="drop-formats">
+              <span class="format-pill">PDF</span>
+              <span class="format-pill">🔒 Private</span>
+              <span class="format-pill">⚡ Instant</span>
+            </div>
+          </div>
+
+          <!-- Status -->
+          <div class="status-msg" id="status-msg"></div>
+
+          <!-- Result Box -->
+          <div class="result-box" id="result-box">
+
+            <!-- Big Page Count -->
+            <div class="big-count-wrap">
+              <span class="big-number" id="page-count">—</span>
+              <span class="big-label">Total Pages</span>
+            </div>
+
+            <!-- Extra Stats -->
+            <div class="extra-stats">
+              <div class="stat-chip">
+                <span class="sc-val" id="stat-size">—</span>
+                <span class="sc-lbl">File Size</span>
+              </div>
+              <div class="stat-chip">
+                <span class="sc-val" id="stat-kb">—</span>
+                <span class="sc-lbl">KB / Page</span>
+              </div>
+              <div class="stat-chip">
+                <span class="sc-val" id="stat-enc">—</span>
+                <span class="sc-lbl">Encrypted</span>
+              </div>
+            </div>
+
+            <!-- Meta Grid -->
+            <div class="meta-grid">
+              <div class="meta-item">
+                <span class="meta-label">📄 File Name</span>
+                <span class="meta-value" id="meta-name">—</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">💾 File Size</span>
+                <span class="meta-value" id="meta-size">—</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">📋 Document Title</span>
+                <span class="meta-value" id="meta-title">—</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">👤 Author</span>
+                <span class="meta-value" id="meta-author">—</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">🏭 Producer</span>
+                <span class="meta-value" id="meta-producer">—</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">🛠 Creator</span>
+                <span class="meta-value" id="meta-creator">—</span>
+              </div>
+            </div>
+
+            <!-- Reset Button -->
+            <button class="btn-reset" id="reset-btn">
+              🔄 Check Another PDF
+            </button>
+
+          </div>
+          <!-- END RESULT BOX -->
+
+        </div>
+        <!-- END TOOL BOX -->
+
+        <!-- ── HOW TO USE ── -->
+        <div class="how-to-section">
+          <h2>📖 How to Count PDF Pages Online</h2>
+          <div class="steps">
+
+            <div class="step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h4>Upload Your PDF</h4>
+                <p>Click the upload area or drag and drop your PDF file onto it. Your file is read directly in the browser — nothing is sent to any server.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h4>Get Instant Results</h4>
+                <p>The page count appears immediately in large text. Below it you'll find the file size, KB per page, whether the PDF is encrypted, document title, author, producer and creator fields.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h4>Check Another PDF</h4>
+                <p>Click <strong>Check Another PDF</strong> to reset the tool and upload a new file. You can check as many PDFs as you need — completely free.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ── FAQ ── -->
+        <div class="faq-section">
+          <h2>❓ Frequently Asked Questions</h2>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              How do I count the number of pages in a PDF?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              Drag and drop your PDF onto the upload area or click to select it. The tool reads your file instantly in your browser and displays the exact page count along with other document metadata.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              Is my PDF uploaded to a server?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              <strong>No — your PDF never leaves your device.</strong> Everything is processed locally in your browser using JavaScript. No data is sent to any server. Your documents are completely private.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              What metadata information does the tool show?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              In addition to the total page count the tool shows: file name, file size, KB per page, whether the PDF is encrypted, document title, author, producer application, and creator application. Fields that were not set when the PDF was created will show as N/A.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              Does it work with password-protected PDFs?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              The tool attempts to read encrypted PDFs by ignoring the encryption flag. In most cases the page count and basic metadata can still be retrieved. Heavily encrypted PDFs may show limited information.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              Is there a file size limit?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              There is no enforced limit. Since processing happens in your browser, very large files may take a moment. Most standard PDFs return results almost instantly.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              Can I check multiple PDFs?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              Yes. Click <strong>Check Another PDF</strong> after viewing your results to reset the tool and check a new file. There is no limit to how many PDFs you can check.
+            </div>
+          </div>
+
+        </div>
+        <!-- END FAQ -->
+
+      </div>
+      <!-- END LEFT COLUMN -->
+
+      <!-- ==========================================
+           RIGHT COLUMN — Sidebar
+      =========================================== -->
+      <aside class="tool-sidebar">
+
+        <!-- Sidebar Ad -->
+        <!-- <div class="sidebar-ad">
+          <div class="ad-placeholder" style="min-height:250px;">
+            📢 Advertisement (300×250)
+          </div>
+        </div> -->
+
+        <!-- Related Tools -->
+        <div class="related-tools">
+          <h3>🔗 Related PDF Tools</h3>
+          <ul>
+            <li><a href="pdf-merger.html">📎 PDF Merger</a></li>
+            <li><a href="pdf-splitter.html">✂️ PDF Splitter</a></li>
+            <li><a href="pdf-editor.html">✏️ PDF Editor</a></li>
+            <li><a href="pdf-compressor.html">🗜️ PDF Compressor</a></li>
+            <li><a href="pdf-watermark.html">💧 PDF Watermark</a></li>
+            <li><a href="pdf-rotate.html">🔄 PDF Rotate</a></li>
+            <li><a href="pdf-to-text.html">📑 PDF to Text</a></li>
+            <li><a href="docs-to-pdf.html">📄 Docs to PDF</a></li>
+          </ul>
+        </div>
+
+        <!-- Tips -->
+        <div class="related-tools">
+          <h3>💡 Did You Know?</h3>
+          <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;">
+            <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">
+              📄 Average PDF has <strong>5–10 pages</strong>
+            </li>
+            <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">
+              📮 Email attachments often <strong>limit to 10MB</strong>
+            </li>
+            <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">
+              🗜️ Use <strong>PDF Compressor</strong> to reduce size
+            </li>
+            <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">
+              ✂️ Use <strong>PDF Splitter</strong> to extract pages
+            </li>
+            <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">
+              📎 Use <strong>PDF Merger</strong> to combine files
+            </li>
+            <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">
+              🔒 Files are <strong>never uploaded</strong> anywhere
+            </li>
+          </ul>
+        </div>
+
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- =============================================
+       FOOTER
+  ============================================== -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="../index.html" class="logo">
+          <div class="logo-icon">🛠</div>
+          AgentB24
+        </a>
+        <p>Free online tools for everyone. No sign-up required, no software to install.</p>
+      </div>
+      <div class="footer-col">
+        <h4>PDF Tools</h4>
+        <ul>
+          <li><a href="pdf-merger.html">PDF Merger</a></li>
+          <li><a href="pdf-splitter.html">PDF Splitter</a></li>
+          <li><a href="pdf-to-text.html">PDF to Text</a></li>
+          <li><a href="image-to-pdf.html">Image to PDF</a></li>
+          <li><a href="pdf-editor.html">PDF Editor</a></li>
+          <li><a href="pdf-watermark.html">PDF Watermark</a></li>
+          <li><a href="pdf-compressor.html">PDF Compressor</a></li>
+          <li><a href="docs-to-pdf.html">Docs to PDF</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Other Tools</h4>
+        <ul>
+          <li><a href="word-counter.html">Word Counter</a></li>
+          <li><a href="json-formatter.html">JSON Formatter</a></li>
+          <li><a href="image-compressor.html">Image Compressor</a></li>
+          <li><a href="qr-code-generator.html">QR Code Generator</a></li>
+          <li><a href="password-generator.html">Password Generator</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="../about.html">About Us</a></li>
+          <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="../about.html#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 AgentB24. All rights reserved.</span>
+      <span>Made with ❤️ for productivity</span>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <!-- =============================================
+       LIBRARIES
+  ============================================== -->
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+
+  <!-- =============================================
+       PDF PAGE COUNTER — TOOL LOGIC
+  ============================================== -->
+  <script>
+  'use strict';
+
+  const $ = id => document.getElementById(id);
+
+  const dropZone  = $('drop-zone');
+  const pdfInput  = $('pdf-input');
+  const statusMsg = $('status-msg');
+  const resultBox = $('result-box');
+
+  // ── Upload ─────────────────────────────────────────────────────────────────
+  dropZone.addEventListener('click', () => pdfInput.click());
+  dropZone.addEventListener('dragover',  e => { e.preventDefault(); dropZone.classList.add('dragover'); });
+  dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+  dropZone.addEventListener('drop', e => {
+    e.preventDefault();
+    dropZone.classList.remove('dragover');
+    const f = e.dataTransfer.files[0];
+    if (f?.type === 'application/pdf') processFile(f);
+  });
+  pdfInput.addEventListener('change', () => {
+    if (pdfInput.files[0]) processFile(pdfInput.files[0]);
+  });
+
+  // ── Process File ───────────────────────────────────────────────────────────
+  async function processFile(file) {
+    statusMsg.className   = 'status-msg loading';
+    statusMsg.textContent = '⏳ Reading PDF…';
+    resultBox.classList.remove('visible');
+    resultBox.style.display = 'none';
+
+    try {
+      const ab  = await file.arrayBuffer();
+      const { PDFDocument } = PDFLib;
+      const pdf = await PDFDocument.load(ab, { ignoreEncryption: true });
+
+      const pages    = pdf.getPageCount();
+      const title    = pdf.getTitle()    || 'N/A';
+      const author   = pdf.getAuthor()   || 'N/A';
+      const producer = pdf.getProducer() || 'N/A';
+      const creator  = pdf.getCreator()  || 'N/A';
+
+      const sizeKB   = (file.size / 1024).toFixed(1);
+      const sizeMB   = (file.size / 1024 / 1024).toFixed(2);
+      const sizeStr  = file.size > 1048576 ? sizeMB + ' MB' : sizeKB + ' KB';
+      const kbPerPg  = pages > 0 ? (file.size / 1024 / pages).toFixed(1) + ' KB' : 'N/A';
+
+      // Check encryption attempt
+      let encrypted = 'No';
+      try {
+        await PDFDocument.load(ab); // Will throw if encrypted
+      } catch(_) {
+        encrypted = 'Yes';
+      }
+
+      // Populate results
+      $('page-count').textContent  = pages;
+      $('stat-size').textContent   = sizeStr;
+      $('stat-kb').textContent     = kbPerPg;
+      $('stat-enc').textContent    = encrypted;
+      $('meta-name').textContent   = file.name;
+      $('meta-size').textContent   = sizeStr;
+      $('meta-title').textContent  = truncate(title, 28);
+      $('meta-author').textContent = truncate(author, 28);
+      $('meta-producer').textContent = truncate(producer, 28);
+      $('meta-creator').textContent  = truncate(creator, 28);
+
+      statusMsg.className   = 'status-msg';
+      statusMsg.textContent = '';
+      resultBox.style.display = 'block';
+      resultBox.classList.add('visible');
+      resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+    } catch(err) {
+      statusMsg.className   = 'status-msg error';
+      statusMsg.textContent = '❌ Error reading PDF: ' + err.message;
+    }
+  }
+
+  // ── Reset ──────────────────────────────────────────────────────────────────
+  $('reset-btn').addEventListener('click', () => {
+    resultBox.style.display = 'none';
+    resultBox.classList.remove('visible');
+    pdfInput.value = '';
+    statusMsg.className   = 'status-msg';
+    statusMsg.textContent = '';
+    dropZone.querySelector('.drop-title').textContent = 'Click to select a PDF or drag & drop here';
+  });
+
+  // ── Helper ─────────────────────────────────────────────────────────────────
+  function truncate(str, max) {
+    if (!str || str === 'N/A') return 'N/A';
+    return str.length > max ? str.slice(0, max) + '…' : str;
+  }
+
+  // ── FAQ Accordion ──────────────────────────────────────────────────────────
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+      const answer = q.nextElementSibling;
+      const icon   = q.querySelector('.faq-icon');
+      const isOpen = answer.classList.contains('open');
+      document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+      document.querySelectorAll('.faq-icon').forEach(i => i.textContent = '+');
+      if (!isOpen) { answer.classList.add('open'); icon.textContent = '−'; }
+    });
+  });
+  </script>
+
+  <script src="../assets/js/tracker.js"></script>
+<script src="../assets/js/ads.js"></script>
+</body>
+</html>

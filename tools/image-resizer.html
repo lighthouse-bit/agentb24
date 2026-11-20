@@ -1,0 +1,2262 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <!-- =============================================
+       BASIC META TAGS
+  ============================================== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- =============================================
+       SEO META TAGS
+  ============================================== -->
+  <title>Free Image Resizer Online — Resize Images Instantly | AgentB24</title>
+  <meta name="description"
+        content="Free online image resizer. Resize any image by pixels or percentage instantly. Maintain aspect ratio, choose output format (PNG, JPG, WebP), adjust quality. No upload to server — 100% private. No sign-up needed." />
+  <meta name="keywords"
+        content="image resizer, resize image online, resize photo online, image resize tool, compress image size, change image dimensions, png resizer, jpg resizer, webp converter, resize image free, image dimensions changer" />
+  <link rel="canonical" href="https://agentb24.com/tools/image-resizer.html" />
+
+  <!-- =============================================
+       OPEN GRAPH
+  ============================================== -->
+  <!-- =============================================
+       TWITTER CARD
+  ============================================== -->
+  
+     <!-- Google Analytics 4 -->
+    <script async
+    src="https://www.googletagmanager.com/gtag/js?id=G-1T57RWSY42">
+    </script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1T57RWSY42');
+    </script>
+
+  <!-- =============================================
+       STRUCTURED DATA — WebApplication Schema
+  ============================================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Image Resizer",
+    "url": "https://agentb24.com/tools/image-resizer.html",
+    "description": "Free online image resizer. Resize images by pixels or percentage with aspect ratio lock. Supports PNG, JPG, WebP output formats.",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "AgentB24",
+      "url": "https://agentb24.com"
+    }
+  }
+  </script>
+
+  <!-- =============================================
+       FAQ SCHEMA
+  ============================================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I resize an image online for free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Simply drag and drop your image into the tool above, enter your desired width and height in pixels or a percentage, then click Resize Image. Your resized image will be ready to download instantly for free."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will resizing an image reduce its quality?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Enlarging an image beyond its original size will reduce sharpness because there is not enough pixel data to fill the new size. Reducing an image generally preserves quality well. Use the quality slider when saving as JPG or WebP to control the compression level."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is aspect ratio and should I lock it?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Aspect ratio is the proportional relationship between an image's width and height. Locking the aspect ratio means when you change the width, the height adjusts automatically to keep the image proportions correct and avoid stretching or distortion."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What output formats does the image resizer support?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The tool supports PNG (lossless, best for graphics), JPG/JPEG (smaller files, best for photos), and WebP (modern format with excellent compression and quality for both photos and graphics)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my image uploaded to a server?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. All image resizing happens 100% inside your browser using the HTML5 Canvas API. Your image is never uploaded to any server, never stored, and never seen by anyone. It is completely private."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the maximum image size I can resize?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "There is no enforced file size limit. The tool processes images directly in your browser, so performance depends on your device. Very large images (over 20MB) may take a moment to process but will work correctly."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- =============================================
+       BREADCRUMB SCHEMA
+  ============================================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://agentb24.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Image Tools",
+        "item": "https://agentb24.com/#image-tools"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Image Resizer",
+        "item": "https://agentb24.com/tools/image-resizer.html"
+      }
+    ]
+  }
+  </script>
+  
+
+  <!-- Adsterra — Uncomment once approved -->
+  <!--  -->
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+
+  <!-- Shared Stylesheet -->
+  <link rel="stylesheet" href="../assets/css/style.css" />
+
+  <!-- =============================================
+       PAGE-SPECIFIC STYLES
+  ============================================== -->
+  <style>
+
+    /* ---- Drop Zone ---- */
+    .drop-zone {
+      border: 3px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 55px 30px;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .drop-zone:hover,
+    .drop-zone.dragover {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    .drop-zone.dragover {
+      transform: scale(1.01);
+      box-shadow: var(--shadow-md);
+    }
+
+    .drop-zone.has-file {
+      border-color: #22C55E;
+      background: #F0FDF4;
+      padding: 20px;
+    }
+
+    .drop-zone-input {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+    }
+
+    .drop-icon {
+      font-size: 3.5rem;
+      margin-bottom: 14px;
+      display: block;
+      transition: var(--transition);
+    }
+
+    .drop-zone:hover .drop-icon {
+      transform: scale(1.1) translateY(-4px);
+    }
+
+    .drop-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .drop-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-mid);
+      margin-bottom: 16px;
+    }
+
+    .drop-formats {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .format-pill {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 3px 10px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-mid);
+    }
+
+    /* ---- Main Tool Grid ---- */
+    .resizer-grid {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 24px;
+      align-items: start;
+    }
+
+    /* ---- Settings Panel ---- */
+    .settings-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .settings-group {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .settings-group-title {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--text-mid);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Mode Toggle */
+    .mode-toggle {
+      display: flex;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+
+    .mode-toggle-btn {
+      flex: 1;
+      padding: 9px 8px;
+      border: none;
+      background: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-mid);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .mode-toggle-btn:not(:last-child) {
+      border-right: 1px solid var(--border);
+    }
+
+    .mode-toggle-btn.active {
+      background: var(--primary);
+      color: white;
+    }
+
+    .mode-toggle-btn:hover:not(.active) {
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    /* Dimension Inputs */
+    .dim-row {
+      display: grid;
+      grid-template-columns: 1fr 30px 1fr;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .dim-input-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .dim-input-wrap label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-mid);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      margin: 0;
+    }
+
+    .dim-input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--white);
+      outline: none;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .dim-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(79,70,229,0.1);
+    }
+
+    .dim-input:disabled {
+      background: var(--bg);
+      color: var(--text-light);
+      cursor: not-allowed;
+    }
+
+    /* Lock icon button */
+    .lock-btn {
+      width: 30px;
+      height: 30px;
+      background: none;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      align-self: flex-end;
+      margin-bottom: 2px;
+      flex-shrink: 0;
+    }
+
+    .lock-btn.locked {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .lock-btn:hover {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    .lock-btn.locked:hover {
+      background: var(--primary-dark);
+    }
+
+    /* Aspect ratio display */
+    .aspect-ratio-display {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      text-align: center;
+      font-weight: 600;
+    }
+
+    /* Percentage Input */
+    .pct-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pct-row input {
+      flex: 1;
+      padding: 10px 14px;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--white);
+      outline: none;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .pct-row input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(79,70,229,0.1);
+    }
+
+    .pct-label {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-mid);
+    }
+
+    /* Preset Buttons */
+    .preset-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 7px;
+    }
+
+    .preset-btn {
+      padding: 7px 8px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-mid);
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    .preset-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    .preset-btn .pb-name {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .preset-btn .pb-size {
+      display: block;
+      font-size: 0.65rem;
+      color: var(--text-light);
+      margin-top: 1px;
+    }
+
+    /* Output Format */
+    .format-select-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 7px;
+    }
+
+    .format-select-btn {
+      padding: 9px 6px;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-mid);
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .format-select-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    .format-select-btn.active {
+      border-color: var(--primary);
+      background: var(--primary);
+      color: white;
+    }
+
+    /* Quality Slider */
+    .quality-row {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .quality-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .quality-header span {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-mid);
+    }
+
+    .quality-badge {
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 2px 10px;
+      border-radius: 50px;
+    }
+
+    /* Resize Button */
+    .resize-btn {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      border-radius: var(--radius);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .resize-btn:hover {
+      opacity: 0.92;
+      transform: translateY(-2px);
+      box-shadow: 0 15px 30px -5px rgba(79,70,229,0.35);
+    }
+
+    .resize-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* ---- Preview Panel ---- */
+    .preview-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* Before / After comparison */
+    .comparison-tabs {
+      display: flex;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+
+    .comp-tab {
+      flex: 1;
+      padding: 8px;
+      border: none;
+      background: var(--bg);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-mid);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .comp-tab:not(:last-child) {
+      border-right: 1px solid var(--border);
+    }
+
+    .comp-tab.active {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* Canvas / Image preview area */
+    .canvas-wrap {
+      background: repeating-conic-gradient(
+        #f1f5f9 0% 25%, #ffffff 0% 50%
+      ) 0 0 / 20px 20px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 260px;
+      position: relative;
+    }
+
+    .canvas-wrap img,
+    .canvas-wrap canvas {
+      max-width: 100%;
+      max-height: 320px;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+
+    .canvas-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-light);
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .canvas-placeholder .cp-icon {
+      font-size: 3rem;
+      opacity: 0.3;
+    }
+
+    .canvas-placeholder p {
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+
+    /* Image info strip */
+    .img-info-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .img-info-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 10px;
+      text-align: center;
+    }
+
+    .img-info-card .iic-value {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--primary);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .img-info-card .iic-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    /* Result info strip */
+    .result-info-strip {
+      display: none;
+      background: #DCFCE7;
+      border: 1px solid #86EFAC;
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .result-info-strip.visible {
+      display: flex;
+    }
+
+    .result-info-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      color: #15803D;
+    }
+
+    .result-info-row strong {
+      font-weight: 700;
+    }
+
+    /* Download button */
+    .download-area {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .download-area.visible {
+      display: flex;
+    }
+
+    /* ---- Processing spinner ---- */
+    .processing-overlay {
+      display: none;
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.85);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+      border-radius: var(--radius);
+      z-index: 10;
+    }
+
+    .processing-overlay.visible {
+      display: flex;
+    }
+
+    .spinner {
+      width: 38px;
+      height: 38px;
+      border: 4px solid var(--primary-light);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ---- Comparison Slider ---- */
+    .comparison-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      cursor: ew-resize;
+      user-select: none;
+      min-height: 260px;
+      background: repeating-conic-gradient(
+        #f1f5f9 0% 25%, #ffffff 0% 50%
+      ) 0 0 / 20px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .comparison-container img {
+      max-width: 100%;
+      max-height: 320px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .comp-after-layer {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    .comp-after-layer img {
+      max-width: 100%;
+      max-height: 320px;
+      object-fit: contain;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .comp-divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: white;
+      box-shadow: 0 0 8px rgba(0,0,0,0.3);
+      cursor: ew-resize;
+      z-index: 5;
+    }
+
+    .comp-handle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 36px;
+      height: 36px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .comp-label {
+      position: absolute;
+      top: 10px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 50px;
+      pointer-events: none;
+    }
+
+    .comp-label-before {
+      left: 10px;
+      background: rgba(0,0,0,0.55);
+      color: white;
+    }
+
+    .comp-label-after {
+      right: 10px;
+      background: var(--primary);
+      color: white;
+    }
+
+    /* ---- Size Warning ---- */
+    .size-warn {
+      display: none;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      background: #FFFBEB;
+      border: 1px solid #FDE68A;
+      border-left: 4px solid #F59E0B;
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      color: #92400E;
+    }
+
+    .size-warn.visible { display: flex; }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 768px) {
+      .resizer-grid {
+        grid-template-columns: 1fr;
+      }
+      .settings-panel {
+        order: 2;
+      }
+      .preview-panel {
+        order: 1;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .preset-grid { grid-template-columns: repeat(3, 1fr); }
+      .img-info-strip { grid-template-columns: repeat(3, 1fr); }
+    }
+
+  </style>
+  <!-- AgentB24 SEO Pack -->
+  <meta name="author" content="AgentB24">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#4F46E5">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AgentB24">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://agentb24.com/tools/image-resizer.html">
+  <meta property="og:title" content="Free Image Resizer Online — Resize Images Instantly | AgentB24">
+  <meta property="og:description" content="Free online image resizer. Resize any image by pixels or percentage instantly. Maintain aspect ratio, choose output format (PNG, JPG, WebP), adjust quality. No upload to server — 100% private. No sign-up needed.">
+  <meta property="og:image" content="https://agentb24.com/assets/img/og-image.png">
+  <meta property="og:image:width" content="1718">
+  <meta property="og:image:height" content="912">
+  <meta property="og:image:alt" content="AgentB24 â€” 80+ Free Online Tools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Image Resizer Online — Resize Images Instantly | AgentB24">
+  <meta name="twitter:description" content="Free online image resizer. Resize any image by pixels or percentage instantly. Maintain aspect ratio, choose output format (PNG, JPG, WebP), adjust quality. No upload to server — 100% private. No sign-up needed.">
+  <meta name="twitter:image" content="https://agentb24.com/assets/img/og-image.png">
+  <!-- /AgentB24 SEO Pack -->
+  <link rel="stylesheet" href="../assets/css/ads.css">
+</head>
+
+<body>
+
+  <!-- =============================================
+       HEADER
+  ============================================== -->
+  <header>
+    <div class="nav-container">
+      <a href="../index.html" class="logo">
+        <div class="logo-icon">🛠</div>
+        AgentB24
+      </a>
+
+      <nav class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="word-counter.html">Text Tools</a>
+        <a href="image-resizer.html" class="active">Image Tools</a>
+        <a href="json-formatter.html">Dev Tools</a>
+        <a href="percentage-calculator.html">Calculators</a>
+        <a href="../about.html">About</a>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <nav class="mobile-menu" id="mobile-menu">
+      <a href="../index.html">Home</a>
+      <a href="word-counter.html">Text Tools</a>
+      <a href="image-resizer.html">Image Tools</a>
+      <a href="json-formatter.html">Dev Tools</a>
+      <a href="percentage-calculator.html">Calculators</a>
+      <a href="../about.html">About</a>
+    </nav>
+  </header>
+
+  <!-- =============================================
+       TOP AD BANNER
+  ============================================== -->
+  <!-- <div class="ad-banner">
+    <div class="ad-banner-inner">
+      
+        Adsterra AD — Leaderboard 728x90
+        <!-- Adsterra ads are loaded globally by assets/js/ads.js -->
+     
+      <div class="ad-placeholder">📢 Advertisement — Leaderboard (728×90)</div>
+    </div>
+  </div> -->
+
+  <!-- =============================================
+       TOOL PAGE HEADER
+  ============================================== -->
+  <div class="tool-page-header">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html">Home</a> &rsaquo;
+        <a href="../index.html#image-tools">Image Tools</a> &rsaquo;
+        <span>Image Resizer</span>
+      </nav>
+
+      <h1>Free Image Resizer Online</h1>
+      <p>
+        Resize any image instantly by pixels or percentage. Lock the aspect
+        ratio to prevent distortion, choose your output format (PNG, JPG, WebP),
+        and adjust quality. 100% private — your image never leaves your browser.
+        No sign-up needed.
+      </p>
+    </div>
+  </div>
+
+  <!-- =============================================
+       MAIN CONTENT
+  ============================================== -->
+  <main>
+    <div class="tool-body">
+
+      <!-- ==========================================
+           LEFT COLUMN
+      =========================================== -->
+      <div class="tool-main">
+
+        <!-- ---- TOOL BOX ---- -->
+        <div class="tool-box">
+
+          <!-- DROP ZONE -->
+          <div class="drop-zone" id="drop-zone">
+            <input type="file"
+                   id="file-input"
+                   class="drop-zone-input"
+                   accept="image/*"
+                   onchange="onFileSelect(this.files)"
+                   aria-label="Select image file" />
+
+            <span class="drop-icon" id="drop-icon">🖼️</span>
+            <div class="drop-title" id="drop-title">
+              Drop your image here or click to browse
+            </div>
+            <div class="drop-subtitle" id="drop-subtitle">
+              Supports PNG, JPG, GIF, WebP, BMP, SVG &amp; more
+            </div>
+            <div class="drop-formats">
+              <span class="format-pill">PNG</span>
+              <span class="format-pill">JPG</span>
+              <span class="format-pill">GIF</span>
+              <span class="format-pill">WebP</span>
+              <span class="format-pill">BMP</span>
+              <span class="format-pill">SVG</span>
+            </div>
+          </div>
+
+          <!-- ---- MAIN RESIZER (hidden until image loaded) ---- -->
+          <div id="resizer-main" style="display:none; margin-top:20px;">
+
+            <div class="resizer-grid">
+
+              <!-- ============================
+                   LEFT: PREVIEW PANEL
+              ============================= -->
+              <div class="preview-panel">
+
+                <!-- Comparison Tabs -->
+                <div class="comparison-tabs" id="comp-tabs" style="display:none;">
+                  <button class="comp-tab active" id="tab-before"
+                          onclick="showView('before')">
+                    📷 Original
+                  </button>
+                  <button class="comp-tab" id="tab-after"
+                          onclick="showView('after')">
+                    ✅ Resized
+                  </button>
+                  <button class="comp-tab" id="tab-compare"
+                          onclick="showView('compare')">
+                    ↔️ Compare
+                  </button>
+                </div>
+
+                <!-- Before View -->
+                <div class="canvas-wrap" id="view-before">
+                  <div class="canvas-placeholder" id="canvas-placeholder">
+                    <span class="cp-icon">🖼️</span>
+                    <p>Upload an image to start resizing</p>
+                  </div>
+                  <img id="original-preview"
+                       src="" alt="Original image"
+                       style="display:none;" />
+                </div>
+
+                <!-- After View (hidden until resized) -->
+                <div class="canvas-wrap" id="view-after" style="display:none;">
+                  <div class="processing-overlay" id="processing-overlay">
+                    <div class="spinner"></div>
+                    <p style="font-size:0.85rem; color:var(--text-mid); font-weight:600;">
+                      Resizing...
+                    </p>
+                  </div>
+                  <canvas id="output-canvas"
+                          style="max-width:100%; max-height:320px;"></canvas>
+                </div>
+
+                <!-- Compare View -->
+                <div class="comparison-container" id="view-compare" style="display:none;">
+                  <img id="comp-before-img" src="" alt="Original" />
+                  <div class="comp-after-layer" id="comp-after-layer">
+                    <img id="comp-after-img" src="" alt="Resized" />
+                  </div>
+                  <div class="comp-divider" id="comp-divider">
+                    <div class="comp-handle">⇆</div>
+                  </div>
+                  <span class="comp-label comp-label-before">BEFORE</span>
+                  <span class="comp-label comp-label-after">AFTER</span>
+                </div>
+
+                <!-- Original Image Info -->
+                <div class="img-info-strip" id="img-info-strip" style="display:none;">
+                  <div class="img-info-card">
+                    <span class="iic-value" id="orig-w">—</span>
+                    <span class="iic-label">Orig. Width</span>
+                  </div>
+                  <div class="img-info-card">
+                    <span class="iic-value" id="orig-h">—</span>
+                    <span class="iic-label">Orig. Height</span>
+                  </div>
+                  <div class="img-info-card">
+                    <span class="iic-value" id="orig-size">—</span>
+                    <span class="iic-label">File Size</span>
+                  </div>
+                </div>
+
+                <!-- Result Info (shown after resize) -->
+                <div class="result-info-strip" id="result-info">
+                  <div class="result-info-row">
+                    <span>New Dimensions:</span>
+                    <strong id="result-dims">—</strong>
+                  </div>
+                  <div class="result-info-row">
+                    <span>Output Format:</span>
+                    <strong id="result-format">—</strong>
+                  </div>
+                  <div class="result-info-row">
+                    <span>Est. File Size:</span>
+                    <strong id="result-size">—</strong>
+                  </div>
+                  <div class="result-info-row">
+                    <span>Size Change:</span>
+                    <strong id="result-change">—</strong>
+                  </div>
+                </div>
+
+                <!-- Size warning -->
+                <div class="size-warn" id="size-warn">
+                  ⚠️
+                  <span id="size-warn-text">
+                    You are enlarging the image beyond its original size.
+                    This may reduce sharpness as there is not enough pixel data.
+                  </span>
+                </div>
+
+                <!-- Download Area -->
+                <div class="download-area" id="download-area">
+                  <button class="btn btn-primary" onclick="downloadImage()"
+                          style="width:100%; padding:13px;">
+                    ⬇️ Download Resized Image
+                  </button>
+                  <div style="display:flex; gap:10px;">
+                    <button class="btn btn-secondary" onclick="copyToClipboardCanvas()"
+                            style="flex:1; font-size:0.82rem; padding:9px;">
+                      📋 Copy to Clipboard
+                    </button>
+                    <button class="btn btn-secondary" onclick="resetTool()"
+                            style="flex:1; font-size:0.82rem; padding:9px;">
+                      🔄 New Image
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+              <!-- END PREVIEW PANEL -->
+
+
+              <!-- ============================
+                   RIGHT: SETTINGS PANEL
+              ============================= -->
+              <div class="settings-panel">
+
+                <!-- RESIZE MODE -->
+                <div class="settings-group">
+                  <span class="settings-group-title">📐 Resize Mode</span>
+
+                  <div class="mode-toggle">
+                    <button class="mode-toggle-btn active"
+                            id="mode-px"
+                            onclick="setResizeMode('pixels')">
+                      📏 Pixels
+                    </button>
+                    <button class="mode-toggle-btn"
+                            id="mode-pct"
+                            onclick="setResizeMode('percent')">
+                      📊 Percentage
+                    </button>
+                  </div>
+
+                  <!-- PIXEL MODE -->
+                  <div id="pixel-inputs">
+                    <div class="dim-row">
+                      <div class="dim-input-wrap">
+                        <label for="input-w">Width (px)</label>
+                        <input type="number"
+                               id="input-w"
+                               class="dim-input"
+                               placeholder="800"
+                               min="1"
+                               max="10000"
+                               oninput="onWidthChange()"
+                               aria-label="Width in pixels" />
+                      </div>
+
+                      <button class="lock-btn locked"
+                              id="lock-btn"
+                              onclick="toggleLock()"
+                              title="Lock/unlock aspect ratio"
+                              aria-label="Toggle aspect ratio lock">
+                        🔒
+                      </button>
+
+                      <div class="dim-input-wrap">
+                        <label for="input-h">Height (px)</label>
+                        <input type="number"
+                               id="input-h"
+                               class="dim-input"
+                               placeholder="600"
+                               min="1"
+                               max="10000"
+                               oninput="onHeightChange()"
+                               aria-label="Height in pixels" />
+                      </div>
+                    </div>
+
+                    <div class="aspect-ratio-display" id="ar-display">
+                      Upload an image to begin
+                    </div>
+                  </div>
+
+                  <!-- PERCENTAGE MODE -->
+                  <div id="pct-inputs" style="display:none;">
+                    <div class="pct-row">
+                      <input type="number"
+                             id="pct-input"
+                             placeholder="50"
+                             min="1"
+                             max="1000"
+                             value="50"
+                             oninput="onPctChange()"
+                             aria-label="Resize percentage" />
+                      <span class="pct-label">%</span>
+                    </div>
+                    <div class="aspect-ratio-display" id="pct-result-display">
+                      Result: — × — px
+                    </div>
+                    <div class="quick-pcts" style="margin-top:8px;">
+                      <button class="quick-pct-btn"
+                              onclick="setPct(25)">25%</button>
+                      <button class="quick-pct-btn"
+                              onclick="setPct(50)">50%</button>
+                      <button class="quick-pct-btn"
+                              onclick="setPct(75)">75%</button>
+                      <button class="quick-pct-btn"
+                              onclick="setPct(150)">150%</button>
+                      <button class="quick-pct-btn"
+                              onclick="setPct(200)">200%</button>
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- PRESET SIZES -->
+                <div class="settings-group">
+                  <span class="settings-group-title">⚡ Quick Presets</span>
+                  <div class="preset-grid" id="preset-grid">
+
+                    <!-- Social Media -->
+                    <button class="preset-btn"
+                            onclick="applyPreset(1200,630,'og-image')"
+                            title="Open Graph / Facebook Share">
+                      <span class="pb-name">OG Image</span>
+                      <span class="pb-size">1200 × 630</span>
+                    </button>
+
+                    <button class="preset-btn"
+                            onclick="applyPreset(1080,1080,'instagram')"
+                            title="Instagram Square Post">
+                      <span class="pb-name">Instagram</span>
+                      <span class="pb-size">1080 × 1080</span>
+                    </button>
+
+                    <button class="preset-btn"
+                            onclick="applyPreset(1500,500,'twitter-header')"
+                            title="Twitter/X Header">
+                      <span class="pb-name">X Header</span>
+                      <span class="pb-size">1500 × 500</span>
+                    </button>
+
+                    <button class="preset-btn"
+                            onclick="applyPreset(820,312,'facebook-cover')"
+                            title="Facebook Cover Photo">
+                      <span class="pb-name">FB Cover</span>
+                      <span class="pb-size">820 × 312</span>
+                    </button>
+
+                    <button class="preset-btn"
+                            onclick="applyPreset(1280,720,'hd')"
+                            title="HD 720p">
+                      <span class="pb-name">HD 720p</span>
+                      <span class="pb-size">1280 × 720</span>
+                    </button>
+
+                    <button class="preset-btn"
+                            onclick="applyPreset(1920,1080,'fhd')"
+                            title="Full HD 1080p">
+                      <span class="pb-name">FHD 1080p</span>
+                      <span class="pb-size">1920 × 1080</span>
+                    </button>
+
+                    <button class="preset-btn"
+                            onclick="applyPreset(800,600,'web')"
+                            title="Standard Web">
+                      <span class="pb-name">Web Standard</span>
+                      <span class="pb-size">800 × 600</span>
+                    </button>
+
+                    <button class="preset-btn"
+                            onclick="applyPreset(400,400,'thumbnail')"
+                            title="Thumbnail">
+                      <span class="pb-name">Thumbnail</span>
+                      <span class="pb-size">400 × 400</span>
+                    </button>
+
+                    <button class="preset-btn"
+                            onclick="applyPreset(1080,1920,'ig-story')"
+                            title="Instagram / TikTok Story">
+                      <span class="pb-name">IG Story</span>
+                      <span class="pb-size">1080 × 1920</span>
+                    </button>
+
+                    <button class="preset-btn"
+                            onclick="applyPreset(32,32,'favicon')"
+                            title="Favicon">
+                      <span class="pb-name">Favicon</span>
+                      <span class="pb-size">32 × 32</span>
+                    </button>
+
+                  </div>
+                </div>
+
+                <!-- OUTPUT FORMAT -->
+                <div class="settings-group">
+                  <span class="settings-group-title">🎨 Output Format</span>
+
+                  <div class="format-select-grid">
+                    <button class="format-select-btn active"
+                            id="fmt-png"
+                            onclick="setFormat('png')">
+                      PNG
+                    </button>
+                    <button class="format-select-btn"
+                            id="fmt-jpg"
+                            onclick="setFormat('jpg')">
+                      JPG
+                    </button>
+                    <button class="format-select-btn"
+                            id="fmt-webp"
+                            onclick="setFormat('webp')">
+                      WebP
+                    </button>
+                  </div>
+
+                  <!-- Format descriptions -->
+                  <div style="font-size:0.75rem; color:var(--text-mid); line-height:1.6;"
+                       id="format-desc">
+                    <strong>PNG</strong> — Lossless, best for graphics, logos &amp; screenshots.
+                    Larger file size.
+                  </div>
+
+                  <!-- Quality Slider (JPG + WebP only) -->
+                  <div class="quality-row" id="quality-row" style="display:none;">
+                    <div class="quality-header">
+                      <span>Quality</span>
+                      <span class="quality-badge" id="quality-badge">90%</span>
+                    </div>
+                    <input type="range"
+                           id="quality-slider"
+                           min="10"
+                           max="100"
+                           step="5"
+                           value="90"
+                           oninput="onQualityChange(this.value)"
+                           style="accent-color:var(--primary);"
+                           aria-label="Output quality" />
+                    <div style="display:flex; justify-content:space-between;
+                                 font-size:0.68rem; color:var(--text-light);">
+                      <span>Smaller file</span>
+                      <span>Better quality</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- EXTRA OPTIONS -->
+                <div class="settings-group">
+                  <span class="settings-group-title">⚙️ Options</span>
+
+                  <label style="display:flex; align-items:center; gap:9px;
+                                  font-size:0.85rem; font-weight:600; color:var(--text-mid);
+                                  cursor:pointer; margin:0; user-select:none;">
+                    <input type="checkbox" id="opt-exact"
+                           style="width:15px; height:15px; accent-color:var(--primary);" />
+                    Force exact dimensions (may stretch)
+                  </label>
+
+                  <label style="display:flex; align-items:center; gap:9px;
+                                  font-size:0.85rem; font-weight:600; color:var(--text-mid);
+                                  cursor:pointer; margin:0; user-select:none;">
+                    <input type="checkbox" id="opt-smooth" checked
+                           style="width:15px; height:15px; accent-color:var(--primary);" />
+                    Smooth resizing (better quality)
+                  </label>
+
+                  <label style="display:flex; align-items:center; gap:9px;
+                                  font-size:0.85rem; font-weight:600; color:var(--text-mid);
+                                  cursor:pointer; margin:0; user-select:none;">
+                    <input type="checkbox" id="opt-transparent" checked
+                           style="width:15px; height:15px; accent-color:var(--primary);" />
+                    Preserve transparency (PNG only)
+                  </label>
+                </div>
+
+                <!-- RESIZE BUTTON -->
+                <button class="resize-btn"
+                        id="resize-btn"
+                        onclick="resizeImage()"
+                        disabled>
+                  🔄 Resize Image
+                </button>
+
+              </div>
+              <!-- END SETTINGS PANEL -->
+
+            </div>
+          </div>
+          <!-- END resizer-main -->
+
+        </div>
+        <!-- END TOOL BOX -->
+
+
+        <!-- ---- AD — In-Content ---- -->
+        <!-- <div style="text-align:center;">
+          <div class="ad-placeholder" style="min-height:250px; border-radius:12px;">
+            📢 Advertisement — Rectangle (336×280)
+          </div>
+        </div> -->
+
+
+        <!-- ---- SUPPORTED FORMATS GUIDE ---- -->
+        <div class="tool-box">
+          <h2>🎨 Which Output Format Should I Use?</h2>
+          <p style="font-size:0.88rem; color:var(--text-mid); margin-bottom:18px; line-height:1.7;">
+            Choosing the right format makes a big difference to file size and quality:
+          </p>
+
+          <div style="overflow-x:auto;">
+            <table style="width:100%; border-collapse:collapse; font-size:0.87rem;">
+              <thead>
+                <tr style="background:var(--primary-light);">
+                  <th style="padding:11px 14px; text-align:left; color:var(--primary); font-weight:700;">Format</th>
+                  <th style="padding:11px 14px; text-align:left; color:var(--primary); font-weight:700;">Best For</th>
+                  <th style="padding:11px 14px; text-align:left; color:var(--primary); font-weight:700;">Transparency</th>
+                  <th style="padding:11px 14px; text-align:left; color:var(--primary); font-weight:700;">File Size</th>
+                  <th style="padding:11px 14px; text-align:left; color:var(--primary); font-weight:700;">Quality Loss</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <td style="padding:10px 14px; font-weight:700;">PNG</td>
+                  <td style="padding:10px 14px; color:var(--text-mid);">Logos, screenshots, graphics, icons</td>
+                  <td style="padding:10px 14px; color:#15803D; font-weight:700;">✅ Yes</td>
+                  <td style="padding:10px 14px; color:var(--text-mid);">Large</td>
+                  <td style="padding:10px 14px; color:#15803D; font-weight:700;">None (lossless)</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border); background:var(--bg);">
+                  <td style="padding:10px 14px; font-weight:700;">JPG</td>
+                  <td style="padding:10px 14px; color:var(--text-mid);">Photos, realistic images, backgrounds</td>
+                  <td style="padding:10px 14px; color:#DC2626; font-weight:700;">❌ No</td>
+                  <td style="padding:10px 14px; color:var(--text-mid);">Small–Medium</td>
+                  <td style="padding:10px 14px; color:#D97706; font-weight:700;">Some (adjustable)</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <td style="padding:10px 14px; font-weight:700;">WebP</td>
+                  <td style="padding:10px 14px; color:var(--text-mid);">Web use, modern browsers, all image types</td>
+                  <td style="padding:10px 14px; color:#15803D; font-weight:700;">✅ Yes</td>
+                  <td style="padding:10px 14px; color:var(--text-mid);">Smallest</td>
+                  <td style="padding:10px 14px; color:#D97706; font-weight:700;">Minimal (adjustable)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+                       gap:12px; margin-top:18px;">
+            <div style="padding:12px 14px; background:#EFF6FF; border:1px solid #BFDBFE;
+                         border-radius:var(--radius-sm); font-size:0.82rem; color:#1D4ED8;">
+              🌐 <strong>For websites:</strong> Use <strong>WebP</strong> — best quality with smallest size.
+            </div>
+            <div style="padding:12px 14px; background:#F0FDF4; border:1px solid #86EFAC;
+                         border-radius:var(--radius-sm); font-size:0.82rem; color:#15803D;">
+              🎨 <strong>For logos/icons:</strong> Use <strong>PNG</strong> — preserves transparency and sharpness.
+            </div>
+            <div style="padding:12px 14px; background:#FFF7ED; border:1px solid #FED7AA;
+                         border-radius:var(--radius-sm); font-size:0.82rem; color:#9A3412;">
+              📷 <strong>For photos:</strong> Use <strong>JPG</strong> — best compression for photographic images.
+            </div>
+          </div>
+        </div>
+
+
+        <!-- ---- HOW TO USE ---- -->
+        <div class="how-to-section">
+          <h2>📖 How to Use the Image Resizer</h2>
+          <div class="steps">
+
+            <div class="step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h4>Upload Your Image</h4>
+                <p>Drag and drop any image file into the upload area, or click it to open the file browser. Supports PNG, JPG, GIF, WebP, BMP, SVG, and more.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h4>Set Your Dimensions</h4>
+                <p>Choose <strong>Pixels</strong> mode to enter exact width/height, or <strong>Percentage</strong> mode to scale by a percentage. Use <strong>Quick Presets</strong> for common sizes like Instagram posts, HD video, or thumbnails. The 🔒 lock keeps the aspect ratio correct.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h4>Choose Format &amp; Quality</h4>
+                <p>Select <strong>PNG</strong> for lossless output, <strong>JPG</strong> or <strong>WebP</strong> for smaller files. For JPG/WebP use the <strong>Quality slider</strong> to balance file size and sharpness.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <h4>Resize &amp; Download</h4>
+                <p>Click <strong>Resize Image</strong>, check the result in the preview, then click <strong>Download Resized Image</strong>. Use the <strong>Compare</strong> tab to see a side-by-side slider of original vs resized.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+        <!-- ---- AD — Before FAQ ---- -->
+        <!-- <div style="text-align:center;">
+          <div class="ad-placeholder" style="min-height:90px; border-radius:12px;">
+            📢 Advertisement — Leaderboard (728×90)
+          </div>
+        </div> -->
+
+
+        <!-- ---- FAQ SECTION ---- -->
+        <div class="faq-section">
+          <h2>❓ Frequently Asked Questions</h2>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              How do I resize an image without losing quality?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              The best way to resize without quality loss is to <strong>reduce</strong> the image size rather than enlarge it. Enlarging an image beyond its original dimensions always introduces some softness. For reductions, use <strong>PNG</strong> format (lossless) or use <strong>JPG/WebP</strong> with a high quality setting (90–100%). Enable <strong>Smooth Resizing</strong> in the options for the best result.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              Will resizing an image change its aspect ratio?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              Not if the aspect ratio lock is enabled (🔒). When locked, changing the width automatically adjusts the height to maintain the original proportions. If you need exact dimensions that don't match the original ratio, unlock it — but note the image may appear stretched or squished.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              What is the difference between PNG, JPG, and WebP?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              <strong>PNG</strong> is lossless — no quality is lost, but file sizes are larger. Best for logos, icons, and images with transparency.<br><br>
+              <strong>JPG</strong> uses lossy compression — some quality is traded for much smaller file sizes. Best for photographs.<br><br>
+              <strong>WebP</strong> is a modern format that offers both lossless and lossy compression with excellent quality-to-size ratios. Best for web use and supported by all modern browsers.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              Can I resize a PNG and keep the transparent background?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              Yes. Make sure the output format is set to <strong>PNG</strong> or <strong>WebP</strong> (both support transparency) and the <strong>Preserve Transparency</strong> option is checked. If you save as JPG, transparency is not supported and the background will become white or black.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              Is my image sent to a server?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              No. All resizing happens entirely in your browser using the <strong>HTML5 Canvas API</strong>. Your image is never uploaded, never stored on our servers, and never seen by anyone. You can disconnect from the internet after loading the page and the tool will still work.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              What does the Quality slider do?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              The Quality slider (available for JPG and WebP formats) controls the compression level. Higher quality (90–100%) produces sharper images but larger file sizes. Lower quality (50–70%) produces smaller files with some visible compression artifacts. For most purposes, a quality of <strong>80–90%</strong> gives the best balance.
+            </div>
+          </div>
+
+        </div>
+        <!-- END FAQ -->
+
+      </div>
+      <!-- END LEFT COLUMN -->
+
+
+      <!-- ==========================================
+           RIGHT COLUMN — Sidebar
+      =========================================== -->
+      <aside class="tool-sidebar">
+
+        <!-- Sidebar Ad #1 -->
+        <!-- <div class="sidebar-ad">
+          <div class="ad-placeholder" style="min-height:250px;">
+            📢 Advertisement<br/>(300×250)
+          </div>
+        </div> -->
+
+        <!-- Related Tools -->
+        <div class="related-tools">
+          <h3>🔗 Related Tools</h3>
+          <ul>
+            <li><a href="image-to-base64.html">🖼️ Image to Base64</a></li>
+            <li><a href="color-picker.html">🎨 Color Picker</a></li>
+            <li><a href="qr-code-generator.html">📱 QR Code Generator</a></li>
+            <li><a href="base64-encoder.html">🔐 Base64 Encoder</a></li>
+            <li><a href="json-formatter.html">📋 JSON Formatter</a></li>
+            <li><a href="percentage-calculator.html">📊 Percentage Calc</a></li>
+          </ul>
+        </div>
+
+        <!-- Sidebar Ad #2 -->
+        <!-- <div class="sidebar-ad">
+          <div class="ad-placeholder" style="min-height:250px;">
+            📢 Advertisement<br/>(300×250)
+          </div>
+        </div> -->
+
+        <!-- Image Size Reference -->
+        <div class="related-tools">
+          <h3>📐 Common Image Sizes</h3>
+          <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:7px;">
+            <li style="font-size:0.78rem; color:var(--text-mid); padding:8px;
+                        background:var(--bg); border-radius:8px; border:1px solid var(--border);">
+              📘 <strong>Facebook Post</strong><br/>
+              <span style="font-family:monospace; color:var(--primary);">1200 × 630 px</span>
+            </li>
+            <li style="font-size:0.78rem; color:var(--text-mid); padding:8px;
+                        background:var(--bg); border-radius:8px; border:1px solid var(--border);">
+              📸 <strong>Instagram Post</strong><br/>
+              <span style="font-family:monospace; color:var(--primary);">1080 × 1080 px</span>
+            </li>
+            <li style="font-size:0.78rem; color:var(--text-mid); padding:8px;
+                        background:var(--bg); border-radius:8px; border:1px solid var(--border);">
+              🐦 <strong>Twitter/X Post</strong><br/>
+              <span style="font-family:monospace; color:var(--primary);">1200 × 675 px</span>
+            </li>
+            <li style="font-size:0.78rem; color:var(--text-mid); padding:8px;
+                        background:var(--bg); border-radius:8px; border:1px solid var(--border);">
+              ▶️ <strong>YouTube Thumbnail</strong><br/>
+              <span style="font-family:monospace; color:var(--primary);">1280 × 720 px</span>
+            </li>
+            <li style="font-size:0.78rem; color:var(--text-mid); padding:8px;
+                        background:var(--bg); border-radius:8px; border:1px solid var(--border);">
+              💼 <strong>LinkedIn Banner</strong><br/>
+              <span style="font-family:monospace; color:var(--primary);">1584 × 396 px</span>
+            </li>
+            <li style="font-size:0.78rem; color:var(--text-mid); padding:8px;
+                        background:var(--bg); border-radius:8px; border:1px solid var(--border);">
+              🖥️ <strong>Full HD Wallpaper</strong><br/>
+              <span style="font-family:monospace; color:var(--primary);">1920 × 1080 px</span>
+            </li>
+          </ul>
+        </div>
+
+      </aside>
+
+    </div>
+  </main>
+
+
+  <!-- =============================================
+       FOOTER
+  ============================================== -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="../index.html" class="logo">
+          <div class="logo-icon">🛠</div>
+          AgentB24
+        </a>
+        <p>Free online tools for everyone. No sign-up required, no software to install.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Image Tools</h4>
+        <ul>
+          <li><a href="image-resizer.html">Image Resizer</a></li>
+          <li><a href="image-to-base64.html">Image to Base64</a></li>
+          <li><a href="color-picker.html">Color Picker</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Dev Tools</h4>
+        <ul>
+          <li><a href="json-formatter.html">JSON Formatter</a></li>
+          <li><a href="password-generator.html">Password Generator</a></li>
+          <li><a href="qr-code-generator.html">QR Code Generator</a></li>
+          <li><a href="base64-encoder.html">Base64 Encoder</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="../about.html">About Us</a></li>
+          <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="../about.html#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2025 AgentB24. All rights reserved.</span>
+      <span>Made with ❤️ for productivity</span>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+  <script src="../assets/js/main.js"></script>
+
+  <!-- =============================================
+       IMAGE RESIZER — Tool Logic
+  ============================================== -->
+  <script>
+
+    // ============================================================
+    //  STATE
+    // ============================================================
+    let originalImage   = null;   // HTMLImageElement
+    let originalFile    = null;   // File object
+    let originalW       = 0;
+    let originalH       = 0;
+    let aspectRatio     = 1;
+    let isLocked        = true;
+    let resizeMode      = 'pixels'; // 'pixels' | 'percent'
+    let outputFormat    = 'png';
+    let outputQuality   = 0.90;
+    let currentView     = 'before';
+    let resizedDataURL  = '';
+    let isComparing     = false;
+    let compX           = 50; // comparison slider position %
+
+    // ============================================================
+    //  DRAG & DROP
+    // ============================================================
+    const dropZone = document.getElementById('drop-zone');
+
+    dropZone.addEventListener('dragover', e => {
+      e.preventDefault();
+      dropZone.classList.add('dragover');
+    });
+
+    dropZone.addEventListener('dragleave', () => {
+      dropZone.classList.remove('dragover');
+    });
+
+    dropZone.addEventListener('drop', e => {
+      e.preventDefault();
+      dropZone.classList.remove('dragover');
+      const files = e.dataTransfer.files;
+      if (files.length > 0) onFileSelect(files);
+    });
+
+    // ============================================================
+    //  onFileSelect(files)
+    // ============================================================
+    function onFileSelect(files) {
+      const file = files[0];
+      if (!file || !file.type.startsWith('image/')) {
+        showToast('⚠️ Please select a valid image file!', 'error');
+        return;
+      }
+
+      originalFile = file;
+      const url    = URL.createObjectURL(file);
+      const img    = new Image();
+
+      img.onload = function() {
+        originalImage = img;
+        originalW     = img.naturalWidth;
+        originalH     = img.naturalHeight;
+        aspectRatio   = originalW / originalH;
+
+        // Update drop zone appearance
+        dropZone.classList.add('has-file');
+        document.getElementById('drop-icon').textContent     = '✅';
+        document.getElementById('drop-title').textContent    = file.name;
+        document.getElementById('drop-subtitle').textContent =
+          `${originalW} × ${originalH} px — ${formatBytes(file.size)}`;
+
+        // Show original preview
+        const origPrev = document.getElementById('original-preview');
+        origPrev.src = url;
+        origPrev.style.display = 'block';
+        document.getElementById('canvas-placeholder').style.display = 'none';
+
+        // Show info strip
+        document.getElementById('img-info-strip').style.display = 'grid';
+        document.getElementById('orig-w').textContent    = originalW + ' px';
+        document.getElementById('orig-h').textContent    = originalH + ' px';
+        document.getElementById('orig-size').textContent = formatBytes(file.size);
+
+        // Set default pixel inputs
+        document.getElementById('input-w').value = originalW;
+        document.getElementById('input-h').value = originalH;
+        document.getElementById('ar-display').textContent =
+          `🔒 Aspect ratio: ${getARString(originalW, originalH)} (${aspectRatio.toFixed(3)})`;
+
+        // Set percentage display
+        document.getElementById('pct-result-display').textContent =
+          `Result: ${originalW} × ${originalH} px (100%)`;
+
+        // Enable resize button
+        document.getElementById('resize-btn').disabled = false;
+
+        // Show main resizer section
+        document.getElementById('resizer-main').style.display = 'block';
+
+        // Scroll to tool
+        document.getElementById('resizer-main').scrollIntoView({
+          behavior: 'smooth', block: 'nearest'
+        });
+
+        showToast('✅ Image loaded! Set your dimensions and click Resize.', 'success');
+      };
+
+      img.onerror = () => showToast('❌ Could not load image.', 'error');
+      img.src = url;
+    }
+
+    // ============================================================
+    //  RESIZE MODE
+    // ============================================================
+    function setResizeMode(mode) {
+      resizeMode = mode;
+      document.getElementById('mode-px').classList.toggle('active', mode === 'pixels');
+      document.getElementById('mode-pct').classList.toggle('active', mode === 'percent');
+      document.getElementById('pixel-inputs').style.display  = mode === 'pixels'  ? 'block' : 'none';
+      document.getElementById('pct-inputs').style.display    = mode === 'percent' ? 'flex' : 'none';
+      document.getElementById('pct-inputs').style.flexDirection = 'column';
+    }
+
+    // ============================================================
+    //  LOCK ASPECT RATIO
+    // ============================================================
+    function toggleLock() {
+      isLocked = !isLocked;
+      const btn = document.getElementById('lock-btn');
+      btn.textContent = isLocked ? '🔒' : '🔓';
+      btn.classList.toggle('locked', isLocked);
+      showToast(isLocked ? '🔒 Aspect ratio locked' : '🔓 Aspect ratio unlocked', 'success');
+    }
+
+    // ============================================================
+    //  WIDTH / HEIGHT INPUT HANDLERS
+    // ============================================================
+    function onWidthChange() {
+      const w = parseInt(document.getElementById('input-w').value);
+      if (!w || !originalW) return;
+
+      if (isLocked) {
+        const h = Math.round(w / aspectRatio);
+        document.getElementById('input-h').value = h;
+      }
+
+      checkEnlargement(
+        w,
+        parseInt(document.getElementById('input-h').value)
+      );
+    }
+
+    function onHeightChange() {
+      const h = parseInt(document.getElementById('input-h').value);
+      if (!h || !originalH) return;
+
+      if (isLocked) {
+        const w = Math.round(h * aspectRatio);
+        document.getElementById('input-w').value = w;
+      }
+
+      checkEnlargement(
+        parseInt(document.getElementById('input-w').value),
+        h
+      );
+    }
+
+    function onPctChange() {
+      const pct = parseFloat(document.getElementById('pct-input').value);
+      if (!pct || !originalW) return;
+
+      const newW = Math.round(originalW * (pct / 100));
+      const newH = Math.round(originalH * (pct / 100));
+      document.getElementById('pct-result-display').textContent =
+        `Result: ${newW} × ${newH} px`;
+
+      checkEnlargement(newW, newH);
+    }
+
+    function setPct(pct) {
+      document.getElementById('pct-input').value = pct;
+      onPctChange();
+    }
+
+    function checkEnlargement(w, h) {
+      const warn = document.getElementById('size-warn');
+      if (w > originalW * 1.1 || h > originalH * 1.1) {
+        warn.classList.add('visible');
+      } else {
+        warn.classList.remove('visible');
+      }
+    }
+
+    // ============================================================
+    //  PRESETS
+    // ============================================================
+    function applyPreset(w, h, name) {
+      if (!originalW) {
+        showToast('⚠️ Upload an image first!', 'error');
+        return;
+      }
+
+      // Switch to pixel mode
+      setResizeMode('pixels');
+
+      // Unlock ratio for exact preset dimensions
+      isLocked = false;
+      document.getElementById('lock-btn').textContent = '🔓';
+      document.getElementById('lock-btn').classList.remove('locked');
+
+      document.getElementById('input-w').value = w;
+      document.getElementById('input-h').value = h;
+
+      checkEnlargement(w, h);
+      showToast(`✅ Preset applied: ${w}×${h}px`, 'success');
+    }
+
+    // ============================================================
+    //  OUTPUT FORMAT
+    // ============================================================
+    const FORMAT_DESCS = {
+      png  : '<strong>PNG</strong> — Lossless, best for graphics, logos &amp; screenshots. Larger file size.',
+      jpg  : '<strong>JPG</strong> — Lossy compression, best for photos. Smaller files with adjustable quality.',
+      webp : '<strong>WebP</strong> — Modern format, excellent compression for all image types. Best for web.'
+    };
+
+    function setFormat(fmt) {
+      outputFormat = fmt;
+      document.querySelectorAll('.format-select-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('fmt-' + fmt).classList.add('active');
+      document.getElementById('format-desc').innerHTML = FORMAT_DESCS[fmt];
+
+      // Show quality slider for JPG and WebP
+      const qRow = document.getElementById('quality-row');
+      qRow.style.display = (fmt === 'jpg' || fmt === 'webp') ? 'flex' : 'none';
+      qRow.style.flexDirection = 'column';
+    }
+
+    function onQualityChange(val) {
+      outputQuality = parseInt(val) / 100;
+      document.getElementById('quality-badge').textContent = val + '%';
+    }
+
+    // ============================================================
+    //  resizeImage()
+    //  Main resize function using Canvas API
+    // ============================================================
+    function resizeImage() {
+      if (!originalImage) {
+        showToast('⚠️ Please upload an image first!', 'error');
+        return;
+      }
+
+      // Get target dimensions
+      let targetW, targetH;
+
+      if (resizeMode === 'pixels') {
+        targetW = parseInt(document.getElementById('input-w').value);
+        targetH = parseInt(document.getElementById('input-h').value);
+      } else {
+        const pct = parseFloat(document.getElementById('pct-input').value) / 100;
+        targetW   = Math.round(originalW * pct);
+        targetH   = Math.round(originalH * pct);
+      }
+
+      if (!targetW || !targetH || targetW < 1 || targetH < 1) {
+        showToast('⚠️ Please enter valid dimensions!', 'error');
+        return;
+      }
+
+      if (targetW > 8000 || targetH > 8000) {
+        showToast('⚠️ Maximum output size is 8000×8000 pixels', 'error');
+        return;
+      }
+
+      // Show processing
+      const overlay = document.getElementById('processing-overlay');
+      overlay.classList.add('visible');
+
+      // Use a tiny delay so the spinner renders
+      setTimeout(() => {
+        try {
+          const canvas  = document.getElementById('output-canvas');
+          const ctx     = canvas.getContext('2d');
+          canvas.width  = targetW;
+          canvas.height = targetH;
+
+          // Clear canvas (important for transparency)
+          ctx.clearRect(0, 0, targetW, targetH);
+
+          // Apply smooth rendering
+          if (document.getElementById('opt-smooth').checked) {
+            ctx.imageSmoothingEnabled  = true;
+            ctx.imageSmoothingQuality  = 'high';
+          } else {
+            ctx.imageSmoothingEnabled  = false;
+          }
+
+          // If JPG & no transparency needed, fill white background
+          if (outputFormat === 'jpg') {
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(0, 0, targetW, targetH);
+          }
+
+          // Draw the image
+          ctx.drawImage(originalImage, 0, 0, targetW, targetH);
+
+          // Get mime type
+          const mimeMap = { png: 'image/png', jpg: 'image/jpeg', webp: 'image/webp' };
+          const mime    = mimeMap[outputFormat];
+
+          // Get data URL
+          resizedDataURL = canvas.toDataURL(mime, outputQuality);
+
+          // Update result info
+          updateResultInfo(targetW, targetH);
+
+          // Show comparison views
+          document.getElementById('comp-after-img').src = resizedDataURL;
+          document.getElementById('comp-before-img').src = originalImage.src;
+
+          // Show result section
+          document.getElementById('comp-tabs').style.display = 'flex';
+          showView('after');
+
+          // Show download area
+          document.getElementById('download-area').classList.add('visible');
+
+          overlay.classList.remove('visible');
+          showToast(`✅ Resized to ${targetW}×${targetH}px!`, 'success');
+
+        } catch(e) {
+          overlay.classList.remove('visible');
+          showToast('❌ Resize failed. Please try again.', 'error');
+          console.error(e);
+        }
+      }, 50);
+    }
+
+    // ============================================================
+    //  updateResultInfo(w, h)
+    // ============================================================
+    function updateResultInfo(w, h) {
+      // Estimate file size from data URL length
+      const b64Len    = resizedDataURL.length - resizedDataURL.indexOf(',') - 1;
+      const sizeBytes = Math.ceil(b64Len * 0.75);
+      const origSize  = originalFile ? originalFile.size : 0;
+      const change    = origSize > 0
+        ? ((sizeBytes - origSize) / origSize * 100).toFixed(1)
+        : '—';
+
+      const fmtNames  = { png: 'PNG', jpg: 'JPEG', webp: 'WebP' };
+
+      document.getElementById('result-dims').textContent   = `${w} × ${h} px`;
+      document.getElementById('result-format').textContent = fmtNames[outputFormat];
+      document.getElementById('result-size').textContent   = formatBytes(sizeBytes);
+      document.getElementById('result-change').textContent =
+        origSize > 0
+          ? (parseFloat(change) > 0 ? '+' : '') + change + '%'
+          : '—';
+
+      document.getElementById('result-info').classList.add('visible');
+    }
+
+    // ============================================================
+    //  VIEW SWITCHING (Before / After / Compare)
+    // ============================================================
+    function showView(view) {
+      currentView = view;
+
+      document.querySelectorAll('.comp-tab').forEach(t => t.classList.remove('active'));
+      document.getElementById('tab-' + view).classList.add('active');
+
+      document.getElementById('view-before').style.display  =
+        view === 'before'  ? 'flex'  : 'none';
+      document.getElementById('view-after').style.display   =
+        view === 'after'   ? 'flex'  : 'none';
+      document.getElementById('view-compare').style.display =
+        view === 'compare' ? 'flex'  : 'none';
+
+      if (view === 'compare') initComparison();
+    }
+
+    // ============================================================
+    //  COMPARISON SLIDER
+    // ============================================================
+    function initComparison() {
+      const container = document.getElementById('view-compare');
+      const divider   = document.getElementById('comp-divider');
+      const afterLayer = document.getElementById('comp-after-layer');
+
+      setCompPosition(50);
+
+      let isDragging = false;
+
+      container.addEventListener('mousedown', startDrag);
+      container.addEventListener('touchstart', startDrag, { passive: true });
+
+      function startDrag(e) {
+        isDragging = true;
+        moveDrag(e);
+      }
+
+      document.addEventListener('mousemove', e => { if (isDragging) moveDrag(e); });
+      document.addEventListener('touchmove', e => { if (isDragging) moveDrag(e); }, { passive: true });
+      document.addEventListener('mouseup',  () => { isDragging = false; });
+      document.addEventListener('touchend', () => { isDragging = false; });
+
+      function moveDrag(e) {
+        const rect = container.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const x = Math.max(0, Math.min(clientX - rect.left, rect.width));
+        const pct = (x / rect.width) * 100;
+        setCompPosition(pct);
+      }
+    }
+
+    function setCompPosition(pct) {
+      compX = pct;
+      const divider    = document.getElementById('comp-divider');
+      const afterLayer = document.getElementById('comp-after-layer');
+      divider.style.left    = pct + '%';
+      afterLayer.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+    }
+
+    // ============================================================
+    //  DOWNLOAD
+    // ============================================================
+    function downloadImage() {
+      if (!resizedDataURL) {
+        showToast('⚠️ Resize an image first!', 'error');
+        return;
+      }
+
+      const canvas    = document.getElementById('output-canvas');
+      const extMap    = { png: 'png', jpg: 'jpg', webp: 'webp' };
+      const ext       = extMap[outputFormat];
+      const baseName  = originalFile
+        ? originalFile.name.replace(/\.[^.]+$/, '')
+        : 'image';
+      const filename  = `${baseName}-${canvas.width}x${canvas.height}.${ext}`;
+
+      const link      = document.createElement('a');
+      link.download   = filename;
+      link.href       = resizedDataURL;
+      link.click();
+      showToast('✅ Image downloaded!', 'success');
+    }
+
+    // ============================================================
+    //  COPY TO CLIPBOARD
+    // ============================================================
+    async function copyToClipboardCanvas() {
+      if (!resizedDataURL) {
+        showToast('⚠️ Resize an image first!', 'error');
+        return;
+      }
+      try {
+        const canvas = document.getElementById('output-canvas');
+        canvas.toBlob(async (blob) => {
+          await navigator.clipboard.write([
+            new ClipboardItem({ 'image/png': blob })
+          ]);
+          showToast('✅ Image copied to clipboard!', 'success');
+        });
+      } catch(e) {
+        showToast('⚠️ Copy not supported in this browser. Use Download instead.', 'error');
+      }
+    }
+
+    // ============================================================
+    //  RESET
+    // ============================================================
+    function resetTool() {
+      originalImage  = null;
+      originalFile   = null;
+      originalW      = 0;
+      originalH      = 0;
+      resizedDataURL = '';
+      isLocked       = true;
+
+      document.getElementById('resizer-main').style.display       = 'none';
+      document.getElementById('drop-zone').classList.remove('has-file');
+      document.getElementById('drop-icon').textContent            = '🖼️';
+      document.getElementById('drop-title').textContent           = 'Drop your image here or click to browse';
+      document.getElementById('drop-subtitle').textContent        = 'Supports PNG, JPG, GIF, WebP, BMP, SVG & more';
+      document.getElementById('original-preview').style.display   = 'none';
+      document.getElementById('canvas-placeholder').style.display = 'flex';
+      document.getElementById('comp-tabs').style.display          = 'none';
+      document.getElementById('download-area').classList.remove('visible');
+      document.getElementById('result-info').classList.remove('visible');
+      document.getElementById('size-warn').classList.remove('visible');
+      document.getElementById('resize-btn').disabled              = true;
+      document.getElementById('file-input').value                 = '';
+      document.getElementById('input-w').value                    = '';
+      document.getElementById('input-h').value                    = '';
+      document.getElementById('lock-btn').textContent             = '🔒';
+      document.getElementById('lock-btn').classList.add('locked');
+
+      showView('before');
+      showToast('🔄 Ready for a new image!', 'success');
+    }
+
+    // ============================================================
+    //  HELPERS
+    // ============================================================
+    function formatBytes(b) {
+      if (!b) return '—';
+      if (b < 1024)          return b + ' B';
+      if (b < 1024 * 1024)   return (b / 1024).toFixed(1) + ' KB';
+      return (b / (1024 * 1024)).toFixed(2) + ' MB';
+    }
+
+    function getARString(w, h) {
+      const g   = gcd(w, h);
+      const arW = w / g;
+      const arH = h / g;
+      // Keep it simple if ratio is large
+      if (arW > 20 || arH > 20) return `${w}:${h}`;
+      return `${arW}:${arH}`;
+    }
+
+    function gcd(a, b) {
+      return b === 0 ? a : gcd(b, a % b);
+    }
+
+  </script>
+    <script src="../assets/js/tracker.js"></script>
+<script src="../assets/js/ads.js"></script>
+</body>
+</html>

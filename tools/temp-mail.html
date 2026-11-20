@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Free Temporary Email and Disposable Inbox | AgentB24</title>
+  <meta name="description" content="Create a free disposable email address, receive messages in a live inbox and protect your primary email from spam. No sign-up required.">
+  <meta name="keywords" content="temporary email, temp mail, disposable email, burner email, throwaway inbox, anonymous email">
+  <meta name="author" content="AgentB24">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#4338ca">
+  <link rel="canonical" href="https://agentb24.com/tools/temp-mail.html">
+  <link rel="icon" href="../assets/img/favicon.png">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/temp-mail-premium.css">
+  <meta property="og:type" content="website"><meta property="og:site_name" content="AgentB24"><meta property="og:url" content="https://agentb24.com/tools/temp-mail.html"><meta property="og:title" content="Free Temporary Email | AgentB24"><meta property="og:description" content="Create a disposable address and receive messages in a live inbox."><meta property="og:image" content="https://agentb24.com/assets/img/og-image.png">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Free Temporary Email | AgentB24"><meta name="twitter:description" content="A clean disposable inbox with no sign-up."><meta name="twitter:image" content="https://agentb24.com/assets/img/og-image.png">
+  
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"AgentB24 Temporary Email","url":"https://agentb24.com/tools/temp-mail.html","description":"Create a disposable email address and receive messages in a browser inbox.","applicationCategory":"CommunicationApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How long does temporary email last?","acceptedAnswer":{"@type":"Answer","text":"The inbox can be restored while the same browser tab remains open. Mail.tm currently stores received messages for seven days."}},{"@type":"Question","name":"Can I send email from this address?","acceptedAnswer":{"@type":"Answer","text":"No. This temporary inbox is receive-only."}},{"@type":"Question","name":"Is temporary email private?","acceptedAnswer":{"@type":"Answer","text":"It helps keep spam away from a primary address, but it should never be used for banking, medical or sensitive accounts."}},{"@type":"Question","name":"Why has my message not arrived?","acceptedAnswer":{"@type":"Answer","text":"Delivery can take a moment, and some websites block disposable email domains. Refresh the inbox or create a new address."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://agentb24.com/"},{"@type":"ListItem","position":2,"name":"Email Tools","item":"https://agentb24.com/tools/email-tools.html"},{"@type":"ListItem","position":3,"name":"Temporary Email","item":"https://agentb24.com/tools/temp-mail.html"}]}</script>
+  <link rel="stylesheet" href="../assets/css/ads.css">
+</head>
+<body class="tm-page">
+<header><div class="nav-container"><a href="../index.html" class="logo"><div class="logo-icon">AB</div>AgentB24</a><nav class="nav-links"><a href="../index.html">Home</a><a href="word-counter.html">Text Tools</a><a href="image-tools.html">Image Tools</a><a href="developer-tools.html">Dev Tools</a><a href="email-tools.html" class="active">Email Tools</a><a href="pdf-tools.html">PDF Tools</a><a href="../about.html">About</a></nav><button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button></div><nav class="mobile-menu" id="mobile-menu"><a href="../index.html">Home</a><a href="email-tools.html">Email Tools</a><a href="pdf-tools.html">PDF Tools</a><a href="../about.html">About</a></nav></header>
+
+<section class="tm-hero"><div class="tm-glow"></div><div class="tm-container"><nav class="tm-breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="email-tools.html">Email Tools</a><span>/</span><span>Temporary Email</span></nav><div class="tm-hero-grid"><div><span class="tm-kicker">Disposable inbox</span><h1>Keep spam away from your real email.</h1><p>Get an instant receive-only address for quick sign-ups, testing and verification messages.</p><div class="tm-trust"><span>No registration</span><span>Live inbox updates</span><span>Protected message viewer</span></div></div><div class="tm-envelope" aria-hidden="true"><i></i><b>@</b></div></div></div></section>
+
+<main class="tm-container tm-main">
+  <section class="tm-address-card">
+    <div id="setup-view" class="tm-setup"><span class="tm-spinner"></span><div><b id="setup-title">Creating your private inbox</b><p id="setup-message">Requesting a temporary address...</p></div><button id="retry-btn" hidden>Try again</button></div>
+    <div id="address-view" hidden>
+      <div class="tm-card-top"><div><span>Your temporary email</span><div class="tm-address-row"><strong id="email-address">Preparing...</strong><button id="copy-address">Copy address</button></div></div><div class="tm-live"><i id="status-dot"></i><span id="connection-label">Connecting</span></div></div>
+      <div class="tm-name-personalizer">
+        <label for="name-seed">Personalize next address <span>optional</span></label>
+        <div>
+          <input id="name-seed" type="text" maxlength="24" autocomplete="given-name" placeholder="e.g. john, mary, alex">
+          <small id="name-preview">Leave blank for a random short address.</small>
+        </div>
+      </div>
+      <div class="tm-card-actions"><button id="refresh-btn"><span>Refresh</span><small id="refresh-label">Checking now</small></button><button id="new-address-btn"><span>New address</span><small>Use name if entered</small></button></div>
+      <div class="tm-refresh-track"><i id="refresh-progress"></i></div>
+      <div class="tm-privacy"><span>i</span><p><b>Use it for low-risk sign-ups only.</b>Do not use temporary email for financial, medical, government or recovery accounts.</p></div>
+    </div>
+  </section>
+
+  <div class="tm-workspace">
+    <section class="tm-inbox-card">
+      <div class="tm-section-head"><div><span class="tm-kicker">Live mailbox</span><h2>Inbox <b id="message-count">0</b></h2></div><span id="last-checked">Not checked yet</span></div>
+      <div id="inbox-list" class="tm-message-list"><div id="empty-inbox" class="tm-empty"><div class="tm-empty-icon"><i></i></div><h3>Your inbox is waiting</h3><p>Use the address above. New messages will appear automatically.</p></div></div>
+    </section>
+
+    <aside class="tm-guide-card"><span class="tm-kicker">Quick guide</span><h2>How it works</h2><ol><li><span>1</span><div><b>Copy the address</b><p>Use it in a sign-up or verification form.</p></div></li><li><span>2</span><div><b>Wait for delivery</b><p>The inbox checks automatically every ten seconds.</p></div></li><li><span>3</span><div><b>Open the message</b><p>Read it in an isolated viewer and copy the content.</p></div></li></ol><div class="tm-provider">Inbox service provided by <a href="https://mail.tm" target="_blank" rel="noopener noreferrer">Mail.tm</a>, with a browser fallback if the primary provider is blocked.</div></aside>
+  </div>
+
+  <section id="message-viewer" class="tm-viewer" hidden>
+    <div class="tm-viewer-head"><button id="close-message" aria-label="Close message">Back to inbox</button><div><span id="message-date"></span><h2 id="message-subject">Message</h2><p>From <strong id="message-from"></strong></p></div><div class="tm-viewer-actions"><button id="copy-message">Copy text</button><button id="delete-message" class="danger">Delete</button></div></div>
+    <div id="attachment-list" class="tm-attachments" hidden></div>
+    <div class="tm-message-tabs"><button data-view="html" class="active">Message view</button><button data-view="text">Plain text</button></div>
+    <iframe id="message-frame" title="Email message" sandbox="allow-popups allow-popups-to-escape-sandbox" referrerpolicy="no-referrer"></iframe>
+    <pre id="message-text" hidden></pre>
+  </section>
+
+  <section class="tm-content"><span class="tm-kicker">Useful, with limits</span><h2>Good uses for temporary email</h2><div class="tm-use-cards"><article><span>01</span><h3>Quick verification</h3><p>Receive one-time links without exposing your primary inbox.</p></article><article><span>02</span><h3>Website testing</h3><p>Test registration and transactional email flows.</p></article><article><span>03</span><h3>Low-risk downloads</h3><p>Access a resource without joining a permanent mailing list.</p></article></div></section>
+  <section class="tm-content tm-faq"><span class="tm-kicker">Questions, answered</span><h2>Temporary email FAQ</h2><details><summary>How long does this inbox last?<span>+</span></summary><p>The inbox credentials remain available for the life of this browser tab, and the page restores them after a refresh. Mail.tm currently states that received messages are stored for seven days.</p></details><details><summary>Can I send or reply to messages?<span>+</span></summary><p>No. This is a receive-only disposable inbox.</p></details><details><summary>Why is a verification email missing?<span>+</span></summary><p>Allow a minute and refresh. Some services block known disposable domains, in which case a different address may help but is not guaranteed.</p></details><details><summary>Is message HTML safe to open?<span>+</span></summary><p>HTML messages are isolated in a restricted frame. Scripts, forms and remote resources are blocked to reduce tracking and unsafe behavior.</p></details></section>
+  <section class="tm-related"><div><span class="tm-kicker">Keep working</span><h2>Related tools</h2></div><div><a href="email-generator.html"><b>Email Generator</b><small>Create email content</small></a><a href="password-generator.html"><b>Password Generator</b><small>Create a secure password</small></a><a href="qr-code-generator.html"><b>QR Generator</b><small>Share links and details</small></a></div></section>
+</main>
+
+<div id="tm-toast" class="tm-toast" role="status" aria-live="polite"></div>
+<footer><div class="footer-grid"><div class="footer-brand"><a href="../index.html" class="logo"><div class="logo-icon">AB</div>AgentB24</a><p>Free, practical browser tools for everyday work.</p></div><div class="footer-col"><h4>Email Tools</h4><ul><li><a href="email-tools.html">All Email Tools</a></li><li><a href="email-generator.html">Email Generator</a></li></ul></div><div class="footer-col"><h4>Company</h4><ul><li><a href="../about.html">About</a></li><li><a href="../privacy-policy.html">Privacy</a></li></ul></div></div><div class="footer-bottom"><span>&copy; 2026 AgentB24.</span><span>Made with care for productivity</span></div></footer>
+<script src="../assets/js/main.js"></script><script src="../assets/js/temp-mail-premium.js?v=7"></script><script src="../assets/js/tracker.js"></script>
+<script src="../assets/js/ads.js"></script>
+</body></html>

@@ -1,0 +1,1009 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <!-- =============================================
+       BASIC META TAGS
+  ============================================== -->
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- =============================================
+       SEO META TAGS
+  ============================================== -->
+  <title>Free Professional Email Generator — Write Perfect Emails Instantly | AgentB24</title>
+  <meta name="description"
+        content="Free professional email generator. Generate perfect emails for any situation — sick leave, resignation, follow-up, salary negotiation, invoice reminders and more. Fill in the blanks and copy instantly." />
+  <meta name="keywords"
+        content="professional email generator, email template generator, sick leave email, resignation email, follow up email after interview, salary negotiation email, invoice reminder email, work email templates, how to write professional email" />
+  <link rel="canonical" href="https://agentb24.com/tools/email-generator.html" />
+
+  <!-- =============================================
+       OPEN GRAPH
+  ============================================== -->
+  <!-- =============================================
+       TWITTER CARD
+  ============================================== -->
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1T57RWSY42"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date()); gtag('config', 'G-1T57RWSY42');
+  </script>
+
+  <!-- =============================================
+       STRUCTURED DATA
+  ============================================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Professional Email Generator",
+    "url": "https://agentb24.com/tools/email-generator.html",
+    "description": "Free professional email template generator. Generate perfect emails for sick leave, resignation, interview follow-up, salary negotiation, invoice reminders and more.",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "publisher": { "@type": "Organization", "name": "AgentB24", "url": "https://agentb24.com" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "How do I write a professional email?", "acceptedAnswer": { "@type": "Answer", "text": "Select the email type that matches your situation, fill in the blanks such as your name, recipient's name, and specific details, then click Generate. The tool produces a complete, professionally worded email that you can copy and send immediately." }},
+      { "@type": "Question", "name": "Are these email templates free to use?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, completely free. All email templates are generated entirely in your browser. No sign-up, no account, no credits needed. Copy and use as many emails as you need." }},
+      { "@type": "Question", "name": "Can I edit the generated email?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The generated email appears in an editable text area so you can make any changes before copying. You can adjust the tone, add or remove sentences, and personalize it further." }},
+      { "@type": "Question", "name": "What types of emails can I generate?", "acceptedAnswer": { "@type": "Answer", "text": "The tool includes over 15 professional email templates including sick leave, resignation, working from home request, interview follow-up, salary negotiation, job offer acceptance and decline, meeting request, invoice reminders, refund requests, formal complaints, and more." }},
+      { "@type": "Question", "name": "Is my information stored?", "acceptedAnswer": { "@type": "Answer", "text": "No. Everything happens entirely in your browser. The names and details you enter are never sent to any server, never stored, and never seen by anyone. Your privacy is completely protected." }}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://agentb24.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Email Tools", "item": "https://agentb24.com/tools/email-tools.html" },
+      { "@type": "ListItem", "position": 3, "name": "Email Generator", "item": "https://agentb24.com/tools/email-generator.html" }
+    ]
+  }
+  </script>
+
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+
+  <style>
+
+    /* ── Category Tabs ── */
+    .cat-tabs {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+    }
+    .cat-tab {
+      padding: 6px 14px;
+      border: 1.5px solid var(--border, #e2e8f0);
+      border-radius: 50px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--text-mid, #64748b);
+      background: var(--white, #fff);
+      cursor: pointer;
+      transition: all .15s;
+      font-family: 'Inter', sans-serif;
+    }
+    .cat-tab:hover { border-color: var(--primary, #6366f1); color: var(--primary, #6366f1); background: var(--primary-light, #eef2ff); }
+    .cat-tab.active { background: var(--primary, #6366f1); color: #fff; border-color: var(--primary, #6366f1); }
+
+    /* ── Template Picker Grid ── */
+    .template-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+      margin-bottom: 1.5rem;
+    }
+    .template-card {
+      border: 2px solid var(--border, #e2e8f0);
+      border-radius: var(--radius-sm, 10px);
+      padding: .85rem;
+      cursor: pointer;
+      background: var(--white, #fff);
+      transition: all .15s;
+      display: flex;
+      flex-direction: column;
+      gap: .3rem;
+    }
+    .template-card:hover { border-color: var(--primary, #6366f1); background: var(--primary-light, #eef2ff); }
+    .template-card.active { border-color: var(--primary, #6366f1); background: var(--primary-light, #eef2ff); box-shadow: 0 0 0 3px rgba(99,102,241,.15); }
+    .tc-icon  { font-size: 1.4rem; }
+    .tc-name  { font-size: .85rem; font-weight: 700; color: var(--text-dark, #0f172a); }
+    .tc-desc  { font-size: .72rem; color: var(--text-mid, #64748b); line-height: 1.4; }
+
+    /* ── Fields Area ── */
+    .fields-area {
+      background: var(--bg, #f8fafc);
+      border: 1px solid var(--border, #e2e8f0);
+      border-radius: var(--radius, 16px);
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .fields-title {
+      font-size: .78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--text-light, #94a3b8);
+      margin-bottom: 1rem;
+    }
+    .fields-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .85rem;
+    }
+    .field-group { display: flex; flex-direction: column; gap: .3rem; }
+    .field-group.full { grid-column: 1 / -1; }
+    .field-group label {
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--text-mid, #374151);
+    }
+    .field-group input,
+    .field-group select,
+    .field-group textarea {
+      padding: .55rem .75rem;
+      border: 1.5px solid var(--border, #e2e8f0);
+      border-radius: var(--radius-sm, 8px);
+      font-size: .88rem;
+      font-family: 'Inter', sans-serif;
+      background: var(--white, #fff);
+      transition: border-color .15s;
+    }
+    .field-group input:focus,
+    .field-group select:focus,
+    .field-group textarea:focus {
+      outline: none;
+      border-color: var(--primary, #6366f1);
+    }
+    .field-group textarea { min-height: 70px; resize: vertical; }
+
+    /* ── Tone Selector ── */
+    .tone-row {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+    }
+    .tone-btn {
+      padding: .38rem .85rem;
+      border: 1.5px solid var(--border, #e2e8f0);
+      border-radius: 50px;
+      font-size: .78rem;
+      font-weight: 700;
+      cursor: pointer;
+      background: var(--white, #fff);
+      color: var(--text-mid, #64748b);
+      transition: all .13s;
+      font-family: 'Inter', sans-serif;
+    }
+    .tone-btn.active { background: var(--primary, #6366f1); color: #fff; border-color: var(--primary, #6366f1); }
+    .tone-btn:hover:not(.active) { border-color: var(--primary, #6366f1); color: var(--primary, #6366f1); }
+
+    /* ── Generate Button ── */
+    .generate-btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, var(--primary, #6366f1), var(--secondary, #8b5cf6));
+      color: #fff;
+      border: none;
+      border-radius: var(--radius, 12px);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .6rem;
+      box-shadow: 0 4px 14px rgba(99,102,241,.3);
+      margin-bottom: 1rem;
+    }
+    .generate-btn:hover { opacity: .9; transform: translateY(-2px); box-shadow: 0 12px 28px rgba(99,102,241,.35); }
+
+    /* ── Output Area ── */
+    .output-area { display: none; }
+    .output-area.visible { display: block; animation: fadeSlideIn .3s ease; }
+    @keyframes fadeSlideIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+
+    .output-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .75rem 1rem;
+      background: var(--bg, #f8fafc);
+      border: 1px solid var(--border, #e2e8f0);
+      border-bottom: none;
+      border-radius: 12px 12px 0 0;
+      gap: .5rem; flex-wrap: wrap;
+    }
+    .output-header-title { font-size: .82rem; font-weight: 700; color: var(--text-mid, #374151); text-transform: uppercase; letter-spacing: .04em; }
+    .output-subject-row {
+      display: flex; align-items: center; gap: .65rem;
+      padding: .65rem 1rem;
+      background: #fffbeb;
+      border: 1px solid var(--border, #e2e8f0);
+      border-top: 1px solid #fde68a;
+      border-bottom: none;
+    }
+    .output-subject-label { font-size: .78rem; font-weight: 800; color: #92400e; white-space: nowrap; }
+    .output-subject-text  { font-size: .88rem; font-weight: 700; color: #78350f; }
+
+    .output-textarea {
+      width: 100%;
+      min-height: 320px;
+      padding: 1.25rem;
+      border: 1px solid var(--border, #e2e8f0);
+      border-radius: 0 0 12px 12px;
+      font-family: 'Georgia', serif;
+      font-size: .92rem;
+      line-height: 1.85;
+      resize: vertical;
+      background: var(--white, #fff);
+      color: var(--text-dark, #0f172a);
+      box-sizing: border-box;
+    }
+    .output-textarea:focus { outline: 2px solid var(--primary, #6366f1); border-color: transparent; }
+
+    .output-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: .6rem;
+      margin-top: .65rem;
+    }
+    .action-btn {
+      padding: .65rem .8rem;
+      border-radius: var(--radius-sm, 10px);
+      font-family: 'Inter', sans-serif;
+      font-size: .83rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .4rem;
+      border: 1.5px solid var(--border, #e2e8f0);
+      background: var(--bg, #f8fafc);
+      color: var(--text-mid, #374151);
+    }
+    .action-btn:hover { background: #ededff; border-color: var(--primary, #6366f1); color: var(--primary, #6366f1); }
+    .action-btn.primary-action { background: var(--primary, #6366f1); color: #fff; border-color: var(--primary, #6366f1); }
+    .action-btn.primary-action:hover { background: #4f46e5; }
+
+    /* ── How To & FAQ ── */
+    .how-to-section, .faq-section {
+      background: var(--white, #fff); border: 1px solid var(--border, #e2e8f0);
+      border-radius: var(--radius, 16px); padding: 1.75rem;
+      box-shadow: var(--shadow, 0 4px 24px rgba(0,0,0,.06)); margin-top: 1.5rem;
+    }
+    .how-to-section h2, .faq-section h2 { font-size: 1.2rem; margin-bottom: 1.25rem; color: var(--text-dark, #0f172a); }
+    .steps { display: flex; flex-direction: column; gap: 1rem; }
+    .step  { display: flex; gap: 1rem; align-items: flex-start; }
+    .step-number { width: 32px; height: 32px; background: var(--primary, #6366f1); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: .85rem; flex-shrink: 0; }
+    .step-content h4 { font-size: .92rem; margin-bottom: .2rem; color: var(--text-dark, #0f172a); }
+    .step-content p  { font-size: .82rem; color: var(--text-mid, #64748b); line-height: 1.6; margin: 0; }
+    .faq-item { border-bottom: 1px solid var(--border, #e2e8f0); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question { display: flex; justify-content: space-between; align-items: center; padding: .9rem 0; cursor: pointer; font-size: .9rem; font-weight: 600; color: var(--text-dark, #0f172a); gap: .75rem; transition: color .15s; }
+    .faq-question:hover { color: var(--primary, #6366f1); }
+    .faq-icon { font-size: 1.1rem; flex-shrink: 0; color: var(--primary, #6366f1); }
+    .faq-answer { display: none; padding: 0 0 .9rem; font-size: .85rem; color: var(--text-mid, #64748b); line-height: 1.7; }
+    .faq-answer.open { display: block; }
+
+    @media(max-width:600px) {
+      .fields-grid  { grid-template-columns: 1fr; }
+      .output-actions { grid-template-columns: 1fr 1fr; }
+      .template-grid  { grid-template-columns: 1fr 1fr; }
+    }
+    @media(max-width:400px) {
+      .template-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+  <!-- AgentB24 SEO Pack -->
+  <meta name="author" content="AgentB24">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#4F46E5">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AgentB24">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://agentb24.com/tools/email-generator.html">
+  <meta property="og:title" content="Free Professional Email Generator — Write Perfect Emails Instantly | AgentB24">
+  <meta property="og:description" content="Free professional email generator. Generate perfect emails for any situation — sick leave, resignation, follow-up, salary negotiation, invoice reminders and more. Fill in the blanks and copy instantly.">
+  <meta property="og:image" content="https://agentb24.com/assets/img/og-image.png">
+  <meta property="og:image:width" content="1718">
+  <meta property="og:image:height" content="912">
+  <meta property="og:image:alt" content="AgentB24 â€” 80+ Free Online Tools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Professional Email Generator — Write Perfect Emails Instantly | AgentB24">
+  <meta name="twitter:description" content="Free professional email generator. Generate perfect emails for any situation — sick leave, resignation, follow-up, salary negotiation, invoice reminders and more. Fill in the blanks and copy instantly.">
+  <meta name="twitter:image" content="https://agentb24.com/assets/img/og-image.png">
+  <!-- /AgentB24 SEO Pack -->
+  <link rel="stylesheet" href="../assets/css/ads.css">
+</head>
+<body>
+
+<header>
+  <div class="nav-container">
+    <a href="../index.html" class="logo"><div class="logo-icon">🛠</div>AgentB24</a>
+    <nav class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="text-tools.html">Text Tools</a>
+      <a href="image-tools.html">Image Tools</a>
+      <a href="developer-tools.html">Dev Tools</a>
+      <a href="calculators.html">Calculators</a>
+      <a href="pdf-tools.html">PDF Tools</a>
+      <a href="../about.html">About</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+  <nav class="mobile-menu" id="mobile-menu">
+    <a href="../index.html">Home</a><a href="text-tools.html">Text Tools</a>
+    <a href="image-tools.html">Image Tools</a><a href="developer-tools.html">Dev Tools</a>
+    <a href="calculators.html">Calculators</a><a href="pdf-tools.html">PDF Tools</a>
+    <a href="../about.html">About</a>
+  </nav>
+</header>
+
+<div class="tool-page-header">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a> &rsaquo;
+      <a href="email-tools.html">Email Tools</a> &rsaquo;
+      <span>Email Generator</span>
+    </nav>
+    <h1>Free Professional Email Generator</h1>
+    <p>Generate perfectly worded professional emails for any situation. Sick leave, resignation, salary negotiation, invoice reminders and 15+ more. Fill in the blanks, copy, and send.</p>
+  </div>
+</div>
+
+<main>
+  <div class="tool-body">
+    <div class="tool-main">
+      <div class="tool-box">
+
+        <!-- Category Tabs -->
+        <div class="cat-tabs" id="cat-tabs">
+          <button class="cat-tab active" data-cat="work">💼 Work & HR</button>
+          <button class="cat-tab" data-cat="job">🎯 Job & Career</button>
+          <button class="cat-tab" data-cat="business">🏢 Business</button>
+          <button class="cat-tab" data-cat="customer">🛒 Customer</button>
+        </div>
+
+        <!-- Template Grid -->
+        <div class="template-grid" id="template-grid"></div>
+
+        <!-- Fields -->
+        <div class="fields-area">
+          <div class="fields-title">✏️ Fill In Your Details</div>
+          <div class="fields-grid" id="fields-grid"></div>
+        </div>
+
+        <!-- Tone -->
+        <div style="margin-bottom:1rem;">
+          <p style="font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--text-light,#94a3b8);margin-bottom:.6rem;">🎭 Email Tone</p>
+          <div class="tone-row" id="tone-row">
+            <button class="tone-btn active" data-tone="formal">🎩 Formal</button>
+            <button class="tone-btn" data-tone="polite">😊 Polite</button>
+            <button class="tone-btn" data-tone="assertive">💪 Assertive</button>
+            <button class="tone-btn" data-tone="friendly">🤝 Friendly</button>
+          </div>
+        </div>
+
+        <!-- Generate Button -->
+        <button class="generate-btn" id="generate-btn">
+          ✉️ Generate Email
+        </button>
+
+        <!-- Output -->
+        <div class="output-area" id="output-area">
+          <div class="output-header">
+            <span class="output-header-title">✉️ Generated Email</span>
+          </div>
+          <div class="output-subject-row">
+            <span class="output-subject-label">SUBJECT:</span>
+            <span class="output-subject-text" id="output-subject">—</span>
+          </div>
+          <textarea class="output-textarea" id="output-textarea"></textarea>
+          <div class="output-actions">
+            <button class="action-btn primary-action" id="copy-email-btn">📋 Copy Email</button>
+            <button class="action-btn" id="copy-subject-btn">📌 Copy Subject</button>
+            <button class="action-btn" id="download-email-btn">⬇️ Download .txt</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- How To Use -->
+      <div class="how-to-section">
+        <h2>📖 How to Generate a Professional Email</h2>
+        <div class="steps">
+          <div class="step"><div class="step-number">1</div><div class="step-content"><h4>Choose a Category & Template</h4><p>Select a category tab (Work & HR, Job & Career, Business, or Customer), then click the email template that matches your situation.</p></div></div>
+          <div class="step"><div class="step-number">2</div><div class="step-content"><h4>Fill In Your Details</h4><p>Enter your name, the recipient's name, and any other specific details the template requires. All fields are optional — leave any blank and a placeholder will appear.</p></div></div>
+          <div class="step"><div class="step-number">3</div><div class="step-content"><h4>Choose a Tone</h4><p>Select your preferred email tone — Formal, Polite, Assertive, or Friendly. The tone adjusts the opening, closing, and phrasing of the email.</p></div></div>
+          <div class="step"><div class="step-number">4</div><div class="step-content"><h4>Generate, Edit & Copy</h4><p>Click <strong>Generate Email</strong>. Edit the result directly in the text box if needed, then copy the email body or subject line to paste into your email client.</p></div></div>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="faq-section">
+        <h2>❓ Frequently Asked Questions</h2>
+        <div class="faq-item"><div class="faq-question">Are these email templates free?<span class="faq-icon">+</span></div><div class="faq-answer">Yes — completely free. No sign-up, no account, no limits. Generate as many emails as you need across all templates.</div></div>
+        <div class="faq-item"><div class="faq-question">Can I edit the generated email?<span class="faq-icon">+</span></div><div class="faq-answer">Yes. The output appears in an editable text area. Make any changes you need before copying — add details, adjust wording, or personalize further.</div></div>
+        <div class="faq-item"><div class="faq-question">Is my information stored?<span class="faq-icon">+</span></div><div class="faq-answer">No. Everything runs entirely in your browser. The names and details you type are never sent to any server. Your information is completely private.</div></div>
+        <div class="faq-item"><div class="faq-question">What email templates are available?<span class="faq-icon">+</span></div><div class="faq-answer">Over 15 templates across 4 categories: Work & HR (sick leave, resignation, WFH request, apology), Job & Career (interview follow-up, salary negotiation, offer acceptance/decline, networking), Business (meeting request, project proposal, price increase, payment reminder), Customer (refund request, formal complaint, subscription cancellation).</div></div>
+        <div class="faq-item"><div class="faq-question">What does the tone option change?<span class="faq-icon">+</span></div><div class="faq-answer">The tone adjusts the greeting, phrasing, and sign-off of the email. <strong>Formal</strong> uses strict professional language. <strong>Polite</strong> is warm but professional. <strong>Assertive</strong> is direct and confident. <strong>Friendly</strong> is casual and approachable.</div></div>
+      </div>
+
+    </div>
+
+    <aside class="tool-sidebar">
+      <div class="related-tools">
+        <h3>🔗 Email Tools</h3>
+        <ul>
+          <li><a href="temp-mail.html">📧 Temporary Email</a></li>
+          <li><a href="email-generator.html">✉️ Email Generator</a></li>
+        </ul>
+      </div>
+      <div class="related-tools">
+        <h3>📧 Popular Templates</h3>
+        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:.82rem;padding:7px 10px;background:var(--bg);border-radius:8px;border:1px solid var(--border);cursor:pointer;" onclick="selectTemplateByKey('sick-leave')">🤒 Sick Leave Email</li>
+          <li style="font-size:.82rem;padding:7px 10px;background:var(--bg);border-radius:8px;border:1px solid var(--border);cursor:pointer;" onclick="selectTemplateByKey('resignation')">👋 Resignation Letter</li>
+          <li style="font-size:.82rem;padding:7px 10px;background:var(--bg);border-radius:8px;border:1px solid var(--border);cursor:pointer;" onclick="selectTemplateByKey('interview-followup')">🎯 Interview Follow-Up</li>
+          <li style="font-size:.82rem;padding:7px 10px;background:var(--bg);border-radius:8px;border:1px solid var(--border);cursor:pointer;" onclick="selectTemplateByKey('salary-negotiation')">💰 Salary Negotiation</li>
+          <li style="font-size:.82rem;padding:7px 10px;background:var(--bg);border-radius:8px;border:1px solid var(--border);cursor:pointer;" onclick="selectTemplateByKey('invoice-reminder')">🧾 Invoice Reminder</li>
+          <li style="font-size:.82rem;padding:7px 10px;background:var(--bg);border-radius:8px;border:1px solid var(--border);cursor:pointer;" onclick="selectTemplateByKey('refund-request')">💸 Refund Request</li>
+        </ul>
+      </div>
+      <div class="related-tools">
+        <h3>💡 Email Writing Tips</h3>
+        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;">
+          <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">📌 Keep subject lines <strong>under 60 chars</strong></li>
+          <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">✂️ <strong>One topic</strong> per email</li>
+          <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">👤 Always use the <strong>recipient's name</strong></li>
+          <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">📝 End with a <strong>clear call to action</strong></li>
+          <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">🔍 Always <strong>proofread</strong> before sending</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand"><a href="../index.html" class="logo"><div class="logo-icon">🛠</div>AgentB24</a><p>Free online tools for everyone. No sign-up required.</p></div>
+    <div class="footer-col"><h4>Email Tools</h4><ul><li><a href="temp-mail.html">Temporary Email</a></li><li><a href="email-generator.html">Email Generator</a></li></ul></div>
+    <div class="footer-col"><h4>Other Tools</h4><ul><li><a href="word-counter.html">Word Counter</a></li><li><a href="pdf-editor.html">PDF Editor</a></li><li><a href="password-generator.html">Password Generator</a></li></ul></div>
+    <div class="footer-col"><h4>Company</h4><ul><li><a href="../about.html">About Us</a></li><li><a href="../privacy-policy.html">Privacy Policy</a></li><li><a href="../about.html#contact">Contact</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 AgentB24. All rights reserved.</span><span>Made with ❤️ for productivity</span></div>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="../assets/js/main.js"></script>
+
+<script>
+'use strict';
+
+const $ = id => document.getElementById(id);
+
+// ── TONE GREETINGS & CLOSINGS ─────────────────────────────────────────────────
+const TONES = {
+  formal:    { open: 'Dear', close: 'Yours sincerely,', note: 'I would appreciate your prompt attention to this matter.' },
+  polite:    { open: 'Dear', close: 'Kind regards,',    note: 'Thank you for your time and consideration.' },
+  assertive: { open: 'Hi',   close: 'Best regards,',    note: 'I look forward to your response.' },
+  friendly:  { open: 'Hi',   close: 'Thanks,',          note: 'Hope to hear from you soon!' },
+};
+
+let selectedTone     = 'formal';
+let selectedTemplate = null;
+
+// ── TEMPLATES ─────────────────────────────────────────────────────────────────
+const TEMPLATES = {
+
+  // ── Work & HR ──────────────────────────────────────────────────────────────
+  'sick-leave': {
+    cat: 'work', icon: '🤒', name: 'Sick Leave Email',
+    desc: 'Inform your manager you are unwell',
+    subject: 'Sick Leave Request – {yourName}',
+    fields: [
+      { key: 'yourName',      label: 'Your Name',         placeholder: 'John Doe' },
+      { key: 'managerName',   label: 'Manager\'s Name',   placeholder: 'Ms. Smith' },
+      { key: 'leaveDate',     label: 'Leave Date(s)',      placeholder: 'Monday 10th June' },
+      { key: 'returnDate',    label: 'Expected Return',    placeholder: 'Tuesday 11th June' },
+    ],
+    body: (f, t) => `${t.open} ${f.managerName || 'Manager'},
+
+I am writing to let you know that I am feeling unwell today and will be unable to come in to work on ${f.leaveDate || '[date(s)]'}.
+
+I expect to return on ${f.returnDate || '[return date]'}. During my absence, I will ensure that any urgent tasks are handed over to the relevant team members.
+
+I apologize for any inconvenience this may cause. ${t.note}
+
+${t.close}
+${f.yourName || 'Your Name'}`,
+  },
+
+  'resignation': {
+    cat: 'work', icon: '👋', name: 'Resignation Letter',
+    desc: 'Professional notice of resignation',
+    subject: 'Resignation Notice – {yourName}',
+    fields: [
+      { key: 'yourName',      label: 'Your Name',         placeholder: 'John Doe' },
+      { key: 'managerName',   label: 'Manager\'s Name',   placeholder: 'Mr. Johnson' },
+      { key: 'companyName',   label: 'Company Name',      placeholder: 'Acme Corp' },
+      { key: 'lastDay',       label: 'Last Working Day',  placeholder: 'Friday 30th June' },
+      { key: 'position',      label: 'Your Position',     placeholder: 'Marketing Manager' },
+    ],
+    body: (f, t) => `${t.open} ${f.managerName || 'Manager'},
+
+I am writing to formally notify you of my resignation from my position as ${f.position || '[your position]'} at ${f.companyName || '[Company Name]'}, effective ${f.lastDay || '[last working day]'}.
+
+This has not been an easy decision. I have greatly valued my time here and the opportunities I have been given to grow professionally.
+
+I am committed to making this transition as smooth as possible and will ensure all my ongoing work and responsibilities are handed over properly before my departure.
+
+Thank you for the experience and support during my time at ${f.companyName || '[Company Name]'}. ${t.note}
+
+${t.close}
+${f.yourName || 'Your Name'}`,
+  },
+
+  'wfh-request': {
+    cat: 'work', icon: '🏠', name: 'Work From Home Request',
+    desc: 'Request permission to work remotely',
+    subject: 'Work From Home Request – {yourName}',
+    fields: [
+      { key: 'yourName',    label: 'Your Name',       placeholder: 'John Doe' },
+      { key: 'managerName', label: 'Manager\'s Name', placeholder: 'Ms. Smith' },
+      { key: 'dates',       label: 'Requested Date(s)', placeholder: 'Monday 10th – Friday 14th June' },
+      { key: 'reason',      label: 'Reason (optional)', placeholder: 'e.g. home repairs, personal matter' },
+    ],
+    body: (f, t) => `${t.open} ${f.managerName || 'Manager'},
+
+I hope this message finds you well. I am writing to request permission to work from home on ${f.dates || '[requested dates]'}.${f.reason ? '\n\nThe reason for this request is ' + f.reason + '.' : ''}
+
+I can assure you that I will remain fully available during normal working hours, will attend all scheduled meetings via video call, and will maintain my usual level of productivity and communication.
+
+I am happy to discuss this further if you have any concerns. ${t.note}
+
+${t.close}
+${f.yourName || 'Your Name'}`,
+  },
+
+  'apology-email': {
+    cat: 'work', icon: '🙏', name: 'Apology Email',
+    desc: 'Apologize professionally for a mistake',
+    subject: 'Apology Regarding {issue}',
+    fields: [
+      { key: 'yourName',    label: 'Your Name',         placeholder: 'John Doe' },
+      { key: 'recipient',   label: 'Recipient\'s Name', placeholder: 'Ms. Brown' },
+      { key: 'issue',       label: 'What Happened',     placeholder: 'the missed deadline', type:'textarea' },
+      { key: 'resolution',  label: 'How You Will Fix It', placeholder: 'submit the report by end of day', type:'textarea' },
+    ],
+    body: (f, t) => `${t.open} ${f.recipient || 'Colleague'},
+
+I am writing to sincerely apologize regarding ${f.issue || '[the issue]'}. I take full responsibility and understand that this is not the standard of work you rightfully expect.
+
+To resolve this, I will ${f.resolution || '[your resolution plan]'} and will take steps to ensure this does not happen again.
+
+Once again, I am truly sorry for any inconvenience this has caused. ${t.note}
+
+${t.close}
+${f.yourName || 'Your Name'}`,
+  },
+
+  // ── Job & Career ───────────────────────────────────────────────────────────
+  'interview-followup': {
+    cat: 'job', icon: '🎯', name: 'Interview Follow-Up',
+    desc: 'Thank you email after an interview',
+    subject: 'Thank You – {position} Interview',
+    fields: [
+      { key: 'yourName',    label: 'Your Name',         placeholder: 'John Doe' },
+      { key: 'interviewer', label: 'Interviewer\'s Name', placeholder: 'Mr. Williams' },
+      { key: 'position',    label: 'Job Position',      placeholder: 'Software Engineer' },
+      { key: 'company',     label: 'Company Name',      placeholder: 'TechCorp Ltd' },
+      { key: 'interviewDate', label: 'Interview Date',  placeholder: 'Monday 10th June' },
+    ],
+    body: (f, t) => `${t.open} ${f.interviewer || 'Hiring Manager'},
+
+Thank you for taking the time to speak with me on ${f.interviewDate || '[interview date]'} regarding the ${f.position || '[position]'} role at ${f.company || '[company]'}.
+
+I truly enjoyed our conversation and learning more about the team and the exciting work being done at ${f.company || '[company]'}. The discussion reinforced my enthusiasm for this opportunity and my confidence that my skills and experience align well with what you are looking for.
+
+I remain very interested in the position and would be delighted to join your team. Please do not hesitate to reach out if you need any further information. ${t.note}
+
+${t.close}
+${f.yourName || 'Your Name'}`,
+  },
+
+  'salary-negotiation': {
+    cat: 'job', icon: '💰', name: 'Salary Negotiation',
+    desc: 'Professionally ask for higher pay',
+    subject: 'Salary Discussion – {yourName}',
+    fields: [
+      { key: 'yourName',     label: 'Your Name',           placeholder: 'John Doe' },
+      { key: 'managerName',  label: 'Manager\'s Name',     placeholder: 'Ms. Thompson' },
+      { key: 'currentSalary',label: 'Current Salary',      placeholder: '$55,000' },
+      { key: 'desiredSalary',label: 'Desired Salary',      placeholder: '$65,000' },
+      { key: 'achievements', label: 'Key Achievement(s)',  placeholder: 'increased sales by 30%', type:'textarea' },
+    ],
+    body: (f, t) => `${t.open} ${f.managerName || 'Manager'},
+
+I hope you are doing well. I am writing to request a conversation about my current compensation.
+
+Over the past period, I have consistently delivered results and contributed significantly to the team — ${f.achievements || '[your key achievements]'}. I believe this demonstrates the value I bring to the organization.
+
+With this in mind, I would like to respectfully propose a salary adjustment from ${f.currentSalary || '[current salary]'} to ${f.desiredSalary || '[desired salary]'}, which I believe better reflects my contributions and current market rates for this role.
+
+I would welcome the opportunity to discuss this further at your earliest convenience. ${t.note}
+
+${t.close}
+${f.yourName || 'Your Name'}`,
+  },
+
+  'job-offer-accept': {
+    cat: 'job', icon: '✅', name: 'Accept Job Offer',
+    desc: 'Formally accept an employment offer',
+    subject: 'Job Offer Acceptance – {position}',
+    fields: [
+      { key: 'yourName',   label: 'Your Name',         placeholder: 'John Doe' },
+      { key: 'hrName',     label: 'HR / Hiring Manager', placeholder: 'Ms. Clark' },
+      { key: 'position',   label: 'Job Position',      placeholder: 'Product Manager' },
+      { key: 'company',    label: 'Company Name',       placeholder: 'Acme Corp' },
+      { key: 'startDate',  label: 'Start Date',         placeholder: 'Monday 1st July' },
+    ],
+    body: (f, t) => `${t.open} ${f.hrName || 'Hiring Manager'},
+
+I am delighted to formally accept the offer for the position of ${f.position || '[position]'} at ${f.company || '[company]'}. Thank you so much for this exciting opportunity.
+
+I confirm that I am happy with the terms of the offer and look forward to joining the team on ${f.startDate || '[start date]'}.
+
+Please let me know if there is any paperwork or information you need from me before my start date. I look forward to contributing to ${f.company || '[company]'} and being part of the team. ${t.note}
+
+${t.close}
+${f.yourName || 'Your Name'}`,
+  },
+
+  'job-offer-decline': {
+    cat: 'job', icon: '❌', name: 'Decline Job Offer',
+    desc: 'Politely decline an employment offer',
+    subject: 'Re: Job Offer – {position}',
+    fields: [
+      { key: 'yourName',  label: 'Your Name',           placeholder: 'John Doe' },
+      { key: 'hrName',    label: 'HR / Hiring Manager', placeholder: 'Mr. Davis' },
+      { key: 'position',  label: 'Job Position',        placeholder: 'Account Manager' },
+      { key: 'company',   label: 'Company Name',        placeholder: 'GlobalTech Ltd' },
+    ],
+    body: (f, t) => `${t.open} ${f.hrName || 'Hiring Manager'},
+
+Thank you so much for offering me the position of ${f.position || '[position]'} at ${f.company || '[company]'}. I have given this considerable thought and it was not an easy decision.
+
+After careful consideration, I have decided to respectfully decline the offer at this time. This was in no way a reflection of ${f.company || '[company]'} — I hold your organization in the highest regard and was genuinely impressed throughout the interview process.
+
+I hope our paths may cross again in the future and wish you and the team continued success. ${t.note}
+
+${t.close}
+${f.yourName || 'Your Name'}`,
+  },
+
+  // ── Business ───────────────────────────────────────────────────────────────
+  'meeting-request': {
+    cat: 'business', icon: '📅', name: 'Meeting Request',
+    desc: 'Request a professional meeting',
+    subject: 'Meeting Request – {topic}',
+    fields: [
+      { key: 'yourName',   label: 'Your Name',         placeholder: 'John Doe' },
+      { key: 'recipient',  label: 'Recipient\'s Name', placeholder: 'Ms. Evans' },
+      { key: 'topic',      label: 'Meeting Topic',     placeholder: 'Q3 Strategy Review' },
+      { key: 'duration',   label: 'Duration',          placeholder: '30 minutes' },
+      { key: 'availability', label: 'Your Availability', placeholder: 'Tuesday or Wednesday afternoon', type:'textarea' },
+    ],
+    body: (f, t) => `${t.open} ${f.recipient || 'Colleague'},
+
+I hope this email finds you well. I am writing to request a meeting to discuss ${f.topic || '[meeting topic]'}.
+
+I believe this would be a valuable conversation and should take approximately ${f.duration || '30 minutes'} of your time. I am available ${f.availability || '[your availability]'} and would be happy to work around your schedule.
+
+Would any of those times work for you? I am also happy to arrange a video call if that is more convenient. ${t.note}
+
+${t.close}
+${f.yourName || 'Your Name'}`,
+  },
+
+  'invoice-reminder': {
+    cat: 'business', icon: '🧾', name: 'Invoice Reminder',
+    desc: 'Politely chase an unpaid invoice',
+    subject: 'Payment Reminder – Invoice #{invoiceNo}',
+    fields: [
+      { key: 'yourName',   label: 'Your Name / Company', placeholder: 'John Doe / Acme Ltd' },
+      { key: 'clientName', label: 'Client\'s Name',      placeholder: 'Mr. Roberts' },
+      { key: 'invoiceNo',  label: 'Invoice Number',      placeholder: 'INV-2025-042' },
+      { key: 'amount',     label: 'Amount Due',          placeholder: '$1,200.00' },
+      { key: 'dueDate',    label: 'Due Date',            placeholder: '1st June 2025' },
+      { key: 'paymentLink',label: 'Payment Link / Details', placeholder: 'bank transfer details or link' },
+    ],
+    body: (f, t) => `${t.open} ${f.clientName || 'Client'},
+
+I hope you are well. I am writing to kindly remind you that payment for Invoice ${f.invoiceNo || '#[invoice number]'} in the amount of ${f.amount || '[amount]'} was due on ${f.dueDate || '[due date]'}.
+
+If you have already arranged payment, please disregard this email and accept my thanks. If not, I would appreciate it if you could arrange payment at your earliest convenience via ${f.paymentLink || '[payment details]'}.
+
+If you have any questions about this invoice or wish to discuss payment arrangements, please do not hesitate to get in touch. ${t.note}
+
+${t.close}
+${f.yourName || 'Your Name'}`,
+  },
+
+  'price-increase': {
+    cat: 'business', icon: '📈', name: 'Price Increase Notice',
+    desc: 'Inform clients of a rate increase',
+    subject: 'Important Update – Pricing Change',
+    fields: [
+      { key: 'yourName',    label: 'Your Name / Company', placeholder: 'John Doe / Acme Ltd' },
+      { key: 'clientName',  label: 'Client\'s Name',      placeholder: 'Ms. Mitchell' },
+      { key: 'oldPrice',    label: 'Current Price',       placeholder: '$500/month' },
+      { key: 'newPrice',    label: 'New Price',           placeholder: '$600/month' },
+      { key: 'effectiveDate', label: 'Effective Date',    placeholder: '1st August 2025' },
+    ],
+    body: (f, t) => `${t.open} ${f.clientName || 'Valued Client'},
+
+I hope this message finds you well. I am writing to inform you of an upcoming adjustment to our pricing.
+
+Effective ${f.effectiveDate || '[effective date]'}, our rate will be updated from ${f.oldPrice || '[current price]'} to ${f.newPrice || '[new price]'}. This adjustment reflects increased operational costs and our continued investment in delivering the highest quality service to you.
+
+We greatly value your continued partnership and have made every effort to keep this increase minimal. If you have any questions or would like to discuss this further, please feel free to reach out. ${t.note}
+
+${t.close}
+${f.yourName || 'Your Name'}`,
+  },
+
+  // ── Customer ───────────────────────────────────────────────────────────────
+  'refund-request': {
+    cat: 'customer', icon: '💸', name: 'Refund Request',
+    desc: 'Request a refund from a company',
+    subject: 'Refund Request – Order #{orderNo}',
+    fields: [
+      { key: 'yourName',  label: 'Your Name',         placeholder: 'John Doe' },
+      { key: 'company',   label: 'Company Name',      placeholder: 'ShopMart Ltd' },
+      { key: 'orderNo',   label: 'Order Number',      placeholder: 'ORD-20250001' },
+      { key: 'amount',    label: 'Amount',            placeholder: '$49.99' },
+      { key: 'reason',    label: 'Reason for Refund', placeholder: 'item arrived damaged', type:'textarea' },
+    ],
+    body: (f, t) => `${t.open} Customer Service Team at ${f.company || '[Company]'},
+
+I am writing to formally request a refund for Order ${f.orderNo || '#[order number]'} in the amount of ${f.amount || '[amount]'}.
+
+The reason for this request is that ${f.reason || '[reason for refund]'}. This is not the standard I expected and I would appreciate a full refund to my original payment method.
+
+I have attached supporting documentation for your reference. I would be grateful if you could process this refund within the standard timeframe. ${t.note}
+
+${t.close}
+${f.yourName || 'Your Name'}`,
+  },
+
+  'formal-complaint': {
+    cat: 'customer', icon: '⚠️', name: 'Formal Complaint',
+    desc: 'Lodge a formal complaint professionally',
+    subject: 'Formal Complaint – {issue}',
+    fields: [
+      { key: 'yourName',  label: 'Your Name',         placeholder: 'John Doe' },
+      { key: 'company',   label: 'Company Name',      placeholder: 'ServiceCo Ltd' },
+      { key: 'issue',     label: 'Issue Summary',     placeholder: 'repeated billing errors', type:'textarea' },
+      { key: 'date',      label: 'Date(s) of Issue',  placeholder: 'May 2025' },
+      { key: 'resolution',label: 'Desired Resolution',placeholder: 'a full refund and written apology', type:'textarea' },
+    ],
+    body: (f, t) => `${t.open} Customer Relations Team at ${f.company || '[Company]'},
+
+I am writing to formally register a complaint regarding ${f.issue || '[the issue]'}, which occurred on ${f.date || '[date]'}.
+
+Despite this being an unacceptable experience, I have attempted to resolve the matter without escalation. I am now formally requesting ${f.resolution || '[your desired resolution]'}.
+
+I expect a response within 5 business days. If this matter is not resolved to a satisfactory standard, I will have no choice but to escalate further through the appropriate regulatory channels. ${t.note}
+
+${t.close}
+${f.yourName || 'Your Name'}`,
+  },
+
+  'cancel-subscription': {
+    cat: 'customer', icon: '🚫', name: 'Cancel Subscription',
+    desc: 'Cancel a subscription or service',
+    subject: 'Subscription Cancellation Request – {yourName}',
+    fields: [
+      { key: 'yourName',    label: 'Your Name',         placeholder: 'John Doe' },
+      { key: 'company',     label: 'Company Name',      placeholder: 'StreamFlix Ltd' },
+      { key: 'accountEmail',label: 'Account Email',     placeholder: 'john@example.com' },
+      { key: 'reason',      label: 'Reason (optional)', placeholder: 'no longer needed' },
+    ],
+    body: (f, t) => `${t.open} Customer Support Team at ${f.company || '[Company]'},
+
+I am writing to formally request the cancellation of my subscription / account associated with the email address ${f.accountEmail || '[your email]'}.${f.reason ? '\n\nMy reason for cancelling is: ' + f.reason + '.' : ''}
+
+Please confirm via email once the cancellation has been processed and ensure that no further payments are taken from my account. I would also appreciate confirmation that my personal data has been handled in accordance with your privacy policy.
+
+${t.note}
+
+${t.close}
+${f.yourName || 'Your Name'}`,
+  },
+};
+
+// ── State ─────────────────────────────────────────────────────────────────────
+let activeCategory = 'work';
+selectedTemplate   = Object.keys(TEMPLATES)[0];
+
+// ── Render Templates ──────────────────────────────────────────────────────────
+function renderTemplates(cat) {
+  const grid = $('template-grid');
+  grid.innerHTML = '';
+  Object.entries(TEMPLATES)
+    .filter(([,t]) => t.cat === cat)
+    .forEach(([key, t]) => {
+      const card = document.createElement('div');
+      card.className = 'template-card' + (selectedTemplate === key ? ' active' : '');
+      card.dataset.key = key;
+      card.innerHTML = `<span class="tc-icon">${t.icon}</span><span class="tc-name">${t.name}</span><span class="tc-desc">${t.desc}</span>`;
+      card.addEventListener('click', () => selectTemplate(key));
+      grid.appendChild(card);
+    });
+}
+
+function selectTemplate(key) {
+  selectedTemplate = key;
+  document.querySelectorAll('.template-card').forEach(c => c.classList.remove('active'));
+  const card = document.querySelector(`.template-card[data-key="${key}"]`);
+  if (card) card.classList.add('active');
+  renderFields(key);
+  $('output-area').classList.remove('visible');
+}
+
+function selectTemplateByKey(key) {
+  const t = TEMPLATES[key];
+  if (!t) return;
+  // Switch category if needed
+  if (t.cat !== activeCategory) {
+    activeCategory = t.cat;
+    document.querySelectorAll('.cat-tab').forEach(tab => {
+      tab.classList.toggle('active', tab.dataset.cat === activeCategory);
+    });
+    renderTemplates(activeCategory);
+  }
+  selectTemplate(key);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── Render Fields ─────────────────────────────────────────────────────────────
+function renderFields(key) {
+  const t = TEMPLATES[key];
+  if (!t) return;
+  const grid = $('fields-grid');
+  grid.innerHTML = '';
+  t.fields.forEach(f => {
+    const group = document.createElement('div');
+    group.className = 'field-group' + (f.type === 'textarea' ? ' full' : '');
+    group.innerHTML = `<label for="field-${f.key}">${f.label}</label>
+      ${f.type === 'textarea'
+        ? `<textarea id="field-${f.key}" placeholder="${f.placeholder}" rows="2"></textarea>`
+        : `<input type="text" id="field-${f.key}" placeholder="${f.placeholder}"/>`
+      }`;
+    grid.appendChild(group);
+  });
+}
+
+// ── Category Tabs ─────────────────────────────────────────────────────────────
+document.querySelectorAll('.cat-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    activeCategory = tab.dataset.cat;
+    document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    // Set selected template to first of this category
+    const first = Object.keys(TEMPLATES).find(k => TEMPLATES[k].cat === activeCategory);
+    selectedTemplate = first;
+    renderTemplates(activeCategory);
+    renderFields(selectedTemplate);
+    $('output-area').classList.remove('visible');
+  });
+});
+
+// ── Tone Buttons ──────────────────────────────────────────────────────────────
+document.querySelectorAll('.tone-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tone-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    selectedTone = btn.dataset.tone;
+  });
+});
+
+// ── Collect Field Values ──────────────────────────────────────────────────────
+function getFieldValues() {
+  const t = TEMPLATES[selectedTemplate];
+  const values = {};
+  t.fields.forEach(f => {
+    const el = $('field-' + f.key);
+    values[f.key] = el ? el.value.trim() : '';
+  });
+  return values;
+}
+
+// ── Generate ──────────────────────────────────────────────────────────────────
+$('generate-btn').addEventListener('click', () => {
+  const t    = TEMPLATES[selectedTemplate];
+  const vals = getFieldValues();
+  const tone = TONES[selectedTone] || TONES.formal;
+
+  // Build subject
+  let subject = t.subject;
+  Object.entries(vals).forEach(([k, v]) => {
+    subject = subject.replace(`{${k}}`, v || `[${k}]`);
+  });
+
+  // Build body
+  const body = t.body(vals, tone);
+
+  $('output-subject').textContent = subject;
+  $('output-textarea').value      = body;
+  $('output-area').classList.add('visible');
+  $('output-area').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+});
+
+// ── Copy / Download ───────────────────────────────────────────────────────────
+$('copy-email-btn').addEventListener('click', async () => {
+  await navigator.clipboard.writeText($('output-textarea').value);
+  const btn = $('copy-email-btn');
+  btn.textContent = '✅ Copied!';
+  setTimeout(() => btn.textContent = '📋 Copy Email', 2000);
+});
+
+$('copy-subject-btn').addEventListener('click', async () => {
+  await navigator.clipboard.writeText($('output-subject').textContent);
+  const btn = $('copy-subject-btn');
+  btn.textContent = '✅ Copied!';
+  setTimeout(() => btn.textContent = '📌 Copy Subject', 2000);
+});
+
+$('download-email-btn').addEventListener('click', () => {
+  const subject = $('output-subject').textContent;
+  const body    = $('output-textarea').value;
+  const content = `Subject: ${subject}\n\n${body}`;
+  const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href = url; a.download = 'email.txt'; a.click();
+  URL.revokeObjectURL(url);
+});
+
+// ── FAQ Accordion ─────────────────────────────────────────────────────────────
+document.querySelectorAll('.faq-question').forEach(q => {
+  q.addEventListener('click', () => {
+    const answer = q.nextElementSibling;
+    const icon   = q.querySelector('.faq-icon');
+    const isOpen = answer.classList.contains('open');
+    document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+    document.querySelectorAll('.faq-icon').forEach(i => i.textContent = '+');
+    if (!isOpen) { answer.classList.add('open'); icon.textContent = '−'; }
+  });
+});
+
+// ── Init ─────────────────────────────────────────────────────────────────────
+renderTemplates('work');
+selectedTemplate = Object.keys(TEMPLATES)[0];
+renderFields(selectedTemplate);
+</script>
+<script src="../assets/js/tracker.js"></script>
+<script src="../assets/js/ads.js"></script>
+</body>
+</html>

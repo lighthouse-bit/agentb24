@@ -1,0 +1,1065 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <!-- =============================================
+       BASIC META TAGS
+  ============================================== -->
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- =============================================
+       SEO META TAGS
+  ============================================== -->
+  <title>Free PDF to Text Converter Online — Extract Text from PDF Instantly | AgentB24</title>
+  <meta name="description"
+        content="Free online PDF to text converter. Extract all text content from any PDF file instantly. Copy or download as .txt. No sign-up, no uploads — 100% browser-based and completely private." />
+  <meta name="keywords"
+        content="pdf to text, extract text from pdf, pdf text extractor, convert pdf to text online, pdf to txt, copy text from pdf, pdf text converter free, extract pdf content, pdf reader online, pdf text copy" />
+  <link rel="canonical" href="https://agentb24.com/tools/pdf-to-text.html" />
+
+  <!-- =============================================
+       OPEN GRAPH
+  ============================================== -->
+  <!-- =============================================
+       TWITTER CARD
+  ============================================== -->
+  
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1T57RWSY42"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1T57RWSY42');
+  </script>
+
+  <!-- =============================================
+       STRUCTURED DATA — WebApplication Schema
+  ============================================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "PDF to Text Converter",
+    "url": "https://agentb24.com/tools/pdf-to-text.html",
+    "description": "Free online PDF to text converter. Extract all text content from any PDF file instantly in your browser. Copy to clipboard or download as a .txt file. No uploads required.",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "AgentB24",
+      "url": "https://agentb24.com"
+    }
+  }
+  </script>
+
+  <!-- =============================================
+       FAQ SCHEMA
+  ============================================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I extract text from a PDF online?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Upload your PDF file by clicking the upload area or dragging and dropping it. Click Extract Text and the tool reads all text from every page instantly. You can then copy the text to your clipboard or download it as a .txt file."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my PDF uploaded to a server to extract the text?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. This tool is 100% browser-based. Your PDF file never leaves your device and is never sent to any server. All text extraction happens locally in your browser using PDF.js. Your documents are completely private."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is the extracted text empty or incorrect?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This tool extracts digitally embedded text from PDFs. If your PDF was created from a scanned document or image, the pages contain images of text rather than actual text data, and no text can be extracted. Only PDFs with real embedded text such as those exported from Word, Excel, or other document editors will produce text output."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I extract text from a scanned PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not with this tool. Scanned PDFs contain images of text rather than machine-readable text. To extract text from scanned PDFs you would need OCR (Optical Character Recognition) software. This tool only works with PDFs that contain embedded digital text."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What can I do with the extracted text?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can copy the extracted text to your clipboard with one click to paste it into any application, or download it as a .txt file to your device. The text is organized page by page so you can easily navigate the content."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the tool work with multi-page PDFs?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The tool extracts text from every page of the PDF and organizes the output with clear page separators so you can see which text came from which page. There is no page limit."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- =============================================
+       BREADCRUMB SCHEMA
+  ============================================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://agentb24.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "PDF Tools",
+        "item": "https://agentb24.com/tools/pdf-tools.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "PDF to Text",
+        "item": "https://agentb24.com/tools/pdf-to-text.html"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+
+  <!-- Shared Stylesheet -->
+  <link rel="stylesheet" href="../assets/css/style.css" />
+
+  <!-- =============================================
+       PAGE-SPECIFIC STYLES
+  ============================================== -->
+  <style>
+
+    /* ── Drop Zone ── */
+    .drop-zone {
+      border: 3px dashed var(--border, #e2e8f0);
+      border-radius: var(--radius, 16px);
+      padding: 50px 30px;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+      background: var(--bg, #f8fafc);
+      position: relative;
+    }
+    .drop-zone:hover,
+    .drop-zone.dragover {
+      border-color: var(--primary, #6366f1);
+      background: var(--primary-light, #eef2ff);
+      transform: scale(1.01);
+    }
+    .drop-zone input[type="file"] { display: none; }
+    .drop-icon {
+      font-size: 3.2rem;
+      display: block;
+      margin-bottom: 12px;
+      transition: transform .2s;
+    }
+    .drop-zone:hover .drop-icon { transform: scale(1.1) translateY(-4px); }
+    .drop-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-dark, #0f172a);
+      margin-bottom: 6px;
+    }
+    .drop-subtitle {
+      font-size: .82rem;
+      color: var(--text-mid, #64748b);
+      margin-bottom: 14px;
+    }
+    .drop-formats {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .format-pill {
+      background: var(--white, #fff);
+      border: 1px solid var(--border, #e2e8f0);
+      border-radius: 50px;
+      padding: 3px 12px;
+      font-size: .72rem;
+      font-weight: 700;
+      color: var(--text-mid, #64748b);
+    }
+
+    /* ── File Info Bar ── */
+    .file-info {
+      display: none;
+      align-items: center;
+      gap: 12px;
+      background: #f0fdf4;
+      border: 1px solid #86efac;
+      border-radius: var(--radius-sm, 10px);
+      padding: .75rem 1rem;
+      margin-top: .85rem;
+      font-size: .88rem;
+      color: #166534;
+    }
+    .file-info.visible { display: flex; }
+    .file-info .fi-name {
+      font-weight: 700;
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .fi-size { font-size: .78rem; color: #15803d; flex-shrink: 0; }
+    .fi-clear {
+      background: none; border: none; color: #ef4444;
+      cursor: pointer; font-size: 1rem; padding: 2px 5px;
+      border-radius: 4px; flex-shrink: 0;
+    }
+    .fi-clear:hover { background: #fee2e2; }
+
+    /* ── Extract Button ── */
+    .extract-btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, var(--primary, #6366f1), var(--secondary, #8b5cf6));
+      color: white;
+      border: none;
+      border-radius: var(--radius, 12px);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 4px 14px rgba(99,102,241,.3);
+      margin-top: .85rem;
+    }
+    .extract-btn:hover:not(:disabled) {
+      opacity: .9;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(99,102,241,.35);
+    }
+    .extract-btn:disabled {
+      background: #94a3b8;
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+    }
+
+    /* ── Progress Bar ── */
+    .progress-wrap { display: none; margin-top: .75rem; }
+    .progress-wrap.visible { display: block; }
+    .progress-bg {
+      height: 8px;
+      background: var(--border, #e2e8f0);
+      border-radius: 50px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary, #6366f1), var(--secondary, #8b5cf6));
+      border-radius: 50px;
+      width: 0%;
+      transition: width .3s ease;
+    }
+    .progress-label {
+      font-size: .78rem;
+      color: var(--text-mid, #64748b);
+      margin-top: 5px;
+      text-align: center;
+    }
+
+    /* ── Status Messages ── */
+    .status-msg {
+      margin-top: .85rem;
+      padding: .75rem 1rem;
+      border-radius: var(--radius-sm, 8px);
+      font-size: .88rem;
+      display: none;
+      line-height: 1.5;
+    }
+    .status-msg.success { background: #dcfce7; color: #166534; display: block; border: 1px solid #86efac; }
+    .status-msg.error   { background: #fee2e2; color: #991b1b; display: block; border: 1px solid #fca5a5; }
+    .status-msg.loading { background: #eff6ff; color: #1e40af; display: block; border: 1px solid #93c5fd; }
+
+    /* ── Output Area ── */
+    .output-area {
+      display: none;
+      margin-top: 1.25rem;
+      animation: fadeSlideIn .3s ease;
+    }
+    .output-area.visible { display: block; }
+
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Output header */
+    .output-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .75rem 1rem;
+      background: var(--bg, #f8fafc);
+      border: 1px solid var(--border, #e2e8f0);
+      border-bottom: none;
+      border-radius: var(--radius-sm, 10px) var(--radius-sm, 10px) 0 0;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+    .output-header-title {
+      font-size: .82rem;
+      font-weight: 700;
+      color: var(--text-mid, #374151);
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .output-stats {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+    }
+    .output-stat {
+      background: var(--white, #fff);
+      border: 1px solid var(--border, #e2e8f0);
+      border-radius: 50px;
+      padding: 2px 10px;
+      font-size: .72rem;
+      font-weight: 700;
+      color: var(--text-mid, #64748b);
+    }
+    .output-stat.green { background: #dcfce7; border-color: #86efac; color: #166534; }
+
+    /* Textarea */
+    .output-textarea {
+      width: 100%;
+      min-height: 300px;
+      max-height: 500px;
+      padding: 1rem;
+      border: 1px solid var(--border, #e2e8f0);
+      border-radius: 0 0 var(--radius-sm, 10px) var(--radius-sm, 10px);
+      font-family: 'Courier New', Courier, monospace;
+      font-size: .85rem;
+      line-height: 1.7;
+      resize: vertical;
+      background: var(--white, #fff);
+      color: var(--text-dark, #0f172a);
+      box-sizing: border-box;
+    }
+    .output-textarea:focus { outline: 2px solid var(--primary, #6366f1); border-color: transparent; }
+
+    /* Action buttons */
+    .output-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .65rem;
+      margin-top: .75rem;
+    }
+    .action-btn {
+      padding: .7rem 1rem;
+      border-radius: var(--radius-sm, 10px);
+      font-family: 'Inter', sans-serif;
+      font-size: .88rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      border: 1.5px solid var(--border, #e2e8f0);
+      background: var(--bg, #f8fafc);
+      color: var(--text-mid, #374151);
+    }
+    .action-btn:hover { background: #ededff; border-color: var(--primary, #6366f1); color: var(--primary, #6366f1); }
+    .action-btn.primary-action { background: var(--primary, #6366f1); color: #fff; border-color: var(--primary, #6366f1); }
+    .action-btn.primary-action:hover { background: #4f46e5; }
+
+    /* Clear output */
+    .btn-clear-output {
+      width: 100%;
+      margin-top: .5rem;
+      padding: .55rem;
+      border: 1.5px solid #fca5a5;
+      border-radius: var(--radius-sm, 8px);
+      background: #fef2f2;
+      color: #ef4444;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: background .13s;
+    }
+    .btn-clear-output:hover { background: #fee2e2; }
+
+    /* ── How To Section ── */
+    .how-to-section {
+      background: var(--white, #fff);
+      border: 1px solid var(--border, #e2e8f0);
+      border-radius: var(--radius, 16px);
+      padding: 1.75rem;
+      box-shadow: var(--shadow, 0 4px 24px rgba(0,0,0,.06));
+      margin-top: 1.5rem;
+    }
+    .how-to-section h2 { font-size: 1.2rem; margin-bottom: 1.25rem; color: var(--text-dark, #0f172a); }
+    .steps { display: flex; flex-direction: column; gap: 1rem; }
+    .step  { display: flex; gap: 1rem; align-items: flex-start; }
+    .step-number {
+      width: 32px; height: 32px;
+      background: var(--primary, #6366f1);
+      color: #fff; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: .85rem; flex-shrink: 0;
+    }
+    .step-content h4 { font-size: .92rem; margin-bottom: .2rem; color: var(--text-dark, #0f172a); }
+    .step-content p  { font-size: .82rem; color: var(--text-mid, #64748b); line-height: 1.6; margin: 0; }
+
+    /* ── FAQ Section ── */
+    .faq-section {
+      background: var(--white, #fff);
+      border: 1px solid var(--border, #e2e8f0);
+      border-radius: var(--radius, 16px);
+      padding: 1.75rem;
+      box-shadow: var(--shadow, 0 4px 24px rgba(0,0,0,.06));
+      margin-top: 1.5rem;
+    }
+    .faq-section h2 { font-size: 1.2rem; margin-bottom: 1rem; color: var(--text-dark, #0f172a); }
+    .faq-item { border-bottom: 1px solid var(--border, #e2e8f0); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: .9rem 0; cursor: pointer; font-size: .9rem; font-weight: 600;
+      color: var(--text-dark, #0f172a); gap: .75rem; transition: color .15s;
+    }
+    .faq-question:hover { color: var(--primary, #6366f1); }
+    .faq-icon { font-size: 1.1rem; flex-shrink: 0; color: var(--primary, #6366f1); }
+    .faq-answer {
+      display: none; padding: 0 0 .9rem;
+      font-size: .85rem; color: var(--text-mid, #64748b); line-height: 1.7;
+    }
+    .faq-answer.open { display: block; }
+
+    /* ── Responsive ── */
+    @media (max-width: 480px) {
+      .output-actions { grid-template-columns: 1fr; }
+      .output-header  { flex-direction: column; align-items: flex-start; }
+    }
+
+  </style>
+  <!-- AgentB24 SEO Pack -->
+  <meta name="author" content="AgentB24">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#4F46E5">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AgentB24">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://agentb24.com/tools/pdf-to-text.html">
+  <meta property="og:title" content="Free PDF to Text Converter Online — Extract Text from PDF Instantly | AgentB24">
+  <meta property="og:description" content="Free online PDF to text converter. Extract all text content from any PDF file instantly. Copy or download as .txt. No sign-up, no uploads — 100% browser-based and completely private.">
+  <meta property="og:image" content="https://agentb24.com/assets/img/og-image.png">
+  <meta property="og:image:width" content="1718">
+  <meta property="og:image:height" content="912">
+  <meta property="og:image:alt" content="AgentB24 â€” 80+ Free Online Tools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free PDF to Text Converter Online — Extract Text from PDF Instantly | AgentB24">
+  <meta name="twitter:description" content="Free online PDF to text converter. Extract all text content from any PDF file instantly. Copy or download as .txt. No sign-up, no uploads — 100% browser-based and completely private.">
+  <meta name="twitter:image" content="https://agentb24.com/assets/img/og-image.png">
+  <!-- /AgentB24 SEO Pack -->
+  <link rel="stylesheet" href="../assets/css/ads.css">
+</head>
+
+<body>
+
+  <!-- =============================================
+       HEADER
+  ============================================== -->
+  <header>
+    <div class="nav-container">
+      <a href="../index.html" class="logo">
+        <div class="logo-icon">🛠</div>
+        AgentB24
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="text-tools.html">Text Tools</a>
+        <a href="image-tools.html">Image Tools</a>
+        <a href="developer-tools.html">Dev Tools</a>
+        <a href="calculators.html">Calculators</a>
+        <a href="pdf-tools.html" class="active">PDF Tools</a>
+        <a href="../about.html">About</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="mobile-menu" id="mobile-menu">
+      <a href="../index.html">Home</a>
+      <a href="text-tools.html">Text Tools</a>
+      <a href="image-tools.html">Image Tools</a>
+      <a href="developer-tools.html">Dev Tools</a>
+      <a href="calculators.html">Calculators</a>
+      <a href="pdf-tools.html">PDF Tools</a>
+      <a href="../about.html">About</a>
+    </nav>
+  </header>
+
+  
+  <!-- =============================================
+       TOOL PAGE HEADER
+  ============================================== -->
+  <div class="tool-page-header">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html">Home</a> &rsaquo;
+        <a href="pdf-tools.html">PDF Tools</a> &rsaquo;
+        <span>PDF to Text</span>
+      </nav>
+      <h1>Free PDF to Text Converter Online</h1>
+      <p>
+        Extract all text content from any PDF file instantly.
+        Copy to clipboard or download as a .txt file.
+        No sign-up, no uploads — runs 100% in your browser.
+        Your files stay completely private.
+      </p>
+    </div>
+  </div>
+
+  <!-- =============================================
+       MAIN CONTENT
+  ============================================== -->
+  <main>
+    <div class="tool-body">
+
+      <!-- ==========================================
+           LEFT COLUMN
+      =========================================== -->
+      <div class="tool-main">
+
+        <!-- ── TOOL BOX ── -->
+        <div class="tool-box">
+
+          <!-- Drop Zone -->
+          <div class="drop-zone" id="drop-zone">
+            <input type="file" id="pdf-input" accept="application/pdf"/>
+            <span class="drop-icon">📑</span>
+            <div class="drop-title">Click to select a PDF or drag & drop here</div>
+            <div class="drop-subtitle">Extracts text from all pages · Digitally embedded text only</div>
+            <div class="drop-formats">
+              <span class="format-pill">PDF</span>
+              <span class="format-pill">🔒 Private</span>
+              <span class="format-pill">⚡ Instant</span>
+            </div>
+          </div>
+
+          <!-- File Info Bar -->
+          <div class="file-info" id="file-info">
+            <span>📄</span>
+            <span class="fi-name" id="fi-name">—</span>
+            <span class="fi-size" id="fi-size">—</span>
+            <button class="fi-clear" id="fi-clear" title="Remove file">✕</button>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="progress-wrap" id="progress-wrap">
+            <div class="progress-bg">
+              <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <p class="progress-label" id="progress-label">Extracting text…</p>
+          </div>
+
+          <!-- Status -->
+          <div class="status-msg" id="status-msg"></div>
+
+          <!-- Extract Button -->
+          <button class="extract-btn" id="extract-btn" disabled>
+            📑 Extract Text
+          </button>
+
+          <!-- Output Area -->
+          <div class="output-area" id="output-area">
+
+            <!-- Output Header -->
+            <div class="output-header">
+              <span class="output-header-title">📄 Extracted Text</span>
+              <div class="output-stats">
+                <span class="output-stat green" id="stat-pages">— pages</span>
+                <span class="output-stat" id="stat-chars">— characters</span>
+                <span class="output-stat" id="stat-words">— words</span>
+              </div>
+            </div>
+
+            <!-- Text Area -->
+            <textarea class="output-textarea" id="output-text" readonly
+                      placeholder="Extracted text will appear here…"></textarea>
+
+            <!-- Action Buttons -->
+            <div class="output-actions">
+              <button class="action-btn primary-action" id="copy-btn">
+                📋 Copy All Text
+              </button>
+              <button class="action-btn" id="download-txt-btn">
+                ⬇️ Download as .txt
+              </button>
+            </div>
+
+            <!-- Clear Output -->
+            <button class="btn-clear-output" id="clear-output-btn">
+              🗑 Clear Output & Extract Again
+            </button>
+
+          </div>
+          <!-- END OUTPUT AREA -->
+
+        </div>
+        <!-- END TOOL BOX -->
+
+        <!-- ── HOW TO USE ── -->
+        <div class="how-to-section">
+          <h2>📖 How to Extract Text from a PDF</h2>
+          <div class="steps">
+
+            <div class="step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h4>Upload Your PDF</h4>
+                <p>Click the upload area or drag and drop your PDF file onto it. Your file loads instantly in your browser — nothing is sent to any server.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h4>Click Extract Text</h4>
+                <p>Click the <strong>Extract Text</strong> button. The tool reads every page of your PDF and extracts all embedded text content, organized page by page.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h4>Copy or Download</h4>
+                <p>Click <strong>Copy All Text</strong> to copy to your clipboard instantly, or click <strong>Download as .txt</strong> to save the extracted text as a plain text file to your device.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ── FAQ ── -->
+        <div class="faq-section">
+          <h2>❓ Frequently Asked Questions</h2>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              How do I extract text from a PDF online?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              Upload your PDF, click <strong>Extract Text</strong>, then either copy the result to your clipboard or download it as a .txt file. The entire process happens in your browser in seconds.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              Is my PDF uploaded to a server?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              <strong>No — your PDF never leaves your device.</strong> All text extraction is done locally in your browser using PDF.js. Nothing is uploaded to any server at any point. Your documents are completely private.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              Why is the extracted text empty or garbled?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              This happens when the PDF was created from a scanned document. Scanned PDFs contain images of text rather than actual machine-readable text. This tool can only extract text that is digitally embedded in the PDF — like PDFs exported from Word, Excel, or web pages. For scanned PDFs you would need OCR software.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              Can I extract text from scanned PDFs?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              No — this tool only works with PDFs that contain embedded digital text. Scanned PDFs are essentially images stored as PDF pages and require OCR (Optical Character Recognition) to extract text. This is a limitation of all browser-based PDF text extractors.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              Does it work with multi-page PDFs?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              Yes. The tool extracts text from every single page and separates the output with clear page markers (--- Page 1 ---, --- Page 2 --- etc.) so you can easily find text from specific pages. There is no page limit.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              What formats can I save the extracted text in?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              You can copy the text directly to your clipboard to paste into any application, or download it as a <strong>.txt</strong> plain text file. The .txt file includes all extracted text with page markers for easy navigation.
+            </div>
+          </div>
+
+        </div>
+        <!-- END FAQ -->
+
+      </div>
+      <!-- END LEFT COLUMN -->
+
+      <!-- ==========================================
+           RIGHT COLUMN — Sidebar
+      =========================================== -->
+      <aside class="tool-sidebar">
+
+        <!-- Sidebar Ad -->
+        <!-- <div class="sidebar-ad">
+          <div class="ad-placeholder" style="min-height:250px;">
+            📢 Advertisement (300×250)
+          </div>
+        </div> -->
+
+        <!-- Related Tools -->
+        <div class="related-tools">
+          <h3>🔗 Related PDF Tools</h3>
+          <ul>
+            <li><a href="pdf-merger.html">📎 PDF Merger</a></li>
+            <li><a href="pdf-splitter.html">✂️ PDF Splitter</a></li>
+            <li><a href="pdf-editor.html">✏️ PDF Editor</a></li>
+            <li><a href="pdf-compressor.html">🗜️ PDF Compressor</a></li>
+            <li><a href="pdf-watermark.html">💧 PDF Watermark</a></li>
+            <li><a href="pdf-rotate.html">🔄 PDF Rotate</a></li>
+            <li><a href="pdf-page-counter.html">🔢 Page Counter</a></li>
+            <li><a href="docs-to-pdf.html">📄 Docs to PDF</a></li>
+          </ul>
+        </div>
+
+        <!-- Related Text Tools -->
+        <div class="related-tools">
+          <h3>📝 Text Tools</h3>
+          <ul>
+            <li><a href="word-counter.html">📝 Word Counter</a></li>
+            <li><a href="case-converter.html">🔡 Case Converter</a></li>
+            <li><a href="base64-encoder.html">🔐 Base64 Encoder</a></li>
+          </ul>
+        </div>
+
+        <!-- Tips -->
+        <div class="related-tools">
+          <h3>💡 Extraction Tips</h3>
+          <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;">
+            <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">
+              ✅ Works best with <strong>digital PDFs</strong>
+            </li>
+            <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">
+              🖼️ <strong>Scanned PDFs</strong> won't produce text
+            </li>
+            <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">
+              📋 Use <strong>Copy</strong> to paste into Word or Docs
+            </li>
+            <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">
+              ⬇️ Use <strong>.txt download</strong> to archive text
+            </li>
+            <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">
+              🔢 Check pages with <strong>Page Counter</strong> first
+            </li>
+            <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">
+              🔒 Files are <strong>never uploaded</strong> anywhere
+            </li>
+          </ul>
+        </div>
+
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- =============================================
+       FOOTER
+  ============================================== -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="../index.html" class="logo">
+          <div class="logo-icon">🛠</div>
+          AgentB24
+        </a>
+        <p>Free online tools for everyone. No sign-up required, no software to install.</p>
+      </div>
+      <div class="footer-col">
+        <h4>PDF Tools</h4>
+        <ul>
+          <li><a href="pdf-merger.html">PDF Merger</a></li>
+          <li><a href="pdf-splitter.html">PDF Splitter</a></li>
+          <li><a href="pdf-to-text.html">PDF to Text</a></li>
+          <li><a href="image-to-pdf.html">Image to PDF</a></li>
+          <li><a href="pdf-editor.html">PDF Editor</a></li>
+          <li><a href="pdf-watermark.html">PDF Watermark</a></li>
+          <li><a href="pdf-compressor.html">PDF Compressor</a></li>
+          <li><a href="docs-to-pdf.html">Docs to PDF</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Other Tools</h4>
+        <ul>
+          <li><a href="word-counter.html">Word Counter</a></li>
+          <li><a href="json-formatter.html">JSON Formatter</a></li>
+          <li><a href="image-compressor.html">Image Compressor</a></li>
+          <li><a href="qr-code-generator.html">QR Code Generator</a></li>
+          <li><a href="password-generator.html">Password Generator</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="../about.html">About Us</a></li>
+          <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="../about.html#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 AgentB24. All rights reserved.</span>
+      <span>Made with ❤️ for productivity</span>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <!-- =============================================
+       LIBRARIES
+  ============================================== -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+
+  <!-- =============================================
+       PDF TO TEXT — TOOL LOGIC
+  ============================================== -->
+  <script>
+  'use strict';
+
+  pdfjsLib.GlobalWorkerOptions.workerSrc =
+    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+  const $ = id => document.getElementById(id);
+
+  const dropZone   = $('drop-zone');
+  const pdfInput   = $('pdf-input');
+  const fileInfo   = $('file-info');
+  const extractBtn = $('extract-btn');
+  const statusMsg  = $('status-msg');
+  const outputArea = $('output-area');
+  const outputText = $('output-text');
+
+  let pdfFile = null;
+
+  // ── Upload ─────────────────────────────────────────────────────────────────
+  dropZone.addEventListener('click', () => pdfInput.click());
+  dropZone.addEventListener('dragover',  e => { e.preventDefault(); dropZone.classList.add('dragover'); });
+  dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+  dropZone.addEventListener('drop', e => {
+    e.preventDefault();
+    dropZone.classList.remove('dragover');
+    const f = e.dataTransfer.files[0];
+    if (f?.type === 'application/pdf') handleFile(f);
+  });
+  pdfInput.addEventListener('change', () => {
+    if (pdfInput.files[0]) handleFile(pdfInput.files[0]);
+  });
+
+  function handleFile(file) {
+    pdfFile = file;
+    hideStatus();
+    hideProgress();
+    outputArea.classList.remove('visible');
+
+    const sizeStr = file.size > 1048576
+      ? (file.size / 1048576).toFixed(2) + ' MB'
+      : (file.size / 1024).toFixed(1) + ' KB';
+
+    $('fi-name').textContent = file.name;
+    $('fi-size').textContent = sizeStr;
+    fileInfo.classList.add('visible');
+    extractBtn.disabled = false;
+  }
+
+  $('fi-clear').addEventListener('click', () => {
+    pdfFile = null;
+    pdfInput.value = '';
+    fileInfo.classList.remove('visible');
+    extractBtn.disabled = true;
+    outputArea.classList.remove('visible');
+    hideStatus();
+    hideProgress();
+  });
+
+  // ── Extract Text ───────────────────────────────────────────────────────────
+  extractBtn.addEventListener('click', async () => {
+    if (!pdfFile) return;
+    try {
+      hideStatus();
+      extractBtn.disabled = true;
+      outputArea.classList.remove('visible');
+      showProgress(0, 'Loading PDF…');
+
+      const ab  = await pdfFile.arrayBuffer();
+      const pdf = await pdfjsLib.getDocument({ data: ab }).promise;
+      const numPages = pdf.numPages;
+
+      let fullText   = '';
+      let totalChars = 0;
+
+      for (let i = 1; i <= numPages; i++) {
+        showProgress(
+          Math.round((i / numPages) * 90),
+          `Extracting page ${i} of ${numPages}…`
+        );
+        const page    = await pdf.getPage(i);
+        const content = await page.getTextContent();
+        const pageText = content.items.map(item => item.str).join(' ').trim();
+        fullText += `--- Page ${i} ---\n${pageText}\n\n`;
+        totalChars += pageText.length;
+      }
+
+      showProgress(100, 'Done!');
+      setTimeout(hideProgress, 600);
+
+      // Count words
+      const wordCount = fullText.trim()
+        ? fullText.trim().split(/\s+/).filter(w => w.length > 0).length
+        : 0;
+
+      outputText.value = fullText;
+
+      $('stat-pages').textContent = `${numPages} page${numPages > 1 ? 's' : ''}`;
+      $('stat-chars').textContent = fullText.length.toLocaleString() + ' chars';
+      $('stat-words').textContent = wordCount.toLocaleString() + ' words';
+
+      outputArea.classList.add('visible');
+      outputArea.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+      if (totalChars === 0) {
+        showStatus('error', '⚠️ No text found. This PDF may contain scanned images rather than embedded text. Only digital PDFs with embedded text can be extracted.');
+      } else {
+        showStatus('success', `✅ Text extracted from ${numPages} page(s) — ${fullText.length.toLocaleString()} characters, ${wordCount.toLocaleString()} words.`);
+      }
+
+    } catch(err) {
+      hideProgress();
+      showStatus('error', '❌ Error: ' + err.message);
+    } finally {
+      extractBtn.disabled = false;
+    }
+  });
+
+  // ── Copy ───────────────────────────────────────────────────────────────────
+  $('copy-btn').addEventListener('click', async () => {
+    const btn = $('copy-btn');
+    try {
+      await navigator.clipboard.writeText(outputText.value);
+      btn.textContent = '✅ Copied!';
+      btn.classList.add('primary-action');
+    } catch(_) {
+      outputText.select();
+      document.execCommand('copy');
+      btn.textContent = '✅ Copied!';
+    }
+    setTimeout(() => {
+      btn.textContent = '📋 Copy All Text';
+      btn.classList.remove('primary-action');
+    }, 2500);
+  });
+
+  // ── Download .txt ──────────────────────────────────────────────────────────
+  $('download-txt-btn').addEventListener('click', () => {
+    if (!outputText.value) return;
+    const blob = new Blob([outputText.value], { type: 'text/plain;charset=utf-8' });
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    const name = pdfFile ? pdfFile.name.replace(/\.pdf$/i, '') : 'extracted';
+    a.href = url; a.download = name + '-extracted.txt'; a.click();
+    URL.revokeObjectURL(url);
+  });
+
+  // ── Clear Output ───────────────────────────────────────────────────────────
+  $('clear-output-btn').addEventListener('click', () => {
+    outputArea.classList.remove('visible');
+    outputText.value = '';
+    hideStatus();
+  });
+
+  // ── Progress Helpers ───────────────────────────────────────────────────────
+  function showProgress(pct, label) {
+    $('progress-wrap').classList.add('visible');
+    $('progress-fill').style.width = pct + '%';
+    $('progress-label').textContent = label;
+  }
+  function hideProgress() {
+    $('progress-wrap').classList.remove('visible');
+    $('progress-fill').style.width = '0%';
+  }
+
+  // ── Status Helpers ─────────────────────────────────────────────────────────
+  function showStatus(type, msg) {
+    statusMsg.className   = 'status-msg ' + type;
+    statusMsg.textContent = msg;
+  }
+  function hideStatus() {
+    statusMsg.className   = 'status-msg';
+    statusMsg.textContent = '';
+  }
+
+  // ── FAQ Accordion ──────────────────────────────────────────────────────────
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+      const answer = q.nextElementSibling;
+      const icon   = q.querySelector('.faq-icon');
+      const isOpen = answer.classList.contains('open');
+      document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+      document.querySelectorAll('.faq-icon').forEach(i => i.textContent = '+');
+      if (!isOpen) { answer.classList.add('open'); icon.textContent = '−'; }
+    });
+  });
+  </script>
+
+  <script src="../assets/js/tracker.js"></script>
+<script src="../assets/js/ads.js"></script>
+</body>
+</html>

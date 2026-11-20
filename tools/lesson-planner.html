@@ -1,0 +1,162 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Professional Lesson Planner for Teachers | AgentB24</title>
+<meta name="description" content="Create detailed, timed lesson plans with objectives, standards, activities, differentiation, assessment and polished PDF export.">
+<link rel="canonical" href="https://agentb24.com/tools/lesson-planner.html">
+<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="../assets/css/tool-suite.css">
+<link rel="stylesheet" href="../assets/css/lesson-planner.css">
+  <!-- AgentB24 SEO Pack -->
+  <meta name="author" content="AgentB24">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#4F46E5">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AgentB24">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://agentb24.com/tools/lesson-planner.html">
+  <meta property="og:title" content="Professional Lesson Planner for Teachers | AgentB24">
+  <meta property="og:description" content="Create detailed, timed lesson plans with objectives, standards, activities, differentiation, assessment and polished PDF export.">
+  <meta property="og:image" content="https://agentb24.com/assets/img/og-image.png">
+  <meta property="og:image:width" content="1718">
+  <meta property="og:image:height" content="912">
+  <meta property="og:image:alt" content="AgentB24 â€” 80+ Free Online Tools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Professional Lesson Planner for Teachers | AgentB24">
+  <meta name="twitter:description" content="Create detailed, timed lesson plans with objectives, standards, activities, differentiation, assessment and polished PDF export.">
+  <meta name="twitter:image" content="https://agentb24.com/assets/img/og-image.png">
+  <script type="application/ld+json">{"url":"https://agentb24.com/tools/lesson-planner.html","description":"Create detailed, timed lesson plans with objectives, standards, activities, differentiation, assessment and polished PDF export.","@type":"WebApplication","browserRequirements":"Requires JavaScript and a modern web browser","@context":"https://schema.org","name":"Professional Lesson Planner","publisher":{"url":"https://agentb24.com/","name":"AgentB24","@type":"Organization"},"offers":{"price":"0","priceCurrency":"USD","@type":"Offer"},"applicationCategory":"UtilityApplication","operatingSystem":"Any"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","itemListElement":[{"position":1,"name":"Home","item":"https://agentb24.com/","@type":"ListItem"},{"position":2,"name":"Education Tools","item":"https://agentb24.com/tools/education-tools.html","@type":"ListItem"},{"position":3,"name":"Professional Lesson Planner","item":"https://agentb24.com/tools/lesson-planner.html","@type":"ListItem"}],"@type":"BreadcrumbList"}</script>
+  <!-- /AgentB24 SEO Pack -->
+  <link rel="stylesheet" href="../assets/css/ads.css">
+</head>
+<body class="lesson-planner-page">
+<header></header>
+<main class="suite-wrap lesson-wrap">
+  <div class="suite-head lesson-hero">
+    <div class="breadcrumb"><a href="education-tools.html">Education Tools</a> &rsaquo; Lesson Planner</div>
+    <div class="lesson-hero-copy">
+      <span class="lesson-hero-icon" aria-hidden="true">LP</span>
+      <div><h1>Professional Lesson Planner</h1><p>Turn your teaching ideas into a clear, timed and classroom-ready lesson plan.</p></div>
+    </div>
+  </div>
+
+  <section class="planner-toolbar" aria-label="Lesson planner controls">
+    <div class="planner-strength">
+      <div class="strength-ring" id="strengthRing"><strong id="strengthValue">0%</strong></div>
+      <div><b>Plan readiness</b><span id="strengthHint">Add the lesson essentials</span></div>
+    </div>
+    <div class="toolbar-field"><label for="planStyle">Layout</label><select id="planStyle"><option value="classic">Classic</option><option value="modern">Modern</option><option value="compact">Compact</option></select></div>
+    <div class="toolbar-field"><label for="accentColor">Accent</label><input id="accentColor" type="color" value="#4f46e5"></div>
+    <div class="time-balance"><span>Planned time</span><strong><span id="plannedMinutes">0</span> / <span id="targetMinutes">45</span> min</strong><i id="timeBar"></i></div>
+    <div class="toolbar-actions">
+      <button class="lesson-btn quiet" id="importBtn" type="button">Import</button>
+      <button class="lesson-btn quiet" id="backupBtn" type="button">Backup</button>
+      <button class="lesson-btn primary" id="printBtn" type="button">Print / PDF</button>
+      <input id="importFile" type="file" accept="application/json" hidden>
+    </div>
+  </section>
+
+  <div class="planner-studio">
+    <section class="planner-editor" aria-label="Lesson plan editor">
+      <div class="editor-heading"><div><span>LESSON CONTENT</span><h2>Shape the learning journey</h2><p>Changes appear instantly in the printable plan.</p></div><em id="saveState">Saved locally</em></div>
+
+      <details class="planner-section" open>
+        <summary><span class="section-number">1</span><div><b>Lesson overview</b><small>Class, topic and logistics</small></div></summary>
+        <div class="section-body form-grid">
+          <label class="wide">Lesson title<input id="lessonTitle" value="Understanding Linear Equations" placeholder="e.g. Exploring the Water Cycle"></label>
+          <label>Subject<input id="subject" value="Mathematics" placeholder="Subject"></label>
+          <label>Grade / level<input id="grade" value="Grade 8" placeholder="Grade or level"></label>
+          <label>Date<input id="lessonDate" type="date"></label>
+          <label>Duration (minutes)<input id="duration" type="number" min="10" max="300" value="45"></label>
+          <label>Class / period<input id="classPeriod" placeholder="Class 8B / Period 2"></label>
+          <label>Unit<input id="unit" value="Algebra Foundations" placeholder="Unit or scheme of work"></label>
+        </div>
+      </details>
+
+      <details class="planner-section" open>
+        <summary><span class="section-number">2</span><div><b>Learning direction</b><small>Standards, objectives and evidence</small></div></summary>
+        <div class="section-body">
+          <label>Curriculum standard / competency<textarea id="standards" rows="2" placeholder="Paste the relevant standard or competency"></textarea></label>
+          <label>Learning objectives <small>One measurable objective per line</small><textarea id="objectives" rows="4">Solve one-step linear equations using inverse operations.
+Explain each step using accurate mathematical language.
+Check a solution by substitution.</textarea></label>
+          <label>Success criteria <small>What will successful learning look like?</small><textarea id="successCriteria" rows="3">I can isolate the variable correctly.
+I can show and explain each step.
+I can verify that my answer is correct.</textarea></label>
+          <label>Key vocabulary<input id="vocabulary" value="equation, variable, inverse operation, coefficient, solution" placeholder="Comma-separated terms"></label>
+        </div>
+      </details>
+
+      <details class="planner-section" open>
+        <summary><span class="section-number">3</span><div><b>Lesson sequence</b><small>Build and balance each phase</small></div></summary>
+        <div class="section-body">
+          <div id="phaseList" class="phase-list"></div>
+          <button class="add-phase" id="addPhase" type="button">+ Add lesson phase</button>
+        </div>
+      </details>
+
+      <details class="planner-section">
+        <summary><span class="section-number">4</span><div><b>Resources and preparation</b><small>Everything needed before class</small></div></summary>
+        <div class="section-body two-col">
+          <label>Materials <small>One item per line</small><textarea id="materials" rows="5">Whiteboard and markers
+Student notebooks
+Equation practice cards
+Exit ticket slips</textarea></label>
+          <label>Teacher preparation <small>One task per line</small><textarea id="preparation" rows="5" placeholder="Print worksheets&#10;Prepare examples&#10;Check technology"></textarea></label>
+        </div>
+      </details>
+
+      <details class="planner-section">
+        <summary><span class="section-number">5</span><div><b>Support every learner</b><small>Differentiation and inclusion</small></div></summary>
+        <div class="section-body">
+          <div class="two-col">
+            <label>Support / scaffolds<textarea id="support" rows="4" placeholder="Sentence frames, worked examples, visual cues...">Provide a step-by-step equation mat and pair students strategically for guided practice.</textarea></label>
+            <label>Extension / challenge<textarea id="extension" rows="4" placeholder="Challenge prompts and enrichment...">Ask early finishers to create and solve an equation with variables on both sides.</textarea></label>
+          </div>
+          <label>Accommodations / individual needs<textarea id="accommodations" rows="3" placeholder="Language, accessibility, IEP or learning support considerations"></textarea></label>
+        </div>
+      </details>
+
+      <details class="planner-section">
+        <summary><span class="section-number">6</span><div><b>Assessment and reflection</b><small>Check learning and improve the next lesson</small></div></summary>
+        <div class="section-body">
+          <div class="two-col">
+            <label>Formative assessment<textarea id="assessment" rows="4">Question students during modelling, monitor practice responses, and collect a one-question exit ticket.</textarea></label>
+            <label>Homework / follow-up<textarea id="homework" rows="4" placeholder="Independent practice or next steps"></textarea></label>
+          </div>
+          <label>Teacher reflection <small>Complete after the lesson</small><textarea id="reflection" rows="3" placeholder="What worked? Who needs support? What should change next time?"></textarea></label>
+        </div>
+      </details>
+      <button id="resetBtn" class="reset-plan" type="button">Reset lesson plan</button>
+      <div id="suite-status" class="suite-status" role="status"></div>
+    </section>
+
+    <aside class="planner-preview-panel">
+      <div class="preview-bar"><span><i></i> Live lesson plan</span><div><button id="zoomOut" aria-label="Zoom out">−</button><b id="zoomLabel">100%</b><button id="zoomIn" aria-label="Zoom in">+</button></div></div>
+      <div class="lesson-paper-stage">
+        <article class="lesson-paper style-classic" id="lessonPaper">
+          <header class="plan-header"><div class="plan-eyebrow">LESSON PLAN</div><h2 id="pTitle"></h2><p id="pUnit"></p></header>
+          <div class="plan-meta" id="pMeta"></div>
+          <section id="pDirectionSection"><div class="plan-section-title"><span>01</span><h3>Learning direction</h3></div><div class="direction-grid"><div><h4>Learning objectives</h4><ul id="pObjectives"></ul></div><div><h4>Success criteria</h4><ul id="pSuccess"></ul></div></div><div id="pStandardsWrap"><h4>Standard / competency</h4><p id="pStandards"></p></div><div id="pVocabularyWrap" class="vocabulary"><b>Key vocabulary</b><div id="pVocabulary"></div></div></section>
+          <section><div class="plan-section-title"><span>02</span><h3>Lesson sequence</h3></div><div id="pPhases" class="plan-phases"></div></section>
+          <section id="pResourcesSection"><div class="plan-section-title"><span>03</span><h3>Resources & preparation</h3></div><div class="direction-grid"><div id="pMaterialsWrap"><h4>Materials</h4><ul id="pMaterials"></ul></div><div id="pPreparationWrap"><h4>Teacher preparation</h4><ul id="pPreparation"></ul></div></div></section>
+          <section id="pSupportSection"><div class="plan-section-title"><span>04</span><h3>Support every learner</h3></div><div class="support-grid"><div id="pSupportWrap"><h4>Support / scaffolds</h4><p id="pSupport"></p></div><div id="pExtensionWrap"><h4>Extension / challenge</h4><p id="pExtension"></p></div><div id="pAccommodationsWrap"><h4>Accommodations</h4><p id="pAccommodations"></p></div></div></section>
+          <section id="pAssessmentSection"><div class="plan-section-title"><span>05</span><h3>Assessment & follow-up</h3></div><div class="direction-grid"><div id="pAssessmentWrap"><h4>Formative assessment</h4><p id="pAssessment"></p></div><div id="pHomeworkWrap"><h4>Homework / next steps</h4><p id="pHomework"></p></div></div><div id="pReflectionWrap" class="reflection"><h4>Teacher reflection</h4><p id="pReflection"></p></div></section>
+          <footer class="plan-footer"><span>Created with AgentB24 Lesson Planner</span><span id="pFooterTitle"></span></footer>
+        </article>
+      </div>
+    </aside>
+  </div>
+</main>
+<footer></footer>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/lesson-planner.js"></script>
+<script src="../assets/js/tool-suite.js"></script>
+<script src="../assets/js/tracker.js"></script>
+<script src="../assets/js/ads.js"></script>
+</body>
+</html>

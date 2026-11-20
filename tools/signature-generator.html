@@ -1,0 +1,120 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Premium Online Signature Maker | AgentB24</title>
+<meta name="description" content="Draw or type a polished digital signature, preview it on a document, and download a tightly cropped transparent PNG privately in your browser.">
+<link rel="canonical" href="https://agentb24.com/tools/signature-generator.html">
+<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="../assets/css/tool-suite.css">
+<link rel="stylesheet" href="../assets/css/signature-maker.css">
+  <!-- AgentB24 SEO Pack -->
+  <meta name="author" content="AgentB24">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#4F46E5">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AgentB24">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://agentb24.com/tools/signature-generator.html">
+  <meta property="og:title" content="Premium Online Signature Maker | AgentB24">
+  <meta property="og:description" content="Draw or type a polished digital signature, preview it on a document, and download a tightly cropped transparent PNG privately in your browser.">
+  <meta property="og:image" content="https://agentb24.com/assets/img/og-image.png">
+  <meta property="og:image:width" content="1718">
+  <meta property="og:image:height" content="912">
+  <meta property="og:image:alt" content="AgentB24 â€” 80+ Free Online Tools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Premium Online Signature Maker | AgentB24">
+  <meta name="twitter:description" content="Draw or type a polished digital signature, preview it on a document, and download a tightly cropped transparent PNG privately in your browser.">
+  <meta name="twitter:image" content="https://agentb24.com/assets/img/og-image.png">
+  <script type="application/ld+json">{"url":"https://agentb24.com/tools/signature-generator.html","description":"Draw or type a polished digital signature, preview it on a document, and download a tightly cropped transparent PNG privately in your browser.","@type":"WebApplication","browserRequirements":"Requires JavaScript and a modern web browser","@context":"https://schema.org","name":"Premium Signature Maker","publisher":{"url":"https://agentb24.com/","name":"AgentB24","@type":"Organization"},"offers":{"price":"0","priceCurrency":"USD","@type":"Offer"},"applicationCategory":"UtilityApplication","operatingSystem":"Any"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","itemListElement":[{"position":1,"name":"Home","item":"https://agentb24.com/","@type":"ListItem"},{"position":2,"name":"Text Tools","item":"https://agentb24.com/tools/text-tools.html","@type":"ListItem"},{"position":3,"name":"Premium Signature Maker","item":"https://agentb24.com/tools/signature-generator.html","@type":"ListItem"}],"@type":"BreadcrumbList"}</script>
+  <!-- /AgentB24 SEO Pack -->
+  <link rel="stylesheet" href="../assets/css/ads.css">
+</head>
+<body class="signature-page">
+<header></header>
+<main class="suite-wrap signature-wrap">
+  <div class="suite-head signature-hero">
+    <div class="breadcrumb"><a href="text-tools.html">Text &amp; Document Tools</a> &rsaquo; Signature Maker</div>
+    <div class="signature-hero-copy"><span class="signature-hero-icon">✦</span><div><h1 data-no-suite-icon>Premium Signature Maker</h1><p>Create a natural digital signature, refine every detail and export it with a transparent background.</p></div></div>
+  </div>
+
+  <section class="signature-toolbar">
+    <div class="privacy-badge"><span>✓</span><div><b>Private by design</b><small>Your signature stays on this device</small></div></div>
+    <label class="toolbar-control">Ink colour<input id="inkColor" type="color" value="#172033"></label>
+    <label class="toolbar-control range-control">Signature size<input id="previewSize" type="range" min="35" max="100" value="70"><b id="previewSizeValue">70%</b></label>
+    <label class="remember-control"><input id="rememberSignature" type="checkbox"><span><b>Remember locally</b><small>Off by default for privacy</small></span></label>
+    <div class="signature-actions"><button id="copyBtn" class="sig-btn quiet" type="button">Copy PNG</button><button id="downloadBtn" class="sig-btn primary" type="button">Download signature</button></div>
+  </section>
+
+  <div class="signature-studio">
+    <section class="signature-editor">
+      <div class="editor-heading"><div><span>SIGNATURE STUDIO</span><h2>Create your signature</h2><p>Draw naturally or choose a refined typed style.</p></div><em id="saveState">Not stored</em></div>
+      <div class="mode-tabs" role="tablist"><button id="drawTab" type="button"><span>✎</span> Draw</button><button id="typeTab" class="active" type="button"><span>Aa</span> Type</button></div>
+
+      <div id="drawPanel" class="mode-panel" hidden>
+        <div class="drawing-tools">
+          <label>Pen style<select id="penStyle"><option value="signature">Signature pen</option><option value="fine">Fine pen</option><option value="bold">Bold marker</option></select></label>
+          <label>Stroke <span id="strokeValue">4 px</span><input id="strokeWidth" type="range" min="1" max="12" value="4"></label>
+          <label>Smoothing <span id="smoothValue">Balanced</span><input id="smoothing" type="range" min="1" max="3" value="2"></label>
+        </div>
+        <div class="canvas-shell" id="canvasShell">
+          <canvas id="signatureCanvas" width="1100" height="380" aria-label="Draw your signature"></canvas>
+          <div class="sign-guide"><span>Sign above the line</span><i></i></div>
+        </div>
+        <div class="canvas-actions"><div><button id="undoBtn" type="button" title="Undo">↶ Undo</button><button id="redoBtn" type="button" title="Redo">↷ Redo</button></div><button id="clearBtn" class="danger" type="button">Clear canvas</button></div>
+        <p class="input-tip">Works with a mouse, trackpad, stylus or finger. Slower strokes create a more natural signature.</p>
+      </div>
+
+      <div id="typePanel" class="mode-panel">
+        <label class="name-field">Type your name<input id="typedName" value="Alex Morgan" placeholder="Your full name" maxlength="60"></label>
+        <div class="style-heading"><b>Choose a signature style</b><span>Click a style to apply it</span></div>
+        <div class="font-options" id="fontOptions">
+          <button class="font-option active" data-font="style-1" type="button"><span class="style-1">Alex Morgan</span><small>Classic</small></button>
+          <button class="font-option" data-font="style-2" type="button"><span class="style-2">Alex Morgan</span><small>Flourish</small></button>
+          <button class="font-option" data-font="style-3" type="button"><span class="style-3">Alex Morgan</span><small>Editorial</small></button>
+          <button class="font-option" data-font="style-4" type="button"><span class="style-4">Alex Morgan</span><small>Modern</small></button>
+          <button class="font-option" data-font="style-5" type="button"><span class="style-5">Alex Morgan</span><small>Personal</small></button>
+          <button class="font-option" data-font="style-6" type="button"><span class="style-6">Alex Morgan</span><small>Refined</small></button>
+        </div>
+        <div class="typed-options"><label>Slant<input id="textSlant" type="range" min="-12" max="12" value="0"></label><label>Weight<input id="textWeight" type="range" min="1" max="3" value="2"></label><label>Letter spacing<input id="letterSpacing" type="range" min="-2" max="5" value="0"></label></div>
+      </div>
+
+      <details class="export-settings">
+        <summary>Export settings <span>High-resolution output</span></summary>
+        <div class="export-grid"><label>File format<select id="exportFormat"><option value="png">PNG · transparent</option><option value="jpg">JPG · white background</option><option value="webp">WebP · transparent</option></select></label><label>Resolution<select id="exportScale"><option value="2">High · 2×</option><option value="3">Ultra · 3×</option><option value="1">Standard · 1×</option></select></label><label class="check-label"><input id="tightCrop" type="checkbox" checked> Trim empty space</label><label class="check-label"><input id="addUnderline" type="checkbox"> Add signature line</label></div>
+      </details>
+      <div id="suite-status" class="suite-status" role="status"></div>
+    </section>
+
+    <aside class="signature-preview-panel">
+      <div class="preview-topbar"><span><i></i> Live document preview</span><div><button id="lightDesk" class="active" title="Light desk">☀</button><button id="darkDesk" title="Dark desk">◐</button></div></div>
+      <div class="document-stage" id="documentStage">
+        <article class="sample-document">
+          <div class="document-brand"><span>AGREEMENT</span><i></i></div>
+          <h3>Service Confirmation</h3>
+          <p>This document confirms that the terms described in the accompanying agreement have been reviewed and accepted by the undersigned party.</p>
+          <div class="document-lines"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="signature-placement">
+            <img id="signaturePreview" alt="Your signature preview">
+            <div class="empty-signature" id="emptySignature"><span>✎</span><b>Your signature will appear here</b></div>
+            <div class="signature-line"></div>
+            <div class="signer-meta"><span><b id="previewName">Alex Morgan</b><small>Authorized signature</small></span><span><b id="previewDate"></b><small>Date</small></span></div>
+          </div>
+          <div class="document-footer"><span>AgentB24 document preview</span><span>Page 1 of 1</span></div>
+        </article>
+      </div>
+      <div class="preview-quality"><div><span>Transparent background</span><b id="transparencyState">Enabled</b></div><div><span>Output quality</span><b id="qualityState">High · 2×</b></div><div><span>Estimated size</span><b id="dimensionState">—</b></div></div>
+    </aside>
+  </div>
+</main>
+<footer></footer>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/tool-suite.js"></script>
+<script src="../assets/js/signature-maker.js"></script>
+<script src="../assets/js/tracker.js"></script>
+<script src="../assets/js/ads.js"></script>
+</body>
+</html>

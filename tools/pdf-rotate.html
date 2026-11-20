@@ -1,0 +1,962 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <!-- =============================================
+       BASIC META TAGS
+  ============================================== -->
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- =============================================
+       SEO META TAGS
+  ============================================== -->
+  <title>Free PDF Rotate Tool Online — Rotate PDF Pages 90°, 180°, 270° | AgentB24</title>
+  <meta name="description"
+        content="Free online PDF rotate tool. Rotate all pages of a PDF by 90°, 180° or 270° instantly. Fix upside-down or sideways PDFs in one click. No sign-up, no uploads — 100% browser-based." />
+  <meta name="keywords"
+        content="rotate pdf online, pdf rotate, rotate pdf pages, turn pdf, flip pdf, pdf orientation fix, rotate pdf 90 degrees, rotate pdf 180 degrees, pdf page rotation, free pdf rotate tool" />
+  <link rel="canonical" href="https://agentb24.com/tools/pdf-rotate.html" />
+
+  <!-- =============================================
+       OPEN GRAPH
+  ============================================== -->
+  <!-- =============================================
+       TWITTER CARD
+  ============================================== -->
+  
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1T57RWSY42"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1T57RWSY42');
+  </script>
+
+  <!-- =============================================
+       STRUCTURED DATA — WebApplication Schema
+  ============================================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "PDF Rotate Tool",
+    "url": "https://agentb24.com/tools/pdf-rotate.html",
+    "description": "Free online PDF rotate tool. Rotate all pages of a PDF by 90°, 180° or 270° instantly in your browser. No uploads, no sign-up required.",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "AgentB24",
+      "url": "https://agentb24.com"
+    }
+  }
+  </script>
+
+  <!-- =============================================
+       FAQ SCHEMA
+  ============================================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I rotate pages in a PDF online?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Upload your PDF file, choose your rotation angle — 90° clockwise, 180° flip, or 270° counter-clockwise — then click Rotate and Download PDF. The rotated PDF is generated instantly in your browser and downloaded automatically."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my PDF uploaded to a server when rotating?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. This tool is 100% browser-based. Your PDF file never leaves your device and is never uploaded to any server. All rotation processing happens locally in your browser using JavaScript. Your documents are completely private."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does rotating a PDF affect the content or quality?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Rotating a PDF only changes the page orientation metadata. All text, images, fonts and content remain completely unchanged and at full quality. The rotation is a lossless operation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I rotate only specific pages instead of all pages?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Currently this tool rotates all pages of the PDF by the same angle. If you need to rotate only specific pages, you can first use the PDF Splitter tool to extract the pages you want to rotate, rotate them separately, then use the PDF Merger tool to combine everything back together."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What rotation angles are available?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Three rotation options are available: 90° clockwise (turn right), 180° flip (upside down), and 270° counter-clockwise (turn left, which is the same as 90° counter-clockwise). The rotation is applied on top of any existing page rotation already in the PDF."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why are my PDF pages displaying sideways or upside down?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PDFs scanned from physical documents often have incorrect orientation metadata depending on how the document was fed into the scanner. PDFs exported from certain applications may also have unexpected rotation. This tool lets you correct the orientation in one click."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- =============================================
+       BREADCRUMB SCHEMA
+  ============================================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://agentb24.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "PDF Tools",
+        "item": "https://agentb24.com/tools/pdf-tools.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "PDF Rotate",
+        "item": "https://agentb24.com/tools/pdf-rotate.html"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+
+  <!-- Shared Stylesheet -->
+  <link rel="stylesheet" href="../assets/css/style.css" />
+
+  <!-- =============================================
+       PAGE-SPECIFIC STYLES
+  ============================================== -->
+  <style>
+
+    /* ── Drop Zone ── */
+    .drop-zone {
+      border: 3px dashed var(--border, #e2e8f0);
+      border-radius: var(--radius, 16px);
+      padding: 50px 30px;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+      background: var(--bg, #f8fafc);
+      position: relative;
+    }
+    .drop-zone:hover,
+    .drop-zone.dragover {
+      border-color: var(--primary, #6366f1);
+      background: var(--primary-light, #eef2ff);
+      transform: scale(1.01);
+    }
+    .drop-zone input[type="file"] { display: none; }
+    .drop-icon {
+      font-size: 3.2rem;
+      display: block;
+      margin-bottom: 12px;
+      transition: transform .2s;
+    }
+    .drop-zone:hover .drop-icon { transform: scale(1.1) translateY(-4px); }
+    .drop-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-dark, #0f172a);
+      margin-bottom: 6px;
+    }
+    .drop-subtitle {
+      font-size: .82rem;
+      color: var(--text-mid, #64748b);
+      margin-bottom: 14px;
+    }
+    .drop-formats {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .format-pill {
+      background: var(--white, #fff);
+      border: 1px solid var(--border, #e2e8f0);
+      border-radius: 50px;
+      padding: 3px 12px;
+      font-size: .72rem;
+      font-weight: 700;
+      color: var(--text-mid, #64748b);
+    }
+
+    /* ── File Info Bar ── */
+    .file-info {
+      display: none;
+      align-items: center;
+      gap: 12px;
+      background: #f0fdf4;
+      border: 1px solid #86efac;
+      border-radius: var(--radius-sm, 10px);
+      padding: .75rem 1rem;
+      margin-top: .85rem;
+      font-size: .88rem;
+      color: #166534;
+    }
+    .file-info.visible { display: flex; }
+    .file-info .fi-name {
+      font-weight: 700;
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .fi-pages { font-size: .78rem; color: #15803d; flex-shrink: 0; }
+    .fi-clear {
+      background: none; border: none; color: #ef4444;
+      cursor: pointer; font-size: 1rem; padding: 2px 5px;
+      border-radius: 4px; flex-shrink: 0;
+    }
+    .fi-clear:hover { background: #fee2e2; }
+
+    /* ── Section Title ── */
+    .section-label {
+      font-size: .78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--text-light, #94a3b8);
+      display: block;
+      margin: 1.25rem 0 .65rem;
+    }
+
+    /* ── Rotation Buttons ── */
+    .rotation-btns {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .75rem;
+    }
+    .rot-btn {
+      border: 2px solid var(--border, #e2e8f0);
+      background: var(--white, #fff);
+      padding: 1rem .5rem;
+      border-radius: var(--radius, 12px);
+      cursor: pointer;
+      text-align: center;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--text-mid, #64748b);
+      transition: all .18s;
+      font-family: 'Inter', sans-serif;
+    }
+    .rot-btn:hover,
+    .rot-btn.active {
+      border-color: var(--primary, #6366f1);
+      background: #f0f0ff;
+      color: var(--primary, #6366f1);
+    }
+    .rot-btn.active {
+      background: var(--primary, #6366f1);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(99,102,241,.3);
+    }
+    .rot-icon {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: .4rem;
+      line-height: 1;
+    }
+
+    /* ── Rotate Button ── */
+    .rotate-btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, var(--primary, #6366f1), var(--secondary, #8b5cf6));
+      color: white;
+      border: none;
+      border-radius: var(--radius, 12px);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 4px 14px rgba(99,102,241,.3);
+      margin-top: 1rem;
+    }
+    .rotate-btn:hover:not(:disabled) {
+      opacity: .9;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(99,102,241,.35);
+    }
+    .rotate-btn:disabled {
+      background: #94a3b8;
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+    }
+
+    /* ── Status Messages ── */
+    .status-msg {
+      margin-top: .85rem;
+      padding: .75rem 1rem;
+      border-radius: var(--radius-sm, 8px);
+      font-size: .88rem;
+      display: none;
+      line-height: 1.5;
+    }
+    .status-msg.success { background: #dcfce7; color: #166534; display: block; border: 1px solid #86efac; }
+    .status-msg.error   { background: #fee2e2; color: #991b1b; display: block; border: 1px solid #fca5a5; }
+    .status-msg.loading { background: #eff6ff; color: #1e40af; display: block; border: 1px solid #93c5fd; }
+
+    /* ── Rotation Preview ── */
+    .rotation-preview {
+      background: var(--bg, #f8fafc);
+      border: 1px solid var(--border, #e2e8f0);
+      border-radius: var(--radius, 12px);
+      padding: 1.25rem;
+      text-align: center;
+      margin-top: 1rem;
+    }
+    .rotation-preview p {
+      font-size: .78rem;
+      color: var(--text-light, #94a3b8);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      margin-bottom: .75rem;
+    }
+    .preview-pages {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+    .preview-page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .4rem;
+    }
+    .page-rect {
+      background: var(--white, #fff);
+      border: 2px solid var(--border, #e2e8f0);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .7rem;
+      color: var(--text-light, #94a3b8);
+      font-weight: 700;
+      transition: transform .4s ease;
+    }
+    .page-rect.portrait  { width: 44px; height: 58px; }
+    .page-rect.landscape { width: 58px; height: 44px; }
+    .page-rect.flipped   { transform: rotate(180deg); }
+    .preview-label {
+      font-size: .72rem;
+      color: var(--text-mid, #64748b);
+      font-weight: 600;
+    }
+    .preview-arrow { font-size: 1.4rem; color: var(--primary, #6366f1); }
+
+    /* ── How To Section ── */
+    .how-to-section {
+      background: var(--white, #fff);
+      border: 1px solid var(--border, #e2e8f0);
+      border-radius: var(--radius, 16px);
+      padding: 1.75rem;
+      box-shadow: var(--shadow, 0 4px 24px rgba(0,0,0,.06));
+      margin-top: 1.5rem;
+    }
+    .how-to-section h2 { font-size: 1.2rem; margin-bottom: 1.25rem; color: var(--text-dark, #0f172a); }
+    .steps { display: flex; flex-direction: column; gap: 1rem; }
+    .step  { display: flex; gap: 1rem; align-items: flex-start; }
+    .step-number {
+      width: 32px; height: 32px;
+      background: var(--primary, #6366f1);
+      color: #fff; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: .85rem; flex-shrink: 0;
+    }
+    .step-content h4 { font-size: .92rem; margin-bottom: .2rem; color: var(--text-dark, #0f172a); }
+    .step-content p  { font-size: .82rem; color: var(--text-mid, #64748b); line-height: 1.6; margin: 0; }
+
+    /* ── FAQ Section ── */
+    .faq-section {
+      background: var(--white, #fff);
+      border: 1px solid var(--border, #e2e8f0);
+      border-radius: var(--radius, 16px);
+      padding: 1.75rem;
+      box-shadow: var(--shadow, 0 4px 24px rgba(0,0,0,.06));
+      margin-top: 1.5rem;
+    }
+    .faq-section h2 { font-size: 1.2rem; margin-bottom: 1rem; color: var(--text-dark, #0f172a); }
+    .faq-item { border-bottom: 1px solid var(--border, #e2e8f0); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: .9rem 0; cursor: pointer; font-size: .9rem; font-weight: 600;
+      color: var(--text-dark, #0f172a); gap: .75rem; transition: color .15s;
+    }
+    .faq-question:hover { color: var(--primary, #6366f1); }
+    .faq-icon { font-size: 1.1rem; flex-shrink: 0; color: var(--primary, #6366f1); }
+    .faq-answer {
+      display: none; padding: 0 0 .9rem;
+      font-size: .85rem; color: var(--text-mid, #64748b); line-height: 1.7;
+    }
+    .faq-answer.open { display: block; }
+
+    /* ── Responsive ── */
+    @media (max-width: 480px) {
+      .rotation-btns { grid-template-columns: repeat(3, 1fr); gap: .5rem; }
+      .rot-btn { padding: .75rem .3rem; font-size: .78rem; }
+      .rot-icon { font-size: 1.6rem; }
+    }
+
+  </style>
+  <!-- AgentB24 SEO Pack -->
+  <meta name="author" content="AgentB24">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#4F46E5">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AgentB24">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://agentb24.com/tools/pdf-rotate.html">
+  <meta property="og:title" content="Free PDF Rotate Tool Online — Rotate PDF Pages 90&#176;, 180&#176;, 270&#176; | AgentB24">
+  <meta property="og:description" content="Free online PDF rotate tool. Rotate all pages of a PDF by 90&#176;, 180&#176; or 270&#176; instantly. Fix upside-down or sideways PDFs in one click. No sign-up, no uploads — 100% browser-based.">
+  <meta property="og:image" content="https://agentb24.com/assets/img/og-image.png">
+  <meta property="og:image:width" content="1718">
+  <meta property="og:image:height" content="912">
+  <meta property="og:image:alt" content="AgentB24 â€” 80+ Free Online Tools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free PDF Rotate Tool Online — Rotate PDF Pages 90&#176;, 180&#176;, 270&#176; | AgentB24">
+  <meta name="twitter:description" content="Free online PDF rotate tool. Rotate all pages of a PDF by 90&#176;, 180&#176; or 270&#176; instantly. Fix upside-down or sideways PDFs in one click. No sign-up, no uploads — 100% browser-based.">
+  <meta name="twitter:image" content="https://agentb24.com/assets/img/og-image.png">
+  <!-- /AgentB24 SEO Pack -->
+  <link rel="stylesheet" href="../assets/css/ads.css">
+</head>
+
+<body>
+
+  <!-- =============================================
+       HEADER
+  ============================================== -->
+  <header>
+    <div class="nav-container">
+      <a href="../index.html" class="logo">
+        <div class="logo-icon">🛠</div>
+        AgentB24
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="text-tools.html">Text Tools</a>
+        <a href="image-tools.html">Image Tools</a>
+        <a href="developer-tools.html">Dev Tools</a>
+        <a href="calculators.html">Calculators</a>
+        <a href="pdf-tools.html" class="active">PDF Tools</a>
+        <a href="../about.html">About</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="mobile-menu" id="mobile-menu">
+      <a href="../index.html">Home</a>
+      <a href="text-tools.html">Text Tools</a>
+      <a href="image-tools.html">Image Tools</a>
+      <a href="developer-tools.html">Dev Tools</a>
+      <a href="calculators.html">Calculators</a>
+      <a href="pdf-tools.html">PDF Tools</a>
+      <a href="../about.html">About</a>
+    </nav>
+  </header>
+
+  <!-- =============================================
+       TOOL PAGE HEADER
+  ============================================== -->
+  <div class="tool-page-header">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html">Home</a> &rsaquo;
+        <a href="pdf-tools.html">PDF Tools</a> &rsaquo;
+        <span>PDF Rotate</span>
+      </nav>
+      <h1>Free PDF Rotate Tool Online</h1>
+      <p>
+        Rotate all pages of a PDF by 90°, 180° or 270° instantly.
+        Fix upside-down or sideways PDFs in one click.
+        No sign-up, no uploads — 100% browser-based and completely private.
+      </p>
+    </div>
+  </div>
+
+  <!-- =============================================
+       MAIN CONTENT
+  ============================================== -->
+  <main>
+    <div class="tool-body">
+
+      <!-- ==========================================
+           LEFT COLUMN
+      =========================================== -->
+      <div class="tool-main">
+
+        <!-- ── TOOL BOX ── -->
+        <div class="tool-box">
+
+          <!-- Drop Zone -->
+          <div class="drop-zone" id="drop-zone">
+            <input type="file" id="pdf-input" accept="application/pdf"/>
+            <span class="drop-icon">🔄</span>
+            <div class="drop-title">Click to select a PDF or drag & drop here</div>
+            <div class="drop-subtitle">All pages rotated · Works entirely in your browser</div>
+            <div class="drop-formats">
+              <span class="format-pill">PDF</span>
+              <span class="format-pill">🔒 Private</span>
+              <span class="format-pill">⚡ Instant</span>
+            </div>
+          </div>
+
+          <!-- File Info Bar -->
+          <div class="file-info" id="file-info">
+            <span>📄</span>
+            <span class="fi-name" id="fi-name">—</span>
+            <span class="fi-pages" id="fi-pages"></span>
+            <button class="fi-clear" id="fi-clear" title="Remove file">✕</button>
+          </div>
+
+          <!-- Rotation Angle Selection -->
+          <span class="section-label">🔄 Choose Rotation Angle</span>
+          <div class="rotation-btns" id="rot-btns">
+            <button class="rot-btn active" data-deg="90">
+              <span class="rot-icon">↻</span>
+              90° Clockwise
+            </button>
+            <button class="rot-btn" data-deg="180">
+              <span class="rot-icon">↕</span>
+              180° Flip
+            </button>
+            <button class="rot-btn" data-deg="270">
+              <span class="rot-icon">↺</span>
+              270° Counter
+            </button>
+          </div>
+
+          <!-- Visual Rotation Preview -->
+          <div class="rotation-preview" id="rotation-preview">
+            <p>Rotation Preview</p>
+            <div class="preview-pages">
+              <div class="preview-page">
+                <div class="page-rect portrait" id="prev-before">A</div>
+                <span class="preview-label">Before</span>
+              </div>
+              <div class="preview-arrow">→</div>
+              <div class="preview-page">
+                <div class="page-rect landscape" id="prev-after">A</div>
+                <span class="preview-label">After</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Status -->
+          <div class="status-msg" id="status-msg"></div>
+
+          <!-- Rotate Button -->
+          <button class="rotate-btn" id="rotate-btn" disabled>
+            🔄 Rotate & Download PDF
+          </button>
+
+        </div>
+        <!-- END TOOL BOX -->
+
+        <!-- ── HOW TO USE ── -->
+        <div class="how-to-section">
+          <h2>📖 How to Rotate a PDF Online</h2>
+          <div class="steps">
+
+            <div class="step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h4>Upload Your PDF</h4>
+                <p>Click the upload area or drag and drop your PDF file. It loads instantly in your browser — nothing is sent to any server. Your file stays completely private.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h4>Choose a Rotation Angle</h4>
+                <p>Select <strong>90° Clockwise</strong> to turn right, <strong>180° Flip</strong> to flip upside down, or <strong>270° Counter-Clockwise</strong> to turn left. The preview shows how your pages will look after rotating.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h4>Rotate & Download</h4>
+                <p>Click <strong>Rotate & Download PDF</strong>. All pages are rotated and the file is downloaded instantly. The content and quality of your PDF remain completely unchanged.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ── FAQ ── -->
+        <div class="faq-section">
+          <h2>❓ Frequently Asked Questions</h2>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              How do I rotate pages in a PDF online?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              Upload your PDF, choose your rotation angle (90°, 180° or 270°), then click <strong>Rotate & Download PDF</strong>. The rotated file is generated and downloaded immediately — the whole process takes just seconds.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              Is my PDF uploaded to a server?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              <strong>No — your PDF never leaves your device.</strong> All rotation processing happens locally in your browser using the pdf-lib JavaScript library. Nothing is uploaded to any server at any point. Your documents are completely private.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              Does rotating a PDF reduce the quality?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              Not at all. PDF rotation is a <strong>lossless operation</strong> — it only changes the page orientation metadata. All text, images, fonts and other content remain completely intact and at full quality.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              Can I rotate only specific pages?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              This tool rotates all pages at once. To rotate specific pages, use the <a href="pdf-splitter.html" style="color:var(--primary);">PDF Splitter</a> to extract those pages, rotate them, then use the <a href="pdf-merger.html" style="color:var(--primary);">PDF Merger</a> to combine everything back together.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              What is the difference between 90° and 270° rotation?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              <strong>90° Clockwise</strong> turns the page to the right — portrait becomes landscape with the top going to the right.<br/><br/>
+              <strong>270° Counter-clockwise</strong> turns the page to the left — portrait becomes landscape with the top going to the left. It is equivalent to 90° in the opposite direction.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              Why is my PDF displaying sideways or upside down?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              PDFs created from scanned documents often have incorrect orientation metadata depending on how the paper was fed into the scanner. PDFs exported from certain applications may also have unexpected rotation. This tool fixes the orientation with a single click.
+            </div>
+          </div>
+
+        </div>
+        <!-- END FAQ -->
+
+      </div>
+      <!-- END LEFT COLUMN -->
+
+      <!-- ==========================================
+           RIGHT COLUMN — Sidebar
+      =========================================== -->
+      <aside class="tool-sidebar">
+
+        <!-- Sidebar Ad -->
+        <!-- <div class="sidebar-ad">
+          <div class="ad-placeholder" style="min-height:250px;">
+            📢 Advertisement (300×250)
+          </div>
+        </div> -->
+
+        <!-- Related Tools -->
+        <div class="related-tools">
+          <h3>🔗 Related PDF Tools</h3>
+          <ul>
+            <li><a href="pdf-merger.html">📎 PDF Merger</a></li>
+            <li><a href="pdf-splitter.html">✂️ PDF Splitter</a></li>
+            <li><a href="pdf-editor.html">✏️ PDF Editor</a></li>
+            <li><a href="pdf-compressor.html">🗜️ PDF Compressor</a></li>
+            <li><a href="pdf-watermark.html">💧 PDF Watermark</a></li>
+            <li><a href="pdf-to-text.html">📑 PDF to Text</a></li>
+            <li><a href="image-to-pdf.html">🖼️ Image to PDF</a></li>
+            <li><a href="docs-to-pdf.html">📄 Docs to PDF</a></li>
+          </ul>
+        </div>
+
+        <!-- Tips -->
+        <div class="related-tools">
+          <h3>💡 Rotation Tips</h3>
+          <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;">
+            <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">
+              ↻ <strong>90°</strong> — Turn portrait → landscape
+            </li>
+            <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">
+              ↕ <strong>180°</strong> — Fix upside-down scans
+            </li>
+            <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">
+              ↺ <strong>270°</strong> — Turn landscape → portrait
+            </li>
+            <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">
+              ✅ Rotation is <strong>completely lossless</strong>
+            </li>
+            <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">
+              ✂️ Split first to <strong>rotate specific pages</strong>
+            </li>
+            <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">
+              🔒 Files are <strong>never uploaded</strong> anywhere
+            </li>
+          </ul>
+        </div>
+
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- =============================================
+       FOOTER
+  ============================================== -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="../index.html" class="logo">
+          <div class="logo-icon">🛠</div>
+          AgentB24
+        </a>
+        <p>Free online tools for everyone. No sign-up required, no software to install.</p>
+      </div>
+      <div class="footer-col">
+        <h4>PDF Tools</h4>
+        <ul>
+          <li><a href="pdf-merger.html">PDF Merger</a></li>
+          <li><a href="pdf-splitter.html">PDF Splitter</a></li>
+          <li><a href="pdf-to-text.html">PDF to Text</a></li>
+          <li><a href="image-to-pdf.html">Image to PDF</a></li>
+          <li><a href="pdf-editor.html">PDF Editor</a></li>
+          <li><a href="pdf-watermark.html">PDF Watermark</a></li>
+          <li><a href="pdf-compressor.html">PDF Compressor</a></li>
+          <li><a href="docs-to-pdf.html">Docs to PDF</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Other Tools</h4>
+        <ul>
+          <li><a href="word-counter.html">Word Counter</a></li>
+          <li><a href="json-formatter.html">JSON Formatter</a></li>
+          <li><a href="image-compressor.html">Image Compressor</a></li>
+          <li><a href="qr-code-generator.html">QR Code Generator</a></li>
+          <li><a href="password-generator.html">Password Generator</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="../about.html">About Us</a></li>
+          <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="../about.html#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 AgentB24. All rights reserved.</span>
+      <span>Made with ❤️ for productivity</span>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <!-- =============================================
+       LIBRARIES
+  ============================================== -->
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+
+  <!-- =============================================
+       PDF ROTATE — TOOL LOGIC
+  ============================================== -->
+  <script>
+  'use strict';
+
+  const $ = id => document.getElementById(id);
+
+  const dropZone  = $('drop-zone');
+  const pdfInput  = $('pdf-input');
+  const fileInfo  = $('file-info');
+  const rotateBtn = $('rotate-btn');
+  const statusMsg = $('status-msg');
+  const rotBtns   = document.querySelectorAll('.rot-btn');
+
+  let pdfFile     = null;
+  let selectedDeg = 90;
+
+  // ── Rotation Button Selection ──────────────────────────────────────────────
+  rotBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      rotBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedDeg = parseInt(btn.dataset.deg);
+      updatePreview(selectedDeg);
+    });
+  });
+
+  // ── Visual Preview ─────────────────────────────────────────────────────────
+  function updatePreview(deg) {
+    const after = $('prev-after');
+    if (deg === 90) {
+      after.className = 'page-rect landscape';
+      after.style.transform = '';
+    } else if (deg === 180) {
+      after.className = 'page-rect portrait';
+      after.style.transform = 'rotate(180deg)';
+    } else if (deg === 270) {
+      after.className = 'page-rect landscape';
+      after.style.transform = 'rotate(180deg)';
+    }
+  }
+  updatePreview(90);
+
+  // ── Upload ─────────────────────────────────────────────────────────────────
+  dropZone.addEventListener('click', () => pdfInput.click());
+  dropZone.addEventListener('dragover',  e => { e.preventDefault(); dropZone.classList.add('dragover'); });
+  dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+  dropZone.addEventListener('drop', e => {
+    e.preventDefault();
+    dropZone.classList.remove('dragover');
+    const f = e.dataTransfer.files[0];
+    if (f?.type === 'application/pdf') loadFile(f);
+  });
+  pdfInput.addEventListener('change', () => {
+    if (pdfInput.files[0]) loadFile(pdfInput.files[0]);
+  });
+
+  async function loadFile(file) {
+    pdfFile = file;
+    hideStatus();
+    try {
+      const { PDFDocument } = PDFLib;
+      const ab   = await file.arrayBuffer();
+      const pdf  = await PDFDocument.load(ab);
+      const pages = pdf.getPageCount();
+      const sizeStr = file.size > 1048576
+        ? (file.size / 1048576).toFixed(2) + ' MB'
+        : (file.size / 1024).toFixed(1) + ' KB';
+
+      $('fi-name').textContent  = file.name;
+      $('fi-pages').textContent = `${pages} page${pages > 1 ? 's' : ''} · ${sizeStr}`;
+      fileInfo.classList.add('visible');
+      rotateBtn.disabled = false;
+    } catch(err) {
+      showStatus('error', '❌ Failed to read PDF: ' + err.message);
+    }
+  }
+
+  $('fi-clear').addEventListener('click', () => {
+    pdfFile = null;
+    pdfInput.value = '';
+    fileInfo.classList.remove('visible');
+    rotateBtn.disabled = true;
+    hideStatus();
+  });
+
+  // ── Rotate ─────────────────────────────────────────────────────────────────
+  rotateBtn.addEventListener('click', async () => {
+    try {
+      showStatus('loading', '⏳ Rotating pages…');
+      rotateBtn.disabled = true;
+
+      const { PDFDocument, degrees } = PDFLib;
+      const ab  = await pdfFile.arrayBuffer();
+      const pdf = await PDFDocument.load(ab);
+
+      pdf.getPages().forEach(page => {
+        const current = page.getRotation().angle;
+        page.setRotation(degrees((current + selectedDeg) % 360));
+      });
+
+      const bytes = await pdf.save();
+      const blob  = new Blob([bytes], { type: 'application/pdf' });
+      const url   = URL.createObjectURL(blob);
+      const a     = document.createElement('a');
+      a.href = url;
+      a.download = 'rotated-' + (pdfFile?.name || 'document.pdf');
+      a.click();
+      URL.revokeObjectURL(url);
+
+      showStatus('success', `✅ All pages rotated by ${selectedDeg}°! Download started.`);
+    } catch(err) {
+      showStatus('error', '❌ Error: ' + err.message);
+    } finally {
+      rotateBtn.disabled = false;
+    }
+  });
+
+  // ── Helpers ────────────────────────────────────────────────────────────────
+  function showStatus(type, msg) {
+    statusMsg.className   = 'status-msg ' + type;
+    statusMsg.textContent = msg;
+  }
+  function hideStatus() {
+    statusMsg.className   = 'status-msg';
+    statusMsg.textContent = '';
+  }
+
+  // ── FAQ Accordion ──────────────────────────────────────────────────────────
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+      const answer = q.nextElementSibling;
+      const icon   = q.querySelector('.faq-icon');
+      const isOpen = answer.classList.contains('open');
+      document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+      document.querySelectorAll('.faq-icon').forEach(i => i.textContent = '+');
+      if (!isOpen) { answer.classList.add('open'); icon.textContent = '−'; }
+    });
+  });
+  </script>
+
+  <script src="../assets/js/tracker.js"></script>
+<script src="../assets/js/ads.js"></script>
+</body>
+</html>

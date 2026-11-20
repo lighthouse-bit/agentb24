@@ -1,0 +1,395 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Free YouTube Money Calculator — Estimate YouTube Earnings | AgentB24</title>
+  <meta name="description" content="Free YouTube money calculator. Estimate how much a YouTube channel earns from ad revenue based on views, niche CPM and RPM rates. Daily, monthly and yearly projections." />
+  <meta name="keywords" content="youtube money calculator, youtube earnings calculator, how much does youtube pay, youtube revenue calculator, youtube income calculator, youtube cpm calculator, youtube rpm" />
+  <link rel="canonical" href="https://agentb24.com/tools/youtube-money-calculator.html" />
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1T57RWSY42"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1T57RWSY42');</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"YouTube Money Calculator","url":"https://agentb24.com/tools/youtube-money-calculator.html","description":"Estimate YouTube channel earnings from ad revenue based on views, niche CPM and RPM rates.","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"AgentB24","url":"https://agentb24.com"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much does YouTube pay per 1000 views?","acceptedAnswer":{"@type":"Answer","text":"YouTube pays creators through ad revenue. The RPM (Revenue Per Mille) typically ranges from $1 to $29 per 1,000 views depending on the niche, audience location, and ad engagement. Finance and business channels earn the highest RPM while gaming and entertainment channels tend to earn lower rates."}},{"@type":"Question","name":"What is the difference between CPM and RPM?","acceptedAnswer":{"@type":"Answer","text":"CPM (Cost Per Mille) is what advertisers pay YouTube per 1,000 ad impressions. RPM (Revenue Per Mille) is what the creator actually receives per 1,000 views after YouTube takes its 45% cut. RPM is always lower than CPM."}},{"@type":"Question","name":"Are these earnings estimates accurate?","acceptedAnswer":{"@type":"Answer","text":"These are estimates based on typical industry CPM and RPM averages. Actual earnings vary significantly based on audience geography, ad engagement rate, video length, seasonality, and whether ads are served on every view."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://agentb24.com/"},{"@type":"ListItem","position":2,"name":"YouTube Tools","item":"https://agentb24.com/tools/youtube-tools.html"},{"@type":"ListItem","position":3,"name":"YouTube Money Calculator","item":"https://agentb24.com/tools/youtube-money-calculator.html"}]}</script>
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <style>
+    /* ── Result Card ── */
+    .money-card {
+      background: linear-gradient(135deg, #ff0000 0%, #ff6b6b 50%, #6366f1 100%);
+      border-radius: var(--radius, 16px); padding: 1.75rem; color: #fff;
+      margin-bottom: 1.25rem; text-align: center;
+    }
+    .money-card .mc-label { font-size: .78rem; opacity: .8; text-transform: uppercase; letter-spacing: .06em; margin-bottom: .4rem; }
+    .money-card .mc-range { font-size: 2.2rem; font-weight: 900; line-height: 1.1; }
+    .money-card .mc-period { font-size: .82rem; opacity: .8; margin-top: .3rem; }
+
+    /* ── Earnings Grid ── */
+    .earnings-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: .85rem; margin-bottom: 1.25rem; }
+    .earn-card { background: var(--white,#fff); border: 1px solid var(--border,#e2e8f0); border-radius: var(--radius-sm,10px); padding: .95rem; text-align: center; }
+    .earn-card .ec-period { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--text-light,#94a3b8); margin-bottom: .4rem; }
+    .earn-card .ec-low    { font-size: .85rem; color: #dc2626; font-weight: 700; }
+    .earn-card .ec-mid    { font-size: 1.2rem; font-weight: 900; color: var(--primary,#6366f1); margin: .2rem 0; }
+    .earn-card .ec-high   { font-size: .85rem; color: #16a34a; font-weight: 700; }
+    .earn-card .ec-note   { font-size: .68rem; color: var(--text-light,#94a3b8); margin-top: .25rem; }
+
+    /* ── Sliders ── */
+    .slider-group { margin-bottom: 1rem; }
+    .slider-group .sg-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: .45rem; }
+    .slider-group label { font-size: .85rem; font-weight: 700; color: var(--text-mid,#374151); }
+    .slider-val { background: var(--primary-light,#eef2ff); color: var(--primary,#6366f1); font-size: .82rem; font-weight: 800; padding: 2px 10px; border-radius: 50px; }
+    .sg-slider { width: 100%; accent-color: var(--primary,#6366f1); height: 5px; cursor: pointer; }
+    .sg-hints  { display: flex; justify-content: space-between; font-size: .68rem; color: var(--text-light,#94a3b8); margin-top: .3rem; }
+
+    /* ── Niche Selector ── */
+    .niche-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(130px,1fr)); gap: .5rem; margin-bottom: 1.25rem; }
+    .niche-btn {
+      border: 1.5px solid var(--border,#e2e8f0); background: var(--white,#fff);
+      border-radius: var(--radius-sm,8px); padding: .6rem .5rem; cursor: pointer;
+      text-align: center; font-size: .75rem; font-weight: 600;
+      color: var(--text-mid,#64748b); transition: all .13s;
+      font-family: 'Inter', sans-serif;
+    }
+    .niche-btn .nb-icon { font-size: 1.2rem; display: block; margin-bottom: .2rem; }
+    .niche-btn .nb-cpm  { font-size: .68rem; color: var(--text-light,#94a3b8); margin-top: .15rem; }
+    .niche-btn:hover, .niche-btn.active {
+      border-color: var(--primary,#6366f1); background: var(--primary-light,#eef2ff);
+      color: var(--primary,#6366f1);
+    }
+
+    /* ── CPM Info Bar ── */
+    .cpm-info { background: var(--bg,#f8fafc); border: 1px solid var(--border,#e2e8f0); border-radius: var(--radius-sm,8px); padding: .75rem 1rem; font-size: .82rem; color: var(--text-mid,#64748b); margin-bottom: 1rem; line-height: 1.6; }
+
+    /* ── Disclaimer ── */
+    .disclaimer { background: #fefce8; border: 1px solid #fde047; border-left: 4px solid #f59e0b; border-radius: 8px; padding: .75rem 1rem; font-size: .8rem; color: #854d0e; margin-top: 1rem; line-height: 1.6; }
+
+    /* ── How To & FAQ (reuse) ── */
+    .how-to-section, .faq-section { background: var(--white,#fff); border: 1px solid var(--border,#e2e8f0); border-radius: var(--radius,16px); padding: 1.75rem; box-shadow: var(--shadow,0 4px 24px rgba(0,0,0,.06)); margin-top: 1.5rem; }
+    .how-to-section h2, .faq-section h2 { font-size: 1.2rem; margin-bottom: 1.25rem; color: var(--text-dark,#0f172a); }
+    .steps { display: flex; flex-direction: column; gap: 1rem; }
+    .step  { display: flex; gap: 1rem; align-items: flex-start; }
+    .step-number { width: 32px; height: 32px; background: #ff0000; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: .85rem; flex-shrink: 0; }
+    .step-content h4 { font-size: .92rem; margin-bottom: .2rem; color: var(--text-dark,#0f172a); }
+    .step-content p  { font-size: .82rem; color: var(--text-mid,#64748b); line-height: 1.6; margin: 0; }
+    .faq-item { border-bottom: 1px solid var(--border,#e2e8f0); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question { display: flex; justify-content: space-between; align-items: center; padding: .9rem 0; cursor: pointer; font-size: .9rem; font-weight: 600; color: var(--text-dark,#0f172a); gap: .75rem; transition: color .15s; }
+    .faq-question:hover { color: #ff0000; }
+    .faq-icon { font-size: 1.1rem; flex-shrink: 0; color: #ff0000; }
+    .faq-answer { display: none; padding: 0 0 .9rem; font-size: .85rem; color: var(--text-mid,#64748b); line-height: 1.7; }
+    .faq-answer.open { display: block; }
+
+    @media(max-width:480px) { .earnings-grid { grid-template-columns: 1fr; } .niche-grid { grid-template-columns: repeat(2,1fr); } }
+  </style>
+  <!-- AgentB24 SEO Pack -->
+  <meta name="author" content="AgentB24">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#4F46E5">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AgentB24">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://agentb24.com/tools/youtube-money-calculator.html">
+  <meta property="og:title" content="Free YouTube Money Calculator — Estimate YouTube Earnings | AgentB24">
+  <meta property="og:description" content="Free YouTube money calculator. Estimate how much a YouTube channel earns from ad revenue based on views, niche CPM and RPM rates. Daily, monthly and yearly projections.">
+  <meta property="og:image" content="https://agentb24.com/assets/img/og-image.png">
+  <meta property="og:image:width" content="1718">
+  <meta property="og:image:height" content="912">
+  <meta property="og:image:alt" content="AgentB24 â€” 80+ Free Online Tools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free YouTube Money Calculator — Estimate YouTube Earnings | AgentB24">
+  <meta name="twitter:description" content="Free YouTube money calculator. Estimate how much a YouTube channel earns from ad revenue based on views, niche CPM and RPM rates. Daily, monthly and yearly projections.">
+  <meta name="twitter:image" content="https://agentb24.com/assets/img/og-image.png">
+  <!-- /AgentB24 SEO Pack -->
+  <link rel="stylesheet" href="../assets/css/ads.css">
+</head>
+<body>
+
+<header>
+  <div class="nav-container">
+    <a href="../index.html" class="logo"><div class="logo-icon">🛠</div>AgentB24</a>
+    <nav class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="text-tools.html">Text Tools</a>
+      <a href="developer-tools.html">Dev Tools</a>
+      <a href="calculators.html">Calculators</a>
+      <a href="pdf-tools.html">PDF Tools</a>
+      <a href="converters.html">Converters</a>
+      <a href="youtube-tools.html" class="active">YouTube Tools</a>
+      <a href="../about.html">About</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+  <nav class="mobile-menu" id="mobile-menu">
+    <a href="../index.html">Home</a><a href="youtube-tools.html">YouTube Tools</a><a href="../about.html">About</a>
+  </nav>
+</header>
+
+<div class="tool-page-header">
+  <div class="container">
+    <nav class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="youtube-tools.html">YouTube Tools</a> &rsaquo; <span>Money Calculator</span></nav>
+    <h1>Free YouTube Money Calculator</h1>
+    <p>Estimate how much a YouTube channel earns from ad revenue. Adjust views, niche, and CPM rates to get realistic daily, monthly and yearly income projections.</p>
+  </div>
+</div>
+
+<main>
+<div class="tool-body">
+  <div class="tool-main">
+    <div class="tool-box">
+
+      <!-- Main Result Card -->
+      <div class="money-card" id="money-card">
+        <div class="mc-label">💰 Estimated Monthly Earnings</div>
+        <div class="mc-range" id="mc-range">$0 — $0</div>
+        <div class="mc-period">Based on your settings below</div>
+      </div>
+
+      <!-- Earnings Grid -->
+      <div class="earnings-grid" id="earnings-grid">
+        <div class="earn-card">
+          <div class="ec-period">📅 Daily</div>
+          <div class="ec-low"  id="daily-low">$0</div>
+          <div class="ec-mid"  id="daily-mid">$0</div>
+          <div class="ec-high" id="daily-high">$0</div>
+          <div class="ec-note">Low / Mid / High</div>
+        </div>
+        <div class="earn-card">
+          <div class="ec-period">📆 Monthly</div>
+          <div class="ec-low"  id="monthly-low">$0</div>
+          <div class="ec-mid"  id="monthly-mid">$0</div>
+          <div class="ec-high" id="monthly-high">$0</div>
+          <div class="ec-note">Low / Mid / High</div>
+        </div>
+        <div class="earn-card">
+          <div class="ec-period">📈 Yearly</div>
+          <div class="ec-low"  id="yearly-low">$0</div>
+          <div class="ec-mid"  id="yearly-mid">$0</div>
+          <div class="ec-high" id="yearly-high">$0</div>
+          <div class="ec-note">Low / Mid / High</div>
+        </div>
+      </div>
+
+      <!-- Daily Views Slider -->
+      <p style="font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--text-light);margin-bottom:.85rem;">⚙️ Your Channel Settings</p>
+
+      <div class="slider-group">
+        <div class="sg-header">
+          <label>📊 Daily Views</label>
+          <span class="slider-val" id="views-val">10,000</span>
+        </div>
+        <input type="range" class="sg-slider" id="views-slider" min="100" max="1000000" step="100" value="10000" oninput="calc()"/>
+        <div class="sg-hints"><span>100</span><span>100K</span><span>500K</span><span>1M</span></div>
+      </div>
+
+      <!-- CPM Slider -->
+      <div class="slider-group">
+        <div class="sg-header">
+          <label>💵 CPM Rate ($ per 1,000 views)</label>
+          <span class="slider-val" id="cpm-val">$4.00</span>
+        </div>
+        <input type="range" class="sg-slider" id="cpm-slider" min="0.5" max="30" step="0.5" value="4" oninput="calc()"/>
+        <div class="sg-hints"><span>$0.50</span><span>$8</span><span>$15</span><span>$30</span></div>
+      </div>
+
+      <!-- Click-through Rate -->
+      <div class="slider-group">
+        <div class="sg-header">
+          <label>🎯 Ad Click-Through Rate (CTR %)</label>
+          <span class="slider-val" id="ctr-val">50%</span>
+        </div>
+        <input type="range" class="sg-slider" id="ctr-slider" min="10" max="100" step="5" value="50" oninput="calc()"/>
+        <div class="sg-hints"><span>10% (low)</span><span>50% (avg)</span><span>100% (all)</span></div>
+      </div>
+
+      <!-- Niche Selector -->
+      <p style="font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--text-light);margin-bottom:.6rem;">🎯 Select Your Niche (sets CPM automatically)</p>
+      <div class="niche-grid" id="niche-grid"></div>
+
+      <!-- CPM Info -->
+      <div class="cpm-info" id="cpm-info">
+        ℹ️ Select a niche above to automatically set a typical CPM. You can then fine-tune the CPM slider manually.
+      </div>
+
+      <!-- Disclaimer -->
+      <div class="disclaimer">
+        ⚠️ <strong>Disclaimer:</strong> These are estimates only. Actual YouTube earnings vary based on audience geography, ad engagement, seasonality, ad blockers, and YouTube's policies. YouTube takes approximately 45% of ad revenue — the figures shown are creator take-home estimates (RPM-based).
+      </div>
+
+    </div>
+
+    <!-- How To -->
+    <div class="how-to-section">
+      <h2>📖 How YouTube Ad Revenue Works</h2>
+      <div class="steps">
+        <div class="step"><div class="step-number">1</div><div class="step-content"><h4>Advertisers Pay CPM</h4><p>Advertisers bid on ad placements. CPM (Cost Per Mille) is the amount they pay per 1,000 ad impressions. This varies hugely by niche — finance pays $15–$30, gaming pays $1–$4.</p></div></div>
+        <div class="step"><div class="step-number">2</div><div class="step-content"><h4>YouTube Takes 45%</h4><p>YouTube keeps 45% of all ad revenue. The creator receives 55%. This results in the RPM (Revenue Per Mille) — the actual amount a creator earns per 1,000 views.</p></div></div>
+        <div class="step"><div class="step-number">3</div><div class="step-content"><h4>Not Every View Has an Ad</h4><p>Ad blockers, skipped ads, and short watch times mean not every view generates revenue. The CTR slider accounts for this — typically 40–60% of views generate ad income.</p></div></div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <h2>❓ Frequently Asked Questions</h2>
+      <div class="faq-item"><div class="faq-question">How much does YouTube pay per 1,000 views?<span class="faq-icon">+</span></div><div class="faq-answer">YouTube pays creators through RPM (Revenue Per Mille). Typical RPM ranges from $1–$3 for entertainment/gaming channels up to $15–$29 for finance, insurance, and legal content. The average across all niches is approximately $3–$5 per 1,000 views.</div></div>
+      <div class="faq-item"><div class="faq-question">What is the difference between CPM and RPM?<span class="faq-icon">+</span></div><div class="faq-answer"><strong>CPM</strong> (Cost Per Mille) is what advertisers pay YouTube per 1,000 ad impressions.<br/><strong>RPM</strong> (Revenue Per Mille) is what the creator earns per 1,000 video views after YouTube's 45% cut. RPM is always lower than CPM since not every view gets an ad.</div></div>
+      <div class="faq-item"><div class="faq-question">Which niche pays the most on YouTube?<span class="faq-icon">+</span></div><div class="faq-answer">The highest-paying YouTube niches by CPM are: Finance & Investing ($15–$30), Insurance & Legal ($12–$25), Business & Entrepreneurship ($10–$20), Health & Medicine ($8–$18), Technology ($5–$12), and Education ($4–$10). Entertainment and Gaming typically pay $1–$4 CPM.</div></div>
+      <div class="faq-item"><div class="faq-question">How do I increase my YouTube earnings?<span class="faq-icon">+</span></div><div class="faq-answer">To increase earnings: target higher-CPM niches, attract audiences from high-paying countries (US, UK, Canada, Australia), make longer videos (more ad placements), enable all ad formats, and diversify with channel memberships, Super Thanks, merchandise, and sponsorships.</div></div>
+      <div class="faq-item"><div class="faq-question">Are these earnings estimates accurate?<span class="faq-icon">+</span></div><div class="faq-answer">These are estimates based on typical industry averages. Actual earnings vary significantly based on audience geography, ad engagement, seasonality, video length, and whether the channel is monetized. Use these figures as a rough guide, not guaranteed income.</div></div>
+    </div>
+
+  </div>
+
+  <!-- Sidebar -->
+  <aside class="tool-sidebar">
+    <div class="related-tools">
+      <h3>▶️ YouTube Tools</h3>
+      <ul>
+        <li><a href="youtube-thumbnail-downloader.html">🖼️ Thumbnail Downloader</a></li>
+        <li><a href="youtube-watch-time-calculator.html">⏱️ Watch Time Calculator</a></li>
+        <li><a href="youtube-embed-generator.html">🔗 Embed Code Generator</a></li>
+        <li><a href="youtube-timestamp-generator.html">🕐 Timestamp Generator</a></li>
+      </ul>
+    </div>
+    <div class="related-tools">
+      <h3>💡 CPM by Country</h3>
+      <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:6px;">
+        <li style="font-size:.8rem;color:var(--text-mid);padding:7px 8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">🇺🇸 USA — <strong>$4–$15 CPM</strong></li>
+        <li style="font-size:.8rem;color:var(--text-mid);padding:7px 8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">🇬🇧 UK — <strong>$3–$12 CPM</strong></li>
+        <li style="font-size:.8rem;color:var(--text-mid);padding:7px 8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">🇨🇦 Canada — <strong>$3–$10 CPM</strong></li>
+        <li style="font-size:.8rem;color:var(--text-mid);padding:7px 8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">🇳🇬 Nigeria — <strong>$0.5–$1.5 CPM</strong></li>
+        <li style="font-size:.8rem;color:var(--text-mid);padding:7px 8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">🇮🇳 India — <strong>$0.5–$2 CPM</strong></li>
+      </ul>
+    </div>
+  </aside>
+</div>
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand"><a href="../index.html" class="logo"><div class="logo-icon">🛠</div>AgentB24</a><p>Free online tools for everyone.</p></div>
+    <div class="footer-col"><h4>YouTube Tools</h4><ul><li><a href="youtube-thumbnail-downloader.html">Thumbnail Downloader</a></li><li><a href="youtube-money-calculator.html">Money Calculator</a></li><li><a href="youtube-watch-time-calculator.html">Watch Time Calculator</a></li></ul></div>
+    <div class="footer-col"><h4>Company</h4><ul><li><a href="../about.html">About Us</a></li><li><a href="../privacy-policy.html">Privacy Policy</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 AgentB24. All rights reserved.</span><span>Made with ❤️ for productivity</span></div>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="../assets/js/main.js"></script>
+<script>
+'use strict';
+
+const NICHES = [
+  { icon:'💰', name:'Finance',      cpm:18,  range:[12,28] },
+  { icon:'🏥', name:'Health',       cpm:12,  range:[8,18]  },
+  { icon:'💼', name:'Business',     cpm:11,  range:[7,18]  },
+  { icon:'🎓', name:'Education',    cpm:7,   range:[4,12]  },
+  { icon:'💻', name:'Technology',   cpm:8,   range:[4,14]  },
+  { icon:'🍕', name:'Food',         cpm:3.5, range:[2,6]   },
+  { icon:'✈️', name:'Travel',       cpm:4,   range:[2,7]   },
+  { icon:'💪', name:'Fitness',      cpm:5,   range:[3,9]   },
+  { icon:'🎮', name:'Gaming',       cpm:2.5, range:[1,4]   },
+  { icon:'😂', name:'Comedy',       cpm:2,   range:[1,3.5] },
+  { icon:'🎵', name:'Music',        cpm:1.8, range:[1,3]   },
+  { icon:'🎬', name:'Vlogging',     cpm:2,   range:[1,4]   },
+];
+
+let selectedNiche = null;
+
+// Render niche grid
+document.getElementById('niche-grid').innerHTML = NICHES.map((n,i) =>
+  `<button class="niche-btn" data-idx="${i}" onclick="selectNiche(${i})">
+    <span class="nb-icon">${n.icon}</span>
+    ${n.name}
+    <span class="nb-cpm">~$${n.cpm} CPM</span>
+  </button>`
+).join('');
+
+function selectNiche(idx) {
+  document.querySelectorAll('.niche-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.niche-btn')[idx].classList.add('active');
+  selectedNiche = NICHES[idx];
+  // Set CPM slider to niche average
+  document.getElementById('cpm-slider').value = selectedNiche.cpm;
+  document.getElementById('cpm-val').textContent = '$' + selectedNiche.cpm.toFixed(2);
+  document.getElementById('cpm-info').textContent =
+    `ℹ️ ${selectedNiche.name} channels typically earn $${selectedNiche.range[0]}–$${selectedNiche.range[1]} CPM. You can adjust the slider above.`;
+  calc();
+}
+
+function fmt(n) {
+  if (n >= 1000000) return '$' + (n/1000000).toFixed(2) + 'M';
+  if (n >= 1000)    return '$' + (n/1000).toFixed(1) + 'K';
+  return '$' + n.toFixed(2);
+}
+
+function calc() {
+  const views = parseInt(document.getElementById('views-slider').value);
+  const cpm   = parseFloat(document.getElementById('cpm-slider').value);
+  const ctr   = parseInt(document.getElementById('ctr-slider').value) / 100;
+
+  // Update display values
+  document.getElementById('views-val').textContent = views.toLocaleString();
+  document.getElementById('cpm-val').textContent   = '$' + cpm.toFixed(2);
+  document.getElementById('ctr-val').textContent   = Math.round(ctr * 100) + '%';
+
+  // YouTube takes 45%, creator gets 55%
+  const rpm = cpm * 0.55;
+
+  // Revenue per view = rpm / 1000 * ctr
+  const revenuePerView = (rpm / 1000) * ctr;
+
+  // Daily earnings (mid)
+  const dailyMid  = views * revenuePerView;
+  const dailyLow  = dailyMid * 0.5;
+  const dailyHigh = dailyMid * 1.8;
+
+  const monthlyMid  = dailyMid  * 30;
+  const monthlyLow  = dailyLow  * 30;
+  const monthlyHigh = dailyHigh * 30;
+
+  const yearlyMid  = monthlyMid  * 12;
+  const yearlyLow  = monthlyLow  * 12;
+  const yearlyHigh = monthlyHigh * 12;
+
+  // Update main card
+  document.getElementById('mc-range').textContent = `${fmt(monthlyLow)} — ${fmt(monthlyHigh)}`;
+
+  // Update grid
+  document.getElementById('daily-low').textContent   = fmt(dailyLow);
+  document.getElementById('daily-mid').textContent   = fmt(dailyMid);
+  document.getElementById('daily-high').textContent  = fmt(dailyHigh);
+  document.getElementById('monthly-low').textContent = fmt(monthlyLow);
+  document.getElementById('monthly-mid').textContent = fmt(monthlyMid);
+  document.getElementById('monthly-high').textContent= fmt(monthlyHigh);
+  document.getElementById('yearly-low').textContent  = fmt(yearlyLow);
+  document.getElementById('yearly-mid').textContent  = fmt(yearlyMid);
+  document.getElementById('yearly-high').textContent = fmt(yearlyHigh);
+}
+
+// Slider labels
+document.getElementById('views-slider').addEventListener('input', function() {
+  document.getElementById('views-val').textContent = parseInt(this.value).toLocaleString();
+  calc();
+});
+
+// Init
+calc();
+
+// FAQ
+document.querySelectorAll('.faq-question').forEach(q => {
+  q.addEventListener('click', () => {
+    const a = q.nextElementSibling, i = q.querySelector('.faq-icon');
+    const open = a.classList.contains('open');
+    document.querySelectorAll('.faq-answer').forEach(x => x.classList.remove('open'));
+    document.querySelectorAll('.faq-icon').forEach(x => x.textContent = '+');
+    if (!open) { a.classList.add('open'); i.textContent = '−'; }
+  });
+});
+</script>
+<script src="../assets/js/tracker.js"></script>
+<script src="../assets/js/ads.js"></script>
+</body>
+</html>

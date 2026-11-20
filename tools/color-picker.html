@@ -1,0 +1,1889 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <!-- =============================================
+       BASIC META TAGS
+  ============================================== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- =============================================
+       SEO META TAGS
+  ============================================== -->
+  <title>Free Color Picker Online — HEX, RGB, HSL Converter | AgentB24</title>
+  <meta name="description"
+        content="Free online color picker and converter. Pick any color and instantly convert between HEX, RGB, HSL, and CMYK. Generate color palettes, tints, shades, and check contrast ratios. No sign-up needed." />
+  <meta name="keywords"
+        content="color picker, hex to rgb, rgb to hex, color converter, hsl converter, cmyk converter, color palette generator, color contrast checker, online color picker, web color tool" />
+  <link rel="canonical" href="https://agentb24.com/tools/color-picker.html" />
+
+  <!-- =============================================
+       OPEN GRAPH
+  ============================================== -->
+  <!-- =============================================
+       TWITTER CARD
+  ============================================== -->
+  <!-- Google Analytics 4 -->
+    <script async
+    src="https://www.googletagmanager.com/gtag/js?id=G-1T57RWSY42">
+    </script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1T57RWSY42');
+    </script>
+  
+
+  <!-- =============================================
+       STRUCTURED DATA — WebApplication Schema
+  ============================================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Color Picker & Converter",
+    "url": "https://agentb24.com/tools/color-picker.html",
+    "description": "Free online color picker that converts between HEX, RGB, HSL, and CMYK color formats and generates color palettes.",
+    "applicationCategory": "DesignApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "AgentB24",
+      "url": "https://agentb24.com"
+    }
+  }
+  </script>
+
+  <!-- =============================================
+       FAQ SCHEMA
+  ============================================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a HEX color code?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A HEX color code is a six-character code preceded by a hash symbol (#) that represents a color in the RGB color model. Each pair of characters represents the red, green, and blue components as hexadecimal numbers from 00 to FF. For example, #FF0000 is pure red."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between RGB and HSL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "RGB (Red, Green, Blue) defines colors by the intensity of red, green, and blue light from 0 to 255. HSL (Hue, Saturation, Lightness) defines colors using a more intuitive model where hue is the color angle (0-360), saturation is the color intensity (0-100%), and lightness is how light or dark the color is (0-100%)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is color contrast ratio and why does it matter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Color contrast ratio measures the difference in brightness between a foreground color and background color. It matters for accessibility — the WCAG guidelines require a minimum contrast ratio of 4.5:1 for normal text and 3:1 for large text to ensure readability for users with visual impairments."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between tints and shades?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A tint is created by mixing a color with white, making it lighter. A shade is created by mixing a color with black, making it darker. Tints and shades are useful for creating consistent color palettes and UI design systems."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is CMYK color and when is it used?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CMYK stands for Cyan, Magenta, Yellow, and Key (Black). It is a subtractive color model used in color printing. Unlike RGB which is used for screens, CMYK is used when designing materials to be printed, such as brochures, business cards, and packaging."
+        }
+      }
+    ]
+  }
+  </script>
+  
+
+  <!-- =============================================
+       BREADCRUMB SCHEMA
+  ============================================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://agentb24.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Developer Tools",
+        "item": "https://agentb24.com/#developer-tools"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Color Picker",
+        "item": "https://agentb24.com/tools/color-picker.html"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Adsterra — Uncomment once approved -->
+  <!--  -->
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+
+  <!-- Shared Stylesheet -->
+  <link rel="stylesheet" href="../assets/css/style.css" />
+
+  <!-- =============================================
+       PAGE-SPECIFIC STYLES
+  ============================================== -->
+  <style>
+
+    /* ---- Main Color Picker Layout ---- */
+    .picker-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    /* ---- Color Preview Box ---- */
+    .color-preview-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .color-preview {
+      width: 100%;
+      height: 180px;
+      border-radius: var(--radius);
+      border: 3px solid var(--border);
+      transition: background 0.2s ease, border-color 0.2s ease;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .color-preview-label {
+      position: absolute;
+      bottom: 12px;
+      left: 0; right: 0;
+      text-align: center;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+      pointer-events: none;
+    }
+
+    /* Native color input (hidden, triggered by preview click) */
+    .native-color-input {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+      border: none;
+      padding: 0;
+    }
+
+    /* ---- Color Values Panel ---- */
+    .color-values {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .color-value-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+
+    .color-value-row:hover {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    .color-value-badge {
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      min-width: 52px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .badge-hex  { background: #1E293B; color: #93C5FD; }
+    .badge-rgb  { background: #FEF2F2; color: #DC2626; border: 1px solid #FECACA; }
+    .badge-hsl  { background: #F0FDF4; color: #15803D; border: 1px solid #86EFAC; }
+    .badge-hsv  { background: #FFF7ED; color: #C2410C; border: 1px solid #FED7AA; }
+    .badge-cmyk { background: #EFF6FF; color: #1D4ED8; border: 1px solid #BFDBFE; }
+    .badge-css  { background: #F5F3FF; color: #6D28D9; border: 1px solid #DDD6FE; }
+
+    .color-value-text {
+      flex: 1;
+      font-family: 'Courier New', monospace;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      word-break: break-all;
+    }
+
+    .color-copy-btn {
+      background: none;
+      border: none;
+      font-size: 0.9rem;
+      cursor: pointer;
+      color: var(--text-light);
+      padding: 4px 6px;
+      border-radius: 4px;
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+
+    .color-copy-btn:hover {
+      color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    /* ---- Manual HEX Input ---- */
+    .hex-input-wrap {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+
+    .hex-swatch {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--border);
+      flex-shrink: 0;
+      transition: background 0.2s;
+    }
+
+    .hex-input {
+      flex: 1;
+      padding: 10px 14px;
+      font-family: 'Courier New', monospace;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text-dark);
+      background: var(--bg);
+      outline: none;
+      transition: var(--transition);
+      text-transform: uppercase;
+    }
+
+    .hex-input:focus {
+      border-color: var(--primary);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(79,70,229,0.1);
+    }
+
+    /* ---- RGB Sliders ---- */
+    .sliders-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding: 18px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    .slider-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .slider-label {
+      font-size: 0.8rem;
+      font-weight: 800;
+      width: 20px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .slider-r { color: #EF4444; }
+    .slider-g { color: #22C55E; }
+    .slider-b { color: #3B82F6; }
+
+    .rgb-slider {
+      flex: 1;
+      height: 8px;
+      border-radius: 50px;
+      outline: none;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .rgb-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: white;
+      border: 3px solid #475569;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      transition: var(--transition);
+    }
+
+    .rgb-slider::-webkit-slider-thumb:hover {
+      border-color: var(--primary);
+      transform: scale(1.15);
+    }
+
+    .slider-value {
+      font-size: 0.82rem;
+      font-weight: 700;
+      font-family: monospace;
+      color: var(--text-mid);
+      width: 32px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    /* ---- Named Colors Grid ---- */
+    .named-colors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+      gap: 8px;
+    }
+
+    .named-color {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      transition: var(--transition);
+    }
+
+    .named-color:hover {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    .named-color-swatch {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow);
+      border: 2px solid rgba(0,0,0,0.08);
+    }
+
+    .named-color-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--text-mid);
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    /* ---- Palette Strips ---- */
+    .palette-strip {
+      display: flex;
+      border-radius: var(--radius);
+      overflow: hidden;
+      height: 56px;
+      box-shadow: var(--shadow);
+      margin-bottom: 12px;
+    }
+
+    .palette-swatch {
+      flex: 1;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .palette-swatch:hover {
+      flex: 1.6;
+    }
+
+    .palette-swatch-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      opacity: 0;
+      transition: var(--transition);
+      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+      pointer-events: none;
+    }
+
+    .palette-swatch:hover .palette-swatch-label {
+      opacity: 1;
+    }
+
+    /* ---- Contrast Checker ---- */
+    .contrast-checker {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .contrast-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .contrast-color-pick {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .contrast-color-pick label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-mid);
+    }
+
+    .contrast-color-pick-inner {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .contrast-swatch {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--border);
+      flex-shrink: 0;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .contrast-swatch input[type="color"] {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .contrast-hex-input {
+      flex: 1;
+      padding: 8px 12px;
+      font-family: monospace;
+      font-size: 0.88rem;
+      font-weight: 700;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      outline: none;
+      text-transform: uppercase;
+    }
+
+    .contrast-hex-input:focus {
+      border-color: var(--primary);
+    }
+
+    /* Preview Box */
+    .contrast-preview {
+      border-radius: var(--radius);
+      padding: 20px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .contrast-preview-text-lg {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .contrast-preview-text-sm {
+      font-size: 0.88rem;
+    }
+
+    /* Ratio display */
+    .contrast-ratio-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding: 16px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    .contrast-ratio-number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .contrast-ratio-label {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      margin-top: 2px;
+    }
+
+    .wcag-badges {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .wcag-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 50px;
+    }
+
+    .wcag-pass {
+      background: #DCFCE7;
+      color: #15803D;
+      border: 1px solid #86EFAC;
+    }
+
+    .wcag-fail {
+      background: #FEF2F2;
+      color: #DC2626;
+      border: 1px solid #FECACA;
+    }
+
+    /* ---- Color History ---- */
+    .color-history {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding: 12px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      min-height: 54px;
+    }
+
+    .history-swatch {
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      border: 2px solid rgba(0,0,0,0.08);
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+      flex-shrink: 0;
+    }
+
+    .history-swatch:hover {
+      transform: scale(1.2);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary);
+    }
+
+    /* ---- Complementary Colors ---- */
+    .harmony-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 10px;
+    }
+
+    .harmony-card {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .harmony-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .harmony-swatch {
+      width: 100%;
+      height: 60px;
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow);
+      border: 2px solid rgba(0,0,0,0.06);
+    }
+
+    .harmony-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-mid);
+      text-align: center;
+    }
+
+    .harmony-hex {
+      font-size: 0.68rem;
+      color: var(--text-light);
+      text-align: center;
+      font-family: monospace;
+    }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 680px) {
+      .picker-grid    { grid-template-columns: 1fr; }
+      .contrast-pair  { grid-template-columns: 1fr; }
+      .harmony-grid   { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 420px) {
+      .named-colors-grid { grid-template-columns: repeat(4, 1fr); }
+      .harmony-grid      { grid-template-columns: repeat(2, 1fr); }
+    }
+
+  </style>
+  <!-- AgentB24 SEO Pack -->
+  <meta name="author" content="AgentB24">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#4F46E5">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AgentB24">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://agentb24.com/tools/color-picker.html">
+  <meta property="og:title" content="Free Color Picker Online — HEX, RGB, HSL Converter | AgentB24">
+  <meta property="og:description" content="Free online color picker and converter. Pick any color and instantly convert between HEX, RGB, HSL, and CMYK. Generate color palettes, tints, shades, and check contrast ratios. No sign-up needed.">
+  <meta property="og:image" content="https://agentb24.com/assets/img/og-image.png">
+  <meta property="og:image:width" content="1718">
+  <meta property="og:image:height" content="912">
+  <meta property="og:image:alt" content="AgentB24 â€” 80+ Free Online Tools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Color Picker Online — HEX, RGB, HSL Converter | AgentB24">
+  <meta name="twitter:description" content="Free online color picker and converter. Pick any color and instantly convert between HEX, RGB, HSL, and CMYK. Generate color palettes, tints, shades, and check contrast ratios. No sign-up needed.">
+  <meta name="twitter:image" content="https://agentb24.com/assets/img/og-image.png">
+  <!-- /AgentB24 SEO Pack -->
+  <link rel="stylesheet" href="../assets/css/ads.css">
+</head>
+
+<body>
+
+  <!-- =============================================
+       HEADER
+  ============================================== -->
+  <header>
+    <div class="nav-container">
+      <a href="../index.html" class="logo">
+        <div class="logo-icon">🛠</div>
+        AgentB24
+      </a>
+
+      <nav class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="word-counter.html">Text Tools</a>
+        <a href="image-to-base64.html">Image Tools</a>
+        <a href="json-formatter.html" class="active">Dev Tools</a>
+        <a href="percentage-calculator.html">Calculators</a>
+        <a href="../about.html">About</a>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <nav class="mobile-menu" id="mobile-menu">
+      <a href="../index.html">Home</a>
+      <a href="word-counter.html">Text Tools</a>
+      <a href="image-to-base64.html">Image Tools</a>
+      <a href="json-formatter.html">Dev Tools</a>
+      <a href="percentage-calculator.html">Calculators</a>
+      <a href="../about.html">About</a>
+    </nav>
+  </header>
+
+  <!-- =============================================
+       TOP AD BANNER
+  ============================================== -->
+  <!-- <div class="ad-banner">
+    <div class="ad-banner-inner">
+      
+        Adsterra AD — Leaderboard 728x90
+        <!-- Adsterra ads are loaded globally by assets/js/ads.js -->
+     
+      <div class="ad-placeholder">📢 Advertisement — Leaderboard (728×90)</div>
+    </div>
+  </div> -->
+
+  <!-- =============================================
+       TOOL PAGE HEADER
+  ============================================== -->
+  <div class="tool-page-header">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html">Home</a> &rsaquo;
+        <a href="../index.html#developer-tools">Dev Tools</a> &rsaquo;
+        <span>Color Picker</span>
+      </nav>
+
+      <h1>Free Color Picker &amp; Converter Online</h1>
+      <p>
+        Pick any color and instantly convert between HEX, RGB, HSL, HSV, and
+        CMYK. Generate tints, shades, and color harmonies. Check WCAG contrast
+        ratios for accessibility. 100% free, no sign-up needed.
+      </p>
+    </div>
+  </div>
+
+  <!-- =============================================
+       MAIN CONTENT
+  ============================================== -->
+  <main>
+    <div class="tool-body">
+
+      <!-- ==========================================
+           LEFT COLUMN
+      =========================================== -->
+      <div class="tool-main">
+
+        <!-- ---- MAIN PICKER TOOL ---- -->
+        <div class="tool-box">
+          <h2 style="font-size:1rem; margin-bottom:18px;">🎨 Color Picker &amp; Converter</h2>
+
+          <!-- HEX Manual Input -->
+          <div class="form-group">
+            <label>Enter a HEX color code or click the picker below:</label>
+            <div class="hex-input-wrap">
+              <div class="hex-swatch" id="hex-swatch"></div>
+              <span style="font-size:1.1rem; font-weight:700; color:var(--text-mid);">#</span>
+              <input type="text"
+                     id="hex-input"
+                     class="hex-input"
+                     maxlength="6"
+                     value="4F46E5"
+                     placeholder="4F46E5"
+                     oninput="onHexInput(this.value)"
+                     aria-label="HEX color code input" />
+              <button class="btn btn-secondary"
+                      onclick="setRandom()"
+                      style="padding:9px 14px; font-size:0.82rem; white-space:nowrap;">
+                🎲 Random
+              </button>
+            </div>
+          </div>
+
+          <!-- Main Picker Grid -->
+          <div class="picker-grid">
+
+            <!-- LEFT: Visual Picker + Preview -->
+            <div class="color-preview-wrap">
+
+              <!-- Big Color Preview -->
+              <div class="color-preview" id="color-preview">
+                <input type="color"
+                       id="native-picker"
+                       class="native-color-input"
+                       value="#4F46E5"
+                       oninput="onNativePicker(this.value)"
+                       aria-label="Color picker" />
+                <span class="color-preview-label" id="preview-label">#4F46E5</span>
+              </div>
+
+              <!-- RGB Sliders -->
+              <div class="sliders-panel">
+                <p style="font-size:0.78rem; font-weight:700; color:var(--text-mid);
+                           text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px;">
+                  🎛️ RGB Sliders
+                </p>
+
+                <div class="slider-row">
+                  <span class="slider-label slider-r">R</span>
+                  <input type="range" class="rgb-slider" id="slider-r"
+                         min="0" max="255" value="79"
+                         style="background: linear-gradient(to right, #000, #FF0000);"
+                         oninput="onSliderChange()"
+                         aria-label="Red channel" />
+                  <span class="slider-value" id="val-r">79</span>
+                </div>
+
+                <div class="slider-row">
+                  <span class="slider-label slider-g">G</span>
+                  <input type="range" class="rgb-slider" id="slider-g"
+                         min="0" max="255" value="70"
+                         style="background: linear-gradient(to right, #000, #00FF00);"
+                         oninput="onSliderChange()"
+                         aria-label="Green channel" />
+                  <span class="slider-value" id="val-g">70</span>
+                </div>
+
+                <div class="slider-row">
+                  <span class="slider-label slider-b">B</span>
+                  <input type="range" class="rgb-slider" id="slider-b"
+                         min="0" max="255" value="229"
+                         style="background: linear-gradient(to right, #000, #0000FF);"
+                         oninput="onSliderChange()"
+                         aria-label="Blue channel" />
+                  <span class="slider-value" id="val-b">229</span>
+                </div>
+
+              </div>
+
+              <!-- Color History -->
+              <div>
+                <p style="font-size:0.78rem; font-weight:700; color:var(--text-mid);
+                           text-transform:uppercase; letter-spacing:0.5px; margin-bottom:8px;">
+                  🕓 Recent Colors
+                </p>
+                <div class="color-history" id="color-history">
+                  <span style="font-size:0.8rem; color:var(--text-light);">
+                    Colors you pick will appear here...
+                  </span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- RIGHT: Color Values -->
+            <div class="color-values">
+
+              <p style="font-size:0.78rem; font-weight:700; color:var(--text-mid);
+                         text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px;">
+                📋 Color Values (click to copy)
+              </p>
+
+              <div class="color-value-row"
+                   onclick="copyToClipboard(document.getElementById('val-hex').textContent)"
+                   title="Copy HEX">
+                <span class="color-value-badge badge-hex">HEX</span>
+                <span class="color-value-text" id="val-hex">#4F46E5</span>
+                <button class="color-copy-btn">📋</button>
+              </div>
+
+              <div class="color-value-row"
+                   onclick="copyToClipboard(document.getElementById('val-rgb').textContent)"
+                   title="Copy RGB">
+                <span class="color-value-badge badge-rgb">RGB</span>
+                <span class="color-value-text" id="val-rgb">rgb(79, 70, 229)</span>
+                <button class="color-copy-btn">📋</button>
+              </div>
+
+              <div class="color-value-row"
+                   onclick="copyToClipboard(document.getElementById('val-hsl').textContent)"
+                   title="Copy HSL">
+                <span class="color-value-badge badge-hsl">HSL</span>
+                <span class="color-value-text" id="val-hsl">hsl(243, 75%, 59%)</span>
+                <button class="color-copy-btn">📋</button>
+              </div>
+
+              <div class="color-value-row"
+                   onclick="copyToClipboard(document.getElementById('val-hsv').textContent)"
+                   title="Copy HSV">
+                <span class="color-value-badge badge-hsv">HSV</span>
+                <span class="color-value-text" id="val-hsv">hsv(243, 69%, 90%)</span>
+                <button class="color-copy-btn">📋</button>
+              </div>
+
+              <div class="color-value-row"
+                   onclick="copyToClipboard(document.getElementById('val-cmyk').textContent)"
+                   title="Copy CMYK">
+                <span class="color-value-badge badge-cmyk">CMYK</span>
+                <span class="color-value-text" id="val-cmyk">cmyk(66%, 69%, 0%, 10%)</span>
+                <button class="color-copy-btn">📋</button>
+              </div>
+
+              <div class="color-value-row"
+                   onclick="copyToClipboard(document.getElementById('val-css').textContent)"
+                   title="Copy CSS Variable">
+                <span class="color-value-badge badge-css">CSS</span>
+                <span class="color-value-text" id="val-css">--color: #4F46E5;</span>
+                <button class="color-copy-btn">📋</button>
+              </div>
+
+              <!-- Luminance Info -->
+              <div style="padding:12px 14px; background:var(--bg); border:1px solid var(--border);
+                           border-radius:var(--radius-sm); margin-top:4px;">
+                <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+                  <div style="text-align:center;">
+                    <div style="font-size:0.75rem; color:var(--text-light); font-weight:600;
+                                 text-transform:uppercase; letter-spacing:0.4px;">Luminance</div>
+                    <div style="font-size:1rem; font-weight:700; color:var(--primary);"
+                         id="val-luminance">0.07</div>
+                  </div>
+                  <div style="text-align:center;">
+                    <div style="font-size:0.75rem; color:var(--text-light); font-weight:600;
+                                 text-transform:uppercase; letter-spacing:0.4px;">On Light</div>
+                    <div style="font-size:1rem; font-weight:700;" id="val-on-light">✅ Readable</div>
+                  </div>
+                  <div style="text-align:center;">
+                    <div style="font-size:0.75rem; color:var(--text-light); font-weight:600;
+                                 text-transform:uppercase; letter-spacing:0.4px;">On Dark</div>
+                    <div style="font-size:1rem; font-weight:700;" id="val-on-dark">✅ Readable</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Copy All Button -->
+              <button class="btn btn-primary" onclick="copyAllValues()"
+                      style="margin-top:6px; width:100%;">
+                📋 Copy All Values
+              </button>
+
+            </div>
+          </div>
+          <!-- END picker-grid -->
+
+        </div>
+        <!-- END MAIN TOOL BOX -->
+
+
+        <!-- ---- TINTS & SHADES ---- -->
+        <div class="tool-box">
+          <div style="display:flex; justify-content:space-between; align-items:center;
+                       margin-bottom:16px; flex-wrap:wrap; gap:10px;">
+            <h2 style="font-size:1rem; margin:0;">🌈 Tints &amp; Shades</h2>
+            <span style="font-size:0.8rem; color:var(--text-light);">
+              Click any swatch to select that color
+            </span>
+          </div>
+
+          <p style="font-size:0.82rem; font-weight:700; color:var(--text-mid);
+                     margin-bottom:8px;">☀️ Tints (Mixed with White)</p>
+          <div class="palette-strip" id="tints-strip"></div>
+
+          <p style="font-size:0.82rem; font-weight:700; color:var(--text-mid);
+                     margin-bottom:8px; margin-top:16px;">🌑 Shades (Mixed with Black)</p>
+          <div class="palette-strip" id="shades-strip"></div>
+
+          <p style="font-size:0.82rem; font-weight:700; color:var(--text-mid);
+                     margin-bottom:8px; margin-top:16px;">🎨 Tones (Mixed with Gray)</p>
+          <div class="palette-strip" id="tones-strip"></div>
+        </div>
+
+
+        <!-- ---- COLOR HARMONIES ---- -->
+        <div class="tool-box">
+          <h2 style="font-size:1rem; margin-bottom:6px;">🎵 Color Harmonies</h2>
+          <p style="font-size:0.85rem; color:var(--text-mid); margin-bottom:18px; line-height:1.6;">
+            Color harmonies are combinations of colors that work well together
+            based on their positions on the color wheel. Click any color to select it.
+          </p>
+
+          <div class="harmony-grid" id="harmony-grid"></div>
+        </div>
+
+
+        <!-- ---- AD — In-Content ---- -->
+        <!-- <div style="text-align:center;">
+          <div class="ad-placeholder" style="min-height:250px; border-radius:12px;">
+            📢 Advertisement — Rectangle (336×280)
+          </div>
+        </div> -->
+
+
+        <!-- ---- CONTRAST CHECKER ---- -->
+        <div class="tool-box">
+          <h2 style="font-size:1rem; margin-bottom:6px;">♿ WCAG Contrast Checker</h2>
+          <p style="font-size:0.85rem; color:var(--text-mid); margin-bottom:18px; line-height:1.6;">
+            Check if your foreground and background color combination meets
+            <strong>WCAG 2.1 accessibility guidelines</strong> for readable text.
+          </p>
+
+          <div class="contrast-checker">
+
+            <!-- Color Pair Inputs -->
+            <div class="contrast-pair">
+
+              <div class="contrast-color-pick">
+                <label>🔤 Foreground (Text) Color</label>
+                <div class="contrast-color-pick-inner">
+                  <div class="contrast-swatch" id="fg-swatch">
+                    <input type="color" id="fg-picker"
+                           value="#FFFFFF"
+                           oninput="onContrastChange()"
+                           aria-label="Foreground color" />
+                  </div>
+                  <input type="text"
+                         id="fg-hex"
+                         class="contrast-hex-input"
+                         value="FFFFFF"
+                         maxlength="6"
+                         oninput="onContrastHexChange('fg')"
+                         aria-label="Foreground HEX" />
+                </div>
+              </div>
+
+              <div class="contrast-color-pick">
+                <label>🎨 Background Color</label>
+                <div class="contrast-color-pick-inner">
+                  <div class="contrast-swatch" id="bg-swatch">
+                    <input type="color" id="bg-picker"
+                           value="#4F46E5"
+                           oninput="onContrastChange()"
+                           aria-label="Background color" />
+                  </div>
+                  <input type="text"
+                         id="bg-hex"
+                         class="contrast-hex-input"
+                         value="4F46E5"
+                         maxlength="6"
+                         oninput="onContrastHexChange('bg')"
+                         aria-label="Background HEX" />
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Swap Button -->
+            <div style="text-align:center;">
+              <button class="btn btn-secondary"
+                      onclick="swapContrastColors()"
+                      style="padding:8px 18px; font-size:0.85rem;">
+                🔁 Swap Colors
+              </button>
+              <button class="btn btn-secondary"
+                      onclick="useCurrentColor()"
+                      style="padding:8px 18px; font-size:0.85rem; margin-left:8px;">
+                🎨 Use Current Color as BG
+              </button>
+            </div>
+
+            <!-- Live Preview -->
+            <div class="contrast-preview" id="contrast-preview">
+              <div class="contrast-preview-text-lg" id="cp-large">
+                Large Text Sample (18pt+)
+              </div>
+              <div class="contrast-preview-text-sm" id="cp-small">
+                Small text sample — The quick brown fox jumps over the lazy dog.
+              </div>
+            </div>
+
+            <!-- Ratio + WCAG Results -->
+            <div class="contrast-ratio-display">
+              <div style="text-align:center;">
+                <div class="contrast-ratio-number" id="contrast-ratio">8.59</div>
+                <div class="contrast-ratio-label">Contrast Ratio</div>
+              </div>
+
+              <div class="wcag-badges" id="wcag-badges">
+                <!-- Populated by JS -->
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+        <!-- ---- NAMED COLORS ---- -->
+        <div class="tool-box">
+          <h2 style="font-size:1rem; margin-bottom:6px;">🖌️ Named CSS Colors</h2>
+          <p style="font-size:0.85rem; color:var(--text-mid); margin-bottom:16px;">
+            Click any named color to load it into the picker:
+          </p>
+          <div class="named-colors-grid" id="named-colors-grid"></div>
+        </div>
+
+
+        <!-- ---- HOW TO USE ---- -->
+        <div class="how-to-section">
+          <h2>📖 How to Use the Color Picker</h2>
+          <div class="steps">
+
+            <div class="step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h4>Pick a Color</h4>
+                <p>Click the large color preview box to open the browser's native color picker, type a HEX code directly, or drag the RGB sliders to dial in your exact color.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h4>Copy Any Format</h4>
+                <p>Click any color value row to instantly copy it — HEX, RGB, HSL, HSV, CMYK, or a ready-to-paste CSS variable. Use <strong>Copy All Values</strong> to copy everything at once.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h4>Explore Tints, Shades &amp; Harmonies</h4>
+                <p>Scroll down to see automatically generated tints (lighter), shades (darker), tones, and color harmonies. Click any swatch to use it as your new color.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <h4>Check Accessibility Contrast</h4>
+                <p>Use the <strong>WCAG Contrast Checker</strong> to test if your text color is readable on your chosen background. Ensure you meet the AA or AAA standard for accessibility.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+        <!-- ---- AD — Before FAQ ---- -->
+        <!-- <div style="text-align:center;">
+          <div class="ad-placeholder" style="min-height:90px; border-radius:12px;">
+            📢 Advertisement — Leaderboard (728×90)
+          </div>
+        </div> -->
+
+
+        <!-- ---- FAQ SECTION ---- -->
+        <div class="faq-section">
+          <h2>❓ Frequently Asked Questions</h2>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              What is a HEX color code?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              A HEX color code is a six-character alphanumeric code preceded by a <code>#</code> symbol that represents a color in the RGB model. Each pair of characters (00–FF in hexadecimal) represents the red, green, and blue values. For example, <code>#FF0000</code> is pure red, <code>#00FF00</code> is pure green, and <code>#0000FF</code> is pure blue.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              What is the difference between RGB and HSL?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              <strong>RGB</strong> (Red, Green, Blue) defines colors by mixing intensities of red, green, and blue light from 0 to 255. It is how screens display colors.<br><br>
+              <strong>HSL</strong> (Hue, Saturation, Lightness) uses a more intuitive model. Hue is the color angle on the color wheel (0–360°), saturation is color intensity (0–100%), and lightness is how light or dark (0–100%). HSL is often preferred by designers because it is easier to reason about.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              What is WCAG contrast ratio and why does it matter?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              The WCAG (Web Content Accessibility Guidelines) contrast ratio measures the difference in brightness between foreground text and background. A ratio of <strong>4.5:1</strong> is required for normal text (AA standard) and <strong>7:1</strong> for AAA. This ensures text is readable by users with visual impairments or color blindness. Poor contrast is one of the most common accessibility failures on the web.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              What is the difference between a tint and a shade?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              A <strong>tint</strong> is a color mixed with white, making it progressively lighter. A <strong>shade</strong> is a color mixed with black, making it progressively darker. A <strong>tone</strong> is a color mixed with gray. These variations are essential for creating structured design systems and consistent color palettes.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              What is CMYK color?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              CMYK stands for Cyan, Magenta, Yellow, and Key (Black). It is a subtractive color model used in color printing. While RGB is used for digital screens (adding light), CMYK is used in physical printing (subtracting light by adding ink). If you are designing materials for print, use CMYK values rather than RGB.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              What are color harmonies?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              Color harmonies are combinations of colors that look visually pleasing together based on their positions on the color wheel. Common harmonies include <strong>Complementary</strong> (opposite colors), <strong>Analogous</strong> (adjacent colors), <strong>Triadic</strong> (three equally spaced colors), and <strong>Split-Complementary</strong>. They are the foundation of professional color palette design.
+            </div>
+          </div>
+
+        </div>
+        <!-- END FAQ -->
+
+      </div>
+      <!-- END LEFT COLUMN -->
+
+
+      <!-- ==========================================
+           RIGHT COLUMN — Sidebar
+      =========================================== -->
+      <aside class="tool-sidebar">
+
+        <!-- Sidebar Ad #1 -->
+        <!-- <div class="sidebar-ad">
+          <div class="ad-placeholder" style="min-height:250px;">
+            📢 Advertisement<br/>(300×250)
+          </div>
+        </div> -->
+
+        <!-- Related Tools -->
+        <div class="related-tools">
+          <h3>🔗 Related Tools</h3>
+          <ul>
+            <li><a href="password-generator.html">🔑 Password Generator</a></li>
+            <li><a href="json-formatter.html">📋 JSON Formatter</a></li>
+            <li><a href="base64-encoder.html">🔐 Base64 Encoder</a></li>
+            <li><a href="image-to-base64.html">🖼️ Image to Base64</a></li>
+            <li><a href="qr-code-generator.html">📱 QR Code Generator</a></li>
+            <li><a href="percentage-calculator.html">📊 Percentage Calc</a></li>
+          </ul>
+        </div>
+
+        <!-- Sidebar Ad #2 -->
+        <!-- <div class="sidebar-ad">
+          <div class="ad-placeholder" style="min-height:250px;">
+            📢 Advertisement<br/>(300×250)
+          </div>
+        </div> -->
+
+        <!-- Color Quick Ref -->
+        <div class="related-tools">
+          <h3>⚡ Color Quick Reference</h3>
+          <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:8px;">
+            <li style="font-size:0.82rem; color:var(--text-mid); padding:8px;
+                        background:var(--bg); border-radius:8px; border:1px solid var(--border);">
+              🖥️ <strong>RGB</strong> — for screens & digital
+            </li>
+            <li style="font-size:0.82rem; color:var(--text-mid); padding:8px;
+                        background:var(--bg); border-radius:8px; border:1px solid var(--border);">
+              🖨️ <strong>CMYK</strong> — for print design
+            </li>
+            <li style="font-size:0.82rem; color:var(--text-mid); padding:8px;
+                        background:var(--bg); border-radius:8px; border:1px solid var(--border);">
+              🎨 <strong>HSL</strong> — easier for designers
+            </li>
+            <li style="font-size:0.82rem; color:var(--text-mid); padding:8px;
+                        background:var(--bg); border-radius:8px; border:1px solid var(--border);">
+              ♿ AA needs <strong>4.5:1</strong> contrast ratio
+            </li>
+            <li style="font-size:0.82rem; color:var(--text-mid); padding:8px;
+                        background:var(--bg); border-radius:8px; border:1px solid var(--border);">
+              ♿ AAA needs <strong>7:1</strong> contrast ratio
+            </li>
+            <li style="font-size:0.82rem; color:var(--text-mid); padding:8px;
+                        background:var(--bg); border-radius:8px; border:1px solid var(--border);">
+              🌑 <strong>#000000</strong> = Black (all 0s)
+            </li>
+            <li style="font-size:0.82rem; color:var(--text-mid); padding:8px;
+                        background:var(--bg); border-radius:8px; border:1px solid var(--border);">
+              ☀️ <strong>#FFFFFF</strong> = White (all Fs)
+            </li>
+          </ul>
+        </div>
+
+      </aside>
+
+    </div>
+  </main>
+
+
+  <!-- =============================================
+       FOOTER
+  ============================================== -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="../index.html" class="logo">
+          <div class="logo-icon">🛠</div>
+          AgentB24
+        </a>
+        <p>Free online tools for everyone. No sign-up required, no software to install.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Text Tools</h4>
+        <ul>
+          <li><a href="word-counter.html">Word Counter</a></li>
+          <li><a href="case-converter.html">Case Converter</a></li>
+          <li><a href="lorem-ipsum-generator.html">Lorem Ipsum</a></li>
+          <li><a href="base64-encoder.html">Base64 Encoder</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Dev Tools</h4>
+        <ul>
+          <li><a href="json-formatter.html">JSON Formatter</a></li>
+          <li><a href="password-generator.html">Password Generator</a></li>
+          <li><a href="color-picker.html">Color Picker</a></li>
+          <li><a href="qr-code-generator.html">QR Code Generator</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="../about.html">About Us</a></li>
+          <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="../about.html#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2025 AgentB24. All rights reserved.</span>
+      <span>Made with ❤️ for productivity</span>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+  <script src="../assets/js/main.js"></script>
+
+  <!-- =============================================
+       COLOR PICKER — Tool Logic
+  ============================================== -->
+  <script>
+
+    // ============================================================
+    //  STATE
+    // ============================================================
+    let currentR = 79, currentG = 70, currentB = 229;
+    let colorHistory = [];
+
+    // ============================================================
+    //  NAMED COLORS
+    // ============================================================
+    const NAMED_COLORS = [
+      { name: 'Tomato',       hex: '#FF6347' },
+      { name: 'Coral',        hex: '#FF7F50' },
+      { name: 'OrangeRed',    hex: '#FF4500' },
+      { name: 'Gold',         hex: '#FFD700' },
+      { name: 'YellowGreen',  hex: '#9ACD32' },
+      { name: 'LimeGreen',    hex: '#32CD32' },
+      { name: 'MediumSeaGreen',hex:'#3CB371' },
+      { name: 'Teal',         hex: '#008080' },
+      { name: 'SteelBlue',    hex: '#4682B4' },
+      { name: 'DodgerBlue',   hex: '#1E90FF' },
+      { name: 'RoyalBlue',    hex: '#4169E1' },
+      { name: 'Indigo',       hex: '#4B0082' },
+      { name: 'Violet',       hex: '#EE82EE' },
+      { name: 'Orchid',       hex: '#DA70D6' },
+      { name: 'HotPink',      hex: '#FF69B4' },
+      { name: 'Crimson',      hex: '#DC143C' },
+      { name: 'Sienna',       hex: '#A0522D' },
+      { name: 'Chocolate',    hex: '#D2691E' },
+      { name: 'SlateGray',    hex: '#708090' },
+      { name: 'DimGray',      hex: '#696969' },
+      { name: 'Black',        hex: '#000000' },
+      { name: 'White',        hex: '#FFFFFF' },
+      { name: 'Lavender',     hex: '#E6E6FA' },
+      { name: 'MintCream',    hex: '#F5FFFA' }
+    ];
+
+    // ============================================================
+    //  INIT
+    // ============================================================
+    function init() {
+      buildNamedColors();
+      updateAll(currentR, currentG, currentB);
+      updateContrastPreview();
+    }
+
+    // ============================================================
+    //  buildNamedColors()
+    // ============================================================
+    function buildNamedColors() {
+      const grid = document.getElementById('named-colors-grid');
+      grid.innerHTML = NAMED_COLORS.map(c => `
+        <div class="named-color" onclick="setHex('${c.hex.replace('#','')}')"
+             title="${c.name}: ${c.hex}">
+          <div class="named-color-swatch" style="background:${c.hex};"></div>
+          <span class="named-color-label">${c.name}</span>
+        </div>
+      `).join('');
+    }
+
+    // ============================================================
+    //  updateAll(r, g, b)
+    //  Master update — syncs every UI element
+    // ============================================================
+    function updateAll(r, g, b) {
+      currentR = r; currentG = g; currentB = b;
+
+      const hex = rgbToHex(r, g, b);
+      const hsl = rgbToHsl(r, g, b);
+      const hsv = rgbToHsv(r, g, b);
+      const cmyk = rgbToCmyk(r, g, b);
+      const luminance = getRelativeLuminance(r, g, b);
+
+      // ---- Update Preview ----
+      document.getElementById('color-preview').style.background = `#${hex}`;
+      document.getElementById('preview-label').textContent = `#${hex.toUpperCase()}`;
+      document.getElementById('preview-label').style.color =
+        luminance > 0.4 ? '#1E293B' : '#FFFFFF';
+
+      // ---- Update HEX swatch & input ----
+      document.getElementById('hex-swatch').style.background = `#${hex}`;
+      document.getElementById('hex-input').value = hex.toUpperCase();
+      document.getElementById('native-picker').value = `#${hex}`;
+
+      // ---- Update Sliders ----
+      document.getElementById('slider-r').value = r;
+      document.getElementById('slider-g').value = g;
+      document.getElementById('slider-b').value = b;
+      document.getElementById('val-r').textContent = r;
+      document.getElementById('val-g').textContent = g;
+      document.getElementById('val-b').textContent = b;
+
+      // Update slider track gradients
+      document.getElementById('slider-r').style.background =
+        `linear-gradient(to right, rgb(0,${g},${b}), rgb(255,${g},${b}))`;
+      document.getElementById('slider-g').style.background =
+        `linear-gradient(to right, rgb(${r},0,${b}), rgb(${r},255,${b}))`;
+      document.getElementById('slider-b').style.background =
+        `linear-gradient(to right, rgb(${r},${g},0), rgb(${r},${g},255))`;
+
+      // ---- Update Color Values ----
+      document.getElementById('val-hex').textContent =
+        `#${hex.toUpperCase()}`;
+      document.getElementById('val-rgb').textContent =
+        `rgb(${r}, ${g}, ${b})`;
+      document.getElementById('val-hsl').textContent =
+        `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`;
+      document.getElementById('val-hsv').textContent =
+        `hsv(${hsv.h}, ${hsv.s}%, ${hsv.v}%)`;
+      document.getElementById('val-cmyk').textContent =
+        `cmyk(${cmyk.c}%, ${cmyk.m}%, ${cmyk.y}%, ${cmyk.k}%)`;
+      document.getElementById('val-css').textContent =
+        `--color: #${hex.toUpperCase()};`;
+
+      // ---- Luminance & readability ----
+      document.getElementById('val-luminance').textContent =
+        luminance.toFixed(3);
+
+      // On white background contrast
+      const onLight = getContrastRatio(luminance, 1.0);
+      const onDark  = getContrastRatio(luminance, 0.0);
+      document.getElementById('val-on-light').textContent =
+        onLight >= 4.5 ? '✅ Readable' : '⚠️ Poor';
+      document.getElementById('val-on-light').style.color =
+        onLight >= 4.5 ? '#15803D' : '#DC2626';
+      document.getElementById('val-on-dark').textContent =
+        onDark >= 4.5 ? '✅ Readable' : '⚠️ Poor';
+      document.getElementById('val-on-dark').style.color =
+        onDark >= 4.5 ? '#15803D' : '#DC2626';
+
+      // ---- Tints, Shades, Tones ----
+      buildTintsShades(r, g, b);
+
+      // ---- Harmonies ----
+      buildHarmonies(hsl.h, hsl.s, hsl.l);
+
+      // ---- Add to History ----
+      addToHistory(`#${hex.toUpperCase()}`);
+    }
+
+    // ============================================================
+    //  INPUT HANDLERS
+    // ============================================================
+    function onNativePicker(value) {
+      const r = parseInt(value.slice(1,3), 16);
+      const g = parseInt(value.slice(3,5), 16);
+      const b = parseInt(value.slice(5,7), 16);
+      updateAll(r, g, b);
+    }
+
+    function onHexInput(value) {
+      const clean = value.replace(/[^0-9a-fA-F]/g, '');
+      document.getElementById('hex-input').value = clean.toUpperCase();
+      if (clean.length === 6) {
+        const r = parseInt(clean.slice(0,2), 16);
+        const g = parseInt(clean.slice(2,4), 16);
+        const b = parseInt(clean.slice(4,6), 16);
+        updateAll(r, g, b);
+      }
+    }
+
+    function onSliderChange() {
+      const r = parseInt(document.getElementById('slider-r').value);
+      const g = parseInt(document.getElementById('slider-g').value);
+      const b = parseInt(document.getElementById('slider-b').value);
+      updateAll(r, g, b);
+    }
+
+    function setHex(hex) {
+      const clean = hex.replace('#','');
+      if (clean.length === 6) {
+        const r = parseInt(clean.slice(0,2), 16);
+        const g = parseInt(clean.slice(2,4), 16);
+        const b = parseInt(clean.slice(4,6), 16);
+        updateAll(r, g, b);
+      }
+    }
+
+    function setRandom() {
+      const r = Math.floor(Math.random() * 256);
+      const g = Math.floor(Math.random() * 256);
+      const b = Math.floor(Math.random() * 256);
+      updateAll(r, g, b);
+      showToast('🎲 Random color generated!', 'success');
+    }
+
+    // ============================================================
+    //  buildTintsShades(r, g, b)
+    // ============================================================
+    function buildTintsShades(r, g, b) {
+      const steps = 10;
+
+      // Tints: mix with white
+      let tintsHTML = '';
+      for (let i = steps; i >= 0; i--) {
+        const t   = i / steps;
+        const tr  = Math.round(r + (255 - r) * t);
+        const tg  = Math.round(g + (255 - g) * t);
+        const tb  = Math.round(b + (255 - b) * t);
+        const hex = rgbToHex(tr, tg, tb);
+        const lum = getRelativeLuminance(tr, tg, tb);
+        const textColor = lum > 0.4 ? '#1E293B' : '#FFFFFF';
+        tintsHTML += `
+          <div class="palette-swatch"
+               style="background:#${hex};"
+               onclick="setHex('${hex}')"
+               title="#${hex.toUpperCase()}">
+            <span class="palette-swatch-label" style="color:${textColor};">
+              ${hex.toUpperCase()}
+            </span>
+          </div>`;
+      }
+      document.getElementById('tints-strip').innerHTML = tintsHTML;
+
+      // Shades: mix with black
+      let shadesHTML = '';
+      for (let i = steps; i >= 0; i--) {
+        const t   = i / steps;
+        const sr  = Math.round(r * t);
+        const sg  = Math.round(g * t);
+        const sb  = Math.round(b * t);
+        const hex = rgbToHex(sr, sg, sb);
+        const lum = getRelativeLuminance(sr, sg, sb);
+        const textColor = lum > 0.4 ? '#1E293B' : '#FFFFFF';
+        shadesHTML += `
+          <div class="palette-swatch"
+               style="background:#${hex};"
+               onclick="setHex('${hex}')"
+               title="#${hex.toUpperCase()}">
+            <span class="palette-swatch-label" style="color:${textColor};">
+              ${hex.toUpperCase()}
+            </span>
+          </div>`;
+      }
+      document.getElementById('shades-strip').innerHTML = shadesHTML;
+
+      // Tones: mix with gray (128,128,128)
+      let tonesHTML = '';
+      for (let i = steps; i >= 0; i--) {
+        const t   = i / steps;
+        const tr  = Math.round(r * t + 128 * (1 - t));
+        const tg  = Math.round(g * t + 128 * (1 - t));
+        const tb  = Math.round(b * t + 128 * (1 - t));
+        const hex = rgbToHex(tr, tg, tb);
+        const lum = getRelativeLuminance(tr, tg, tb);
+        const textColor = lum > 0.4 ? '#1E293B' : '#FFFFFF';
+        tonesHTML += `
+          <div class="palette-swatch"
+               style="background:#${hex};"
+               onclick="setHex('${hex}')"
+               title="#${hex.toUpperCase()}">
+            <span class="palette-swatch-label" style="color:${textColor};">
+              ${hex.toUpperCase()}
+            </span>
+          </div>`;
+      }
+      document.getElementById('tones-strip').innerHTML = tonesHTML;
+    }
+
+    // ============================================================
+    //  buildHarmonies(h, s, l)
+    // ============================================================
+    function buildHarmonies(h, s, l) {
+      const harmonies = [
+        { label: 'Base',              h: h,           s, l },
+        { label: 'Complementary',     h: (h+180)%360, s, l },
+        { label: 'Analogous 1',       h: (h+30)%360,  s, l },
+        { label: 'Analogous 2',       h: (h-30+360)%360, s, l },
+        { label: 'Triadic 1',         h: (h+120)%360, s, l },
+        { label: 'Triadic 2',         h: (h+240)%360, s, l },
+        { label: 'Split Comp 1',      h: (h+150)%360, s, l },
+        { label: 'Split Comp 2',      h: (h+210)%360, s, l },
+        { label: 'Tetradic 1',        h: (h+90)%360,  s, l },
+        { label: 'Tetradic 2',        h: (h+180)%360, s, l },
+        { label: 'Tetradic 3',        h: (h+270)%360, s, l },
+        { label: 'Tint',              h, s: Math.max(s-20,0), l: Math.min(l+15,95) }
+      ];
+
+      const grid = document.getElementById('harmony-grid');
+      grid.innerHTML = harmonies.map(hm => {
+        const rgb = hslToRgb(hm.h, hm.s, hm.l);
+        const hex = rgbToHex(rgb.r, rgb.g, rgb.b);
+        return `
+          <div class="harmony-card"
+               onclick="setHex('${hex}')"
+               title="${hm.label}: #${hex.toUpperCase()}">
+            <div class="harmony-swatch" style="background:#${hex};"></div>
+            <div class="harmony-label">${hm.label}</div>
+            <div class="harmony-hex">#${hex.toUpperCase()}</div>
+          </div>`;
+      }).join('');
+    }
+
+    // ============================================================
+    //  addToHistory(hex)
+    // ============================================================
+    function addToHistory(hex) {
+      if (colorHistory[0] === hex) return;
+      colorHistory.unshift(hex);
+      if (colorHistory.length > 16) colorHistory.pop();
+
+      const container = document.getElementById('color-history');
+      container.innerHTML = colorHistory.map(c => `
+        <div class="history-swatch"
+             style="background:${c};"
+             onclick="setHex('${c.replace('#','')}')"
+             title="${c}">
+        </div>
+      `).join('');
+    }
+
+    // ============================================================
+    //  copyAllValues()
+    // ============================================================
+    function copyAllValues() {
+      const hex  = document.getElementById('val-hex').textContent;
+      const rgb  = document.getElementById('val-rgb').textContent;
+      const hsl  = document.getElementById('val-hsl').textContent;
+      const cmyk = document.getElementById('val-cmyk').textContent;
+
+      copyToClipboard(`HEX:  ${hex}\nRGB:  ${rgb}\nHSL:  ${hsl}\nCMYK: ${cmyk}`);
+    }
+
+    // ============================================================
+    //  CONTRAST CHECKER
+    // ============================================================
+    function onContrastChange() {
+      const fg = document.getElementById('fg-picker').value;
+      const bg = document.getElementById('bg-picker').value;
+
+      document.getElementById('fg-hex').value = fg.replace('#','').toUpperCase();
+      document.getElementById('bg-hex').value = bg.replace('#','').toUpperCase();
+      document.getElementById('fg-swatch').style.background = fg;
+      document.getElementById('bg-swatch').style.background = bg;
+
+      updateContrastPreview();
+    }
+
+    function onContrastHexChange(which) {
+      const inputId = which + '-hex';
+      const pickId  = which + '-picker';
+      const swatchId = which + '-swatch';
+      const val = document.getElementById(inputId).value;
+
+      if (val.length === 6 && /^[0-9a-fA-F]{6}$/.test(val)) {
+        document.getElementById(pickId).value   = '#' + val;
+        document.getElementById(swatchId).style.background = '#' + val;
+        updateContrastPreview();
+      }
+    }
+
+    function updateContrastPreview() {
+      const fg = document.getElementById('fg-picker').value || '#FFFFFF';
+      const bg = document.getElementById('bg-picker').value || '#4F46E5';
+
+      // Update preview
+      const preview = document.getElementById('contrast-preview');
+      preview.style.background = bg;
+      document.getElementById('cp-large').style.color = fg;
+      document.getElementById('cp-small').style.color = fg;
+
+      // Calculate ratio
+      const fgRGB = hexToRgb(fg);
+      const bgRGB = hexToRgb(bg);
+      const fgLum = getRelativeLuminance(fgRGB.r, fgRGB.g, fgRGB.b);
+      const bgLum = getRelativeLuminance(bgRGB.r, bgRGB.g, bgRGB.b);
+      const ratio = getContrastRatio(fgLum, bgLum);
+
+      document.getElementById('contrast-ratio').textContent = ratio.toFixed(2) + ':1';
+
+      // WCAG badges
+      const badges = document.getElementById('wcag-badges');
+      badges.innerHTML = `
+        <div class="wcag-badge ${ratio >= 4.5 ? 'wcag-pass':'wcag-fail'}">
+          ${ratio >= 4.5 ? '✅':'❌'} AA Normal Text (4.5:1)
+        </div>
+        <div class="wcag-badge ${ratio >= 3.0 ? 'wcag-pass':'wcag-fail'}">
+          ${ratio >= 3.0 ? '✅':'❌'} AA Large Text (3:1)
+        </div>
+        <div class="wcag-badge ${ratio >= 7.0 ? 'wcag-pass':'wcag-fail'}">
+          ${ratio >= 7.0 ? '✅':'❌'} AAA Normal Text (7:1)
+        </div>
+        <div class="wcag-badge ${ratio >= 4.5 ? 'wcag-pass':'wcag-fail'}">
+          ${ratio >= 4.5 ? '✅':'❌'} AAA Large Text (4.5:1)
+        </div>`;
+    }
+
+    function swapContrastColors() {
+      const fg = document.getElementById('fg-picker').value;
+      const bg = document.getElementById('bg-picker').value;
+      document.getElementById('fg-picker').value = bg;
+      document.getElementById('bg-picker').value = fg;
+      document.getElementById('fg-hex').value = bg.replace('#','').toUpperCase();
+      document.getElementById('bg-hex').value = fg.replace('#','').toUpperCase();
+      document.getElementById('fg-swatch').style.background = bg;
+      document.getElementById('bg-swatch').style.background = fg;
+      updateContrastPreview();
+      showToast('🔁 Colors swapped!', 'success');
+    }
+
+    function useCurrentColor() {
+      const hex = '#' + rgbToHex(currentR, currentG, currentB);
+      document.getElementById('bg-picker').value = hex;
+      document.getElementById('bg-hex').value = hex.replace('#','').toUpperCase();
+      document.getElementById('bg-swatch').style.background = hex;
+      updateContrastPreview();
+      showToast('🎨 Current color set as background!', 'success');
+    }
+
+    // ============================================================
+    //  COLOR CONVERSION MATH
+    // ============================================================
+
+    function rgbToHex(r, g, b) {
+      return [r, g, b].map(v =>
+        v.toString(16).padStart(2, '0').toLowerCase()
+      ).join('');
+    }
+
+    function hexToRgb(hex) {
+      const clean = hex.replace('#', '');
+      return {
+        r: parseInt(clean.slice(0,2), 16),
+        g: parseInt(clean.slice(2,4), 16),
+        b: parseInt(clean.slice(4,6), 16)
+      };
+    }
+
+    function rgbToHsl(r, g, b) {
+      r /= 255; g /= 255; b /= 255;
+      const max = Math.max(r, g, b), min = Math.min(r, g, b);
+      let h, s, l = (max + min) / 2;
+
+      if (max === min) {
+        h = s = 0;
+      } else {
+        const d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch (max) {
+          case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
+          case g: h = ((b - r) / d + 2) / 6; break;
+          case b: h = ((r - g) / d + 4) / 6; break;
+        }
+      }
+      return {
+        h: Math.round(h * 360),
+        s: Math.round(s * 100),
+        l: Math.round(l * 100)
+      };
+    }
+
+    function hslToRgb(h, s, l) {
+      s /= 100; l /= 100;
+      const k = n => (n + h / 30) % 12;
+      const a = s * Math.min(l, 1 - l);
+      const f = n => l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
+      return {
+        r: Math.round(f(0) * 255),
+        g: Math.round(f(8) * 255),
+        b: Math.round(f(4) * 255)
+      };
+    }
+
+    function rgbToHsv(r, g, b) {
+      r /= 255; g /= 255; b /= 255;
+      const max = Math.max(r, g, b), min = Math.min(r, g, b);
+      const d = max - min;
+      let h = 0, s = max === 0 ? 0 : d / max, v = max;
+
+      if (max !== min) {
+        switch (max) {
+          case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
+          case g: h = ((b - r) / d + 2) / 6; break;
+          case b: h = ((r - g) / d + 4) / 6; break;
+        }
+      }
+      return {
+        h: Math.round(h * 360),
+        s: Math.round(s * 100),
+        v: Math.round(v * 100)
+      };
+    }
+
+    function rgbToCmyk(r, g, b) {
+      r /= 255; g /= 255; b /= 255;
+      const k = 1 - Math.max(r, g, b);
+      if (k === 1) return { c: 0, m: 0, y: 0, k: 100 };
+      return {
+        c: Math.round(((1 - r - k) / (1 - k)) * 100),
+        m: Math.round(((1 - g - k) / (1 - k)) * 100),
+        y: Math.round(((1 - b - k) / (1 - k)) * 100),
+        k: Math.round(k * 100)
+      };
+    }
+
+    function getRelativeLuminance(r, g, b) {
+      const toLinear = c => {
+        c /= 255;
+        return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+      };
+      return 0.2126 * toLinear(r) + 0.7152 * toLinear(g) + 0.0722 * toLinear(b);
+    }
+
+    function getContrastRatio(lum1, lum2) {
+      const lighter = Math.max(lum1, lum2);
+      const darker  = Math.min(lum1, lum2);
+      return (lighter + 0.05) / (darker + 0.05);
+    }
+
+    // ============================================================
+    //  INIT on page load
+    // ============================================================
+    init();
+
+  </script>
+    <script src="../assets/js/tracker.js"></script>
+<script src="../assets/js/ads.js"></script>
+</body>
+</html>

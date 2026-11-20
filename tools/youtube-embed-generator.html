@@ -1,0 +1,413 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Free YouTube Embed Code Generator — Custom Embed Builder | AgentB24</title>
+  <meta name="description" content="Free YouTube embed code generator. Generate fully customized YouTube embed code with autoplay, loop, start time, custom size, privacy mode and more. Copy and paste instantly." />
+  <meta name="keywords" content="youtube embed code generator, youtube embed code, how to embed youtube video, youtube iframe code, youtube embed builder, custom youtube embed, youtube embed autoplay" />
+  <link rel="canonical" href="https://agentb24.com/tools/youtube-embed-generator.html" />
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1T57RWSY42"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1T57RWSY42');</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"YouTube Embed Code Generator","url":"https://agentb24.com/tools/youtube-embed-generator.html","description":"Generate customized YouTube embed code with autoplay, loop, start time, custom dimensions and privacy mode.","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"AgentB24","url":"https://agentb24.com"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://agentb24.com/"},{"@type":"ListItem","position":2,"name":"YouTube Tools","item":"https://agentb24.com/tools/youtube-tools.html"},{"@type":"ListItem","position":3,"name":"Embed Code Generator","item":"https://agentb24.com/tools/youtube-embed-generator.html"}]}</script>
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <style>
+    /* ── URL Input ── */
+    .url-row { display:flex; gap:.65rem; margin-bottom:1.25rem; flex-wrap:wrap; }
+    .url-inp { flex:1; padding:.8rem 1rem; border:2px solid var(--border,#e2e8f0); border-radius:var(--radius-sm,10px); font-size:.92rem; font-family:'Inter',sans-serif; min-width:0; transition:border-color .15s; }
+    .url-inp:focus { outline:none; border-color:#ff0000; }
+    .url-btn { padding:.8rem 1.5rem; background:#ff0000; color:#fff; border:none; border-radius:var(--radius-sm,10px); font-family:'Inter',sans-serif; font-size:.9rem; font-weight:700; cursor:pointer; white-space:nowrap; }
+    .url-btn:hover { background:#cc0000; }
+
+    /* ── Settings Grid ── */
+    .settings-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem; }
+    .setting-group label { font-size:.8rem; font-weight:700; color:var(--text-mid,#374151); display:block; margin-bottom:.4rem; }
+    .setting-group input[type="number"],
+    .setting-group select { width:100%; padding:.6rem .75rem; border:1.5px solid var(--border,#e2e8f0); border-radius:8px; font-size:.88rem; background:var(--white,#fff); box-sizing:border-box; }
+    .setting-group input:focus, .setting-group select:focus { outline:none; border-color:#ff0000; }
+
+    /* ── Toggle Options ── */
+    .toggle-grid { display:grid; grid-template-columns:1fr 1fr; gap:.65rem; margin-bottom:1.25rem; }
+    .toggle-item { display:flex; align-items:center; gap:.65rem; padding:.65rem .85rem; background:var(--bg,#f8fafc); border:1.5px solid var(--border,#e2e8f0); border-radius:8px; cursor:pointer; transition:all .13s; }
+    .toggle-item:hover { border-color:#ff0000; }
+    .toggle-item input[type="checkbox"] { width:16px; height:16px; accent-color:#ff0000; cursor:pointer; flex-shrink:0; }
+    .toggle-item label { font-size:.83rem; font-weight:600; color:var(--text-mid,#374151); cursor:pointer; line-height:1.3; }
+    .toggle-item .ti-desc { font-size:.7rem; color:var(--text-light,#94a3b8); margin-top:.1rem; }
+
+    /* ── Code Output ── */
+    .code-output-header { display:flex; align-items:center; justify-content:space-between; padding:.75rem 1rem; background:var(--bg,#f8fafc); border:1px solid var(--border,#e2e8f0); border-bottom:none; border-radius:10px 10px 0 0; }
+    .code-output-title { font-size:.8rem; font-weight:700; color:var(--text-mid,#374151); text-transform:uppercase; letter-spacing:.04em; }
+    .copy-code-btn { padding:.38rem .85rem; background:#ff0000; color:#fff; border:none; border-radius:7px; font-size:.8rem; font-weight:700; cursor:pointer; font-family:'Inter',sans-serif; }
+    .copy-code-btn:hover { background:#cc0000; }
+    .code-textarea { width:100%; min-height:110px; padding:1rem; border:1px solid var(--border,#e2e8f0); border-radius:0 0 10px 10px; font-family:'Courier New',Courier,monospace; font-size:.82rem; line-height:1.65; background:var(--white,#fff); resize:vertical; box-sizing:border-box; color:var(--text-dark,#0f172a); }
+    .code-textarea:focus { outline:2px solid #ff0000; border-color:transparent; }
+
+    /* ── Live Preview ── */
+    .preview-wrap { margin-top:1rem; }
+    .preview-header { font-size:.8rem; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:var(--text-light,#94a3b8); margin-bottom:.6rem; }
+    .preview-container { border:2px solid var(--border,#e2e8f0); border-radius:var(--radius,12px); overflow:hidden; background:#000; display:flex; align-items:center; justify-content:center; min-height:200px; position:relative; }
+    .preview-placeholder { text-align:center; color:#666; padding:2rem; }
+    .preview-placeholder .pp-icon { font-size:2.5rem; margin-bottom:.5rem; display:block; opacity:.4; }
+    .preview-iframe-wrap { width:100%; }
+    .preview-iframe-wrap iframe { display:block; width:100%; }
+
+    /* ── Aspect Ratio Presets ── */
+    .ratio-btns { display:flex; gap:.5rem; flex-wrap:wrap; margin-bottom:.85rem; }
+    .ratio-btn { padding:.38rem .85rem; border:1.5px solid var(--border,#e2e8f0); border-radius:50px; font-size:.78rem; font-weight:700; cursor:pointer; background:var(--white,#fff); color:var(--text-mid,#374151); transition:all .13s; font-family:'Inter',sans-serif; }
+    .ratio-btn:hover, .ratio-btn.active { border-color:#ff0000; color:#ff0000; background:#fff5f5; }
+
+    /* ── How To & FAQ ── */
+    .how-to-section, .faq-section { background:var(--white,#fff); border:1px solid var(--border,#e2e8f0); border-radius:var(--radius,16px); padding:1.75rem; box-shadow:var(--shadow,0 4px 24px rgba(0,0,0,.06)); margin-top:1.5rem; }
+    .how-to-section h2, .faq-section h2 { font-size:1.2rem; margin-bottom:1.25rem; color:var(--text-dark,#0f172a); }
+    .steps { display:flex; flex-direction:column; gap:1rem; }
+    .step  { display:flex; gap:1rem; align-items:flex-start; }
+    .step-number { width:32px; height:32px; background:#ff0000; color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:.85rem; flex-shrink:0; }
+    .step-content h4 { font-size:.92rem; margin-bottom:.2rem; color:var(--text-dark,#0f172a); }
+    .step-content p  { font-size:.82rem; color:var(--text-mid,#64748b); line-height:1.6; margin:0; }
+    .faq-item { border-bottom:1px solid var(--border,#e2e8f0); }
+    .faq-item:last-child { border-bottom:none; }
+    .faq-question { display:flex; justify-content:space-between; align-items:center; padding:.9rem 0; cursor:pointer; font-size:.9rem; font-weight:600; color:var(--text-dark,#0f172a); gap:.75rem; transition:color .15s; }
+    .faq-question:hover { color:#ff0000; }
+    .faq-icon { font-size:1.1rem; flex-shrink:0; color:#ff0000; }
+    .faq-answer { display:none; padding:0 0 .9rem; font-size:.85rem; color:var(--text-mid,#64748b); line-height:1.7; }
+    .faq-answer.open { display:block; }
+
+    @media(max-width:500px) {
+      .settings-grid { grid-template-columns:1fr; }
+      .toggle-grid   { grid-template-columns:1fr; }
+      .url-row { flex-direction:column; }
+      .url-btn { width:100%; }
+    }
+  </style>
+  <!-- AgentB24 SEO Pack -->
+  <meta name="author" content="AgentB24">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#4F46E5">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AgentB24">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://agentb24.com/tools/youtube-embed-generator.html">
+  <meta property="og:title" content="Free YouTube Embed Code Generator — Custom Embed Builder | AgentB24">
+  <meta property="og:description" content="Free YouTube embed code generator. Generate fully customized YouTube embed code with autoplay, loop, start time, custom size, privacy mode and more. Copy and paste instantly.">
+  <meta property="og:image" content="https://agentb24.com/assets/img/og-image.png">
+  <meta property="og:image:width" content="1718">
+  <meta property="og:image:height" content="912">
+  <meta property="og:image:alt" content="AgentB24 â€” 80+ Free Online Tools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free YouTube Embed Code Generator — Custom Embed Builder | AgentB24">
+  <meta name="twitter:description" content="Free YouTube embed code generator. Generate fully customized YouTube embed code with autoplay, loop, start time, custom size, privacy mode and more. Copy and paste instantly.">
+  <meta name="twitter:image" content="https://agentb24.com/assets/img/og-image.png">
+  <!-- /AgentB24 SEO Pack -->
+  <link rel="stylesheet" href="../assets/css/ads.css">
+</head>
+<body>
+
+<header>
+  <div class="nav-container">
+    <a href="../index.html" class="logo"><div class="logo-icon">🛠</div>AgentB24</a>
+    <nav class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="text-tools.html">Text Tools</a>
+      <a href="developer-tools.html">Dev Tools</a>
+      <a href="calculators.html">Calculators</a>
+      <a href="pdf-tools.html">PDF Tools</a>
+      <a href="converters.html">Converters</a>
+      <a href="youtube-tools.html" class="active">YouTube Tools</a>
+      <a href="../about.html">About</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+  <nav class="mobile-menu" id="mobile-menu">
+    <a href="../index.html">Home</a><a href="youtube-tools.html">YouTube Tools</a><a href="../about.html">About</a>
+  </nav>
+</header>
+
+<div class="tool-page-header">
+  <div class="container">
+    <nav class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="youtube-tools.html">YouTube Tools</a> &rsaquo; <span>Embed Code Generator</span></nav>
+    <h1>Free YouTube Embed Code Generator</h1>
+    <p>Generate fully customized YouTube embed code. Control autoplay, loop, start time, end time, custom dimensions, privacy mode and more. Preview live then copy and paste.</p>
+  </div>
+</div>
+
+<main>
+<div class="tool-body">
+  <div class="tool-main">
+    <div class="tool-box">
+
+      <!-- URL Input -->
+      <div class="url-row">
+        <input type="url" id="yt-url" class="url-inp" placeholder="Paste YouTube URL… e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ" oninput="generate()"/>
+        <button class="url-btn" onclick="generate()">⚡ Generate</button>
+      </div>
+
+      <!-- Aspect Ratio Presets -->
+      <p style="font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--text-light);margin-bottom:.5rem;">📐 Aspect Ratio Presets</p>
+      <div class="ratio-btns">
+        <button class="ratio-btn active" onclick="setRatio(560,315)"  >16:9 (560×315)</button>
+        <button class="ratio-btn"        onclick="setRatio(640,360)"  >16:9 (640×360)</button>
+        <button class="ratio-btn"        onclick="setRatio(853,480)"  >16:9 (853×480)</button>
+        <button class="ratio-btn"        onclick="setRatio(1280,720)" >HD 720p</button>
+        <button class="ratio-btn"        onclick="setRatio(400,300)"  >4:3 (400×300)</button>
+        <button class="ratio-btn"        onclick="setRatio(100,56,'%')">100% Responsive</button>
+      </div>
+
+      <!-- Custom Dimensions -->
+      <div class="settings-grid">
+        <div class="setting-group">
+          <label>↔️ Width</label>
+          <input type="number" id="width"  value="560" min="100" max="1920" oninput="generate()"/>
+        </div>
+        <div class="setting-group">
+          <label>↕️ Height</label>
+          <input type="number" id="height" value="315" min="50"  max="1080" oninput="generate()"/>
+        </div>
+        <div class="setting-group">
+          <label>⏩ Start Time (seconds)</label>
+          <input type="number" id="start-time" value="0" min="0" placeholder="0" oninput="generate()"/>
+        </div>
+        <div class="setting-group">
+          <label>⏹ End Time (seconds, 0=off)</label>
+          <input type="number" id="end-time" value="0" min="0" placeholder="0" oninput="generate()"/>
+        </div>
+      </div>
+
+      <!-- Toggle Options -->
+      <p style="font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--text-light);margin-bottom:.55rem;">🎮 Playback Options</p>
+      <div class="toggle-grid">
+        <label class="toggle-item">
+          <input type="checkbox" id="opt-autoplay" onchange="generate()"/>
+          <div><label for="opt-autoplay">▶️ Autoplay</label><div class="ti-desc">Play automatically on load</div></div>
+        </label>
+        <label class="toggle-item">
+          <input type="checkbox" id="opt-mute" onchange="generate()"/>
+          <div><label for="opt-mute">🔇 Mute</label><div class="ti-desc">Start video muted</div></div>
+        </label>
+        <label class="toggle-item">
+          <input type="checkbox" id="opt-loop" onchange="generate()"/>
+          <div><label for="opt-loop">🔁 Loop</label><div class="ti-desc">Repeat video continuously</div></div>
+        </label>
+        <label class="toggle-item">
+          <input type="checkbox" id="opt-controls" checked onchange="generate()"/>
+          <div><label for="opt-controls">🎛️ Show Controls</label><div class="ti-desc">Show player controls bar</div></div>
+        </label>
+        <label class="toggle-item">
+          <input type="checkbox" id="opt-privacy" checked onchange="generate()"/>
+          <div><label for="opt-privacy">🔒 Privacy Mode</label><div class="ti-desc">Don't track viewers (youtube-nocookie.com)</div></div>
+        </label>
+        <label class="toggle-item">
+          <input type="checkbox" id="opt-fullscreen" checked onchange="generate()"/>
+          <div><label for="opt-fullscreen">⛶ Allow Fullscreen</label><div class="ti-desc">Enable fullscreen button</div></div>
+        </label>
+        <label class="toggle-item">
+          <input type="checkbox" id="opt-related" onchange="generate()"/>
+          <div><label for="opt-related">📺 Show Related</label><div class="ti-desc">Show related videos at end</div></div>
+        </label>
+        <label class="toggle-item">
+          <input type="checkbox" id="opt-modest" checked onchange="generate()"/>
+          <div><label for="opt-modest">🏷️ Hide Branding</label><div class="ti-desc">Hide YouTube logo in player</div></div>
+        </label>
+      </div>
+
+      <!-- Generated Code -->
+      <div class="code-output-header">
+        <span class="code-output-title">📋 Generated Embed Code</span>
+        <button class="copy-code-btn" onclick="copyCode()">📋 Copy Code</button>
+      </div>
+      <textarea class="code-textarea" id="code-output" readonly
+        placeholder="Paste a YouTube URL above to generate embed code…"></textarea>
+
+      <!-- Live Preview -->
+      <div class="preview-wrap">
+        <div class="preview-header">👁️ Live Preview</div>
+        <div class="preview-container" id="preview-container">
+          <div class="preview-placeholder">
+            <span class="pp-icon">▶️</span>
+            <p style="font-size:.85rem;">Paste a YouTube URL above to see a live preview</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- How To -->
+    <div class="how-to-section">
+      <h2>📖 How to Use the Embed Code Generator</h2>
+      <div class="steps">
+        <div class="step"><div class="step-number">1</div><div class="step-content"><h4>Paste the YouTube URL</h4><p>Copy any YouTube video URL and paste it into the input field. The embed code generates automatically as you type.</p></div></div>
+        <div class="step"><div class="step-number">2</div><div class="step-content"><h4>Customize the Settings</h4><p>Choose an aspect ratio preset or enter custom dimensions. Toggle autoplay, loop, privacy mode, controls, and more to match your website's needs.</p></div></div>
+        <div class="step"><div class="step-number">3</div><div class="step-content"><h4>Preview and Copy</h4><p>See a live preview of how the embedded video will look. Click <strong>Copy Code</strong> and paste the HTML into your website.</p></div></div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <h2>❓ Frequently Asked Questions</h2>
+      <div class="faq-item"><div class="faq-question">What is YouTube privacy-enhanced mode?<span class="faq-icon">+</span></div><div class="faq-answer">Privacy-enhanced mode uses <code>youtube-nocookie.com</code> instead of <code>youtube.com</code> for the embed URL. This means YouTube does not set cookies or track your website visitors until they click to play the video. This is recommended for GDPR compliance in Europe.</div></div>
+      <div class="faq-item"><div class="faq-question">Why doesn't autoplay work on my website?<span class="faq-icon">+</span></div><div class="faq-answer">Most modern browsers (Chrome, Firefox, Safari) block autoplay of videos with sound. Autoplay typically only works if the video is also muted. Enable both the Autoplay and Mute options together for reliable autoplay behavior across all browsers.</div></div>
+      <div class="faq-item"><div class="faq-question">How do I make the YouTube embed responsive?<span class="faq-icon">+</span></div><div class="faq-answer">Click the <strong>100% Responsive</strong> preset button. This generates a percentage-based width that scales with the container. For full CSS responsiveness, wrap the iframe in a div with <code>position:relative; padding-bottom:56.25%;</code> and set the iframe to <code>position:absolute; width:100%; height:100%;</code>.</div></div>
+      <div class="faq-item"><div class="faq-question">How do I set a start time for the video?<span class="faq-icon">+</span></div><div class="faq-answer">Enter the start time in seconds in the Start Time field. For example, to start the video at 1 minute 30 seconds, enter 90. The player will automatically begin playing from that point in the video.</div></div>
+    </div>
+
+  </div>
+
+  <!-- Sidebar -->
+  <aside class="tool-sidebar">
+    <div class="related-tools">
+      <h3>▶️ YouTube Tools</h3>
+      <ul>
+        <li><a href="youtube-thumbnail-downloader.html">🖼️ Thumbnail Downloader</a></li>
+        <li><a href="youtube-money-calculator.html">💰 Money Calculator</a></li>
+        <li><a href="youtube-watch-time-calculator.html">⏱️ Watch Time Calculator</a></li>
+        <li><a href="youtube-timestamp-generator.html">🕐 Timestamp Generator</a></li>
+      </ul>
+    </div>
+    <div class="related-tools">
+      <h3>💡 Embed Tips</h3>
+      <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;">
+        <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">🔒 Use <strong>Privacy Mode</strong> for GDPR</li>
+        <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">🔇 Mute + Autoplay = reliable</li>
+        <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">📐 Use <strong>16:9</strong> for modern sites</li>
+        <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">📱 Use <strong>responsive</strong> for mobile</li>
+        <li style="font-size:.82rem;color:var(--text-mid);padding:8px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">🏷️ Hide branding = cleaner look</li>
+      </ul>
+    </div>
+  </aside>
+</div>
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand"><a href="../index.html" class="logo"><div class="logo-icon">🛠</div>AgentB24</a><p>Free online tools for everyone.</p></div>
+    <div class="footer-col"><h4>YouTube Tools</h4><ul><li><a href="youtube-thumbnail-downloader.html">Thumbnail Downloader</a></li><li><a href="youtube-money-calculator.html">Money Calculator</a></li><li><a href="youtube-embed-generator.html">Embed Generator</a></li></ul></div>
+    <div class="footer-col"><h4>Company</h4><ul><li><a href="../about.html">About Us</a></li><li><a href="../privacy-policy.html">Privacy Policy</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 AgentB24. All rights reserved.</span><span>Made with ❤️ for productivity</span></div>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="../assets/js/main.js"></script>
+<script>
+'use strict';
+
+let usePercent = false;
+
+function extractVideoId(url) {
+  url = (url || '').trim();
+  const m = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/shorts\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/);
+  return m ? m[1] : null;
+}
+
+function setRatio(w, h, unit) {
+  usePercent = unit === '%';
+  if (!usePercent) {
+    document.getElementById('width').value  = w;
+    document.getElementById('height').value = h;
+  }
+  document.querySelectorAll('.ratio-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  generate();
+}
+
+function generate() {
+  const url  = document.getElementById('yt-url').value.trim();
+  const vid  = extractVideoId(url);
+  const w    = document.getElementById('width').value  || 560;
+  const h    = document.getElementById('height').value || 315;
+
+  const autoplay   = document.getElementById('opt-autoplay').checked   ? 1 : 0;
+  const mute       = document.getElementById('opt-mute').checked       ? 1 : 0;
+  const loop       = document.getElementById('opt-loop').checked       ? 1 : 0;
+  const controls   = document.getElementById('opt-controls').checked   ? 1 : 0;
+  const privacy    = document.getElementById('opt-privacy').checked;
+  const fullscreen = document.getElementById('opt-fullscreen').checked;
+  const related    = document.getElementById('opt-related').checked    ? 1 : 0;
+  const modest     = document.getElementById('opt-modest').checked     ? 1 : 0;
+  const startTime  = parseInt(document.getElementById('start-time').value) || 0;
+  const endTime    = parseInt(document.getElementById('end-time').value)   || 0;
+
+  const domain = privacy ? 'youtube-nocookie.com' : 'youtube.com';
+
+  // Build params
+  const params = [];
+  if (autoplay) params.push('autoplay=1');
+  if (mute)     params.push('mute=1');
+  if (loop)     { params.push('loop=1'); if (vid) params.push(`playlist=${vid}`); }
+  if (!controls) params.push('controls=0');
+  if (!related)  params.push('rel=0');
+  if (modest)    params.push('modestbranding=1');
+  if (startTime > 0) params.push(`start=${startTime}`);
+  if (endTime > 0)   params.push(`end=${endTime}`);
+
+  const paramStr = params.length ? '?' + params.join('&') : '';
+
+  if (!vid) {
+    document.getElementById('code-output').value = '<!-- Paste a valid YouTube URL above -->';
+    document.getElementById('preview-container').innerHTML = `
+      <div class="preview-placeholder">
+        <span class="pp-icon">▶️</span>
+        <p style="font-size:.85rem;color:#666;">Paste a YouTube URL above to see a live preview</p>
+      </div>`;
+    return;
+  }
+
+  const src  = `https://www.${domain}/embed/${vid}${paramStr}`;
+  const wStr = usePercent ? '100%' : w + 'px';
+  const hStr = usePercent ? (Math.round((parseInt(h)/parseInt(w))*100) || 56.25) + 'vw' : h + 'px';
+
+  const fs   = fullscreen ? ' allowfullscreen' : '';
+  const code = `<iframe
+  width="${usePercent ? '100%' : w}"
+  height="${usePercent ? 'auto' : h}"
+  src="${src}"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"${fs}
+  loading="lazy">
+</iframe>`;
+
+  document.getElementById('code-output').value = code;
+
+  // Preview
+  document.getElementById('preview-container').innerHTML = `
+    <div class="preview-iframe-wrap">
+      <iframe
+        width="100%"
+        height="${usePercent ? '280' : Math.min(parseInt(h), 280)}"
+        src="${src}"
+        title="Preview"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        ${fullscreen ? 'allowfullscreen' : ''}
+        loading="lazy">
+      </iframe>
+    </div>`;
+}
+
+function copyCode() {
+  const code = document.getElementById('code-output').value;
+  if (!code || code.includes('<!--')) return;
+  navigator.clipboard.writeText(code);
+  const t = document.getElementById('toast');
+  if (t) { t.textContent='📋 Embed code copied!'; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2200); }
+}
+
+// FAQ
+document.querySelectorAll('.faq-question').forEach(q => {
+  q.addEventListener('click', () => {
+    const a = q.nextElementSibling, i = q.querySelector('.faq-icon');
+    const open = a.classList.contains('open');
+    document.querySelectorAll('.faq-answer').forEach(x => x.classList.remove('open'));
+    document.querySelectorAll('.faq-icon').forEach(x => x.textContent = '+');
+    if (!open) { a.classList.add('open'); i.textContent = '−'; }
+  });
+});
+</script>
+<script src="../assets/js/tracker.js"></script>
+<script src="../assets/js/ads.js"></script>
+</body>
+</html>
