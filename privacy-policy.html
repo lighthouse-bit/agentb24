@@ -313,10 +313,10 @@
         <h2>1️⃣ Information We Collect</h2>
 
         <div class="highlight-box">
-          🔒 <strong>Important:</strong> All tools on AgentB24 run entirely
-          in your browser. Text, images, passwords, and files you use in
-          our tools are <strong>never sent to our servers</strong> and are
-          never stored or logged by us.
+          🔒 <strong>Tool data:</strong> Many tools process your inputs locally in
+          your browser. Tools that depend on a server, such as the URL Shortener
+          and temporary mail, need to send information to our server or their provider.
+          Review the information on each tool page before submitting sensitive data.
         </div>
 
         <h3>Information You Provide</h3>
@@ -327,6 +327,14 @@
         </p>
 
         <h3>Information Collected Automatically</h3>
+        <p><strong>URL Shortener:</strong> We store submitted destination URLs, short-link
+          codes, creation dates and optional expiry dates on our server. Links remain stored
+          after expiry so their codes are not reassigned. Anyone with a short link can access
+          its destination while active. Do not submit confidential or secret URLs.
+          Your browser may keep up to ten recent links in local storage; clearing that list
+          does not delete the server mapping. Temporary hashed network-address keys enforce
+          creation limits and are removed after expiry on a subsequent creation request.
+          Contact us to request removal or report misuse.</p>
         <p>
           When you visit our Site, certain information is automatically
           collected by third-party services we use (detailed below):
@@ -346,8 +354,9 @@
         <h3>Information You Do NOT Need to Provide</h3>
         <p>
           You never need to provide personal information to use any of our tools.
-          All tool processing (word counting, password generation, JSON formatting,
-          image conversion, etc.) happens locally in your browser using JavaScript.
+          Word counting, password generation, JSON formatting and many image operations
+          run locally in your browser. Server-backed tools have the storage requirements
+          described above and on their tool pages.
         </p>
       </div>
 
@@ -512,11 +521,10 @@
         </p>
 
         <div class="highlight-box">
-          🛡️ <strong>All tool processing happens locally in your browser.</strong>
-          Text you type, images you upload, passwords you generate, and any
-          other data you input into our tools is processed entirely on your device
-          using JavaScript. This data is <strong>never transmitted to or stored
-          on our servers</strong>.
+          🛡️ <strong>Local and server-backed tools:</strong> Inputs to local tools stay
+          on your device during processing. The URL Shortener stores destinations on our
+          server to make redirects work across devices. Short URLs are not passwords or
+          private access controls; protect sensitive destinations with their own authentication.
         </div>
       </div>
 

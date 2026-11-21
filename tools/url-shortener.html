@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Free URL Shortener – Custom Short Links & QR Codes | AgentB24</title>
+  <meta name="description" content="Turn long URLs into short, shareable AgentB24 links. Choose a custom ending, set an optional expiry, and download a QR code. No account required.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://agentb24.com/tools/url-shortener.html">
+  <link rel="icon" href="../assets/img/favicon.png">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/url-shortener.css">
+  <link rel="stylesheet" href="../assets/css/ads.css">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AgentB24">
+  <meta property="og:title" content="Shorter links. Easier sharing. | AgentB24">
+  <meta property="og:description" content="Create short links with custom endings, optional expiry and downloadable QR codes.">
+  <meta property="og:url" content="https://agentb24.com/tools/url-shortener.html">
+  <meta property="og:image" content="https://agentb24.com/assets/img/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free URL Shortener | AgentB24">
+  <meta name="twitter:description" content="Short links, custom endings and QR codes. No account required.">
+  <meta name="twitter:image" content="https://agentb24.com/assets/img/og-image.png">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"AgentB24 URL Shortener","url":"https://agentb24.com/tools/url-shortener.html","description":"Create short URLs with custom endings, optional expiry and QR codes.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://agentb24.com/"},{"@type":"ListItem","position":2,"name":"Developer Tools","item":"https://agentb24.com/tools/developer-tools.html"},{"@type":"ListItem","position":3,"name":"URL Shortener","item":"https://agentb24.com/tools/url-shortener.html"}]}</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <script defer src="../assets/js/url-shortener.js"></script>
+</head>
+<body>
+<header><div class="nav-container"><a href="../index.html" class="logo"><div class="logo-icon">AB</div>AgentB24</a><nav class="nav-links"><a href="../index.html">Home</a><a href="developer-tools.html" class="active">Developer Tools</a><a href="text-tools.html">Text Tools</a><a href="pdf-tools.html">PDF Tools</a><a href="../about.html">About</a></nav><button class="hamburger" id="hamburger" aria-label="Open navigation"><span></span><span></span><span></span></button></div><nav class="mobile-menu" id="mobile-menu"><a href="../index.html">Home</a><a href="developer-tools.html">Developer Tools</a><a href="../about.html">About</a></nav></header>
+<main class="shortener">
+  <nav class="short-breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="developer-tools.html">Developer Tools</a><span>/</span><span>URL Shortener</span></nav>
+  <section class="short-hero">
+    <div><span class="short-eyebrow">A LITTLE LINK GOES A LONG WAY</span><h1>Shorter links.<br><span>Easier sharing.</span></h1><p>Give a long URL a clean, memorable home. Share it in a message, a bio, a presentation—or a QR code.</p><div class="short-tags"><span>No account needed</span><span>Custom endings</span><span>Optional expiry</span></div></div>
+    <div class="short-illustration" aria-hidden="true"><span class="short-long">https://example.com/a/very/long/link?…</span><span class="short-arrow">↓</span><span class="short-mini">↗ &nbsp; agentb24.com/s/your-link</span><span class="short-caption">Small link. Same destination.</span></div>
+  </section>
+  <div class="short-workspace">
+    <section class="short-card">
+      <div class="short-heading"><span class="short-step">01</span><div><h2>Create your short link</h2><p>Paste a destination. Make it yours.</p></div></div>
+      <form id="short-form">
+        <label for="destination">Destination URL</label>
+        <input id="destination" type="url" placeholder="https://example.com/your-long-link" required maxlength="4096" autocomplete="url" spellcheck="false" aria-describedby="url-help">
+        <p class="short-help" id="url-help">Use a complete http:// or https:// web address.</p>
+        <div class="short-fields"><div><label for="alias">Custom ending <span>(optional)</span></label><input id="alias" type="text" placeholder="summer-launch" maxlength="40" pattern="[A-Za-z0-9][A-Za-z0-9_-]{3,39}" aria-describedby="alias-help" autocapitalize="none" spellcheck="false"><p class="short-help" id="alias-help">4–40 characters. Letters, numbers, - or _. Saved in lowercase.</p></div><div><label for="expiry">Link expiry</label><select id="expiry"><option value="0">No scheduled expiry</option><option value="7">After 7 days</option><option value="30">After 30 days</option><option value="90">After 90 days</option></select><p class="short-help">Choose how long your link stays active.</p></div></div>
+        <button type="submit" class="short-primary" id="create-link">Shorten my link <span aria-hidden="true">↗</span></button>
+        <p id="short-status" role="status" aria-live="polite"></p>
+        <p class="short-disclosure">Destinations are stored on our server. Short links are public, not private access controls. Don’t shorten secret or sensitive URLs.</p>
+      </form>
+    </section>
+    <section class="short-card short-result" aria-labelledby="result-heading">
+      <div class="short-heading"><span class="short-step">02</span><div><h2 id="result-heading">Ready to share</h2><p>Your next click starts here.</p></div></div>
+      <div id="result-empty"><span class="short-empty-icon" aria-hidden="true">↗</span><h3>Long URL in. Short link out.</h3><p>Your link and QR code will appear here once you create one.</p></div>
+      <div id="result-content" hidden>
+        <label for="short-output">Your short link</label><div class="short-copy-row"><input id="short-output" readonly><button id="copy-link" type="button">Copy</button></div>
+        <p class="short-destination" id="result-destination"></p><p class="short-help" id="result-expiry"></p>
+        <div class="short-qr-row"><div id="short-qr" aria-label="QR code for your short link"></div><div><h3>Take it offline, too.</h3><p>Use the QR code on a flyer, sign or business card.</p><button type="button" id="download-qr" class="short-secondary" disabled>Download QR PNG</button><p id="qr-status" class="short-help"></p></div></div>
+        <a id="open-link" class="short-test" target="_blank" rel="noopener noreferrer">Open short link ↗</a>
+      </div>
+    </section>
+  </div>
+  <section class="short-card short-history"><div class="short-heading"><div><h2>Your recent links</h2><p>Saved on this browser only. Clearing this list does not disable links.</p></div><button id="clear-history" type="button" class="short-secondary">Clear list</button></div><div id="short-history-list"></div></section>
+  <section class="short-info"><div><span class="short-eyebrow">LINKS, WITHOUT THE CLUTTER</span><h2>How to shorten a URL</h2><ol><li>Copy the full address of the page you want to share.</li><li>Paste it above, then choose an ending and expiry if you want.</li><li>Create your short link. Copy it or download its QR code.</li></ol><p>For campaign tracking, add your parameters with the <a href="utm-builder.html">UTM Builder</a> first. The shortener preserves the destination’s query parameters and fragment.</p></div><div><h2>A few useful answers</h2><details><summary>Will my link work after I close this page?</summary><p>Yes. Links are saved on our server. They work until their selected expiry, unless disabled or the service becomes unavailable. Keep your original URL as a backup.</p></details><details><summary>Can I change a destination later?</summary><p>Not currently. Create a new short link for a different destination. Custom endings are unique and cannot be reassigned, including after expiry.</p></details><details><summary>Is there a limit?</summary><p>To limit abuse, creation is capped at 10 links per minute and 100 per day per network address. Shared networks may reach the limit sooner.</p></details><details><summary>Are shortened destinations checked for safety?</summary><p>We validate URL format but do not certify destinations as safe. Only open links from people you trust. Don’t use this service for spam, phishing or harmful content.</p></details></div></section>
+</main>
+<footer><div class="footer-grid"><div class="footer-brand"><a href="../index.html" class="logo"><div class="logo-icon">AB</div>AgentB24</a><p>Practical tools for everyday work.</p></div><div class="footer-col"><h4>Related tools</h4><ul><li><a href="utm-builder.html">UTM Builder</a></li><li><a href="qr-code-generator.html">QR Code Generator</a></li><li><a href="developer-tools.html">Developer Tools</a></li></ul></div><div class="footer-col"><h4>Company</h4><ul><li><a href="../about.html">About</a></li><li><a href="../privacy-policy.html">Privacy Policy</a></li><li><a href="../about.html#contact">Contact / report a link</a></li></ul></div></div><div class="footer-bottom">© 2026 AgentB24</div></footer>
+<script src="../assets/js/main.js"></script><script src="../assets/js/tracker.js?v=20261121-analytics2"></script><script src="../assets/js/ads.js?v=20261120-popunder"></script>
+</body></html>

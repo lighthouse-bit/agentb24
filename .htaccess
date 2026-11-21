@@ -3,6 +3,7 @@
     RewriteEngine On
     RewriteRule (^|/)\.git(?:/|$) - [F,L]
     RewriteRule ^scripts/ - [F,L]
+    RewriteRule ^s/([a-z0-9][a-z0-9_-]{3,39})/?$ short-link.php?code=$1 [END]
 </IfModule>
 <FilesMatch "(?i)^(?:admin-config(?:\.example)?\.php|\.gitignore|.*\.ps1)$">
     Require all denied
