@@ -715,13 +715,14 @@
           <div>
             <div class="view-title">📊 Overview</div>
             <div class="view-subtitle" id="overview-subtitle">Loading...</div>
+            <div class="view-subtitle" id="analytics-history-note"></div>
           </div>
           <div class="date-filter">
             <button class="date-btn" onclick="setDateRange(1,this)">Today</button>
             <button class="date-btn active" onclick="setDateRange(7,this)">7 Days</button>
             <button class="date-btn" onclick="setDateRange(30,this)">30 Days</button>
             <button class="date-btn" onclick="setDateRange(90,this)">90 Days</button>
-            <button class="date-btn" onclick="setDateRange(0,this)">All Time</button>
+            <button class="date-btn" onclick="setDateRange(0,this)">All Retained History</button>
           </div>
         </div>
 
@@ -796,7 +797,7 @@
         <div class="view-header">
           <div>
             <div class="view-title">👥 Visitors</div>
-            <div class="view-subtitle">New vs returning visitor analysis</div>
+            <div class="view-subtitle">Distinct browser IDs in the selected period. New means first seen in this period; returning means first seen earlier.</div>
           </div>
         </div>
 
@@ -1104,7 +1105,7 @@
           <div class="set-row">
             <div class="set-label">
               <h4>Total Records</h4>
-              <p>Visits stored in localStorage</p>
+              <p>Page-view records stored on the server</p>
             </div>
             <span id="set-total-records"
                   style="font-size:0.9rem;font-weight:700;color:#818CF8;">—</span>
@@ -1112,7 +1113,7 @@
           <div class="set-row">
             <div class="set-label">
               <h4>Storage Used</h4>
-              <p>Approximate localStorage size</p>
+              <p>Server analytics file size</p>
             </div>
             <span id="set-storage-size"
                   style="font-size:0.9rem;font-weight:700;color:#818CF8;">—</span>
@@ -1133,10 +1134,10 @@
           </div>
           <div class="set-row">
             <div class="set-label">
-              <h4>Clear All Data</h4>
-              <p style="color:#F87171;">⚠️ Permanently deletes everything</p>
+              <h4>Manage Server Data</h4>
+              <p>Export a backup before changing server records</p>
             </div>
-            <button class="set-btn danger" onclick="clearAllData()">🗑️ Clear All</button>
+            <button class="set-btn" onclick="clearAllData()">Instructions</button>
           </div>
         </div>
 
@@ -1165,7 +1166,7 @@
               How to set up GA4:
             </strong>
             1. Go to analytics.google.com<br/>
-            2. Create a new property for pixlit.com<br/>
+            2. Create a new property for agentb24.com<br/>
             3. Copy your Measurement ID (G-XXXXXXXXXX)<br/>
             4. Enter it above and click Save<br/>
             5. Add the GA4 script tag to all your HTML pages
@@ -1176,12 +1177,13 @@
         <div class="settings-box">
           <h3>ℹ️ About This Dashboard</h3>
           <p style="font-size:0.82rem;color:#64748B;line-height:1.8;">
-            This dashboard uses <strong style="color:#94A3B8;">browser localStorage</strong>
-            to track visitor analytics locally. All data stays in the visitor's browser —
-            no server required.<br/><br/>
-            Geo data is powered by <strong style="color:#818CF8;">ipapi.co</strong>
-            (free: 1,000 requests/day).<br/>
-            For cross-device analytics, use Google Analytics 4.
+            Records are stored on your hosting server. Browser storage identifies returning browsers;
+            clearing storage or using another device creates a different visitor ID.<br/><br/>
+            Dates use this browser's timezone. Sessions group page views by browser activity;
+            time on page measures visible-tab time, sampled every 30 seconds.
+            Geography is an approximate IP lookup from ipapi.co; blocked or unavailable lookups remain Unknown.<br/><br/>
+            Historical records from the previous tracker may contain duplicates, shared IP identities,
+            or missing time measurements. Earlier records deleted by its 5,000-record limit cannot be recovered here.
           </p>
         </div>
       </div>
@@ -1298,6 +1300,8 @@
    DATA — Read from SERVER
 ============================================ */
 var serverData = null;
+var analyticsRequest = 0;
+var analyticsRefreshTimer = null;
 
 function getData() {
   return serverData ||
@@ -1305,54 +1309,95 @@ function getData() {
 }
 
 function loadDataFromServer(callback) {
+  var requestNumber = ++analyticsRequest;
   /* Get the admin password to use as token */
   var token = getAdminPassword();
 
   var xhr = new XMLHttpRequest();
   xhr.open('POST', 'get-visits.php', true);
+  xhr.timeout = 15000;
   xhr.setRequestHeader('Content-Type', 'application/json');
+
+  function failed(message) {
+    if (requestNumber !== analyticsRequest) return;
+    var notice = document.getElementById('analytics-status');
+    if (!notice) {
+      notice = document.createElement('div');
+      notice.id = 'analytics-status';
+      notice.setAttribute('role', 'alert');
+      notice.style.cssText = 'position:fixed;bottom:16px;left:16px;right:16px;padding:16px;background:#7f1d1d;color:white;z-index:9999;border-radius:8px';
+      document.body.appendChild(notice);
+    }
+    notice.textContent = message + (serverData ? ' Showing the last successful data; it may be stale.' : ' No data has loaded.');
+    notice.style.display = 'block';
+  }
 
   xhr.onreadystatechange = function() {
     if (xhr.readyState === 4) {
+      if (requestNumber !== analyticsRequest) return;
       if (xhr.status === 200) {
         try {
-          serverData = JSON.parse(xhr.responseText);
+          var received = JSON.parse(xhr.responseText);
+          if (!received || !Array.isArray(received.visits)) throw new Error('Invalid analytics data');
+          serverData = received;
+          var notice = document.getElementById('analytics-status');
+          if (notice) notice.style.display = 'none';
         } catch(e) {
-          serverData = {
-            visits    : [],
-            pageviews : 0,
-            sessions  : 0
-          };
+          failed('The server returned unreadable analytics data.');
+          return;
         }
       } else {
-        serverData = {
-          visits    : [],
-          pageviews : 0,
-          sessions  : 0
-        };
+        failed(xhr.status === 403 ? 'Admin access expired or the password changed. Sign out and sign in again.' : 'Analytics request failed (HTTP ' + xhr.status + '). Check server storage and PHP logs.');
+        return;
       }
       if (callback) callback(serverData);
     }
   };
 
   xhr.onerror = function() {
-    serverData = { visits: [], pageviews: 0, sessions: 0 };
-    if (callback) callback(serverData);
+    failed('Cannot connect to the analytics server.');
   };
+  xhr.ontimeout = function() { failed('Analytics request timed out.'); };
 
   xhr.send(JSON.stringify({ password: token }));
 }
   function filterByDate(visits, days) {
-    if (!days) return visits;
+    var now = Date.now();
     var cutoff = new Date();
-    cutoff.setDate(cutoff.getDate() - days);
+    cutoff.setHours(0, 0, 0, 0);
+    cutoff.setDate(cutoff.getDate() - Math.max(0, days - 1));
     return visits.filter(function(v) {
-      return new Date(v.timestamp) >= cutoff;
+      var stamp = new Date(v.timestamp).getTime();
+      return Number.isFinite(stamp) && stamp <= now && (!days || stamp >= cutoff.getTime());
     });
   }
 
+  function sessionCount(visits) {
+    var ids = new Set();
+    var legacy = 0;
+    visits.forEach(function(v) {
+      if (v.sessionId) ids.add(v.visitorId + ':' + v.sessionId);
+      else if (v.isSession) legacy++;
+    });
+    return ids.size + legacy;
+  }
+
+  function visitorCounts(visits) {
+    var map = new Map();
+    visits.forEach(function(v) {
+      if (v.visitorId) map.set(v.visitorId, !!v.isNew || map.get(v.visitorId) === true);
+    });
+    var fresh = Array.from(map.values()).filter(Boolean).length;
+    return { total: map.size, fresh: fresh, returning: map.size - fresh };
+  }
+
+  function localDateKey(value) {
+    var d = new Date(value);
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  }
+
   function countBy(arr, key) {
-    var map = {};
+    var map = Object.create(null);
     arr.forEach(function(item) {
       var val = item[key] || 'Unknown';
       map[val] = (map[val] || 0) + 1;
@@ -1361,7 +1406,7 @@ function loadDataFromServer(callback) {
   }
 
   function getUniqueVisitors(visits) {
-    var ids = {};
+    var ids = Object.create(null);
     visits.forEach(function(v) { if (v.visitorId) ids[v.visitorId] = 1; });
     return Object.keys(ids).length;
   }
@@ -1556,13 +1601,16 @@ function loadDataFromServer(callback) {
     var visits = filterByDate(data.visits || [], currentDateRange);
 
     setTimeout(function() {
+      var visibleView = document.querySelector('.dash-view.active');
+      if (!visibleView || visibleView.id !== 'view-' + name) return;
+      if (!visits.length) Object.keys(chartRegistry).forEach(destroyChart);
       if (name === 'overview')  renderOverview(visits, data);
       if (name === 'visitors')  renderVisitors(visits);
       if (name === 'countries') renderCountries(visits);
       if (name === 'pages')     renderPages(visits);
       if (name === 'traffic')   renderTraffic(visits);
       if (name === 'devices')   renderDevices(visits);
-      if (name === 'log')       renderLog(data.visits || []);
+      if (name === 'log')       renderLog(visits);
       if (name === 'realtime')  renderRealtime(data.visits || []);
       if (name === 'settings')  renderSettings(data);
     }, 30);
@@ -1590,23 +1638,29 @@ function loadDataFromServer(callback) {
   ============================================ */
   function renderOverview(visits, data) {
     var label = currentDateRange === 0
-      ? 'All time'
+      ? 'All retained history'
       : 'Last ' + currentDateRange + (currentDateRange === 1 ? ' day' : ' days');
 
     setText('overview-subtitle', label + ' — ' + visits.length + ' pageviews');
     setText('stat-pageviews', visits.length.toLocaleString());
     setText('stat-visitors',  getUniqueVisitors(visits).toLocaleString());
 
-    var sess = visits.filter(function(v) { return v.isSession; }).length;
+    var sess = sessionCount(visits);
     setText('stat-sessions', sess.toLocaleString());
 
     var cMap = {};
-    visits.forEach(function(v) { if (v.country) cMap[v.country] = 1; });
+    visits.forEach(function(v) { if (v.country && v.country !== 'Unknown') cMap[v.country] = 1; });
     setText('stat-countries', Object.keys(cMap).length);
 
     updateStorageLabel(data);
+    var legacyCount = visits.filter(function(v) { return v.trackingVersion !== 2; }).length;
+    setText('analytics-history-note', 'Dates: ' + Intl.DateTimeFormat().resolvedOptions().timeZone + '. ' +
+      (legacyCount ? legacyCount + ' historical records use the old tracker and may be inaccurate. ' : '') +
+      (data.historyIncomplete ? 'Older history is missing; totals cover retained records only.' : ''));
 
     if (!hasData(visits)) {
+      destroyChart('chart-traffic');
+      destroyChart('chart-devices');
       showEmpty('top-countries-list');
       showEmpty('top-pages-list');
       showEmpty('top-browsers-list');
@@ -1645,47 +1699,48 @@ function loadDataFromServer(callback) {
   }
 
   function renderTrafficLineChart(visits) {
-    var days   = Math.max(currentDateRange || 30, 7);
+    var start = new Date();
+    start.setHours(0, 0, 0, 0);
+    if (currentDateRange) start.setDate(start.getDate() - currentDateRange + 1);
+    else if (visits.length) {
+      start = new Date(visits.reduce(function(min, v) { return Math.min(min, new Date(v.timestamp).getTime()); }, Date.now()));
+      start.setHours(0, 0, 0, 0);
+    }
+    var counts = Object.create(null);
+    visits.forEach(function(v) { var key = localDateKey(v.timestamp); counts[key] = (counts[key] || 0) + 1; });
     var labels = [];
     var values = [];
-    for (var i = days - 1; i >= 0; i--) {
-      var d   = new Date();
-      d.setDate(d.getDate() - i);
-      var key = d.toISOString().split('T')[0];
+    for (var d = new Date(start); d.getTime() <= Date.now(); d.setDate(d.getDate() + 1)) {
+      var key = localDateKey(d);
       labels.push(d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
-      var cnt = 0;
-      visits.forEach(function(v) {
-        if (v.timestamp && v.timestamp.indexOf(key) === 0) cnt++;
-      });
-      values.push(cnt);
+      values.push(counts[key] || 0);
     }
     makeChart('chart-traffic', mkLineChart(labels, values));
   }
 
   function updateStorageLabel(data) {
-    var raw    = localStorage.getItem(STORAGE_KEY) || '';
-    var sizeKB = (raw.length * 2 / 1024).toFixed(1);
+    var sizeKB = ((data.storageBytes || new Blob([JSON.stringify(data)]).size) / 1024).toFixed(1);
     var cnt    = data.visits ? data.visits.length : 0;
-    setText('storage-used', cnt + ' records | ' + sizeKB + ' KB');
+    setText('storage-used', cnt + ' retained records | ' + sizeKB + ' KB' + (data.historyIncomplete ? ' | Older records were removed by the previous tracker' : ''));
   }
 
   /* ============================================
      VISITORS
   ============================================ */
   function renderVisitors(visits) {
-    var total    = getUniqueVisitors(visits);
-    var newV     = visits.filter(function(v) { return v.isNew; }).length;
-    var retV     = visits.filter(function(v) { return !v.isNew; }).length;
-    var sessions = visits.filter(function(v) { return v.isSession; }).length;
-    var newPct   = visits.length > 0
-      ? ((newV / visits.length) * 100).toFixed(1) : 0;
+    var counts = visitorCounts(visits);
+    var total = counts.total;
+    var newV = counts.fresh;
+    var retV = counts.returning;
+    var sessions = sessionCount(visits);
+    var newPct = total > 0 ? ((newV / total) * 100).toFixed(1) : 0;
 
     setText('v-total',     total.toLocaleString());
     setText('v-new',       newV.toLocaleString());
     setText('v-returning', retV.toLocaleString());
     setText('v-avg-pages', sessions > 0 ? (visits.length / sessions).toFixed(1) : '0');
     setText('v-new-pct',   newPct + '% of total');
-    setText('v-ret-pct',   (100 - parseFloat(newPct)).toFixed(1) + '% of total');
+    setText('v-ret-pct',   (total ? 100 - parseFloat(newPct) : 0).toFixed(1) + '% of total');
 
     if (!hasData(visits)) {
       showEmpty('os-list');
@@ -1861,10 +1916,10 @@ function loadDataFromServer(callback) {
     var html = '';
     pagesData.forEach(function(page, i) {
       var pts = visits.filter(function(v) {
-        return v.page === page[0] && v.timeOnPage;
+        return v.page === page[0];
       });
       var avg = pts.length > 0
-        ? pts.reduce(function(s,v) { return s + v.timeOnPage; }, 0) / pts.length
+        ? pts.reduce(function(s,v) { return s + (Number(v.timeOnPage) || 0); }, 0) / pts.length
         : 0;
       var pct = totalViews > 0
         ? ((page[1] / totalViews) * 100).toFixed(1) : 0;
@@ -1995,7 +2050,7 @@ function loadDataFromServer(callback) {
   ============================================ */
   function renderLog(visits) {
     allVisits = visits.slice().reverse();
-    setText('log-count', 'All Visits (' + allVisits.length.toLocaleString() + ')');
+    setText('log-count', 'Selected period: ' + allVisits.length.toLocaleString() + ' page views (showing up to 200)');
     renderLogTable(allVisits);
   }
 
@@ -2065,7 +2120,8 @@ function loadDataFromServer(callback) {
     var now = Date.now();
 
     function inMs(v, ms) {
-      return (now - new Date(v.timestamp).getTime()) < ms;
+      var age = now - new Date(v.timestamp).getTime();
+      return age >= 0 && age < ms;
     }
 
     var m30       = visits.filter(function(v) { return inMs(v, 1800000); });
@@ -2088,7 +2144,8 @@ function loadDataFromServer(callback) {
 
     var activeMap = {};
     visits.forEach(function(v) {
-      if (inMs(v, 300000)) activeMap[v.visitorId || 'x'] = 1;
+      var age = now - new Date(v.lastSeen || v.timestamp).getTime();
+      if (v.visitorId && age >= 0 && age < 300000) activeMap[v.visitorId] = 1;
     });
     var active = Object.keys(activeMap).length;
     setText('rt-active', active + ' active visitor' +
@@ -2170,8 +2227,7 @@ function loadDataFromServer(callback) {
   ============================================ */
   function renderSettings(data) {
     var cnt    = data.visits ? data.visits.length : 0;
-    var raw    = localStorage.getItem(STORAGE_KEY) || '';
-    var sizeKB = (raw.length * 2 / 1024).toFixed(1);
+    var sizeKB = ((data.storageBytes || new Blob([JSON.stringify(data)]).size) / 1024).toFixed(1);
     setText('set-total-records', cnt.toLocaleString() + ' records');
     setText('set-storage-size',  sizeKB + ' KB');
   }
@@ -2210,11 +2266,7 @@ function loadDataFromServer(callback) {
   }
 
   function clearAllData() {
-    if (confirm('Delete ALL visitor data? This cannot be undone.')) {
-      localStorage.removeItem(STORAGE_KEY);
-      alert('All data cleared.');
-      showView('overview');
-    }
+    alert('Analytics is stored on the server. This button cannot delete server records. Export a backup before managing data/visits.json in Hostinger.');
   }
 
   function saveGAId() {
@@ -2280,11 +2332,8 @@ function loadDataFromServer(callback) {
      REFRESH
   ============================================ */
   function refreshDashboard() {
-  loadDataFromServer(function(data) {
-    serverData = data;
-    showView('overview');
-    showToastMsg('Data refreshed!');
-  });
+    var view = document.querySelector('.dash-view.active');
+    showView(view ? view.id.replace('view-', '') : 'overview');
 }
 
 function showToastMsg(msg) {
@@ -2303,6 +2352,9 @@ function showToastMsg(msg) {
      INIT
   ============================================ */
   function initDashboard() {
+  if (!analyticsRefreshTimer) analyticsRefreshTimer = setInterval(function() {
+    if (document.visibilityState !== 'hidden' && document.querySelector('#view-realtime.active')) refreshDashboard();
+  }, 30000);
   /* Show loading state */
   setText('overview-subtitle', 'Loading data from server...');
 

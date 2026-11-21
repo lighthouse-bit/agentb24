@@ -29,4 +29,27 @@ if (!$authorized) {
     exit;
 }
 $file = __DIR__ . '/data/visits.json';
-echo file_exists($file) ? file_get_contents($file) : '{"visits":[],"pageviews":0,"sessions":0}';
+require_once __DIR__ . '/analytics-store.php';
+if (!file_exists($file)) {
+    echo json_encode(['visits' => [], 'pageviews' => 0, 'sessions' => 0, 'storageBytes' => 0]);
+    exit;
+}
+$handle = fopen($file, 'r');
+if (!$handle || !flock($handle, LOCK_SH)) {
+    http_response_code(503);
+    echo json_encode(['error' => 'Analytics storage unavailable']);
+    exit;
+}
+try {
+    $storage = analyticsRead($handle);
+    $storage['storageBytes'] = fstat($handle)['size'];
+    $storage['serverTime'] = gmdate('c');
+    $storage['historyIncomplete'] = (int)($storage['pageviews'] ?? 0) > count($storage['visits']);
+    echo json_encode($storage, JSON_THROW_ON_ERROR);
+} catch (Throwable $error) {
+    http_response_code(500);
+    echo json_encode(['error' => $error->getMessage()]);
+} finally {
+    flock($handle, LOCK_UN);
+    fclose($handle);
+}

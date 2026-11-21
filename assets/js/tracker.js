@@ -1,210 +1,98 @@
-// ================================================
-//  PIXLIT TRACKER — assets/js/tracker.js
-//  Sends visitor data to tracker.php on server
-// ================================================
-
-(function() {
+(function () {
   'use strict';
-
-  // ---- Skip admin page & bots ----
-  if (window.location.pathname.indexOf('admin') > -1) return;
-  var bots = /bot|crawl|spider|slurp|mediapartners/i;
-  if (bots.test(navigator.userAgent)) return;
-
-  // ---- Visitor ID stored in localStorage ----
-  function getVisitorId() {
-    var id = localStorage.getItem('pixlit_vid');
-    if (!id) {
-      id = 'v_' + Date.now() + '_' +
-           Math.random().toString(36).substr(2, 9);
-      localStorage.setItem('pixlit_vid', id);
-    }
-    return id;
-  }
-
-  // ---- Session check (30 min window) ----
-  function isNewSession() {
-    var SESSION_KEY = 'pixlit_sess';
-    var last        = sessionStorage.getItem(SESSION_KEY);
-    var now         = Date.now();
-    if (!last || (now - parseInt(last)) > 1800000) {
-      sessionStorage.setItem(SESSION_KEY, String(now));
-      return true;
-    }
-    sessionStorage.setItem(SESSION_KEY, String(now));
-    return false;
-  }
-
-  // ---- Device detection ----
-  function getDevice() {
-    var ua = navigator.userAgent;
-    if (/tablet|ipad|playbook|silk/i.test(ua))        return 'Tablet';
-    if (/mobile|iphone|ipod|android|blackberry|opera mini|iemobile/i.test(ua))
-      return 'Mobile';
-    return 'Desktop';
-  }
-
-  // ---- Browser detection ----
-  function getBrowser() {
-    var ua = navigator.userAgent;
-    if (ua.indexOf('Edg/')     > -1) return 'Edge';
-    if (ua.indexOf('Chrome/')  > -1) return 'Chrome';
-    if (ua.indexOf('Firefox/') > -1) return 'Firefox';
-    if (ua.indexOf('Safari/')  > -1 &&
-        ua.indexOf('Chrome/')  < 0)  return 'Safari';
-    if (ua.indexOf('OPR/')     > -1) return 'Opera';
-    return 'Other';
-  }
-
-  // ---- OS detection ----
-  function getOS() {
-    var ua = navigator.userAgent;
-    if (ua.indexOf('Windows NT 10')  > -1) return 'Windows 10/11';
-    if (ua.indexOf('Windows')        > -1) return 'Windows';
-    if (ua.indexOf('Mac OS X')       > -1) return 'macOS';
-    if (ua.indexOf('Android')        > -1) return 'Android';
-    if (ua.indexOf('iPhone')         > -1 ||
-        ua.indexOf('iPad')           > -1) return 'iOS';
-    if (ua.indexOf('Linux')          > -1) return 'Linux';
-    return 'Other';
-  }
-
-  // ---- Page name ----
-  function getPageName() {
-    var path = window.location.pathname;
-    if (path === '/' || path.indexOf('index') > -1) return 'Homepage';
-    var parts = path.split('/');
-    var file  = parts[parts.length - 1]
-                  .replace('.html', '')
-                  .replace(/-/g, ' ');
-    if (!file) return 'Homepage';
-    return file.charAt(0).toUpperCase() + file.slice(1);
-  }
-
-  // ---- Referrer ----
-  function getReferrer() {
-    var ref = document.referrer;
-    if (!ref) return 'Direct';
+  if (window.__agentb24Tracking || /\/admin(?:\.html)?\/?$/i.test(location.pathname) || /bot|crawl|spider|slurp|mediapartners/i.test(navigator.userAgent)) return;
+  window.__agentb24Tracking = true;
+  var endpoint = document.currentScript ? new URL('../../tracker.php', document.currentScript.src).href : '/tracker.php';
+  var memory = {};
+  function read(key) { try { return localStorage.getItem(key); } catch (e) { return memory[key] || null; } }
+  function write(key, value) { memory[key] = value; try { localStorage.setItem(key, value); } catch (e) {} }
+  function id() { return window.crypto && crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).slice(2); }
+  function parse(value) { try { return JSON.parse(value); } catch (e) { return null; } }
+  var visitorId = read('pixlit_vid');
+  var isNew = !read('pixlit_returning');
+  if (!visitorId) { visitorId = 'v_' + id(); write('pixlit_vid', visitorId); }
+  var ua = navigator.userAgent;
+  var ios = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+  var tablet = /tablet|ipad|playbook|silk/i.test(ua) || (ios && !/iPhone|iPod/.test(ua));
+  function source() {
+    if (!document.referrer) return 'Direct';
     try {
-      var host = new URL(ref).hostname.replace('www.', '');
-      if (host.indexOf('google')    > -1) return 'Google';
-      if (host.indexOf('bing')      > -1) return 'Bing';
-      if (host.indexOf('facebook')  > -1) return 'Facebook';
-      if (host.indexOf('twitter')   > -1 ||
-          host.indexOf('t.co')      > -1) return 'Twitter/X';
-      if (host.indexOf('linkedin')  > -1) return 'LinkedIn';
-      if (host.indexOf('reddit')    > -1) return 'Reddit';
-      if (host.indexOf('youtube')   > -1) return 'YouTube';
-      if (host.indexOf('instagram') > -1) return 'Instagram';
-      if (host.indexOf('tiktok')    > -1) return 'TikTok';
+      var host = new URL(document.referrer).hostname.replace(/^www\./, '');
+      if (host === location.hostname.replace(/^www\./, '')) return 'Direct';
+      var known = { 'google.com': 'Google', 'bing.com': 'Bing', 'facebook.com': 'Facebook', 't.co': 'Twitter/X', 'x.com': 'Twitter/X', 'twitter.com': 'Twitter/X', 'linkedin.com': 'LinkedIn', 'reddit.com': 'Reddit', 'youtube.com': 'YouTube', 'instagram.com': 'Instagram', 'tiktok.com': 'TikTok' };
+      for (var domain in known) if (host === domain || host.endsWith('.' + domain)) return known[domain];
       return host;
-    } catch(e) {
-      return 'Other';
-    }
+    } catch (e) { return 'Direct'; }
   }
-
-  // ---- Send data to server ----
-  function sendToServer(visitData) {
-    // Use sendBeacon for reliability
-    var url     = '/tracker.php';
-    var payload = JSON.stringify(visitData);
-
-    if (navigator.sendBeacon) {
-      var blob = new Blob([payload], { type: 'application/json' });
-      navigator.sendBeacon(url, blob);
-    } else {
-      // Fallback to fetch
-      fetch(url, {
-        method      : 'POST',
-        headers     : { 'Content-Type': 'application/json' },
-        body        : payload,
-        keepalive   : true
-      }).catch(function() {});
+  var session = parse(read('agentb24_session'));
+  var now = Date.now();
+  var newSession = !session || !session.id || now - session.last > 1800000;
+  if (newSession) session = { id: id(), last: now, source: source() };
+  session.last = now;
+  write('agentb24_session', JSON.stringify(session));
+  var path = location.pathname === '/index.html' ? '/' : location.pathname;
+  var page = path === '/' ? 'Homepage' : path.split('/').pop().replace(/\.html$/, '').replace(/-/g, ' ');
+  page = page.charAt(0).toUpperCase() + page.slice(1);
+  var base = {
+    version: 2, eventId: id(), visitorId: visitorId, sessionId: session.id,
+    page: page, path: path, referrer: session.source || 'Direct', isNew: isNew, isSession: newSession,
+    device: tablet ? 'Tablet' : /mobile|android|iphone|ipod/i.test(ua) ? 'Mobile' : 'Desktop',
+    browser: /Edg\//.test(ua) ? 'Edge' : /OPR\//.test(ua) ? 'Opera' : /Firefox|FxiOS/.test(ua) ? 'Firefox' : /Chrome|CriOS/.test(ua) ? 'Chrome' : /Safari/.test(ua) ? 'Safari' : 'Other',
+    os: ios ? 'iOS' : /Android/.test(ua) ? 'Android' : /Windows/.test(ua) ? 'Windows' : /Mac OS X/.test(ua) ? 'macOS' : /Linux/.test(ua) ? 'Linux' : 'Other',
+    screenW: screen.width, screenH: screen.height, language: navigator.language || 'Unknown',
+    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || 'Unknown'
+  };
+  var geo = {};
+  var elapsed = 0;
+  var visibleStart = document.visibilityState === 'hidden' ? null : performance.now();
+  function seconds() { return Math.floor((elapsed + (visibleStart === null ? 0 : performance.now() - visibleStart)) / 1000); }
+  function send(beacon) {
+    var body = JSON.stringify(Object.assign({}, base, geo, { timeOnPage: seconds() }));
+    if (beacon && navigator.sendBeacon) {
+      try { if (navigator.sendBeacon(endpoint, new Blob([body], { type: 'application/json' }))) return; } catch (e) {}
     }
+    fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: body, keepalive: true })
+      .then(function (response) {
+        if (!response.ok) throw new Error('Tracking HTTP ' + response.status);
+        write('pixlit_returning', '1');
+      }).catch(function (error) { console.warn('AgentB24 analytics:', error.message); });
   }
-
-  // ---- Main tracking function ----
-  function track() {
-    var newSession = isNewSession();
-
-    // Check if returning visitor
-    var isNew = !localStorage.getItem('pixlit_returning');
-    if (isNew) localStorage.setItem('pixlit_returning', '1');
-
-    // Try geo from cache first
-    var cachedGeo = sessionStorage.getItem('pixlit_geo');
-
-    function buildAndSend(geo) {
-      geo = geo || {};
-      var visitData = {
-        visitorId   : getVisitorId(),
-        page        : getPageName(),
-        path        : window.location.pathname,
-        referrer    : getReferrer(),
-        device      : getDevice(),
-        browser     : getBrowser(),
-        os          : getOS(),
-        screenW     : screen.width,
-        screenH     : screen.height,
-        language    : navigator.language || 'unknown',
-        country     : geo.country_name  || 'Unknown',
-        countryCode : geo.country_code  || 'XX',
-        region      : geo.region        || 'Unknown',
-        city        : geo.city          || 'Unknown',
-        timezone    : geo.timezone      ||
-                      (Intl && Intl.DateTimeFormat ?
-                       Intl.DateTimeFormat().resolvedOptions().timeZone
-                       : 'Unknown'),
-        isNew       : isNew,
-        isSession   : newSession
-      };
-      sendToServer(visitData);
-    }
-
-    if (cachedGeo) {
-      buildAndSend(JSON.parse(cachedGeo));
-      return;
-    }
-
-    // Fetch geo data
+  // Retries, geolocation and heartbeats share a page-view ID and cannot add views.
+  send(false);
+  setInterval(function () {
+    if (document.visibilityState === 'hidden') return;
+    var current = parse(read('agentb24_session'));
+    if (current && current.id === session.id) { current.last = Date.now(); write('agentb24_session', JSON.stringify(current)); }
+    send(false);
+  }, 30000);
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'hidden') {
+      if (visibleStart !== null) elapsed += performance.now() - visibleStart;
+      visibleStart = null;
+      send(true);
+    } else { visibleStart = performance.now(); send(false); }
+  });
+  window.addEventListener('pagehide', function () { send(true); });
+  // Optional enrichment never delays tracking. Unavailable location stays Unknown.
+  var cached = parse(read('agentb24_geo'));
+  function applyGeo(value) {
+    if (!value || value.error || !value.country_name) return;
+    geo = { country: value.country_name, countryCode: value.country_code, region: value.region, city: value.city };
+    send(false);
+  }
+  if (cached && Date.now() - cached.at < 3600000) applyGeo(cached.value);
+  else {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'https://ipapi.co/json/', true);
     xhr.timeout = 3000;
-    xhr.onreadystatechange = function() {
-      if (xhr.readyState === 4) {
-        if (xhr.status === 200) {
-          try {
-            var geo = JSON.parse(xhr.responseText);
-            sessionStorage.setItem('pixlit_geo', JSON.stringify(geo));
-            buildAndSend(geo);
-          } catch(e) {
-            buildAndSend({});
-          }
-        } else {
-          buildAndSend({});
-        }
+    xhr.onload = function () {
+      if (xhr.status !== 200) return;
+      var value = parse(xhr.responseText);
+      if (value && !value.error && value.country_name) {
+        write('agentb24_geo', JSON.stringify({ at: Date.now(), value: value }));
+        applyGeo(value);
       }
     };
-    xhr.ontimeout = function() { buildAndSend({}); };
-    xhr.onerror   = function() { buildAndSend({}); };
     xhr.send();
   }
-
-  // ---- Track time on page ----
-  var pageStart = Date.now();
-  window.addEventListener('beforeunload', function() {
-    var timeSpent = Math.round((Date.now() - pageStart) / 1000);
-    if (timeSpent > 0) {
-      sendToServer({
-        type        : 'time',
-        visitorId   : getVisitorId(),
-        page        : getPageName(),
-        timeOnPage  : timeSpent
-      });
-    }
-  });
-
-  // ---- Start tracking ----
-  track();
-
 })();
